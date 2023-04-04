@@ -23,10 +23,21 @@ public class FirstScreen extends AppCompatActivity {
                 openPasswordReset();
             }
         });
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegister();
+            }
+        });
     }
 
     public void openPasswordReset(){
         Intent intent = new Intent(this, PasswordReset.class);
+        startActivity(intent);
+    }
+
+    public void openRegister(){
+        Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
 
