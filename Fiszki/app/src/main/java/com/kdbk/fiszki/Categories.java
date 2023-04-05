@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Categories extends AppCompatActivity implements SelectListener {
+public class Categories extends AppCompatActivity implements SelectListenerCategories {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;

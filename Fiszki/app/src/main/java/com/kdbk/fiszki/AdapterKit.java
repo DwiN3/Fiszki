@@ -6,15 +6,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
     private ArrayList<ModelKits> listKits;
+    private SelectListenerKits listener;
 
-    public AdapterKit(ArrayList<ModelKits> listKits){
+    public AdapterKit(ArrayList<ModelKits> listKits, SelectListenerKits listener){
         this.listKits = listKits;
+        this.listener = listener;
     }
 
     @NonNull
@@ -31,6 +34,15 @@ public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
         holder.numberKit.setText(currentItem.getTextNumberKit());
         holder.textTEXTflashcards.setText(currentItem.getTextTEXTflashcards());
         holder.numberOfCards.setText(currentItem.getTextNumberOfCards());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int clickedPosition = holder.getAdapterPosition();
+                listener.onItemClicked(AdapterKit.this.listKits.get(clickedPosition));
+            }
+        });
+
     }
 
     @Override
@@ -40,12 +52,13 @@ public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView numberKit, textTEXTflashcards, numberOfCards;
-
+        public CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             numberKit = itemView.findViewById(R.id.textNumberKit);
             textTEXTflashcards = itemView.findViewById(R.id.TextTEXTflashcards);
             numberOfCards = itemView.findViewById(R.id.textNumberOfCards);
+            cardView = itemView.findViewById(R.id.recycleKits);
         }
     }
 }

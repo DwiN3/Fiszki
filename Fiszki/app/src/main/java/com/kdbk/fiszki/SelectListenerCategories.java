@@ -1,5 +1,5 @@
 package com.kdbk.fiszki;
 
-public interface SelectListener {
+public interface SelectListenerCategories {
     void onItemClicked(ModelCategories modelCategories);
 }

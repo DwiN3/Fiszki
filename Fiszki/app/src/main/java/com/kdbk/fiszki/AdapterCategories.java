@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.MyViewHolder> {
     private ArrayList<ModelCategories> listCategories;
-    private SelectListener listener;
+    private SelectListenerCategories listener;
 
-    public AdapterCategories(ArrayList<ModelCategories> listCategories, SelectListener listener){
+    public AdapterCategories(ArrayList<ModelCategories> listCategories, SelectListenerCategories listener){
         this.listCategories = listCategories;
         this.listener = listener;
     }
