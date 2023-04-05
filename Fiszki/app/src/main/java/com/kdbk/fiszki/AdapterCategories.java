@@ -7,15 +7,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.MyViewHolder> {
     private ArrayList<ModelCategories> listCategories;
+    private SelectListener listener;
 
-    public AdapterCategories(ArrayList<ModelCategories> listCategories){
+    public AdapterCategories(ArrayList<ModelCategories> listCategories, SelectListener listener){
         this.listCategories = listCategories;
+        this.listener = listener;
     }
 
     @NonNull
@@ -31,6 +34,14 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.My
         ModelCategories currentItem = listCategories.get(position);
         holder.nameCategory.setText(currentItem.getNameCategory());
         holder.imageCategory.setImageResource(currentItem.getImageResource());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int clickedPosition = holder.getAdapterPosition();
+                listener.onItemClicked(AdapterCategories.this.listCategories.get(clickedPosition));
+            }
+        });
     }
 
     @Override
@@ -41,11 +52,13 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.My
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView nameCategory;
         public ImageView imageCategory;
+        public CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCategory = itemView.findViewById(R.id.nameCategory);
             imageCategory = itemView.findViewById(R.id.imageCategory);
+            cardView = itemView.findViewById(R.id.recycleCategory);
         }
     }
 }

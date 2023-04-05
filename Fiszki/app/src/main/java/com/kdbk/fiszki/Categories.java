@@ -5,10 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Categories extends AppCompatActivity {
+public class Categories extends AppCompatActivity implements SelectListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -29,8 +30,13 @@ public class Categories extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.categoriesRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterCategories(modelCategoriesArray);
+        mAdapter = new AdapterCategories(modelCategoriesArray, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onItemClicked(ModelCategories modelCategories) {
+        Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
     }
 }
