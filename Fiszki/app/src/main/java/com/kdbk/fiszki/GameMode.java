@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class GameMode extends AppCompatActivity {
-    private Button quizMode, learnMode, reverse, yoursKits;
+    private Button quizMode, learnMode, reverse, yoursKits, gameMode;
     private ImageView  flagFirstImage,flagSecendImage;
     private String selectedMode = "quiz";
     private String selectedLanguage = "pl";
@@ -33,9 +33,14 @@ public class GameMode extends AppCompatActivity {
         flagFirstImage = findViewById(R.id.flagFirst);
         flagSecendImage = findViewById(R.id.flagSecend);
         yoursKits = findViewById(R.id.buttonYourFlashcardsMode);
+        gameMode = findViewById(R.id.buttonCategoriesMode);
     }
 
     private void setButtonListeners() {
+        gameMode.setOnClickListener(v -> {
+            openActivity(Categories.class);
+        });
+
         yoursKits.setOnClickListener(v -> {
             openActivity(YourKits.class);
         });
