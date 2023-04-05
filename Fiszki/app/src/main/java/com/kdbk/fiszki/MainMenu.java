@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
-    private Button logout, learn;
+    private Button logout, learn, yourProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 
         logout.setOnClickListener(this);
         learn.setOnClickListener(this);
+        yourProfile.setOnClickListener(this);
     }
 
     public void onClick(View view) {
@@ -27,6 +28,9 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.buttonLEARN:
                 openActivity(GameMode.class);
+                break;
+            case R.id.buttonYourProfile:
+                openActivity(YourProfile.class);
                 break;
         }
     }
@@ -39,5 +43,6 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     private void setID() {
         logout = findViewById(R.id.buttonLogout);
         learn = findViewById(R.id.buttonLEARN);
+        yourProfile = findViewById(R.id.buttonYourProfile);
     }
 }
