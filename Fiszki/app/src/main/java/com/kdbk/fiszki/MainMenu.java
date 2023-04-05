@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
-    private Button logout;
+    private Button logout, learn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +17,16 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         setID();
 
         logout.setOnClickListener(this);
+        learn.setOnClickListener(this);
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonLogout:
                 openActivity(FirstScreen.class);
+                break;
+            case R.id.buttonLEARN:
+                openActivity(GameMode.class);
                 break;
         }
     }
@@ -34,5 +38,6 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 
     private void setID() {
         logout = findViewById(R.id.buttonLogout);
+        learn = findViewById(R.id.buttonLEARN);
     }
 }
