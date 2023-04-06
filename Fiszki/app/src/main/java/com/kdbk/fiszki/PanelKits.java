@@ -31,7 +31,7 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits {
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterKit(modelKitsArray, this);
+        mAdapter = new AdapterKit(modelKitsArray, this, R.layout.recycler_view_kits_small);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }

@@ -38,7 +38,7 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         mRecyclerView = findViewById(R.id.kitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterKit(modelKitsArray, this);
+        mAdapter = new AdapterKit(modelKitsArray, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }

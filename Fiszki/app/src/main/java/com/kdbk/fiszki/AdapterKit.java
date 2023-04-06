@@ -14,16 +14,18 @@ import java.util.ArrayList;
 public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
     private ArrayList<ModelKits> listKits;
     private SelectListenerKits listener;
+    private static int infoLayout;
 
-    public AdapterKit(ArrayList<ModelKits> listKits, SelectListenerKits listener){
+    public AdapterKit(ArrayList<ModelKits> listKits, SelectListenerKits listener, int infoLayout){
         this.listKits = listKits;
         this.listener = listener;
+        this.infoLayout = infoLayout;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_kits, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(infoLayout, parent, false);
         MyViewHolder myHolder = new MyViewHolder(v);
         return myHolder;
     }
@@ -55,10 +57,17 @@ public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
         public CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            numberKit = itemView.findViewById(R.id.textNumberKit);
-            textTEXTflashcards = itemView.findViewById(R.id.TextTEXTflashcards);
-            numberOfCards = itemView.findViewById(R.id.textNumberOfCards);
-            cardView = itemView.findViewById(R.id.recycleKits);
+            if(infoLayout == R.layout.recycler_view_kits){
+                numberKit = itemView.findViewById(R.id.textNumberKit);
+                textTEXTflashcards = itemView.findViewById(R.id.TextTEXTflashcards);
+                numberOfCards = itemView.findViewById(R.id.textNumberOfCards);
+                cardView = itemView.findViewById(R.id.recycleKits);
+            } else if (infoLayout == R.layout.recycler_view_kits_small) {
+                numberKit = itemView.findViewById(R.id.textNumberKitSmall);
+                textTEXTflashcards = itemView.findViewById(R.id.TextTEXTflashcardsSmall);
+                numberOfCards = itemView.findViewById(R.id.textNumberOfCardsSmall);
+                cardView = itemView.findViewById(R.id.recycleKitsSmall);
+            }
         }
     }
 }
