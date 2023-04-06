@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button logout, learn, yourProfile, addFlashcards;
+    private boolean kits = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +31,17 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 nextActivity.openActivity(FirstScreen.class);
                 break;
             case R.id.buttonLEARN:
+
                 nextActivity.openActivity(GameMode.class);
                 break;
             case R.id.buttonYourProfile:
                 nextActivity.openActivity(YourProfile.class);
                 break;
             case R.id.buttonAddFlashcard:
-                nextActivity.openActivity(ShowKits.class);
+                kits = true;
+                Intent intent = getIntent();
+                intent.putExtra("KitsToShow", kits);
+                nextActivity.openActivity(YourKits.class, intent);
                 break;
         }
     }

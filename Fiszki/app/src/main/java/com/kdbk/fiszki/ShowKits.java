@@ -41,5 +41,6 @@ public class ShowKits extends AppCompatActivity implements SelectListenerWordsKi
     @Override
     public void onItemClicked(ModelWordsKits modelWordsKits) {
         System.out.println(modelWordsKits.getID());
+        nextActivity.openActivity(EditFlashcard.class);
     }
 }
