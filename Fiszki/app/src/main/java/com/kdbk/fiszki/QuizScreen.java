@@ -3,6 +3,7 @@ package com.kdbk.fiszki;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,6 +16,8 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
     private TextView answerText1, answerText2, answerText3, answerText4;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
 
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,14 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
         answerButton2.setOnClickListener(this);
         answerButton3.setOnClickListener(this);
         answerButton4.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     public void onClick(View view) {
