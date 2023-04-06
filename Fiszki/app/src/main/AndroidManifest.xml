@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Fiszki"
         tools:targetApi="31">
         <activity
+            android:name=".PanelKits"
+            android:exported="false" />
+        <activity
             android:name=".QuizEnd"
             android:exported="false" />
         <activity
