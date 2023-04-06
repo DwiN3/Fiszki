@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 public class NextActivity {
-
     private final Context context;
 
     public NextActivity(Context context) {
@@ -15,6 +14,5 @@ public class NextActivity {
     public void openActivity(Class<?> toClass) {
         Intent intent = new Intent(context, toClass);
         context.startActivity(intent);
-        ((Activity) context).finish();
     }
 }
