@@ -17,7 +17,8 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
-    private ArrayList<ModelCategories> modelCategoriesArray = new ArrayList<>();
+    private CategoriesArray CategoriesArray = com.kdbk.fiszki.CategoriesArray.getInstance();
+    private ArrayList<ModelCategories> list = CategoriesArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,10 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagpl,"Polska", 1));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagang,"Wielka Brytania", 2));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagszw,"Szwecja", 3));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.reverse_button,"Zamiana",4));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.arrow,"Strzala",5));
-
         mRecyclerView = findViewById(R.id.categoriesRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterCategories(modelCategoriesArray, this);
+        mAdapter = new AdapterCategories(list, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }

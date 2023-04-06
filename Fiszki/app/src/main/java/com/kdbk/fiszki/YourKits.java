@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,31 +18,31 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView noKitsInfo;
     private String selectedMode = "";
     private String selectedLanguage = "";
-    private ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
+    private KitsArray kitsArray = KitsArray.getInstance();
+    private ArrayList<ModelKits> list = kitsArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_kits);
+        setID();
 
         Intent intent = getIntent();
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
-        modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30", 1, 5));
-        modelKitsArray.add(new ModelKits("Zestaw 2","ILOSC FISZEK", "18", 2, 31));
-        modelKitsArray.add(new ModelKits("Zestaw 3","ILOSC FISZEK", "25", 3,21));
-        modelKitsArray.add(new ModelKits("Zestaw 4","ILOSC FISZEK", "30", 4,3));
-        modelKitsArray.add(new ModelKits("Zestaw 5","ILOSC FISZEK", "11", 5,15));
-
         mRecyclerView = findViewById(R.id.kitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterKit(modelKitsArray, this, R.layout.recycler_view_kits);
+        mAdapter = new AdapterKit(list, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        if(list.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
+        else noKitsInfo.setVisibility(View.GONE);
     }
 
     @Override
@@ -53,5 +55,9 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         } else if(selectedMode.equals("learn")){
             nextActivity.openActivity(LearningScreen.class, intent);
         }
+    }
+
+    private void setID() {
+        noKitsInfo = findViewById(R.id.textNoKits);
     }
 }
