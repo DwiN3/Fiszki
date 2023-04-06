@@ -2,13 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recycleEditFlashcard"
+    android:id="@+id/recycleShowFlashcard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="364dp"
         android:background="#FFFFFF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,9 +20,13 @@
             android:background="@drawable/rounded_button"
             tools:layout_marginBottom="10dp">
 
-
-
-
+            <TextView
+                android:id="@+id/textIDinvisible"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

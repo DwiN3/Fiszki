@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ShowKits">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/showWordKitsRecycleView"
+        android:layout_width="411dp"
+        android:layout_height="639dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
