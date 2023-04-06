@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
     private RecyclerView.LayoutManager mLayoutManager;
     private KitsArray kitsArray = KitsArray.getInstance();
     private ArrayList<ModelKits> list = kitsArray.getList();
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,14 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
         RefreshRecycleView();
     }
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
     private void RefreshRecycleView(){
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -56,6 +66,7 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
 
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
+                nextActivity.openActivity(ShowKits.class);
 
                 break;
             case R.id.buttonDeleteKitPanel:

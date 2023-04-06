@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 public class EditFlashcard extends AppCompatActivity implements SelectListenerEditFlashcard, AdapterEditFlashcard.OnEditTextChangeListener {
 
-
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -47,13 +48,13 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
                 for (int i = 0; i < editedFlashcard.length; i++) {
                     Log.d("EditedFlashcard", editedFlashcard[i]);
                 }
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ShowKits.class);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ShowKits.class);
             }
         });
     }
@@ -90,6 +91,14 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     private void setID() {

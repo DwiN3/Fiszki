@@ -23,7 +23,6 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     private String selectedLanguage = "";
     private KitsArray kitsArray = KitsArray.getInstance();
     private ArrayList<ModelKits> list = kitsArray.getList();
-    private boolean kits = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +31,8 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         setID();
 
         Intent intent = getIntent();
-        kits = getIntent().getBooleanExtra("KitsToShow", false);
-        if(!kits){
-            selectedMode = intent.getStringExtra("SelectedMode");
-            selectedLanguage = intent.getStringExtra("SelectLanguage");
-        }
+        selectedMode = intent.getStringExtra("SelectedMode");
+        selectedLanguage = intent.getStringExtra("SelectLanguage");
 
         mRecyclerView = findViewById(R.id.kitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -55,7 +51,6 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
 
-        if(kits) nextActivity.openActivity(ShowKits.class);
         if(selectedMode.equals("quiz")){
             nextActivity.openActivity(QuizScreen.class, intent);
         } else if(selectedMode.equals("learn")){

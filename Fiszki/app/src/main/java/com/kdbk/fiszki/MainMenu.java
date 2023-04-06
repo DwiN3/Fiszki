@@ -41,7 +41,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 kits = true;
                 Intent intent = getIntent();
                 intent.putExtra("KitsToShow", kits);
-                nextActivity.openActivity(YourKits.class, intent);
+                nextActivity.openActivity(AddFlashcard.class, intent);
                 break;
         }
     }
