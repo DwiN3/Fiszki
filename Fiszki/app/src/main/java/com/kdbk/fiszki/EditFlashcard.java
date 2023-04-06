@@ -17,7 +17,8 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private String[] newFlashcard;
+    Button accept, back;
+    private String[] editedFlashcard;
     private String  word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -28,6 +29,7 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_flashcard);
+        setID();
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -38,6 +40,22 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
 
         takeWords();
 
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
+                for (int i = 0; i < editedFlashcard.length; i++) {
+                    Log.d("EditedFlashcard", editedFlashcard[i]);
+                }
+                nextActivity.openActivity(MainMenu.class);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(MainMenu.class);
+            }
+        });
     }
 
     void takeWords() {
@@ -72,5 +90,10 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
             default:
                 break;
         }
+    }
+
+    private void setID() {
+        accept = findViewById(R.id.buttonEditFlashCardAccept);
+        back = findViewById(R.id.buttonEditFlashCardBack);
     }
 }
