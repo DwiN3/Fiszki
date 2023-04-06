@@ -23,19 +23,15 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<ModelFlashcard> list = new ArrayList<>();
+
+    private FlashcardArray flashcardArray = com.kdbk.fiszki.FlashcardArray.getInstance();
+    private ArrayList<ModelFlashcard> list = flashcardArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flashcard);
         setID();
-
-        list.add(new ModelFlashcard(R.drawable.arrow, "NUMER ZESTAWU", "1", 1));
-        list.add(new ModelFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "pies", 2));
-        list.add(new ModelFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "dog", 3));
-        list.add(new ModelFlashcard(R.drawable.flagpl, "PRZYKŁADOWE ZDANIE", "Mój pies lubi kości", 4));
-        list.add(new ModelFlashcard(R.drawable.flagang, "PRZYKŁADOWE ZDANIE", "My dog likes bones", 5));
 
         mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -49,7 +45,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
+                newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
                 }
