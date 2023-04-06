@@ -44,7 +44,7 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        //Toast.makeText(this, modelCategories.getTextNumberKit(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
         if(selectedMode.equals("quiz")){

@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class PanelKits extends AppCompatActivity implements SelectListenerKits {
+public class PanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
+
+    private Button edit, del, menu;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -20,6 +23,11 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panel_kits);
+        setID();
+
+        edit.setOnClickListener(this);
+        del.setOnClickListener(this);
+        menu.setOnClickListener(this);
 
         ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
         modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30"));
@@ -36,8 +44,29 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.buttonEditKitPanel:
+
+                break;
+            case R.id.buttonDeleteKitPanel:
+
+                break;
+            case R.id.buttonBackToMenuPanel:
+                nextActivity.openActivity(MainMenu.class);
+                break;
+        }
+    }
+
     @Override
-    public void onItemClicked(ModelKits modelCategories) {
-        Toast.makeText(this, modelCategories.getTextNumberKit(), Toast.LENGTH_LONG).show();
+    public void onItemClicked(ModelKits modelKit) {
+        Toast.makeText(this, modelKit.getTextNumberKit(), Toast.LENGTH_LONG).show();
+    }
+
+    private void setID() {
+        edit = findViewById(R.id.buttonEditKitPanel);
+        del = findViewById(R.id.buttonDeleteKitPanel);
+        menu = findViewById(R.id.buttonBackToMenuPanel);
     }
 }

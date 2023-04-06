@@ -44,8 +44,8 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     }
 
     @Override
-    public void onItemClicked(ModelKits modelCategories) {
-        //Toast.makeText(this, modelCategories.getTextNumberKit(), Toast.LENGTH_LONG).show();
+    public void onItemClicked(ModelKits modelKit) {
+        //Toast.makeText(this, modelKit.getTextNumberKit(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
         if(selectedMode.equals("quiz")){
