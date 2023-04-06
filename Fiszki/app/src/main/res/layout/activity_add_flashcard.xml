@@ -8,8 +8,44 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/addFlashcardlRecycleView"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="410dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFiszki" />
+
+    <ImageView
+        android:id="@+id/bar"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bar"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textFiszki"
+        android:layout_width="245dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="DODAJ FISZKĘ"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAcceptFlashcard"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:text="DODAJ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addFlashcardlRecycleView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
         list.add(new ModelFlashcard(R.drawable.flagpl,"PRZYKŁADOWE ZDANIE","Mój pies lubi kości",4));
         list.add(new ModelFlashcard(R.drawable.flagang,"PRZYKŁADOWE ZDANIE","My dog likes bones",5));
 
+
         mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
