@@ -78,7 +78,7 @@
         android:id="@+id/buttonEditKitPanel"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/rounded_button"
         android:text="EDYTUJ ZESTAW"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,11 +89,22 @@
         android:id="@+id/buttonDeleteKitPanel"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
         android:text="USUŃ ZESTAW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEditKitPanel" />
+
+    <Button
+        android:id="@+id/buttonBackToMenuPanel"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="WRÓĆ DO MENU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDeleteKitPanel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
