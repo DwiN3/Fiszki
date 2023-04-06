@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.health.SystemHealthManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,15 +13,15 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class AddFlashcard extends AppCompatActivity implements SelectListenerFlashcard {
+public class AddFlashcard extends AppCompatActivity implements SelectListenerFlashcard, AdapterFlashcard.OnEditTextChangeListener {
 
-    private NextActivity nextActivity;
+
+    private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private Button add;
     private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
-    private String word, translateWord, sampleSentence, translateSampleSentence;
-    private int wordID;
+    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ModelFlashcard> list = new ArrayList<>();
 
@@ -30,39 +31,40 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
         setContentView(R.layout.activity_add_flashcard);
         setID();
 
-        list.add(new ModelFlashcard(R.drawable.arrow,"NUMER ZESTAWU","1" ,1));
-        list.add(new ModelFlashcard(R.drawable.flagpl,"WPROWADŹ SŁOWO:","pies", 2));
-        list.add(new ModelFlashcard(R.drawable.flagang,"DODAJ TŁUMACZENIE:","dog", 3));
-        list.add(new ModelFlashcard(R.drawable.flagpl,"PRZYKŁADOWE ZDANIE","Mój pies lubi kości",4));
-        list.add(new ModelFlashcard(R.drawable.flagang,"PRZYKŁADOWE ZDANIE","My dog likes bones",5));
+        list.add(new ModelFlashcard(R.drawable.arrow, "NUMER ZESTAWU", "1", 1));
+        list.add(new ModelFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "pies", 2));
+        list.add(new ModelFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "dog", 3));
+        list.add(new ModelFlashcard(R.drawable.flagpl, "PRZYKŁADOWE ZDANIE", "Mój pies lubi kości", 4));
+        list.add(new ModelFlashcard(R.drawable.flagang, "PRZYKŁADOWE ZDANIE", "My dog likes bones", 5));
 
         mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterFlashcard(list, this);
+        mAdapter = new AdapterFlashcard(list, this, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        takeWords();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                takeWords();
+                newFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
+                for (int i = 0; i < newFlashcard.length; i++) {
+                    Log.d("AddFlashcard", newFlashcard[i]);
+                }
                 nextActivity.openActivity(MainMenu.class);
             }
         });
     }
 
-    void takeWords(){
+    void takeWords() {
         if (!list.isEmpty()) {
-            wordID = list.get(0).getID();
+            nrKit = String.valueOf(list.get(0).getcardId());
             word = list.get(1).getEditFlashcard();
             translateWord = list.get(2).getEditFlashcard();
             sampleSentence = list.get(3).getEditFlashcard();
             translateSampleSentence = list.get(4).getEditFlashcard();
-            newFlashcard = new String[]{String.valueOf(wordID),word, translateWord, sampleSentence, translateSampleSentence};
-            for(int i=0 ; i < newFlashcard.length ; i++) {
-                Log.d("AddFlashcard", newFlashcard[i]); // zmiana: użyjemy Log.d() zamiast println()
-            }
         }
     }
 
@@ -72,7 +74,29 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
     }
 
     private void setID() {
-        nextActivity = new NextActivity(this);
         add = findViewById(R.id.buttonAcceptFlashcard);
+    }
+
+    @Override
+    public void onEditTextChanged(int cardId, String newText) {
+        switch (cardId) {
+            case 1:
+                nrKit = newText;
+                break;
+            case 2:
+                word = newText;
+                break;
+            case 3:
+                translateWord = newText;
+                break;
+            case 4:
+                sampleSentence = newText;
+                break;
+            case 5:
+                translateSampleSentence = newText;
+                break;
+            default:
+                break;
+        }
     }
 }

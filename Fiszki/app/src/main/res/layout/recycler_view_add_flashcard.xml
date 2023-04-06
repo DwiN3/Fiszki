@@ -49,6 +49,7 @@
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textAddFlashcard" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

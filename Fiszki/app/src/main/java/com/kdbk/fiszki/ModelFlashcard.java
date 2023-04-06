@@ -1,21 +1,20 @@
 package com.kdbk.fiszki;
 
 public class ModelFlashcard {
-
-    private int ImageResource;
     private String nameSettings;
     private String editFlashcard;
-    private int ID;
+    private int imageResource;
+    private int cardId;
 
-    ModelFlashcard(int ImageResource, String nameSettings, String editFlashcard, int ID){
-        this.ImageResource = ImageResource;
+    public ModelFlashcard(int imageResource, String nameSettings, String editFlashcard, int cardId) {
         this.nameSettings = nameSettings;
         this.editFlashcard = editFlashcard;
-        this.ID = ID;
+        this.imageResource = imageResource;
+        this.cardId = cardId;
     }
 
     public int getImageResource() {
-        return ImageResource;
+        return imageResource;
     }
 
     public String getNameSettings() {
@@ -26,8 +25,7 @@ public class ModelFlashcard {
         return editFlashcard;
     }
 
-    public int getID() {
-        return ID;
+    public int getcardId() {
+        return cardId;
     }
-
 }

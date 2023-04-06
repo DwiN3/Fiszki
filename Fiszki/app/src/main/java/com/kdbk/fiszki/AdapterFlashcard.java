@@ -1,5 +1,7 @@
 package com.kdbk.fiszki;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +19,18 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
 
     private ArrayList<ModelFlashcard> listFlashcards;
     private SelectListenerFlashcard listener;
+    private OnEditTextChangeListener mListener;
+
 
     public AdapterFlashcard(ArrayList<ModelFlashcard> listFlashcards, SelectListenerFlashcard listener){
         this.listFlashcards = listFlashcards;
         this.listener = listener;
+    }
+
+    public AdapterFlashcard(ArrayList<ModelFlashcard> listFlashcards, SelectListenerFlashcard listener, OnEditTextChangeListener listenerEditText){
+        this.listFlashcards = listFlashcards;
+        this.listener = listener;
+        this.mListener = listenerEditText;
     }
 
     @NonNull
@@ -38,6 +48,23 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
         holder.editFlashcard.setText(currentItem.getEditFlashcard());
         holder.image.setImageResource(currentItem.getImageResource());
 
+        holder.editFlashcard.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mListener.onEditTextChanged(currentItem.getcardId(), s.toString());
+            }
+        });
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +73,10 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
             }
         });
     }
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -66,4 +97,9 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
             cardView = itemView.findViewById(R.id.recycleAddFlashcard);
         }
     }
+
+    public interface OnEditTextChangeListener {
+        void onEditTextChanged(int cardId, String newText);
+    }
+
 }
