@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 public class LearningScreen extends AppCompatActivity {
 
+    NextActivity nextActivity = new NextActivity(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -11,6 +11,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class YourKits extends AppCompatActivity implements SelectListenerKits{
+
+    NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -38,11 +40,6 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     @Override
     public void onItemClicked(ModelKits modelCategories) {
         //Toast.makeText(this, modelCategories.getTextNumberKit(), Toast.LENGTH_LONG).show();
-        openActivity(LearningScreen.class);
-    }
-
-    private void openActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
+        nextActivity.openActivity(LearningScreen.class);
     }
 }

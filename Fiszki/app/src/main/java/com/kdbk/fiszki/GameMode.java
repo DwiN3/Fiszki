@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class GameMode extends AppCompatActivity {
+
+    NextActivity nextActivity = new NextActivity(this);
     private Button quizMode, learnMode, reverse, yoursKits, gameMode;
     private ImageView  flagFirstImage,flagSecendImage;
     private String selectedMode = "quiz";
     private String selectedLanguage = "pl";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,12 @@ public class GameMode extends AppCompatActivity {
     }
 
     private void setButtonListeners() {
-        gameMode.setOnClickListener(v -> {
-            openActivity(Categories.class);
+            gameMode.setOnClickListener(v -> {
+            nextActivity.openActivity(Categories.class);
         });
 
         yoursKits.setOnClickListener(v -> {
-            openActivity(YourKits.class);
+            nextActivity.openActivity(YourKits.class);
         });
 
         quizMode.setOnClickListener(v -> {
@@ -66,10 +69,5 @@ public class GameMode extends AppCompatActivity {
             flagFirstImage.setImageDrawable(secondImage);
             flagSecendImage.setImageDrawable(firstImage);
         });
-    }
-
-    private void openActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
     }
 }

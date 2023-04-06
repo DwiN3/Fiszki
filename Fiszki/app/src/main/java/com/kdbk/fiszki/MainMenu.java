@@ -10,6 +10,8 @@ import android.widget.Button;
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     private Button logout, learn, yourProfile;
 
+    NextActivity nextActivity = new NextActivity(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +24,19 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void onClick(View view) {
+        NextActivity nextActivity = new NextActivity(this);
+
         switch (view.getId()) {
             case R.id.buttonLogout:
-                openActivity(FirstScreen.class);
+                nextActivity.openActivity(FirstScreen.class);
                 break;
             case R.id.buttonLEARN:
-                openActivity(GameMode.class);
+                nextActivity.openActivity(GameMode.class);
                 break;
             case R.id.buttonYourProfile:
-                openActivity(YourProfile.class);
+                nextActivity.openActivity(YourProfile.class);
                 break;
         }
-    }
-
-    private void openActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
     }
 
     private void setID() {

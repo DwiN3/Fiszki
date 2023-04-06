@@ -11,10 +11,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Categories extends AppCompatActivity implements SelectListenerCategories {
-
+    NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,6 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
         //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
-        openActivity(LearningScreen.class);
-    }
-
-    private void openActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
+        nextActivity.openActivity(LearningScreen.class);
     }
 }

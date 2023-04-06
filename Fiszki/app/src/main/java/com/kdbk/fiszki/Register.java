@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class Register extends AppCompatActivity {
 
+    NextActivity nextActivity = new NextActivity(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

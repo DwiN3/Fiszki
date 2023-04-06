@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class FirstScreen extends AppCompatActivity implements View.OnClickListener {
 
+    NextActivity nextActivity = new NextActivity(this);
     private Button login, create, reset;
 
     @Override
@@ -24,20 +25,15 @@ public class FirstScreen extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonPasswordReset:
-                openActivity(PasswordReset.class);
+                nextActivity.openActivity(PasswordReset.class);
                 break;
             case R.id.buttonCreate:
-                openActivity(Register.class);
+                nextActivity.openActivity(Register.class);
                 break;
             case R.id.buttonLogin:
-                openActivity(MainMenu.class);
+                nextActivity.openActivity(MainMenu.class);
                 break;
         }
-    }
-
-    private void openActivity(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
-        startActivity(intent);
     }
 
     private void setID() {
