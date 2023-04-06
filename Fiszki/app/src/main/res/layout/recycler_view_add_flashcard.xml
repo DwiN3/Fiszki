@@ -23,7 +23,6 @@
                 android:layout_height="44dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="30dp"
-                android:background="@drawable/flagpl"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toStartOf="@+id/editTextAddFlashcard"
                 app:layout_constraintTop_toBottomOf="@+id/textAddFlashcard" />

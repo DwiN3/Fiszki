@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
-    private Button logout, learn, yourProfile;
+    private Button logout, learn, yourProfile, addFlashcards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         logout.setOnClickListener(this);
         learn.setOnClickListener(this);
         yourProfile.setOnClickListener(this);
+        addFlashcards.setOnClickListener(this);
     }
 
     public void onClick(View view) {
@@ -34,6 +35,9 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
             case R.id.buttonYourProfile:
                 nextActivity.openActivity(YourProfile.class);
                 break;
+            case R.id.buttonAddFlashcard:
+                nextActivity.openActivity(AddFlashcard.class);
+                break;
         }
     }
 
@@ -41,5 +45,6 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         logout = findViewById(R.id.buttonLogout);
         learn = findViewById(R.id.buttonLEARN);
         yourProfile = findViewById(R.id.buttonYourProfile);
+        addFlashcards = findViewById(R.id.buttonAddFlashcard);
     }
 }
