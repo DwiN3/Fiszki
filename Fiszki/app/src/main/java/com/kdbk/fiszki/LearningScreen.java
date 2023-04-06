@@ -8,8 +8,9 @@ import android.widget.Button;
 
 public class LearningScreen extends AppCompatActivity implements View.OnClickListener {
     private Button next, exit;
-
     NextActivity nextActivity = new NextActivity(this);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,6 @@ public class LearningScreen extends AppCompatActivity implements View.OnClickLis
     }
 
     public void onClick(View view) {
-        NextActivity nextActivity = new NextActivity(this);
 
         switch (view.getId()) {
             case R.id.buttonNextLearning:

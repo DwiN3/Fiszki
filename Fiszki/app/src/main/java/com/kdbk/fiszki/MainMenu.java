@@ -24,7 +24,6 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void onClick(View view) {
-        NextActivity nextActivity = new NextActivity(this);
 
         switch (view.getId()) {
             case R.id.buttonLogout:
