@@ -15,8 +15,8 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    String selectedMode = "";
-
+    private String selectedMode = "";
+    private String selectedLanguage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
 
         Intent intent = getIntent();
         selectedMode = intent.getStringExtra("SelectedMode");
+        selectedLanguage = intent.getStringExtra("SelectLanguage");
 
         ArrayList<ModelCategories> modelCategoriesArray = new ArrayList<>();
         modelCategoriesArray.add(new ModelCategories(R.drawable.flagpl,"Polska"));
@@ -43,9 +44,13 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
-        System.out.println(selectedMode);
-        if(selectedMode.equals("quiz")) nextActivity.openActivity(QuizScreen.class);
-        else if (selectedMode.equals("learn")) nextActivity.openActivity(LearningScreen.class);
+        Intent intent = new Intent();
+        intent.putExtra("SelectedMode", selectedMode);
+        intent.putExtra("SelectLanguage", selectedLanguage);
+        if(selectedMode.equals("quiz")){
+            nextActivity.openActivity(QuizScreen.class);
+        } else if(selectedMode.equals("learn")){
+            nextActivity.openActivity(LearningScreen.class);
+        }
     }
 }

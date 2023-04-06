@@ -34,7 +34,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true;
+            return true; // blokuj przycisk wstecz
         }
         return super.dispatchKeyEvent(event);
     }

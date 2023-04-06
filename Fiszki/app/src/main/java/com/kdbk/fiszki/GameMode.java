@@ -43,12 +43,14 @@ public class GameMode extends AppCompatActivity {
         categories.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("SelectedMode", selectedMode);
+            intent.putExtra("SelectLanguage", selectedLanguage);
             nextActivity.openActivity(Categories.class, intent);
         });
 
         yoursKits.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("SelectedMode", selectedMode);
+            intent.putExtra("SelectLanguage", selectedLanguage);
             nextActivity.openActivity(YourKits.class, intent);
         });
 

@@ -16,11 +16,17 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String selectedMode = "";
+    private String selectedLanguage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_kits);
+
+        Intent intent = getIntent();
+        selectedMode = intent.getStringExtra("SelectedMode");
+        selectedLanguage = intent.getStringExtra("SelectLanguage");
 
         ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
         modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30"));
@@ -40,6 +46,13 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     @Override
     public void onItemClicked(ModelKits modelCategories) {
         //Toast.makeText(this, modelCategories.getTextNumberKit(), Toast.LENGTH_LONG).show();
-        nextActivity.openActivity(LearningScreen.class);
+        Intent intent = new Intent();
+        intent.putExtra("SelectedMode", selectedMode);
+        intent.putExtra("SelectLanguage", selectedLanguage);
+        if(selectedMode.equals("quiz")){
+            nextActivity.openActivity(QuizScreen.class);
+        } else if(selectedMode.equals("learn")){
+            nextActivity.openActivity(LearningScreen.class);
+        }
     }
 }
