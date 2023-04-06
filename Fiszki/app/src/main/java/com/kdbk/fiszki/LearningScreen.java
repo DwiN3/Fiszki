@@ -2,7 +2,9 @@ package com.kdbk.fiszki;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.health.SystemHealthManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.Button;
 public class LearningScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
+    private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
 
@@ -18,6 +21,9 @@ public class LearningScreen extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_screen);
         setID();
+
+        Intent intent = getIntent();
+        selectedLanguage = intent.getStringExtra("SelectLanguage");
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);

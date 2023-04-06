@@ -2,6 +2,7 @@ package com.kdbk.fiszki;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,7 +16,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
     private Button next, exit;
     private TextView answerText1, answerText2, answerText3, answerText4;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
-
+    private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
     @Override
@@ -23,6 +24,10 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_screen);
         setID();
+
+        Intent intent = getIntent();
+        selectedLanguage = intent.getStringExtra("SelectLanguage");
+
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
         answerButton1.setOnClickListener(this);
