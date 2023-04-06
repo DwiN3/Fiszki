@@ -11,7 +11,7 @@ import android.widget.ImageView;
 public class GameMode extends AppCompatActivity {
 
     NextActivity nextActivity = new NextActivity(this);
-    private Button quizMode, learnMode, reverse, yoursKits, gameMode;
+    private Button quizMode, learnMode, reverse, yoursKits, categories;
     private ImageView  flagFirstImage,flagSecendImage;
     private String selectedMode = "quiz";
     private String selectedLanguage = "pl";
@@ -36,16 +36,20 @@ public class GameMode extends AppCompatActivity {
         flagFirstImage = findViewById(R.id.flagFirst);
         flagSecendImage = findViewById(R.id.flagSecend);
         yoursKits = findViewById(R.id.buttonYourFlashcardsMode);
-        gameMode = findViewById(R.id.buttonCategoriesMode);
+        categories = findViewById(R.id.buttonCategoriesMode);
     }
 
     private void setButtonListeners() {
-            gameMode.setOnClickListener(v -> {
-            nextActivity.openActivity(Categories.class);
+        categories.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.putExtra("SelectedMode", selectedMode);
+            nextActivity.openActivity(Categories.class, intent);
         });
 
         yoursKits.setOnClickListener(v -> {
-            nextActivity.openActivity(YourKits.class);
+            Intent intent = new Intent();
+            intent.putExtra("SelectedMode", selectedMode);
+            nextActivity.openActivity(YourKits.class, intent);
         });
 
         quizMode.setOnClickListener(v -> {

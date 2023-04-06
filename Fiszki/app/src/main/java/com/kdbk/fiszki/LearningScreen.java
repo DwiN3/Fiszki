@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class LearningScreen extends AppCompatActivity implements View.OnClickListener {
-    private Button next, exit;
     NextActivity nextActivity = new NextActivity(this);
+    private Button next, exit;
 
 
     @Override

@@ -15,12 +15,16 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    String selectedMode = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        Intent intent = getIntent();
+        selectedMode = intent.getStringExtra("SelectedMode");
 
         ArrayList<ModelCategories> modelCategoriesArray = new ArrayList<>();
         modelCategoriesArray.add(new ModelCategories(R.drawable.flagpl,"Polska"));
@@ -40,6 +44,8 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
         //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
-        nextActivity.openActivity(LearningScreen.class);
+        System.out.println(selectedMode);
+        if(selectedMode.equals("quiz")) nextActivity.openActivity(QuizScreen.class);
+        else if (selectedMode.equals("learn")) nextActivity.openActivity(LearningScreen.class);
     }
 }
