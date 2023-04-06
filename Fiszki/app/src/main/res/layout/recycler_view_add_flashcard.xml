@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycleAddFlashcard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="350dp"
+            android:layout_height="98dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:id="@+id/imageAddFlashcard"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/flagpl"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toStartOf="@+id/TextTEXTFlashcards"
+                app:layout_constraintTop_toBottomOf="@+id/textAddFlashcard" />
+
+            <TextView
+                android:id="@+id/textAddFlashcard"
+                android:layout_width="222dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="25dp"
+                android:gravity="center"
+                android:text="Nazwa zestawu"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/TextTEXTFlashcards"
+                android:layout_width="225dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/rounded_text"
+                android:gravity="center"
+                android:text="polski"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textAddFlashcard" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
