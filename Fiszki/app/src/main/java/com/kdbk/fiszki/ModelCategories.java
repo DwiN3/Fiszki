@@ -4,9 +4,9 @@ public class ModelCategories {
 
     private int ImageResource;
     private String nameCategory;
-    private String ID;
+    private int ID;
 
-    ModelCategories(int ImageResource, String nameCategory){
+    ModelCategories(int ImageResource, String nameCategory, int ID){
         this.ImageResource = ImageResource;
         this.nameCategory = nameCategory;
         this.ID = ID;
@@ -20,7 +20,7 @@ public class ModelCategories {
         return nameCategory;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 }

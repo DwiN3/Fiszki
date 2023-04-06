@@ -18,6 +18,7 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
+    private ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,11 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
-        ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
-        modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30"));
-        modelKitsArray.add(new ModelKits("Zestaw 2","ILOSC FISZEK", "18"));
-        modelKitsArray.add(new ModelKits("Zestaw 3","ILOSC FISZEK", "25"));
-        modelKitsArray.add(new ModelKits("Zestaw 4","ILOSC FISZEK", "30"));
-        modelKitsArray.add(new ModelKits("Zestaw 5","ILOSC FISZEK", "11"));
+        modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30", 1, 5));
+        modelKitsArray.add(new ModelKits("Zestaw 2","ILOSC FISZEK", "18", 2, 31));
+        modelKitsArray.add(new ModelKits("Zestaw 3","ILOSC FISZEK", "25", 3,21));
+        modelKitsArray.add(new ModelKits("Zestaw 4","ILOSC FISZEK", "30", 4,3));
+        modelKitsArray.add(new ModelKits("Zestaw 5","ILOSC FISZEK", "11", 5,15));
 
         mRecyclerView = findViewById(R.id.kitsRecycleView);
         mRecyclerView.setHasFixedSize(true);

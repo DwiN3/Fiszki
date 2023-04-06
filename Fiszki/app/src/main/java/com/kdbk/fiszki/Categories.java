@@ -17,6 +17,7 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
+    private ArrayList<ModelCategories> modelCategoriesArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +28,11 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
-        ArrayList<ModelCategories> modelCategoriesArray = new ArrayList<>();
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagpl,"Polska"));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagang,"Wielka Brytania"));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.flagszw,"Szwecja"));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.reverse_button,"Zamiana"));
-        modelCategoriesArray.add(new ModelCategories(R.drawable.arrow,"Strzala"));
+        modelCategoriesArray.add(new ModelCategories(R.drawable.flagpl,"Polska", 1));
+        modelCategoriesArray.add(new ModelCategories(R.drawable.flagang,"Wielka Brytania", 2));
+        modelCategoriesArray.add(new ModelCategories(R.drawable.flagszw,"Szwecja", 3));
+        modelCategoriesArray.add(new ModelCategories(R.drawable.reverse_button,"Zamiana",4));
+        modelCategoriesArray.add(new ModelCategories(R.drawable.arrow,"Strzala",5));
 
         mRecyclerView = findViewById(R.id.categoriesRecycleView);
         mRecyclerView.setHasFixedSize(true);
