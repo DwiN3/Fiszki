@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class QuizScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
-    private Button exit;
+    private Button next, exit;
     private TextView answerText1, answerText2, answerText3, answerText4;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
 
@@ -20,7 +20,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_screen);
         setID();
-
+        next.setOnClickListener(this);
         exit.setOnClickListener(this);
         answerButton1.setOnClickListener(this);
         answerButton2.setOnClickListener(this);
@@ -32,16 +32,19 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
-                Toast.makeText(this, answerText1.getText(), Toast.LENGTH_LONG).show();
+                answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                 break;
             case R.id.imageButtonAnswerQuiz2:
-                Toast.makeText(this, answerText2.getText(), Toast.LENGTH_LONG).show();
+                answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
                 break;
             case R.id.imageButtonAnswerQuiz3:
-                Toast.makeText(this, answerText3.getText(), Toast.LENGTH_LONG).show();
+                answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
                 break;
             case R.id.imageButtonAnswerQuiz4:
-                Toast.makeText(this, answerText4.getText(), Toast.LENGTH_LONG).show();
+                answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
+                break;
+            case R.id.buttonNextQuiz:
+                nextActivity.openActivity(QuizEnd.class);
                 break;
             case R.id.buttonExitQuiz:
                 nextActivity.openActivity(MainMenu.class);
@@ -50,6 +53,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     private void setID() {
+        next = findViewById(R.id.buttonNextQuiz);
         exit = findViewById(R.id.buttonExitQuiz);
         answerButton1 = findViewById(R.id.imageButtonAnswerQuiz1);
         answerButton2 = findViewById(R.id.imageButtonAnswerQuiz2);

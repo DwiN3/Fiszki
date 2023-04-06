@@ -71,12 +71,24 @@
 
     <Button
         android:id="@+id/buttonExitQuiz"
-        android:layout_width="345dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="160dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
-        android:text="EXIT"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="WRÓĆ DO MENU"
+        app:layout_constraintStart_toEndOf="@+id/buttonNextQuiz"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonAnswerQuiz3"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonNextQuiz"
+        android:layout_width="160dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="NASTĘPNE SŁOWO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonAnswerQuiz3"
         tools:ignore="MissingConstraints" />

@@ -8,9 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
-    private Button logout, learn, yourProfile;
-
     NextActivity nextActivity = new NextActivity(this);
+    private Button logout, learn, yourProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
