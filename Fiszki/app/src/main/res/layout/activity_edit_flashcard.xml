@@ -8,8 +8,55 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/editFlashcardlRecycleView"
-        android:layout_width="352dp"
-        android:layout_height="483dp"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="61dp" />
+        android:layout_width="420dp"
+        android:layout_height="341dp"
+        android:layout_marginTop="67dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFiszki" />
+
+    <ImageView
+        android:id="@+id/bar"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bar"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textFiszki"
+        android:layout_width="245dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="EDYTUJ FISZKĘ"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEditFlashCardAccept"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/rounded_button"
+        android:text="ZATWIERDŹ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFlashcardlRecycleView" />
+
+    <Button
+        android:id="@+id/buttonEditFlashCardBack"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="WRÓĆ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditFlashCardAccept" />
 </androidx.constraintlayout.widget.ConstraintLayout>

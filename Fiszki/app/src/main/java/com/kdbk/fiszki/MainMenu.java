@@ -36,7 +36,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 nextActivity.openActivity(YourProfile.class);
                 break;
             case R.id.buttonAddFlashcard:
-                nextActivity.openActivity(AddFlashcard.class);
+                nextActivity.openActivity(EditFlashcard.class);
                 break;
         }
     }
