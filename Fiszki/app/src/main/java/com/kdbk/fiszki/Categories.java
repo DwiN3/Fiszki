@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -37,6 +38,12 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
+        openActivity(LearningScreen.class);
+    }
+
+    private void openActivity(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
+        startActivity(intent);
     }
 }
