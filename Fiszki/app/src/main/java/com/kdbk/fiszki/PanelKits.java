@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,7 +20,8 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<ModelKits> modelKitsArray = new ArrayList<>();
+    private KitsArray kitsArray = KitsArray.getInstance();
+    private ArrayList<ModelKits> list = kitsArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +33,13 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
         del.setOnClickListener(this);
         menu.setOnClickListener(this);
 
-        modelKitsArray.add(new ModelKits("Zestaw 1","ILOSC FISZEK", "30", 1, 5));
-        modelKitsArray.add(new ModelKits("Zestaw 2","ILOSC FISZEK", "18", 2, 31));
-        modelKitsArray.add(new ModelKits("Zestaw 3","ILOSC FISZEK", "25", 3,21));
-        modelKitsArray.add(new ModelKits("Zestaw 4","ILOSC FISZEK", "30", 4,3));
-        modelKitsArray.add(new ModelKits("Zestaw 5","ILOSC FISZEK", "11", 5,15));
+        if (!list.isEmpty()) {
+            numberKit.setText("Zestaw "+list.get(0).getID());
+            timesPlayed.setText(list.get(0).getGamesPlayed()+" razy");
+        } else {
+            numberKit.setText("Brak dostępnych zestawów");
+        }
 
-        numberKit.setText("Zestaw "+modelKitsArray.get(0).getID());
-        timesPlayed.setText(modelKitsArray.get(0).getGamesPlayed()+" razy");
         RefreshRecycleView();
     }
 
@@ -48,7 +47,7 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mAdapter = new AdapterKit(modelKitsArray, this, R.layout.recycler_view_kits_small);
+        mAdapter = new AdapterKit(list, this, R.layout.recycler_view_kits_small);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -60,12 +59,12 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
 
                 break;
             case R.id.buttonDeleteKitPanel:
-                ModelKits modelKit = modelKitsArray.stream()
+                ModelKits modelKit = list.stream()
                         .filter(m -> m.getID() == ID)
                         .findFirst()
                         .orElse(null);
                 if (modelKit != null) {
-                    modelKitsArray.remove(modelKit);
+                    list.remove(modelKit);
                 }
                 RefreshRecycleView();
                 resetAfterDelate();
@@ -77,13 +76,13 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
     }
 
     public void resetAfterDelate(){
-        if (modelKitsArray.isEmpty()) {
+        if (list.isEmpty()) {
             numberKit.setText("Brak dostępnych zestawów");
             timesPlayed.setText("");
         } else {
-            // lista zawiera co najmniej jeden element
-            numberKit.setText("Zestaw " + modelKitsArray.get(0).getID());
-            timesPlayed.setText(modelKitsArray.get(0).getGamesPlayed() + " razy");
+            numberKit.setText("Zestaw " + list.get(0).getID());
+            timesPlayed.setText(list.get(0).getGamesPlayed() + " razy");
+            ID = list.get(0).getID();
         }
     }
 
