@@ -66,6 +66,14 @@ public class EditFlashcardArray {
     }
 
     public Collection<? extends ModelEditFlashcard> getList(int nr) {
-        return list.get(nr-1);
+        return list.get(nr);
+    }
+
+    public void delateWord(){
+        word -=1;
+    }
+
+    public int getWord() {
+        return word;
     }
 }

@@ -23,8 +23,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private String[] editedFlashcard;
     private String  word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
-    Intent intent = getIntent();
-    private int nrWord;
+    private int nrWord, lastWords;
     private EditFlashcardArray flashcardArray;
     private ArrayList<ModelEditFlashcard> list;
 
@@ -54,9 +53,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             @Override
             public void onClick(View view) {
                 editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
-                for (int i = 0; i < editedFlashcard.length; i++) {
-                    Log.d("EditedFlashcard", editedFlashcard[i]);
-                }
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -64,6 +60,16 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             @Override
             public void onClick(View view) {
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
+                flashcardArray.setList(list, nrWord);
+                Intent intent = getIntent();
+                intent.putExtra("LastWords", flashcardArray.getWord());
+                nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
             }
         });
 
@@ -77,9 +83,12 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                             break;
                         }
                     }
-                    flashcardArray.setList(list, nrWord-1);
-                    System.out.println("usunięto liste "+ nrWord);
-                    nextActivity.openActivity(ActivityShowKitsEdit.class);
+                    flashcardArray.setList(list, nrWord);
+                    flashcardArray.delateWord();
+                    System.out.println("usunięto liste "+ nrWord+1);
+                    Intent intent = getIntent();
+                    intent.putExtra("LastWords", flashcardArray.getWord());
+                    nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
                 }
             }
         });

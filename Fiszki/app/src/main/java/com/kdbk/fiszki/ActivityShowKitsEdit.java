@@ -23,6 +23,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private ArrayList<ModelShowKitsEdit> list = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
+    int lastWords;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,12 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        list.add(new ModelShowKitsEdit("1",1));
-        list.add(new ModelShowKitsEdit("2",2));
-        list.add(new ModelShowKitsEdit("3",3));
-        list.add(new ModelShowKitsEdit("4",4));
+        Intent intent = getIntent();
+        lastWords = intent.getIntExtra("LastWords", 4);
+
+        for(int n=0 ; n < lastWords ; n++){
+            list.add(new ModelShowKitsEdit(""+n,n));
+        }
 
         mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -61,8 +65,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
-        //System.out.println(modelShowKitsEdit.getID());
         Intent intent = getIntent();
+        intent.putExtra("LastWords", lastWords);
         intent.putExtra("NrWordID", modelShowKitsEdit.getID());
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
