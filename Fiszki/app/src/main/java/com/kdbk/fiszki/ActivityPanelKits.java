@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
+public class ActivityPanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
 
     private Button edit, del, menu;
@@ -57,7 +57,7 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mAdapter = new AdapterKit(list, this, R.layout.recycler_view_kits_small);
+        mAdapter = new AdapterKits(list, this, R.layout.recycler_view_kits_small);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -66,22 +66,22 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
 
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
-                nextActivity.openActivity(ShowKits.class);
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
 
                 break;
             case R.id.buttonDeleteKitPanel:
-                ModelKits modelKit = list.stream()
+                ModelKits modelKits = list.stream()
                         .filter(m -> m.getID() == ID)
                         .findFirst()
                         .orElse(null);
-                if (modelKit != null) {
-                    list.remove(modelKit);
+                if (modelKits != null) {
+                    list.remove(modelKits);
                 }
                 RefreshRecycleView();
                 resetAfterDelate();
                 break;
             case R.id.buttonBackToMenuPanel:
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
     }
@@ -98,9 +98,9 @@ public class PanelKits extends AppCompatActivity implements SelectListenerKits, 
     }
 
     @Override
-    public void onItemClicked(ModelKits modelKit) {
-        ID = modelKit.getID();
-        playedGames = modelKit.getGamesPlayed();
+    public void onItemClicked(ModelKits modelKits) {
+        ID = modelKits.getID();
+        playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
         numberKit.setText("Zestaw "+ID);
     }

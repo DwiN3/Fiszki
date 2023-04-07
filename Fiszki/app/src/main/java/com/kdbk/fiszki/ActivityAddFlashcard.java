@@ -5,15 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class AddFlashcard extends AppCompatActivity implements SelectListenerFlashcard, AdapterFlashcard.OnEditTextChangeListener {
+public class ActivityAddFlashcard extends AppCompatActivity implements SelectListenerAddFlashcard, AdapterAddFlashcard.OnEditTextChangeListener {
 
 
     private NextActivity nextActivity = new NextActivity(this);
@@ -25,7 +23,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
     private RecyclerView.LayoutManager mLayoutManager;
 
     private FlashcardArray flashcardArray = com.kdbk.fiszki.FlashcardArray.getInstance();
-    private ArrayList<ModelFlashcard> list = flashcardArray.getList();
+    private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
         mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterFlashcard(list, this, this);
+        mAdapter = new AdapterAddFlashcard(list, this, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -49,7 +47,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
                 }
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
             }
         });
     }
@@ -65,7 +63,7 @@ public class AddFlashcard extends AppCompatActivity implements SelectListenerFla
     }
 
     @Override
-    public void onItemClicked(ModelFlashcard modelFlashcard) {
+    public void onItemClicked(ModelAddFlashcard modelAddFlashcard) {
 
     }
 

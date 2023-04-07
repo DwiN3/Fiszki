@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Register extends AppCompatActivity {
+public class ActivityRegister extends AppCompatActivity {
 
     NextActivity nextActivity = new NextActivity(this);
 

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainMenu extends AppCompatActivity implements View.OnClickListener {
+public class ActivityMainMenu extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button logout, learn, yourProfile, addFlashcards;
     private boolean kits = false;
@@ -28,20 +28,20 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 
         switch (view.getId()) {
             case R.id.buttonLogout:
-                nextActivity.openActivity(FirstScreen.class);
+                nextActivity.openActivity(ActivityFirstScreen.class);
                 break;
             case R.id.buttonLEARN:
 
-                nextActivity.openActivity(GameMode.class);
+                nextActivity.openActivity(ActivityGameMode.class);
                 break;
             case R.id.buttonYourProfile:
-                nextActivity.openActivity(YourProfile.class);
+                nextActivity.openActivity(ActivityYourProfile.class);
                 break;
             case R.id.buttonAddFlashcard:
                 kits = true;
                 Intent intent = getIntent();
                 intent.putExtra("KitsToShow", kits);
-                nextActivity.openActivity(AddFlashcard.class, intent);
+                nextActivity.openActivity(ActivityAddFlashcard.class, intent);
                 break;
         }
     }

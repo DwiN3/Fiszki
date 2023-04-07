@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class LearningScreen extends AppCompatActivity implements View.OnClickListener {
+public class ActivityLearningScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
     private String selectedLanguage = "";
@@ -36,7 +35,7 @@ public class LearningScreen extends AppCompatActivity implements View.OnClickLis
 
                 break;
             case R.id.buttonExitLearning:
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
     }

@@ -15,19 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyViewHolder>{
+public class AdapterAddFlashcard extends RecyclerView.Adapter<AdapterAddFlashcard.MyViewHolder>{
 
-    private ArrayList<ModelFlashcard> listFlashcards;
-    private SelectListenerFlashcard listener;
+    private ArrayList<ModelAddFlashcard> listFlashcards;
+    private SelectListenerAddFlashcard listener;
     private OnEditTextChangeListener mListener;
 
 
-    public AdapterFlashcard(ArrayList<ModelFlashcard> listFlashcards, SelectListenerFlashcard listener){
+    public AdapterAddFlashcard(ArrayList<ModelAddFlashcard> listFlashcards, SelectListenerAddFlashcard listener){
         this.listFlashcards = listFlashcards;
         this.listener = listener;
     }
 
-    public AdapterFlashcard(ArrayList<ModelFlashcard> listFlashcards, SelectListenerFlashcard listener, OnEditTextChangeListener listenerEditText){
+    public AdapterAddFlashcard(ArrayList<ModelAddFlashcard> listFlashcards, SelectListenerAddFlashcard listener, OnEditTextChangeListener listenerEditText){
         this.listFlashcards = listFlashcards;
         this.listener = listener;
         this.mListener = listenerEditText;
@@ -35,15 +35,15 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
 
     @NonNull
     @Override
-    public AdapterFlashcard.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterAddFlashcard.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_add_flashcard, parent, false);
-        AdapterFlashcard.MyViewHolder myHolder = new AdapterFlashcard.MyViewHolder(v);
+        AdapterAddFlashcard.MyViewHolder myHolder = new AdapterAddFlashcard.MyViewHolder(v);
         return myHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterFlashcard.MyViewHolder holder, int position) {
-        ModelFlashcard currentItem = listFlashcards.get(position);
+    public void onBindViewHolder(@NonNull AdapterAddFlashcard.MyViewHolder holder, int position) {
+        ModelAddFlashcard currentItem = listFlashcards.get(position);
         holder.nameSetting.setText(currentItem.getNameSettings());
         holder.editFlashcard.setText(currentItem.getEditFlashcard());
         holder.image.setImageResource(currentItem.getImageResource());
@@ -69,7 +69,7 @@ public class AdapterFlashcard extends RecyclerView.Adapter<AdapterFlashcard.MyVi
             @Override
             public void onClick(View view) {
                 int clickedPosition = holder.getAdapterPosition();
-                listener.onItemClicked(AdapterFlashcard.this.listFlashcards.get(clickedPosition));
+                listener.onItemClicked(AdapterAddFlashcard.this.listFlashcards.get(clickedPosition));
             }
         });
     }

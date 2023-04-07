@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class QuizEnd extends AppCompatActivity {
+public class ActivityQuizEnd extends AppCompatActivity {
     NextActivity nextActivity = new NextActivity(this);
     private Button exit;
 
@@ -22,7 +22,7 @@ public class QuizEnd extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
             }
         });
     }

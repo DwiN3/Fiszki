@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
+public class AdapterKits extends RecyclerView.Adapter<AdapterKits.MyViewHolder> {
     private ArrayList<ModelKits> listKits;
     private SelectListenerKits listener;
     private static int infoLayout;
 
-    public AdapterKit(ArrayList<ModelKits> listKits, SelectListenerKits listener, int infoLayout){
+    public AdapterKits(ArrayList<ModelKits> listKits, SelectListenerKits listener, int infoLayout){
         this.listKits = listKits;
         this.listener = listener;
         this.infoLayout = infoLayout;
@@ -41,7 +41,7 @@ public class AdapterKit extends RecyclerView.Adapter<AdapterKit.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 int clickedPosition = holder.getAdapterPosition();
-                listener.onItemClicked(AdapterKit.this.listKits.get(clickedPosition));
+                listener.onItemClicked(AdapterKits.this.listKits.get(clickedPosition));
             }
         });
 

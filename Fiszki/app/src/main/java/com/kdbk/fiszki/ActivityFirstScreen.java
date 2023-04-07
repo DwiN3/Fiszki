@@ -1,12 +1,12 @@
 package com.kdbk.fiszki;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FirstScreen extends AppCompatActivity implements View.OnClickListener {
+public class ActivityFirstScreen extends AppCompatActivity implements View.OnClickListener {
 
     NextActivity nextActivity = new NextActivity(this);
     private Button login, create, reset;
@@ -25,13 +25,13 @@ public class FirstScreen extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonPasswordReset:
-                nextActivity.openActivity(PasswordReset.class);
+                nextActivity.openActivity(ActivityPasswordReset.class);
                 break;
             case R.id.buttonCreate:
-                nextActivity.openActivity(Register.class);
+                nextActivity.openActivity(ActivityRegister.class);
                 break;
             case R.id.buttonLogin:
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
     }

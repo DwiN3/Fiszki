@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class GameMode extends AppCompatActivity {
+public class ActivityGameMode extends AppCompatActivity {
 
     NextActivity nextActivity = new NextActivity(this);
     private Button quizMode, learnMode, reverse, yoursKits, categories;
@@ -44,14 +44,14 @@ public class GameMode extends AppCompatActivity {
             Intent intent = new Intent();
             intent.putExtra("SelectedMode", selectedMode);
             intent.putExtra("SelectLanguage", selectedLanguage);
-            nextActivity.openActivity(Categories.class, intent);
+            nextActivity.openActivity(ActivityCategories.class, intent);
         });
 
         yoursKits.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("SelectedMode", selectedMode);
             intent.putExtra("SelectLanguage", selectedLanguage);
-            nextActivity.openActivity(YourKits.class, intent);
+            nextActivity.openActivity(ActivityKits.class, intent);
         });
 
         quizMode.setOnClickListener(v -> {

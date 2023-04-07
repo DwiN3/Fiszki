@@ -3,7 +3,6 @@ package com.kdbk.fiszki;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,34 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterWordsKits extends RecyclerView.Adapter<AdapterWordsKits.MyViewHolder> {
+public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdit.MyViewHolder> {
 
-    private ArrayList<ModelWordsKits> listCategories;
-    private SelectListenerWordsKits listener;
+    private ArrayList<ModelShowKitsEdit> listCategories;
+    private SelectListenerShowKitsEdit listener;
 
-    public AdapterWordsKits(ArrayList<ModelWordsKits> listCategories, SelectListenerWordsKits listener){
+    public AdapterShowKitsEdit(ArrayList<ModelShowKitsEdit> listCategories, SelectListenerShowKitsEdit listener){
         this.listCategories = listCategories;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public AdapterWordsKits.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterShowKitsEdit.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_show_kits, parent, false);
-        AdapterWordsKits.MyViewHolder myHolder = new AdapterWordsKits.MyViewHolder(v);
+        AdapterShowKitsEdit.MyViewHolder myHolder = new AdapterShowKitsEdit.MyViewHolder(v);
         return myHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterWordsKits.MyViewHolder holder, int position) {
-        ModelWordsKits currentItem = listCategories.get(position);
+    public void onBindViewHolder(@NonNull AdapterShowKitsEdit.MyViewHolder holder, int position) {
+        ModelShowKitsEdit currentItem = listCategories.get(position);
         holder.textID.setText(currentItem.getTextID());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int clickedPosition = holder.getAdapterPosition();
-                listener.onItemClicked(AdapterWordsKits.this.listCategories.get(clickedPosition));
+                listener.onItemClicked(AdapterShowKitsEdit.this.listCategories.get(clickedPosition));
             }
         });
     }

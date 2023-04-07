@@ -8,11 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class YourKits extends AppCompatActivity implements SelectListenerKits{
+public class ActivityKits extends AppCompatActivity implements SelectListenerKits{
 
     NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
@@ -37,7 +36,7 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
         mRecyclerView = findViewById(R.id.kitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterKit(list, this, R.layout.recycler_view_kits);
+        mAdapter = new AdapterKits(list, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -46,15 +45,15 @@ public class YourKits extends AppCompatActivity implements SelectListenerKits{
     }
 
     @Override
-    public void onItemClicked(ModelKits modelKit) {
+    public void onItemClicked(ModelKits modelKits) {
         //Toast.makeText(this, modelKit.getTextNumberKit(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
 
         if(selectedMode.equals("quiz")){
-            nextActivity.openActivity(QuizScreen.class, intent);
+            nextActivity.openActivity(ActivityQuizScreen.class, intent);
         } else if(selectedMode.equals("learn")){
-            nextActivity.openActivity(LearningScreen.class, intent);
+            nextActivity.openActivity(ActivityLearningScreen.class, intent);
         }
     }
 

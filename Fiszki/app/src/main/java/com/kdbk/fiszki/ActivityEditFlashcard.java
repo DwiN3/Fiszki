@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class EditFlashcard extends AppCompatActivity implements SelectListenerEditFlashcard, AdapterEditFlashcard.OnEditTextChangeListener {
+public class ActivityEditFlashcard extends AppCompatActivity implements SelectListenerEditFlashcard, AdapterEditFlashcard.OnEditTextChangeListener {
 
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private NextActivity nextActivity = new NextActivity(this);
@@ -48,20 +48,20 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
                 for (int i = 0; i < editedFlashcard.length; i++) {
                     Log.d("EditedFlashcard", editedFlashcard[i]);
                 }
-                nextActivity.openActivity(ShowKits.class);
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(ShowKits.class);
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
 
         delate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(ShowKits.class);
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
     }

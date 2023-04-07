@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Categories extends AppCompatActivity implements SelectListenerCategories {
+public class ActivityCategories extends AppCompatActivity implements SelectListenerCategories {
     NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -43,9 +42,9 @@ public class Categories extends AppCompatActivity implements SelectListenerCateg
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
         if(selectedMode.equals("quiz")){
-            nextActivity.openActivity(QuizScreen.class, intent);
+            nextActivity.openActivity(ActivityQuizScreen.class, intent);
         } else if(selectedMode.equals("learn")){
-            nextActivity.openActivity(LearningScreen.class, intent);
+            nextActivity.openActivity(ActivityLearningScreen.class, intent);
         }
     }
 }

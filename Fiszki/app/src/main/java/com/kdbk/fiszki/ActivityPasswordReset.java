@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PasswordReset extends AppCompatActivity {
+public class ActivityPasswordReset extends AppCompatActivity {
 
     NextActivity nextActivity = new NextActivity(this);
 

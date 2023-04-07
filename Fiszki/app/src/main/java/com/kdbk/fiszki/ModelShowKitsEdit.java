@@ -1,11 +1,11 @@
 package com.kdbk.fiszki;
 
-public class ModelWordsKits {
+public class ModelShowKitsEdit {
 
     private String textID;
     private int ID;
 
-    ModelWordsKits(String textID, int ID){
+    ModelShowKitsEdit(String textID, int ID){
         this.textID = textID;
         this.ID = ID;
     }

@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class QuizScreen extends AppCompatActivity implements View.OnClickListener {
+public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
     private TextView answerText1, answerText2, answerText3, answerText4;
@@ -60,10 +59,10 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
                 answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
                 break;
             case R.id.buttonNextQuiz:
-                nextActivity.openActivity(QuizEnd.class);
+                nextActivity.openActivity(ActivityQuizEnd.class);
                 break;
             case R.id.buttonExitQuiz:
-                nextActivity.openActivity(MainMenu.class);
+                nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
     }
