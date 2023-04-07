@@ -10,19 +10,18 @@ public class EditFlashcardArray {
 
     private EditFlashcardArray() {
         ArrayList<ModelEditFlashcard> list1 = new ArrayList<>();
-        int word1 = 1, word2 = 2;
-        list1.add(new ModelEditFlashcard(R.drawable.flagpl, "pies",1, word1));
-        list1.add(new ModelEditFlashcard(R.drawable.flagang, "dog:", 2, word1));
-        list1.add(new ModelEditFlashcard(R.drawable.flagpl, "Mój pies lubi kosci", 3, word1));
-        list1.add(new ModelEditFlashcard(R.drawable.flagang, "My dog likes bones", 4, word1));
-        allList.put(word1, list1);
+        list1.add(new ModelEditFlashcard(R.drawable.flagpl, "pies",1, 1));
+        list1.add(new ModelEditFlashcard(R.drawable.flagang, "dog:", 2, 1));
+        list1.add(new ModelEditFlashcard(R.drawable.flagpl, "Mój pies lubi kosci", 3, 1));
+        list1.add(new ModelEditFlashcard(R.drawable.flagang, "My dog likes bones", 4, 1));
+        allList.put(1, list1);
 
         ArrayList<ModelEditFlashcard> list2 = new ArrayList<>();
-        list2.add(new ModelEditFlashcard(R.drawable.flagpl, "lol",1, word2));
-        list2.add(new ModelEditFlashcard(R.drawable.flagang, "fsdf:", 2, word2));
-        list2.add(new ModelEditFlashcard(R.drawable.flagpl, "gs", 3, word2));
-        list2.add(new ModelEditFlashcard(R.drawable.flagang, "gdsgsd", 4, word2));
-        allList.put(word2, list2);
+        list2.add(new ModelEditFlashcard(R.drawable.flagpl, "lol",1, 2));
+        list2.add(new ModelEditFlashcard(R.drawable.flagang, "fsdf:", 2, 2));
+        list2.add(new ModelEditFlashcard(R.drawable.flagpl, "gs", 3, 2));
+        list2.add(new ModelEditFlashcard(R.drawable.flagang, "gdsgsd", 4, 2));
+        allList.put(1, list2);
     }
 
     public static EditFlashcardArray getInstance() {
