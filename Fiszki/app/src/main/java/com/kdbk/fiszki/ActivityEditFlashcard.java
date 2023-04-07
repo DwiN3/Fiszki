@@ -53,12 +53,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             @Override
             public void onClick(View view) {
                 editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
-                nextActivity.openActivity(ActivityShowKitsEdit.class);
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                for(int n = 0 ; n < editedFlashcard.length ; n++) System.out.println(editedFlashcard[n]);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -96,10 +91,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
     void takeWords() {
         if (!list.isEmpty()) {
-            if(list.get(0).getNrWord() == nrWord) word = list.get(0).getEditWord();
-            if(list.get(1).getNrWord() == nrWord) translateWord = list.get(1).getEditWord();
-            if(list.get(2).getNrWord() == nrWord) sampleSentence = list.get(2).getEditWord();
-            if(list.get(3).getNrWord() == nrWord) translateSampleSentence = list.get(3).getEditWord();
+            word = list.get(0).getEditWord();
+            translateWord = list.get(1).getEditWord();
+            sampleSentence = list.get(2).getEditWord();
+            translateSampleSentence = list.get(3).getEditWord();
         }
     }
 
