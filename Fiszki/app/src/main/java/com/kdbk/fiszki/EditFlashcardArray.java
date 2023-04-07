@@ -8,10 +8,10 @@ public class EditFlashcardArray {
     private ArrayList<ModelEditFlashcard> list = new ArrayList<>();
 
     private EditFlashcardArray() {
-        list.add(new ModelEditFlashcard(R.drawable.flagpl, "pies",1));
-        list.add(new ModelEditFlashcard(R.drawable.flagang, "dog:", 2));
-        list.add(new ModelEditFlashcard(R.drawable.flagpl, "Mój pies lubi kosci", 3));
-        list.add(new ModelEditFlashcard(R.drawable.flagang, "My dog likes bones", 4));
+        list.add(new ModelEditFlashcard(R.drawable.flagpl, "pies",1, 1));
+        list.add(new ModelEditFlashcard(R.drawable.flagang, "dog:", 2, 1));
+        list.add(new ModelEditFlashcard(R.drawable.flagpl, "Mój pies lubi kosci", 3, 1));
+        list.add(new ModelEditFlashcard(R.drawable.flagang, "My dog likes bones", 4,1));
     }
 
     public static EditFlashcardArray getInstance() {

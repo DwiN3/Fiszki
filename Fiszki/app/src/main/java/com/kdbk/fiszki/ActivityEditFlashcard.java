@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -22,6 +23,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private String[] editedFlashcard;
     private String  word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
+    private int nrWord;
 
     private EditFlashcardArray flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance();
     private ArrayList<ModelEditFlashcard> list = flashcardArray.getList();
@@ -31,6 +33,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_flashcard);
         setID();
+
+        Intent intent = getIntent();
+        nrWord = intent.getIntExtra("NrWordID", 1);
+        System.out.println(nrWord);
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
