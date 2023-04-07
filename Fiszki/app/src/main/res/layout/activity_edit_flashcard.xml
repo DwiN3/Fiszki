@@ -42,12 +42,23 @@
         android:id="@+id/buttonEditFlashCardAccept"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/rounded_button"
-        android:text="ZATWIERDŹ"
+        android:text="ZATWIERDŹ ZMIANY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editFlashcardlRecycleView" />
+
+    <Button
+        android:id="@+id/buttonEditFlashCardDelate"
+        android:layout_width="345dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        android:text="USUŃ FISZKĘ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditFlashCardAccept" />
 
     <Button
         android:id="@+id/buttonEditFlashCardBack"
@@ -58,5 +69,5 @@
         android:text="WRÓĆ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEditFlashCardAccept" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditFlashCardDelate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

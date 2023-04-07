@@ -18,7 +18,7 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    Button accept, back;
+    Button accept, back, delate;
     private String[] editedFlashcard;
     private String  word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -52,6 +52,13 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(ShowKits.class);
+            }
+        });
+
+        delate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextActivity.openActivity(ShowKits.class);
@@ -104,5 +111,6 @@ public class EditFlashcard extends AppCompatActivity implements SelectListenerEd
     private void setID() {
         accept = findViewById(R.id.buttonEditFlashCardAccept);
         back = findViewById(R.id.buttonEditFlashCardBack);
+        delate = findViewById(R.id.buttonEditFlashCardDelate);
     }
 }
