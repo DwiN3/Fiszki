@@ -8,6 +8,8 @@ public class EditFlashcardArray {
     private static EditFlashcardArray instance = null;
     private ArrayList<ArrayList<ModelEditFlashcard>> list = new ArrayList<>();
 
+    private int word = 4;
+
     // Make the constructor public and add a default value for nrWord
     public EditFlashcardArray(int nrWord) {
         ArrayList<ModelEditFlashcard> subList1 = new ArrayList<>();
@@ -49,6 +51,10 @@ public class EditFlashcardArray {
 
     public void add(ModelEditFlashcard model, int subListIndex) {
         list.get(subListIndex).add(model);
+    }
+
+    public void setList(ArrayList<ModelEditFlashcard> subList, int subListIndex) {
+        this.list.set(subListIndex, subList);
     }
 
     public void remove(ModelEditFlashcard model, int subListIndex) {

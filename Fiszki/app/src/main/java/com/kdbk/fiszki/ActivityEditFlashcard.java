@@ -70,7 +70,17 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         delate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(ActivityShowKitsEdit.class);
+                if (list.size() > 0) {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).getNrWord() == nrWord) {
+                            list.remove(i);
+                            break;
+                        }
+                    }
+                    flashcardArray.setList(list, nrWord-1);
+                    System.out.println("usunięto liste "+ nrWord);
+                    nextActivity.openActivity(ActivityShowKitsEdit.class);
+                }
             }
         });
     }
