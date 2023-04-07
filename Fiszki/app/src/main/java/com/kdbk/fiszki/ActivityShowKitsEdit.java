@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -60,8 +61,10 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
-        System.out.println(modelShowKitsEdit.getID());
-        nextActivity.openActivity(ActivityEditFlashcard.class);
+        Intent intent = getIntent();
+        //intent.putExtra("LastWords", lastWords);
+        intent.putExtra("NrWordID", modelShowKitsEdit.getID());
+        nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
 
     private void setID() {

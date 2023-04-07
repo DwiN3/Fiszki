@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,9 +19,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    private int nrWord, lastWords;
     Button accept, back, delete;
-    private String[] editedFlashcard;
     private String[] words;
+    String word, translateWord,sentens,sentensTranslate;
     private ArrayList<ModelEditFlashcard> list = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
     @Override
@@ -29,22 +31,19 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         setContentView(R.layout.activity_edit_flashcard);
         setID();
 
+        Intent intent = getIntent();
+        nrWord = intent.getIntExtra("NrWordID", 1);
         EditFlashcardArray instance = EditFlashcardArray.getInstance();
-        ArrayList<ModelEditFlashcard> list1 = instance.getList(1);
+        ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
 
-        ModelEditFlashcard wordElement = list1.get(0);
-        String word = wordElement.getEditWord();
-        ModelEditFlashcard editTranslateWordElement = list1.get(1);
-        String translateWord = editTranslateWordElement.getEditWord();
-        ModelEditFlashcard sentensElement = list1.get(2);
-        String sentens = sentensElement.getEditWord();
-        ModelEditFlashcard sentensTranslateElement = list1.get(3);
-        String sentensTranslate = sentensTranslateElement.getEditWord();
-
-        String tabwords[] = {word,translateWord, sentens,sentensTranslate};
-
-        for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
-
+        ModelEditFlashcard wordElement = list.get(0);
+        word = wordElement.getEditWord();
+        ModelEditFlashcard editTranslateWordElement = list.get(1);
+        translateWord = editTranslateWordElement.getEditWord();
+        ModelEditFlashcard sentensElement = list.get(2);
+        sentens = sentensElement.getEditWord();
+        ModelEditFlashcard sentensTranslateElement = list.get(3);
+        sentensTranslate = sentensTranslateElement.getEditWord();
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -58,7 +57,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String tabwords[] = {word,translateWord, sentens,sentensTranslate};
+                for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -93,9 +93,19 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
     @Override
     public void onEditTextChanged(int cardId, String newText) {
-        ModelEditFlashcard model = list.get(cardId - 1);
         switch (cardId) {
-
+            case 1:
+                word = newText;
+                break;
+            case 2:
+                translateWord = newText;
+                break;
+            case 3:
+                sentens = newText;
+                break;
+            case 4:
+                sentensTranslate = newText;
+                break;
             default:
                 break;
         }
