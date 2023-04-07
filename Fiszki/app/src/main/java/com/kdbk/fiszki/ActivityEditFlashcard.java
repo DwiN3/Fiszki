@@ -23,10 +23,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private String[] editedFlashcard;
     private String  word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
+    Intent intent = getIntent();
     private int nrWord;
-
-    private EditFlashcardArray flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance();
-    private ArrayList<ModelEditFlashcard> list = flashcardArray.getList();
+    private EditFlashcardArray flashcardArray;
+    private ArrayList<ModelEditFlashcard> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,9 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         setID();
 
         Intent intent = getIntent();
-        nrWord = intent.getIntExtra("NrWordID", 1);
+        nrWord = intent.getIntExtra("NrWordID", 2);
+        flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance(nrWord);
+        list = flashcardArray.getList();
         System.out.println(nrWord);
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
@@ -74,10 +76,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
     void takeWords() {
         if (!list.isEmpty()) {
-            word = list.get(0).getEditWord();
-            translateWord = list.get(1).getEditWord();
-            sampleSentence = list.get(2).getEditWord();
-            translateSampleSentence = list.get(3).getEditWord();
+            if(list.get(0).getNrWord() == nrWord) word = list.get(0).getEditWord();
+            if(list.get(1).getNrWord() == nrWord) translateWord = list.get(1).getEditWord();
+            if(list.get(2).getNrWord() == nrWord) sampleSentence = list.get(2).getEditWord();
+            if(list.get(3).getNrWord() == nrWord) translateSampleSentence = list.get(3).getEditWord();
         }
     }
 
