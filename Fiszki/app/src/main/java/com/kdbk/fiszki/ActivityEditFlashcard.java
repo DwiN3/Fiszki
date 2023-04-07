@@ -72,11 +72,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int size = list.size();
-                for (int i = 0; i < size; i++) {
-                    list.remove(0);
-                }
+                EditFlashcardArray instance = EditFlashcardArray.getInstance();
+                instance.remove(nrWord);
                 mAdapter.notifyDataSetChanged();
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
     }
