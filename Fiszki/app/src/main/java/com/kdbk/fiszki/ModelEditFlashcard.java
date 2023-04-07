@@ -5,8 +5,9 @@ public class ModelEditFlashcard {
     private String editWord;
     private int imageResource;
     private int cardId;
+    private int nrWord;
 
-    public ModelEditFlashcard(int imageResource, String editWord, int cardId) {
+    public ModelEditFlashcard(int imageResource, String editWord, int cardId, int nrWord) {
         this.editWord = editWord;
         this.imageResource = imageResource;
         this.cardId = cardId;
@@ -22,5 +23,9 @@ public class ModelEditFlashcard {
 
     public int getCardId() {
         return cardId;
+    }
+
+    public int getNrWord() {
+        return nrWord;
     }
 }

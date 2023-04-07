@@ -18,13 +18,13 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    Button accept, back, delate;
+    Button accept, back, delete;
     private String[] editedFlashcard;
-    private String  word, translateWord, sampleSentence, translateSampleSentence;
+    private String[] words;
+    private ArrayList<ModelEditFlashcard> list = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
 
     private EditFlashcardArray flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance();
-    private ArrayList<ModelEditFlashcard> list = flashcardArray.getList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterEditFlashcard(list, this, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new AdapterEditFlashcard(list, this, this);
         mRecyclerView.setAdapter(mAdapter);
 
         takeWords();
@@ -44,9 +44,9 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
-                for (int i = 0; i < editedFlashcard.length; i++) {
-                    Log.d("EditedFlashcard", editedFlashcard[i]);
+                for (int i = 0; i < list.size(); i++) {
+                    ModelEditFlashcard model = list.get(i);
+                    Log.d("EditedFlashcard", model.getEditWord() + ", " + model.getEditTranslation() + ", " + model.getEditSampleSentence() + ", " + model.getEditTranslationSampleSentence());
                 }
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
@@ -58,21 +58,25 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             }
         });
 
-        delate.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity.openActivity(ActivityShowKitsEdit.class);
+                int size = list.size();
+                for (int i = 0; i < size; i++) {
+                    list.remove(0);
+                }
+                mAdapter.notifyDataSetChanged();
             }
         });
     }
 
     void takeWords() {
-        if (!list.isEmpty()) {
-            word = list.get(0).getEditWord();
-            translateWord = list.get(1).getEditWord();
-            sampleSentence = list.get(2).getEditWord();
-            translateSampleSentence = list.get(3).getEditWord();
+        words = new String[]{"word", "translateWord", "sampleSentence", "translateSampleSentence"};
+        for (String word : words) {
+            ModelEditFlashcard model = new ModelEditFlashcard(word, "", "", "");
+            list.add(model);
         }
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -82,18 +86,19 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
     @Override
     public void onEditTextChanged(int cardId, String newText) {
+        ModelEditFlashcard model = list.get(cardId - 1);
         switch (cardId) {
             case 1:
-                word = newText;
+                model.setEditWord(newText);
                 break;
             case 2:
-                translateWord = newText;
+                model.setEditTranslation(newText);
                 break;
             case 3:
-                sampleSentence = newText;
+                model.setEditSampleSentence(newText);
                 break;
             case 4:
-                translateSampleSentence = newText;
+                model.setEditTranslationSampleSentence(newText);
                 break;
             default:
                 break;
@@ -103,7 +108,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true; // blokuj przycisk wstęcz
         }
         return super.dispatchKeyEvent(event);
     }
@@ -111,6 +116,38 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private void setID() {
         accept = findViewById(R.id.buttonEditFlashCardAccept);
         back = findViewById(R.id.buttonEditFlashCardBack);
-        delate = findViewById(R.id.buttonEditFlashCardDelate);
+        delete = findViewById(R.id.buttonEditFlashCardDelate);
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
+                for (int i = 0; i < editedFlashcard.length; i++) {
+                    Log.d("EditedFlashcard", editedFlashcard[i]);
+                }
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int size = list.size();
+                for (int i = size - 1; i >= 0; i--) {
+                    ModelEditFlashcard model = list.get(i);
+                    if (model.isSelected()) {
+                        list.remove(model);
+                    }
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }
