@@ -120,13 +120,14 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 break;
             default:
                 break;
+
         }
     }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }
