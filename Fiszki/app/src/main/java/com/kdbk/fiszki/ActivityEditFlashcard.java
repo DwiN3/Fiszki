@@ -54,7 +54,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             public void onClick(View view) {
                 editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
                 for (int i = 0; i < editedFlashcard.length; i++) {
-                    Log.d("EditedFlashcard", editedFlashcard[i]);
+                    System.out.println(editedFlashcard[i]);
                 }
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }

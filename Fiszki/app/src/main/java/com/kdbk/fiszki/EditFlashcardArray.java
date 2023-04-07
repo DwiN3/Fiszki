@@ -32,7 +32,7 @@ public class EditFlashcardArray {
         }
         if(nrWord == 4) {
             list.add(new ModelEditFlashcard(R.drawable.flagpl, "rycerz", 1, word4));
-            list.add(new ModelEditFlashcard(R.drawable.flagang, "knight", 2, word3));
+            list.add(new ModelEditFlashcard(R.drawable.flagang, "knight", 2, word4));
             list.add(new ModelEditFlashcard(R.drawable.flagpl, "Walczy ze smokami", 3, word4));
             list.add(new ModelEditFlashcard(R.drawable.flagang, "He fights dragons", 4, word4));
         }
