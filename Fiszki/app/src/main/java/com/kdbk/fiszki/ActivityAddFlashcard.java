@@ -23,7 +23,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private RecyclerView.LayoutManager mLayoutManager;
 
     private FlashcardArray flashcardArray = com.kdbk.fiszki.FlashcardArray.getInstance();
-    private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
+    private ArrayList<ModelAddFlashcard> list = flashcardArray.getList(); 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
