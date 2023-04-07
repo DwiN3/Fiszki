@@ -37,7 +37,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         Intent intent = getIntent();
         nrWord = intent.getIntExtra("NrWordID", 2);
         flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance(nrWord);
-        list = flashcardArray.getList();
+        list = new ArrayList<>();
+        list.addAll(flashcardArray.getList(nrWord));
         System.out.println(nrWord);
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
