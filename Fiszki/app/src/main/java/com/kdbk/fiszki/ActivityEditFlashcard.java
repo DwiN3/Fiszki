@@ -23,7 +23,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     Button accept, back, delete;
     private String[] words;
     String word, translateWord,sentens,sentensTranslate;
-    private ArrayList<ModelEditFlashcard> list = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
