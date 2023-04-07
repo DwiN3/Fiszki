@@ -21,7 +21,7 @@ public class EditFlashcardArray {
         list2.add(new ModelEditFlashcard(R.drawable.flagang, "fsdf:", 2, 2));
         list2.add(new ModelEditFlashcard(R.drawable.flagpl, "gs", 3, 2));
         list2.add(new ModelEditFlashcard(R.drawable.flagang, "gdsgsd", 4, 2));
-        allList.put(1, list2);
+        allList.put(2, list2);
     }
 
     public static EditFlashcardArray getInstance() {

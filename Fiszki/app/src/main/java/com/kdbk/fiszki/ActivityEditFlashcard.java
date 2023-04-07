@@ -32,15 +32,19 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         EditFlashcardArray instance = EditFlashcardArray.getInstance();
         ArrayList<ModelEditFlashcard> list1 = instance.getList(1);
 
-        ModelEditFlashcard firstElement = list1.get(0);
+        ModelEditFlashcard wordElement = list1.get(0);
+        String word = wordElement.getEditWord();
+        ModelEditFlashcard editTranslateWordElement = list1.get(1);
+        String translateWord = editTranslateWordElement.getEditWord();
+        ModelEditFlashcard sentensElement = list1.get(2);
+        String sentens = sentensElement.getEditWord();
+        ModelEditFlashcard sentensTranslateElement = list1.get(3);
+        String sentensTranslate = sentensTranslateElement.getEditWord();
 
-        ModelEditFlashcard SecElement = list1.get(1);
-        int imageResource = firstElement.getImageResource();
-        String editWord = firstElement.getEditWord();
-        int cardId = firstElement.getCardId();
-        int nrWord = firstElement.getNrWord();
+        String tabwords[] = {word,translateWord, sentens,sentensTranslate};
 
-        System.out.println(editWord);
+        for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
+
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
