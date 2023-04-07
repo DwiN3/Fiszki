@@ -73,7 +73,9 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             public void onClick(View view) {
                 EditFlashcardArray instance = EditFlashcardArray.getInstance();
                 instance.remove(nrWord);
+                instance.getWords();
                 mAdapter.notifyDataSetChanged();
+                //System.out.println(instance.getWords());
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });

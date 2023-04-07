@@ -79,6 +79,8 @@ public class EditFlashcardArray {
         }
     }
 
-
+    public int getWords(){
+        return allList.size();
+    }
 
 }

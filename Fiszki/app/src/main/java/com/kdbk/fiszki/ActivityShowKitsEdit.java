@@ -30,10 +30,12 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        list.add(new ModelShowKitsEdit("1",1));
-        list.add(new ModelShowKitsEdit("2",2));
-        list.add(new ModelShowKitsEdit("3",3));
-        list.add(new ModelShowKitsEdit("4",4));
+        EditFlashcardArray instance = EditFlashcardArray.getInstance();
+
+        for(int n=0 ; n < instance.getWords() ; n++){
+            list.add(new ModelShowKitsEdit(""+n+1,n+1));
+        }
+
 
         mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
