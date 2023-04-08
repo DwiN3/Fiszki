@@ -11,7 +11,6 @@ public class ModelEditFlashcard {
         this.editWord = editWord;
         this.imageResource = imageResource;
         this.cardId = cardId;
-        this.nrWord = nrWord;
     }
 
     public String getEditWord() {
@@ -25,6 +24,7 @@ public class ModelEditFlashcard {
     public int getCardId() {
         return cardId;
     }
+
     public int getNrWord() {
         return nrWord;
     }

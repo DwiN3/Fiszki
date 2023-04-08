@@ -19,14 +19,11 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    Button accept, back, delate;
-    private String[] editedFlashcard;
-    private String  word, translateWord, sampleSentence, translateSampleSentence;
-    private RecyclerView.LayoutManager mLayoutManager;
     private int nrWord, lastWords;
-    private EditFlashcardArray flashcardArray;
-    private ArrayList<ModelEditFlashcard> list;
-
+    Button accept, back, delete;
+    private String[] words;
+    String word, translateWord,sentens,sentensTranslate;
+    private RecyclerView.LayoutManager mLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +31,24 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         setID();
 
         Intent intent = getIntent();
-        nrWord = intent.getIntExtra("NrWordID", 2);
-        flashcardArray = com.kdbk.fiszki.EditFlashcardArray.getInstance(nrWord);
-        list = new ArrayList<>();
-        list.addAll(flashcardArray.getList(nrWord));
-        System.out.println(nrWord);
+        nrWord = intent.getIntExtra("NrWordID", 1);
+        EditFlashcardArray instance = EditFlashcardArray.getInstance();
+        ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
+
+        ModelEditFlashcard wordElement = list.get(0);
+        word = wordElement.getEditWord();
+        ModelEditFlashcard editTranslateWordElement = list.get(1);
+        translateWord = editTranslateWordElement.getEditWord();
+        ModelEditFlashcard sentensElement = list.get(2);
+        sentens = sentensElement.getEditWord();
+        ModelEditFlashcard sentensTranslateElement = list.get(3);
+        sentensTranslate = sentensTranslateElement.getEditWord();
 
         mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterEditFlashcard(list, this, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new AdapterEditFlashcard(list, this, this);
         mRecyclerView.setAdapter(mAdapter);
 
         takeWords();
@@ -52,8 +56,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editedFlashcard = new String[]{word, translateWord, sampleSentence, translateSampleSentence};
-                for(int n = 0 ; n < editedFlashcard.length ; n++) System.out.println(editedFlashcard[n]);
+                String tabwords[] = {word,translateWord, sentens,sentensTranslate};
+                for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -61,41 +65,25 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             @Override
             public void onClick(View view) {
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
-                flashcardArray.setList(list, nrWord);
-                Intent intent = getIntent();
-                intent.putExtra("LastWords", flashcardArray.getWord());
-                nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
             }
         });
 
-        delate.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (list.size() > 0) {
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).getNrWord() == nrWord) {
-                            list.remove(i);
-                            break;
-                        }
-                    }
-                    flashcardArray.setList(list, nrWord);
-                    flashcardArray.delateWord();
-                    System.out.println("usunięto liste "+ nrWord+1);
-                    Intent intent = getIntent();
-                    intent.putExtra("LastWords", flashcardArray.getWord());
-                    nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
-                }
+                EditFlashcardArray instance = EditFlashcardArray.getInstance();
+                instance.remove(nrWord);
+                instance.getWords();
+                mAdapter.notifyDataSetChanged();
+                //System.out.println(instance.getWords());
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
     }
 
     void takeWords() {
-        if (!list.isEmpty()) {
-            word = list.get(0).getEditWord();
-            translateWord = list.get(1).getEditWord();
-            sampleSentence = list.get(2).getEditWord();
-            translateSampleSentence = list.get(3).getEditWord();
-        }
+        //words = new String[]{"word", "translateWord", "sampleSentence", "translateSampleSentence"};
+
     }
 
     @Override
@@ -113,21 +101,20 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 translateWord = newText;
                 break;
             case 3:
-                sampleSentence = newText;
+                sentens = newText;
                 break;
             case 4:
-                translateSampleSentence = newText;
+                sentensTranslate = newText;
                 break;
             default:
                 break;
-
         }
     }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true;
+            return true; // blokuj przycisk wstęcz
         }
         return super.dispatchKeyEvent(event);
     }
@@ -135,6 +122,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private void setID() {
         accept = findViewById(R.id.buttonEditFlashCardAccept);
         back = findViewById(R.id.buttonEditFlashCardBack);
-        delate = findViewById(R.id.buttonEditFlashCardDelate);
+        delete = findViewById(R.id.buttonEditFlashCardDelate);
     }
 }

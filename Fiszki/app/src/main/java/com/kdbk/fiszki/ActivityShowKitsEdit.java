@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ActivityShowKitsEdit extends AppCompatActivity implements SelectListenerShowKitsEdit {
 
@@ -23,8 +24,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private ArrayList<ModelShowKitsEdit> list = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
-    int lastWords;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +31,25 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        Intent intent = getIntent();
-        lastWords = intent.getIntExtra("LastWords", 4);
+        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
+        Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
 
-        for(int n=0 ; n < lastWords ; n++){
-            list.add(new ModelShowKitsEdit(""+n,n));
+        Integer[] Ids = new Integer[allList.size()];
+
+        Integer i = 0;
+
+        for (Integer index : allList.keySet()) {
+            ArrayList<ModelEditFlashcard> list = allList.get(index);
+            if (!list.isEmpty()) {
+                Ids[i] = index;
+                i++;
+            }
         }
+
+        for(int n=0 ; n < Ids.length ; n++){
+            list.add(new ModelShowKitsEdit(""+Ids[n],Ids[n]));
+        }
+
 
         mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -66,7 +78,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
         Intent intent = getIntent();
-        intent.putExtra("LastWords", lastWords);
+        //intent.putExtra("LastWords", lastWords);
         intent.putExtra("NrWordID", modelShowKitsEdit.getID());
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
