@@ -35,19 +35,32 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
 
         Integer[] Ids = new Integer[allList.size()];
+        String[] words = new String[allList.size()];
+        String[] translateWord = new String[allList.size()];
+        String[] sentens = new String[allList.size()];
+        String[] translateSentens = new String[allList.size()];
+
 
         Integer i = 0;
 
         for (Integer index : allList.keySet()) {
             ArrayList<ModelEditFlashcard> list = allList.get(index);
             if (!list.isEmpty()) {
+                ModelEditFlashcard wordElement = list.get(0);
+                words[i] = wordElement.getEditWord();
+                ModelEditFlashcard translateWordElement = list.get(1);
+                translateWord[i] = translateWordElement.getEditWord();
+                ModelEditFlashcard sentensElement = list.get(2);
+                sentens[i] = sentensElement.getEditWord();
+                ModelEditFlashcard translateSentensElement = list.get(3);
+                translateSentens[i] = translateSentensElement.getEditWord();
                 Ids[i] = index;
                 i++;
             }
         }
 
         for(int n=0 ; n < Ids.length ; n++){
-            list.add(new ModelShowKitsEdit("lol", "lol", "lol", "123",Ids[n]));
+            list.add(new ModelShowKitsEdit(words[n], translateWord[n], sentens[n], translateSentens[n],Ids[n]));
         }
 
 

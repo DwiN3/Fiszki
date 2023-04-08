@@ -7,7 +7,10 @@ public class ModelShowKitsEdit {
     private String word, translateWord,sentens,sentensTranslate;
 
     ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int ID){
-
+        this.word = word;
+        this.translateWord = translateWord;
+        this.sentens = sentens;
+        this.sentensTranslate = sentensTranslate;
         this.ID = ID;
     }
 

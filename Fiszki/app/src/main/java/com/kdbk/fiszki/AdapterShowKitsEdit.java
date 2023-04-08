@@ -61,7 +61,7 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
             textWord = itemView.findViewById(R.id.textViewShowKits1);
             textTranslateWord = itemView.findViewById(R.id.textViewShowKits2);
             textSentens = itemView.findViewById(R.id.textViewShowKits3);
-            textSentensTranslate = itemView.findViewById(R.id.textViewShowKits3);
+            textSentensTranslate = itemView.findViewById(R.id.textViewShowKits4);
             cardView = itemView.findViewById(R.id.recycleShowFlashcard);
         }
     }
