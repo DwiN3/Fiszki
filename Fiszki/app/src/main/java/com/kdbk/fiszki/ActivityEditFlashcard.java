@@ -59,7 +59,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
                 ModelEditFlashcard wordElement = list.get(0);
                 wordElement.setEditWord(word);
-
                 ModelEditFlashcard editTranslateWordElement = list.get(1);
                 editTranslateWordElement.setEditWord(translateWord);
                 ModelEditFlashcard sentensElement = list.get(2);

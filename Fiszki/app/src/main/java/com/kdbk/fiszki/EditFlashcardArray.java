@@ -11,7 +11,7 @@ public class EditFlashcardArray {
     private EditFlashcardArray() {
         ArrayList<ModelEditFlashcard> subList1 = new ArrayList<>();
         subList1.add(new ModelEditFlashcard(R.drawable.flagpl, "pies",1, 1));
-        subList1.add(new ModelEditFlashcard(R.drawable.flagang, "dog:", 2, 1));
+        subList1.add(new ModelEditFlashcard(R.drawable.flagang, "dog", 2, 1));
         subList1.add(new ModelEditFlashcard(R.drawable.flagpl, "Mój pies lubi kosci", 3, 1));
         subList1.add(new ModelEditFlashcard(R.drawable.flagang, "My dog likes bones", 4, 1));
         allList.put(1, subList1);
