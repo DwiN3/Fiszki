@@ -3,6 +3,7 @@ package com.kdbk.fiszki;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,10 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
                 listener.onItemClicked(AdapterShowKitsEdit.this.listCategories.get(clickedPosition));
             }
         });
+        holder.textWord.setText(currentItem.getWord());
+        holder.textTranslateWord.setText(currentItem.getTranslateWord());
+        holder.textSentens.setText(currentItem.getSentens());
+        holder.textSentensTranslate.setText(currentItem.getSentensTranslate());
     }
 
     @Override
@@ -49,9 +54,14 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public CardView cardView;
+        TextView textWord, textTranslateWord,textSentens, textSentensTranslate;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            textWord = itemView.findViewById(R.id.textViewShowKits1);
+            textTranslateWord = itemView.findViewById(R.id.textViewShowKits2);
+            textSentens = itemView.findViewById(R.id.textViewShowKits3);
+            textSentensTranslate = itemView.findViewById(R.id.textViewShowKits3);
             cardView = itemView.findViewById(R.id.recycleShowFlashcard);
         }
     }

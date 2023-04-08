@@ -4,7 +4,9 @@ public class ModelShowKitsEdit {
 
     private int ID;
 
-    ModelShowKitsEdit(int ID){
+    private String word, translateWord,sentens,sentensTranslate;
+
+    ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int ID){
 
         this.ID = ID;
     }
@@ -12,5 +14,20 @@ public class ModelShowKitsEdit {
 
     public int getID() {
         return ID;
+    }
+    public String getWord() {
+        return word;
+    }
+
+    public String getTranslateWord() {
+        return translateWord;
+    }
+
+    public String getSentens() {
+        return sentens;
+    }
+
+    public String getSentensTranslate() {
+        return sentensTranslate;
     }
 }
