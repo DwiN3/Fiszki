@@ -47,7 +47,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         }
 
         for(int n=0 ; n < Ids.length ; n++){
-            list.add(new ModelShowKitsEdit(""+Ids[n],Ids[n]));
+            list.add(new ModelShowKitsEdit(Ids[n]));
         }
 
 

@@ -32,7 +32,6 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
     @Override
     public void onBindViewHolder(@NonNull AdapterShowKitsEdit.MyViewHolder holder, int position) {
         ModelShowKitsEdit currentItem = listCategories.get(position);
-        holder.textID.setText(currentItem.getTextID());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +48,10 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView textID;
         public CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textID = itemView.findViewById(R.id.textIDinvisible);
             cardView = itemView.findViewById(R.id.recycleShowFlashcard);
         }
     }
