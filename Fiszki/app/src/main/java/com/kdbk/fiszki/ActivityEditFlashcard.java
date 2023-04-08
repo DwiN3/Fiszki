@@ -56,6 +56,17 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
+                ModelEditFlashcard wordElement = list.get(0);
+                wordElement.setEditWord(word);
+
+                ModelEditFlashcard editTranslateWordElement = list.get(1);
+                editTranslateWordElement.setEditWord(translateWord);
+                ModelEditFlashcard sentensElement = list.get(2);
+                sentensElement.setEditWord(sentens);
+                ModelEditFlashcard sentensTranslateElement = list.get(3);
+                sentensTranslateElement.setEditWord(sentensTranslate);
+
                 String tabwords[] = {word,translateWord, sentens,sentensTranslate};
                 for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
