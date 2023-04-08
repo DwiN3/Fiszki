@@ -8,10 +8,10 @@ public class FlashcardArray {
 
     private FlashcardArray() {
         list.add(new ModelAddFlashcard(R.drawable.arrow, "NUMER ZESTAWU", "1", 1));
-        list.add(new ModelAddFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "pies", 2));
-        list.add(new ModelAddFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "dog", 3));
-        list.add(new ModelAddFlashcard(R.drawable.flagpl, "PRZYKŁADOWE ZDANIE", "Mój pies lubi kości", 4));
-        list.add(new ModelAddFlashcard(R.drawable.flagang, "PRZYKŁADOWE ZDANIE", "My dog likes bones", 5));
+        list.add(new ModelAddFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "", 2));
+        list.add(new ModelAddFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "", 3));
+        list.add(new ModelAddFlashcard(R.drawable.flagpl, "PRZYKŁADOWE ZDANIE", "", 4));
+        list.add(new ModelAddFlashcard(R.drawable.flagang, "PRZYKŁADOWE ZDANIE", "", 5));
     }
 
     public static FlashcardArray getInstance() {

@@ -43,6 +43,14 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
+                int nextIndex = editFlashcardArray.getWords() + 1;
+                ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
+                subList.add(new ModelEditFlashcard(R.drawable.flagpl, word,1, nextIndex));
+                subList.add(new ModelEditFlashcard(R.drawable.flagang, translateWord, 2, nextIndex));
+                subList.add(new ModelEditFlashcard(R.drawable.flagpl, sampleSentence, 3, nextIndex));
+                subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
+                editFlashcardArray.getAllList().put(nextIndex, subList);
                 newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
