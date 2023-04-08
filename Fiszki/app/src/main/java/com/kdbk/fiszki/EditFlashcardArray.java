@@ -83,4 +83,12 @@ public class EditFlashcardArray {
         return allList.size();
     }
 
+    public Map<Integer, ArrayList<ModelEditFlashcard>> getAllList(){
+        return allList;
+    }
+
+    public ArrayList<ArrayList<ModelEditFlashcard>> getAllLists() {
+        return new ArrayList<>(allList.values());
+    }
+
 }

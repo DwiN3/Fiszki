@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ActivityShowKitsEdit extends AppCompatActivity implements SelectListenerShowKitsEdit {
 
@@ -30,10 +31,23 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        EditFlashcardArray instance = EditFlashcardArray.getInstance();
+        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
+        Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
 
-        for(int n=0 ; n < instance.getWords() ; n++){
-            list.add(new ModelShowKitsEdit(""+n+1,n+1));
+        Integer[] Ids = new Integer[allList.size()];
+
+        Integer i = 0;
+
+        for (Integer index : allList.keySet()) {
+            ArrayList<ModelEditFlashcard> list = allList.get(index);
+            if (!list.isEmpty()) {
+                Ids[i] = index;
+                i++;
+            }
+        }
+
+        for(int n=0 ; n < Ids.length ; n++){
+            list.add(new ModelShowKitsEdit(""+Ids[n],Ids[n]));
         }
 
 
