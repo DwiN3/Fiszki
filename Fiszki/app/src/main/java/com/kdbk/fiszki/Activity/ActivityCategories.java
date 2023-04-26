@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class ActivityCategories extends AppCompatActivity implements SelectListenerCategories {
     NextActivity nextActivity = new NextActivity(this);
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;//
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
