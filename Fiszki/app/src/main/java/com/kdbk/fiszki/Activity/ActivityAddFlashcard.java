@@ -26,7 +26,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private Button add;
-    private RecyclerView.Adapter mAdapter; 
+    private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence;
     private RecyclerView.LayoutManager mLayoutManager;
