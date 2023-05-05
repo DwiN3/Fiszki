@@ -15,6 +15,7 @@ import com.kdbk.fiszki.Other.FlashcardArray;
 import com.kdbk.fiszki.Model.ModelAddFlashcard;
 import com.kdbk.fiszki.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
+import com.kdbk.fiszki.Other.WordsArray;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.SelectListener.SelectListenerAddFlashcard;
 
@@ -61,6 +62,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
                 editFlashcardArray.getAllList().put(nextIndex, subList);
                 newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
+                WordsArray wordsArray = new WordsArray();
+                wordsArray.addWord(newFlashcard);
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
                 }
