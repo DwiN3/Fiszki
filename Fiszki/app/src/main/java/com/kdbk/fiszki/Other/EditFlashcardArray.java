@@ -10,9 +10,9 @@ import java.util.Map;
     public class EditFlashcardArray {
         private static com.kdbk.fiszki.Other.EditFlashcardArray instance = null;
         private Map<Integer, ArrayList<ModelEditFlashcard>> allList = new HashMap<>();
+        WordsArray wordsArray = new WordsArray();
 
         private EditFlashcardArray() {
-            WordsArray wordsArray = new WordsArray();
 
             for (int i = 0; i < wordsArray.getLenOfArray(); i++) {
                 ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
@@ -53,7 +53,7 @@ import java.util.Map;
     }
 
     public void remove(int index) {
-        if (allList.containsKey(index)) {
+        if (allList.containsKey(index)){
             allList.remove(index);
         }
     }

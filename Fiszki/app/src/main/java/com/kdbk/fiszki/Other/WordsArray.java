@@ -8,9 +8,9 @@ public class WordsArray {
 
     public WordsArray() {
         list = new ArrayList<>();
-        list.add(new ModelWord("auto", "car", "Lubie latac bokiem", "I like drifting", 0));
-        list.add(new ModelWord("mrowka", "ant", "Bardzo pracowite zwierzęta", "Very hardworking animals", 1));
-        list.add(new ModelWord("auto", "car", "Lubie latac bokiem", "I like drifting", 2));
+        list.add(new ModelWord("pies", "dog", "Mój pies lubi kosci", "My dog likes bones", 0));
+        list.add(new ModelWord("auto", "car", "Lubie latac bokiem", "I like drifting", 1));
+        list.add(new ModelWord("mrowka", "ant", "Bardzo pracowite zwierzęta", "Very hardworking animals", 2));
         list.add(new ModelWord("rycerz", "knight", "Walczy ze smokami", "He fights dragons", 3));
     }
 
@@ -22,5 +22,9 @@ public class WordsArray {
 
     public int getLenOfArray(){
         return list.size();
+    }
+
+    public void removeWord(int index){
+        list.remove(index);
     }
 }
