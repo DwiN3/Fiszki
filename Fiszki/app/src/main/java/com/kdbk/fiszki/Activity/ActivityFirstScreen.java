@@ -46,7 +46,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 nextActivity.openActivity(ActivityRegister.class);
                 break;
             case R.id.buttonLogin:
-                checkAccount();
+                //checkAccount();
                 nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
@@ -69,16 +69,16 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         Login post = new Login(loginString, passwordString);
-        Call<List<Login>> call = jsonPlaceholderAPI.login(post);
+        Call<Login> call = jsonPlaceholderAPI.login(post);
 
-        call.enqueue(new Callback<List<Login>>() {
+        call.enqueue(new Callback<Login>() {
             @Override
-            public void onResponse(Call<List<Login>> call, Response<List<Login>> response) {
+            public void onResponse(Call<Login> call, Response<Login> response) {
 
             }
 
             @Override
-            public void onFailure(Call<List<Login>> call, Throwable t) {
+            public void onFailure(Call<Login> call, Throwable t) {
             }
         });
     }

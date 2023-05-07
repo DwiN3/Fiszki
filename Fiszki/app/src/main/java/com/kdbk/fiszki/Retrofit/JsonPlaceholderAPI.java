@@ -11,5 +11,5 @@ import retrofit2.http.POST;
 
 public interface JsonPlaceholderAPI {
     @POST("login")
-    Call<List<Login>> login(@Body Login login);
+    Call<Login> login(@Body Login login);
 }
