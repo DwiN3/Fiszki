@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Other;
+package com.kdbk.fiszki.Retrofit;
 
 import android.util.Log;
 
@@ -10,10 +10,9 @@ public class Login {
     @SerializedName("body")
     private String text;
 
-    public Login(String login, String password, String content){
+    public Login(String login, String password){
         this.login = login;
         this.password = password;
-        this.content = content;
     }
 
     public String getLogin() {
