@@ -46,7 +46,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 nextActivity.openActivity(ActivityRegister.class);
                 break;
             case R.id.buttonLogin:
-                //checkAccount();
+                checkAccount();
                 nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
@@ -64,7 +64,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         String loginString = String.valueOf(loginText.getText());
         String passwordString= String.valueOf(passwordText.getText());
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/api/users/login")
+                .baseUrl("http://localhost:8080/api/users/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
