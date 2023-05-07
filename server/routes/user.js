@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
-router.post('/', 
+router.post('/singUp', 
     [
         body('email')
         .isEmail()
