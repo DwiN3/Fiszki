@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.singUp = async(req, res, next) => {
 
@@ -27,7 +28,7 @@ exports.singUp = async(req, res, next) => {
         if(isEmail){
             const error = new Error('This email already exists!');
             error.statusCode = 400;
-            throw (error);
+            throw(error);
         } 
     } catch(error){
         return next(error)
@@ -38,21 +39,8 @@ exports.singUp = async(req, res, next) => {
         if(isNick){
             const error = new Error('This nick already exists!');
             error.statusCode = 400;
-            throw (error);
+            throw(error);
         } 
-    } catch(error){
-        return next(error)
-    }
-
-    try{
-        const passwords = await User.find().select({'password' : 1, _id : 0});
-        for(index in passwords){
-            if(await bcrypt.compare(password, passwords[index].password)){
-                const error = new Error('This password already exists!');
-                error.statusCode = 400;
-                throw (error);
-            } 
-        }
     } catch(error){
         return next(error)
     }
@@ -76,3 +64,36 @@ exports.singUp = async(req, res, next) => {
     return res.status(200).json('New user created succesful!');
 }
 
+exports.login = async(req, res, next) => {
+
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        const error = new Error('Wrong e-mail or password!');
+        error.statusCode = 400;
+        return next(error);
+    }
+
+    const email = req.body.email;
+    const password = req.body.password;
+
+    try{
+        const user = await User.findOne({ email : email})
+        if(!user || await bcrypt.compare(password, user.password) !== true){
+            const error = new Error('Wrong-email or password');
+            error.statusCode = 400;
+            throw(error);
+        }
+        token = jwt.sign({
+            email : user.email.toString(),
+        }, 
+        'flashcardsproject', 
+        )
+    } catch(error){
+        if(!error.statusCode) error.statusCode = 500;
+        return next(error);
+    }
+
+    return res.status(200).json({token : token, user : email});
+
+}

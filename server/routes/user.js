@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
-router.post('/singUp', 
+router.post('/sing-up', 
     [
         body('email')
         .isEmail()
@@ -22,6 +22,17 @@ router.post('/singUp',
             .isLength({ min : 5 })
     ],
     userController.singUp);
+
+router.post('/login', 
+    [
+        body('email')
+            .isEmail()
+            .isLength({ min : 10}),
+        body('password')
+            .isAlphanumeric()
+            .isLength({ min : 8 })
+    ],
+    userController.login);
 
 module.exports = router;
 
