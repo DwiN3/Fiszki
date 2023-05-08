@@ -69,23 +69,23 @@ exports.login = async(req, res, next) => {
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
-        const error = new Error('Wrong e-mail or password!');
+        const error = new Error('Wrong nick or password!');
         error.statusCode = 400;
         return next(error);
     }
 
-    const email = req.body.email;
+    const nick = req.body.nick;
     const password = req.body.password;
 
     try{
-        const user = await User.findOne({ email : email})
+        const user = await User.findOne({ nick : nick})
         if(!user || await bcrypt.compare(password, user.password) !== true){
-            const error = new Error('Wrong-email or password');
+            const error = new Error('Wrong nick or password');
             error.statusCode = 400;
             throw(error);
         }
         token = jwt.sign({
-            email : user.email.toString(),
+            nick : user.nick.toString(),
         }, 
         'flashcardsproject', 
         )
@@ -94,6 +94,6 @@ exports.login = async(req, res, next) => {
         return next(error);
     }
 
-    return res.status(200).json({token : token, user : email});
+    return res.status(200).json({token : token, user : nick});
 
 }
