@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/:setsId/:nick', isAuth,  
     [
         body('language')
-            .isIn(['english', 'swedish']),
+            .isIn(['english']),
         body('category')
             .isIn(['inne', 'dom', 'sklep']),
         body('word')
