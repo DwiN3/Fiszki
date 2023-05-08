@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const flashcardSchema = new Schema({
 
-    set : {
+    collection : {
         type : String,
         required : true
     },
