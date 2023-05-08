@@ -1,6 +1,8 @@
 const Flashcard = require('../models/flashcard');
 const FlashcardsCollection = require('../models/flashcardsCollection');
 const { validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
+
 
 exports.addFlashCard = async(req, res, next) => {
 
@@ -12,6 +14,7 @@ exports.addFlashCard = async(req, res, next) => {
         return next(error);
     }
 
+    const token = req.get('Authorization').split(' ')[1];
     const collectionName = req.params.collectionName;
     const language = req.body.language;
     const category = req.body.category;
@@ -20,10 +23,11 @@ exports.addFlashCard = async(req, res, next) => {
     const example = req.body.example;
     const translatedExample = req.body.translatedExample;
     req.file ? imgPath = req.file.path : imgPath = null;
-    const author = req.params.nick;
     
     try{
-        const flashcardExist = await Flashcard.findOne({word : word, translatedWord : translatedWord});
+        decodedToken = jwt.verify(token, 'flashcardsproject');
+        const author = decodedToken.nick;
+        const flashcardExist = await Flashcard.findOne({author : author, word : word, translatedWord : translatedWord, set : collectionName});
         if(flashcardExist){
             const error = new Error('This flashcard already exist in this set!');
             error.statusCode = 400;
@@ -40,7 +44,7 @@ exports.addFlashCard = async(req, res, next) => {
             imgPath : imgPath,
             author : author
         })
-        let collectionExist = await FlashcardsCollection.findOne({collectionName : collectionName});
+        let collectionExist = await FlashcardsCollection.findOne({author: author, collectionName : collectionName});
         if(!collectionExist){
             collectionExist = await new FlashcardsCollection({
                 collectionName : collectionName,

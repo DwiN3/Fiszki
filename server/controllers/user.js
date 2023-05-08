@@ -94,6 +94,6 @@ exports.login = async(req, res, next) => {
         return next(error);
     }
 
-    return res.status(200).json({token : token, user : nick});
+    return res.status(200).json({token : token});
 
 }
