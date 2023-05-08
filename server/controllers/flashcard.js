@@ -1,4 +1,5 @@
 const Flashcard = require('../models/flashcard');
+const FlashcardsCollection = require('../models/flashcardsCollection');
 const { validationResult } = require('express-validator');
 
 exports.addFlashCard = async(req, res, next) => {
@@ -11,7 +12,7 @@ exports.addFlashCard = async(req, res, next) => {
         return next(error);
     }
 
-    const setsId = req.params.setsId;
+    const collectionName = req.params.collectionName;
     const language = req.body.language;
     const category = req.body.category;
     const word = req.body.word;
@@ -22,14 +23,14 @@ exports.addFlashCard = async(req, res, next) => {
     const author = req.params.nick;
     
     try{
-        const flashcardExist = await Flashcard.findOne({ translatedWord : translatedWord});
+        const flashcardExist = await Flashcard.findOne({word : word, translatedWord : translatedWord});
         if(flashcardExist){
             const error = new Error('This flashcard already exist in this set!');
             error.statusCode = 400;
             throw(error);
         }
         const newFlashcard = new Flashcard({
-            set : setsId,
+            set : collectionName,
             language : language,
             category : category,
             word : word,
@@ -39,6 +40,16 @@ exports.addFlashCard = async(req, res, next) => {
             imgPath : imgPath,
             author : author
         })
+        let collectionExist = await FlashcardsCollection.findOne({collectionName : collectionName});
+        if(!collectionExist){
+            collectionExist = await new FlashcardsCollection({
+                collectionName : collectionName,
+                author : author,
+                flashcards : [newFlashcard]
+            })
+        }
+        else collectionExist.flashcards.push(newFlashcard);
+        await collectionExist.save();
         await newFlashcard.save();
     } catch(error){
         if(!error.statusCode) error.statusCode = 500;

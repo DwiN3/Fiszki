@@ -5,7 +5,7 @@ const isAuth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.post('/:setsId/:nick', isAuth,  
+router.post('/:collectionName/:nick', isAuth,  
     [
         body('language')
             .isIn('english'),
