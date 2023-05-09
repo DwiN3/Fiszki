@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get('/', isAuth, flashcardsCollectionController.getCollections);
 router.get('/:collectionName', isAuth, flashcardsCollectionController.getCollection);
+router.delete('/:collectionName', isAuth, flashcardsCollectionController.deleteCollection);
 
 module.exports = router;
