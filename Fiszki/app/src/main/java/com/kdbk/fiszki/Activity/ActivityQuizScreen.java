@@ -42,7 +42,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
-        nrWords = t.getWords();
+        nrWords = t.getWords()-1;
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -50,7 +50,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerButton2.setOnClickListener(this);
         answerButton3.setOnClickListener(this);
         answerButton4.setOnClickListener(this);
-        setQuestion(0);
+        setQuestion(nrWords);
     }
 
     @Override
@@ -150,8 +150,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.buttonNextQuiz:
-                nrWords -=1;
                 if(nrWords > 0){
+                    nrWords -=1;
                     clearButtons();
                     setQuestion(nrWords);
                 }
