@@ -58,8 +58,8 @@
 
     <TextView
         android:id="@+id/nameWordQuiz"
-        android:layout_width="105dp"
-        android:layout_height="51dp"
+        android:layout_width="259dp"
+        android:layout_height="52dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:textSize="34sp"
