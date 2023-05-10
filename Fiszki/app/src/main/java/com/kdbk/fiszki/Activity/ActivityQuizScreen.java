@@ -93,6 +93,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if(answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
+                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz2:
@@ -109,6 +110,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if(answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
+                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz3:
@@ -125,6 +127,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if(answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
+                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz4:
@@ -141,6 +144,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if(answerText3.getText().equals(correctAnswer)) {
                         answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     }
+                    markTheAnswer = true;
                 }
                 break;
             case R.id.buttonNextQuiz:
