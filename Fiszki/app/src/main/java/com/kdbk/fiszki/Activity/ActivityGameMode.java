@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
@@ -18,6 +19,7 @@ public class ActivityGameMode extends AppCompatActivity {
     private ImageView  flagFirstImage,flagSecendImage;
     private String selectedMode = "quiz";
     private String selectedLanguage = "pl";
+    private InternetConnection con = new InternetConnection(this);
 
 
     @Override
@@ -32,6 +34,60 @@ public class ActivityGameMode extends AppCompatActivity {
         learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
     }
 
+    private void setButtonListeners() {
+
+            categories.setOnClickListener(v -> {
+                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
+                else{
+                    Intent intent = new Intent();
+                    intent.putExtra("SelectedMode", selectedMode);
+                    intent.putExtra("SelectLanguage", selectedLanguage);
+                    nextActivity.openActivity(ActivityCategories.class, intent);
+                }
+            });
+
+            yoursKits.setOnClickListener(v -> {
+                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
+                else {
+                    Intent intent = new Intent();
+                    intent.putExtra("SelectedMode", selectedMode);
+                    intent.putExtra("SelectLanguage", selectedLanguage);
+                    nextActivity.openActivity(ActivityKits.class, intent);
+                }
+            });
+
+            quizMode.setOnClickListener(v -> {
+                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
+                else {
+                    selectedMode = "quiz";
+                    quizMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
+                    learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
+                }
+            });
+
+            learnMode.setOnClickListener(v -> {
+                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
+                else {
+                    selectedMode = "learn";
+                    learnMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
+                    quizMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
+                }
+            });
+
+            reverse.setOnClickListener(v -> {
+                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
+                else{
+                    if (selectedLanguage.equals("pl")) selectedLanguage = "ang";
+                    else if (selectedLanguage.equals("ang")) selectedLanguage = "pl";
+                    //System.out.println(selectedLanguage);
+                    Drawable firstImage = flagFirstImage.getDrawable();
+                    Drawable secondImage = flagSecendImage.getDrawable();
+                    flagFirstImage.setImageDrawable(secondImage);
+                    flagSecendImage.setImageDrawable(firstImage);
+                }
+            });
+        }
+
     private void setID() {
         quizMode = findViewById(R.id.buttonQuizMode);
         learnMode = findViewById(R.id.buttonLearnMode);
@@ -40,43 +96,5 @@ public class ActivityGameMode extends AppCompatActivity {
         flagSecendImage = findViewById(R.id.flagSecend);
         yoursKits = findViewById(R.id.buttonYourFlashcardsMode);
         categories = findViewById(R.id.buttonCategoriesMode);
-    }
-
-    private void setButtonListeners() {
-        categories.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.putExtra("SelectedMode", selectedMode);
-            intent.putExtra("SelectLanguage", selectedLanguage);
-            nextActivity.openActivity(ActivityCategories.class, intent);
-        });
-
-        yoursKits.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.putExtra("SelectedMode", selectedMode);
-            intent.putExtra("SelectLanguage", selectedLanguage);
-            nextActivity.openActivity(ActivityKits.class, intent);
-        });
-
-        quizMode.setOnClickListener(v -> {
-            selectedMode = "quiz";
-            quizMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
-            learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
-        });
-
-        learnMode.setOnClickListener(v -> {
-            selectedMode = "learn";
-            learnMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
-            quizMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
-        });
-
-        reverse.setOnClickListener(v -> {
-            if(selectedLanguage.equals("pl")) selectedLanguage = "ang";
-            else if(selectedLanguage.equals("ang")) selectedLanguage = "pl";
-            //System.out.println(selectedLanguage);
-            Drawable firstImage = flagFirstImage.getDrawable();
-            Drawable secondImage = flagSecendImage.getDrawable();
-            flagFirstImage.setImageDrawable(secondImage);
-            flagSecendImage.setImageDrawable(firstImage);
-        });
     }
 }

@@ -21,7 +21,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
     private boolean kits = false;
     private Token token  = Token.getInstance();
 
-    InternetConnection con = new InternetConnection(this);
+    private InternetConnection con = new InternetConnection(this);
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String LASTUSERNAME = "lastusername";
     public static final String LASTTOKEN = "lasttoken";
@@ -34,7 +34,9 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
 
         helloNick.setText("Witaj "+token.getUserName());
         saveData();
-        logout.setOnClickListener(this);
+        if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
+        else internetError.setVisibility(View.VISIBLE);
+
         learn.setOnClickListener(this);
         yourProfile.setOnClickListener(this);
         addFlashcards.setOnClickListener(this);
