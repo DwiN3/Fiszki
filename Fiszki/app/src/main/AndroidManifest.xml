@@ -16,9 +16,6 @@
         android:theme="@style/Theme.Fiszki"
         tools:targetApi="31">
         <activity
-            android:name=".ActivitySplashScreen"
-            android:exported="false" />
-        <activity
             android:name=".Activity.ActivityShowKitsEdit"
             android:exported="false" />
         <activity
@@ -62,7 +59,10 @@
             android:exported="false" />
         <activity
             android:name=".Activity.ActivityFirstScreen"
-            android:exported="true">
+            android:exported="false"/>
+        <activity
+            android:name=".Activity.ActivitySplashScreen"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
