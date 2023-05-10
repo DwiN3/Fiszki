@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Adaper.AdapterKits;
-import com.kdbk.fiszki.Other.KitsArray;
+import com.kdbk.fiszki.Arrays.KitsArray;
 import com.kdbk.fiszki.Model.ModelKits;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;

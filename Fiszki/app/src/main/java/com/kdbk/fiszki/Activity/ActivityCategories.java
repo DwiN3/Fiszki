@@ -22,7 +22,7 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
-    private com.kdbk.fiszki.Other.CategoriesArray CategoriesArray = com.kdbk.fiszki.Other.CategoriesArray.getInstance();
+    private com.kdbk.fiszki.Arrays.CategoriesArray CategoriesArray = com.kdbk.fiszki.Arrays.CategoriesArray.getInstance();
     private ArrayList<ModelCategories> list = CategoriesArray.getList();
 
     @Override

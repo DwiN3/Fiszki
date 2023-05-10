@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.kdbk.fiszki.Adaper.AdapterShowKitsEdit;
-import com.kdbk.fiszki.Other.EditFlashcardArray;
+import com.kdbk.fiszki.Arrays.EditFlashcardArray;
 import com.kdbk.fiszki.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;

@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Other;
+package com.kdbk.fiszki.Arrays;
 
 import com.kdbk.fiszki.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.R;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
     public class EditFlashcardArray {
-        private static com.kdbk.fiszki.Other.EditFlashcardArray instance = null;
+        private static EditFlashcardArray instance = null;
         private Map<Integer, ArrayList<ModelEditFlashcard>> allList = new HashMap<>();
         WordsArray wordsArray = new WordsArray();
 

@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Other;
+package com.kdbk.fiszki.Arrays;
 
 import com.kdbk.fiszki.Model.ModelKits;
 

@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.kdbk.fiszki.Adaper.AdapterAddFlashcard;
-import com.kdbk.fiszki.Other.EditFlashcardArray;
-import com.kdbk.fiszki.Other.FlashcardArray;
+import com.kdbk.fiszki.Arrays.EditFlashcardArray;
+import com.kdbk.fiszki.Arrays.FlashcardArray;
 import com.kdbk.fiszki.Model.ModelAddFlashcard;
 import com.kdbk.fiszki.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.WordsArray;
+import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.SelectListener.SelectListenerAddFlashcard;
 
