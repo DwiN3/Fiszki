@@ -25,7 +25,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private boolean markTheAnswer = false;
     private String correctAnswer;
-    private int nrWords = 3;
+    private int nrWords;
     TESTGameClass t = new TESTGameClass();
 
 
