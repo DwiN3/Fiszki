@@ -15,8 +15,8 @@ import com.kdbk.fiszki.R;
 public class ActivityQuizEnd extends AppCompatActivity {
     NextActivity nextActivity = new NextActivity(this);
     private Button exit;
-    private String points ="";
-    private TextView pointsText;
+    private String points ="", allWords="";
+    private TextView pointsText, ScoreEndQuiz;
 
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
@@ -28,7 +28,9 @@ public class ActivityQuizEnd extends AppCompatActivity {
 
         Intent intent = getIntent();
         points = intent.getStringExtra("Points");
+        allWords = intent.getStringExtra("Words");
         pointsText.setText(points);
+        ScoreEndQuiz.setText("/"+allWords+" PKT");
 
 
         exit.setOnClickListener(new View.OnClickListener() {
@@ -50,5 +52,6 @@ public class ActivityQuizEnd extends AppCompatActivity {
     private void setID() {
         exit = findViewById(R.id.buttonBackToMenuEndQuiz);
         pointsText = findViewById(R.id.textScorePKTEndQuiz);
+        ScoreEndQuiz = findViewById(R.id.textScoreEndQuiz);
     }
 }

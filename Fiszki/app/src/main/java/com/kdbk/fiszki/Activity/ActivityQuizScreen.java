@@ -19,13 +19,13 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
     private ImageView imageWordQuiz;
-    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT;
+    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
     private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private boolean markTheAnswer = false;
     private String correctAnswer;
-    private int nrWords;
+    private int nrWords, allWords;
     TESTGameClass t = new TESTGameClass();
 
 
@@ -43,6 +43,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
         nrWords = t.getWords()-1;
+        allWords = t.getWords();
+        userPKTQuiz.setText("/"+allWords+" PKT");
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -63,7 +65,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     void setQuestion(int numberWord){
         markTheAnswer = false;
-        sticksLeftQuizText.setText(""+nrWords);
+        sticksLeftQuizText.setText(""+(nrWords+1));
         nameWordQuizText.setText(t.getNameWord(numberWord));
         answerText1.setText(t.getAns1(numberWord));
         answerText2.setText(t.getAns2(numberWord));
@@ -75,6 +77,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
 
     public void onClick(View view) {
+        if(nrWords == 0) next.setText("PODSUMOWANIE");
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
@@ -158,6 +161,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 else{
                     Intent intent = new Intent();
                     intent.putExtra("Points", String.valueOf(points));
+                    intent.putExtra("Words", String.valueOf(allWords));
                     nextActivity.openActivity(ActivityQuizEnd.class, intent);
                 }
                 break;
@@ -190,5 +194,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         imageWordQuiz = findViewById(R.id.imageWordQuiz);
         sticksLeftQuizText = findViewById(R.id.sticksLeftQuiz);
         scorePKT = findViewById(R.id.userPKTScoreQuiz);
+        userPKTQuiz = findViewById(R.id.userPKTQuizText);
     }
 }
