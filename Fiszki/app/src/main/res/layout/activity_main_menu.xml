@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ActivityMainMenu">
 
+
+
     <ImageView
         android:id="@+id/circle"
         android:layout_width="905dp"
@@ -137,6 +139,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagPL" />
+
+    <TextView
+        android:id="@+id/idTextInternetError"
+        android:layout_width="419dp"
+        android:layout_height="40dp"
+        android:background="#FC8224"
+        android:gravity="center"
+        android:text="Internet connection required"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
