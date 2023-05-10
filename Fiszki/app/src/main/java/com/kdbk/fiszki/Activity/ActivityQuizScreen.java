@@ -79,7 +79,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
                 if(answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=10;
+                    points +=1;
                     scorePKT.setText(""+points);
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
@@ -97,7 +97,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.imageButtonAnswerQuiz2:
                 if(answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=10;
+                    points +=1;
                     scorePKT.setText(""+points);
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
@@ -115,7 +115,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.imageButtonAnswerQuiz3:
                 if(answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=10;
+                    points +=1;
                     scorePKT.setText(""+points);
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
@@ -133,7 +133,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.imageButtonAnswerQuiz4:
                 if(answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=10;
+                    points +=1;
                     scorePKT.setText(""+points);
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
