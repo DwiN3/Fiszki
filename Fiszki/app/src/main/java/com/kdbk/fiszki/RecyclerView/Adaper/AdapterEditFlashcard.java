@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Adaper;
+package com.kdbk.fiszki.RecyclerView.Adaper;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kdbk.fiszki.Model.ModelEditFlashcard;
+import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.SelectListener.SelectListenerEditFlashcard;
+import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerEditFlashcard;
 
 import java.util.ArrayList;
 

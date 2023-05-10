@@ -1,6 +1,6 @@
 package com.kdbk.fiszki.Arrays;
 
-import com.kdbk.fiszki.Model.ModelEditFlashcard;
+import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Model;
+package com.kdbk.fiszki.RecyclerView.Model;
 
 public class ModelShowKitsEdit {
 

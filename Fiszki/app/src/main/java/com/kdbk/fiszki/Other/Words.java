@@ -1,10 +1,10 @@
-package com.kdbk.fiszki.Model;
+package com.kdbk.fiszki.Other;
 
-public class ModelWord {
+public class Words {
     private String word, translateWord, sampleSentence, translateSampleSentence;
     private int id;
 
-    public ModelWord(String word, String translateWord, String sampleSentence, String translateSampleSentence, int id) {
+    public Words(String word, String translateWord, String sampleSentence, String translateSampleSentence, int id) {
         this.word = word;
         this.translateWord = translateWord;
         this.sampleSentence = sampleSentence;

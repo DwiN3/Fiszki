@@ -1,6 +1,6 @@
 package com.kdbk.fiszki.Arrays;
 
-import com.kdbk.fiszki.Model.ModelKits;
+import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 
 import java.util.ArrayList;
 

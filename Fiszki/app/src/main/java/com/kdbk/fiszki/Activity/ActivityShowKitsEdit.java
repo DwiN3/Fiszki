@@ -10,13 +10,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.kdbk.fiszki.Adaper.AdapterShowKitsEdit;
+import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
-import com.kdbk.fiszki.Model.ModelEditFlashcard;
-import com.kdbk.fiszki.Model.ModelShowKitsEdit;
+import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
+import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.SelectListener.SelectListenerShowKitsEdit;
+import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
 
 import java.util.ArrayList;
 import java.util.Map;

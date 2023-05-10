@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.kdbk.fiszki.Adaper.AdapterCategories;
-import com.kdbk.fiszki.Model.ModelCategories;
+import com.kdbk.fiszki.RecyclerView.Adaper.AdapterCategories;
+import com.kdbk.fiszki.RecyclerView.Model.ModelCategories;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.SelectListener.SelectListenerCategories;
+import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerCategories;
 
 import java.util.ArrayList;
 

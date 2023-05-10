@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Adaper;
+package com.kdbk.fiszki.RecyclerView.Adaper;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kdbk.fiszki.Model.ModelCategories;
+import com.kdbk.fiszki.RecyclerView.Model.ModelCategories;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.SelectListener.SelectListenerCategories;
+import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerCategories;
 
 import java.util.ArrayList;
 

@@ -1,17 +1,17 @@
 package com.kdbk.fiszki.Arrays;
-import com.kdbk.fiszki.Model.ModelWord;
+import com.kdbk.fiszki.Other.Words;
 import java.util.ArrayList;
 
 public class WordsArray {
     private static WordsArray instance = null;
-    ArrayList<ModelWord> list;
+    ArrayList<Words> list;
 
     public WordsArray() {
         list = new ArrayList<>();
-        list.add(new ModelWord("pies", "dog", "Mój pies lubi kosci", "My dog likes bones", 0));
-        list.add(new ModelWord("auto", "car", "Lubie latac bokiem", "I like drifting", 1));
-        list.add(new ModelWord("mrowka", "ant", "Bardzo pracowite zwierzęta", "Very hardworking animals", 2));
-        list.add(new ModelWord("rycerz", "knight", "Walczy ze smokami", "He fights dragons", 3));
+        list.add(new Words("pies", "dog", "Mój pies lubi kosci", "My dog likes bones", 0));
+        list.add(new Words("auto", "car", "Lubie latac bokiem", "I like drifting", 1));
+        list.add(new Words("mrowka", "ant", "Bardzo pracowite zwierzęta", "Very hardworking animals", 2));
+        list.add(new Words("rycerz", "knight", "Walczy ze smokami", "He fights dragons", 3));
     }
 
 
