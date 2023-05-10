@@ -55,6 +55,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     }
 
     void setQuestion(){
+        markTheAnswer = false;
         nameWordQuizText.setText("Pies");
         answerText1.setText("dog");
         answerText2.setText("duck");
