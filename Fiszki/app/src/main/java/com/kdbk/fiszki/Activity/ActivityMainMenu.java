@@ -38,6 +38,15 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         learn.setOnClickListener(this);
         yourProfile.setOnClickListener(this);
         addFlashcards.setOnClickListener(this);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                token.setUserName("");
+                token.setToken("");
+                saveData();
+                nextActivity.openActivity(ActivityFirstScreen.class);
+            }
+        });
     }
 
     public void onClick(View view) {
@@ -59,16 +68,6 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
             }
         }
         else internetError.setVisibility(View.VISIBLE);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                token.setUserName("");
-                token.setToken("");
-                saveData();
-                nextActivity.openActivity(ActivityFirstScreen.class);
-            }
-        });
     }
 
     public void saveData() {
