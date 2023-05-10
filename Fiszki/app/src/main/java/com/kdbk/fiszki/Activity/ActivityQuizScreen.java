@@ -23,7 +23,10 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private boolean markTheAnswer = false;
-    private int correctAnswer;
+    private String correctAnswer;
+
+    private int buttonCorrectAnswer = R.drawable.rounded_button_green;
+    private int buttonUnCorrectAnswer = R.drawable.rounded_button_red;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +60,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText2.setText("duck");
         answerText3.setText("cat");
         answerText4.setText("worm");
+        correctAnswer = "dog";
+
         imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
     }
 
     void checkAnswer(){
-        
 
     }
 
@@ -69,17 +73,64 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
-
-                answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
+                if(answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
+                    answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
+                    markTheAnswer = true;
+                } else if (!markTheAnswer) {
+                    answerButton1.setBackgroundResource(R.drawable.rounded_button_red);
+                    if(answerText2.getText().equals(correctAnswer)) {
+                        answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText3.getText().equals(correctAnswer)) {
+                        answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText4.getText().equals(correctAnswer)) {
+                        answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
+                    }
+                }
                 break;
             case R.id.imageButtonAnswerQuiz2:
-                answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
+                if(answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
+                    answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
+                    markTheAnswer = true;
+                } else if (!markTheAnswer) {
+                    answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
+                    if(answerText1.getText().equals(correctAnswer)) {
+                        answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText3.getText().equals(correctAnswer)) {
+                        answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText4.getText().equals(correctAnswer)) {
+                        answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
+                    }
+                }
                 break;
             case R.id.imageButtonAnswerQuiz3:
-                answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
+                if(answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
+                    answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
+                    markTheAnswer = true;
+                } else if (!markTheAnswer) {
+                    answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
+                    if(answerText1.getText().equals(correctAnswer)) {
+                        answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText2.getText().equals(correctAnswer)) {
+                        answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText4.getText().equals(correctAnswer)) {
+                        answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
+                    }
+                }
                 break;
             case R.id.imageButtonAnswerQuiz4:
-                answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
+                if(answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
+                    answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
+                    markTheAnswer = true;
+                } else if (!markTheAnswer) {
+                    answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
+                    if(answerText1.getText().equals(correctAnswer)) {
+                        answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText2.getText().equals(correctAnswer)) {
+                        answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
+                    } else if(answerText3.getText().equals(correctAnswer)) {
+                        answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
+                    }
+                }
                 break;
             case R.id.buttonNextQuiz:
                 nextActivity.openActivity(ActivityQuizEnd.class);
@@ -89,6 +140,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
 
     private void setID() {
         next = findViewById(R.id.buttonNextQuiz);
