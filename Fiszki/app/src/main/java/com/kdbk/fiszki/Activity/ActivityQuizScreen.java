@@ -18,7 +18,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
     private ImageView imageWordQuiz;
-    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText;
+    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
     private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
@@ -64,6 +64,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     void setQuestion(int numberWord){
         markTheAnswer = false;
+        scorePKT.setText(""+points);
         sticksLeftQuizText.setText(""+nrWords);
         nameWordQuizText.setText(NameWord[numberWord]);
         answerText1.setText(ans1[numberWord]);
@@ -178,5 +179,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         nameWordQuizText = findViewById(R.id.nameWordQuiz);
         imageWordQuiz = findViewById(R.id.imageWordQuiz);
         sticksLeftQuizText = findViewById(R.id.sticksLeftQuiz);
+        scorePKT = findViewById(R.id.userPKTScoreQuiz);
     }
 }
