@@ -1,5 +1,7 @@
 package com.kdbk.fiszki.Other;
 
+import com.kdbk.fiszki.R;
+
 public class TESTGameClass {
 
     private String[] NameWord = {"Pies", "Niedzwiedz", "Krowa", "Ślimak"};
@@ -8,6 +10,7 @@ public class TESTGameClass {
     private String[] ans3= {"cat", "bear", "lion", "pig"};
     private String[] ans4= {"worm", "bat", "sheep", "snail"};
     private String[] correctANS = {"dog", "bear", "cow", "snail"};
+    private int[] img = {R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
 
     private int words = NameWord.length;
 
@@ -33,6 +36,10 @@ public class TESTGameClass {
 
     public String getCorrectANS(int i) {
         return correctANS[i];
+    }
+
+    public int getImg(int i) {
+        return img[i];
     }
 
     public int getWords() {

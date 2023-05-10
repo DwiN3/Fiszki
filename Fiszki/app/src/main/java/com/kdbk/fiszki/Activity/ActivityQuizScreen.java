@@ -70,7 +70,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText3.setText(t.getAns3(numberWord));
         answerText4.setText(t.getAns4(numberWord));
         correctAnswer = t.getCorrectANS(numberWord);
-        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+        imageWordQuiz.setBackgroundResource(t.getImg(numberWord));
     }
 
 
