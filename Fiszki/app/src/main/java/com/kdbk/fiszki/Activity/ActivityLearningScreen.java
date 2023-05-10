@@ -7,15 +7,21 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
+
+import org.w3c.dom.Text;
 
 public class ActivityLearningScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
     private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+    private TextView nameWord, sticksLeft, textsampleSentence;
+    private ImageView imageWord;
 
 
     @Override
@@ -46,6 +52,10 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private void setID() {
         next = findViewById(R.id.buttonNextLearning);
         exit = findViewById(R.id.buttonExitLearning);
+        nameWord = findViewById(R.id.textnameWordLearning);
+        sticksLeft = findViewById(R.id.textsticksLeftLearning);
+        textsampleSentence = findViewById(R.id.textsampleSentenceLearning);
+        imageWord = findViewById(R.id.imageWordLearning);
     }
 
     @Override

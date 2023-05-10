@@ -10,6 +10,8 @@ public class TESTGameClass {
     private String[] ans3= {"cat", "bear", "lion", "pig"};
     private String[] ans4= {"worm", "bat", "sheep", "snail"};
     private String[] correctANS = {"dog", "bear", "cow", "snail"};
+    private String[] sentense = {"Najlepszy przyjaciel człowieka", };
+    private String[] sentenseTra = {"Man's best friend", };
     private int[] img = {R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
 
     private int words = NameWord.length;

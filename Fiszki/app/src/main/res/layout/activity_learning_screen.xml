@@ -22,7 +22,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/sticksLeftLearning"
+        android:id="@+id/textsticksLeftLearning"
         android:layout_width="113dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -54,11 +54,11 @@
         app:layout_constraintEnd_toEndOf="@+id/imageButtonLearning"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/imageButtonLearning"
-        app:layout_constraintTop_toBottomOf="@+id/nameWordLearning"
+        app:layout_constraintTop_toBottomOf="@+id/textnameWordLearning"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/nameWordLearning"
+        android:id="@+id/textnameWordLearning"
         android:layout_width="105dp"
         android:layout_height="51dp"
         android:layout_marginTop="5dp"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageButtonLearning" />
 
     <TextView
-        android:id="@+id/sampleSentenceLearning"
+        android:id="@+id/textsampleSentenceLearning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sampleSentenceLearning" />
+        app:layout_constraintTop_toBottomOf="@+id/textsampleSentenceLearning" />
 
     <Button
         android:id="@+id/buttonExitLearning"
