@@ -1,5 +1,8 @@
 package com.kdbk.fiszki.Activity;
 
+import static com.kdbk.fiszki.Activity.ActivityMainMenu.LASTTOKEN;
+import static com.kdbk.fiszki.Activity.ActivityMainMenu.LASTUSERNAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,7 +25,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        loadData();
 
         if (token.getToken().equals("123")) {
             startScreen = ActivityMainMenu.class;
@@ -42,5 +45,13 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 finish();
             }
         }, 2500);
+    }
+
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String username = sharedPreferences.getString(LASTUSERNAME, "");
+        String ttoken = sharedPreferences.getString(LASTTOKEN, "");
+        token.setUserName(username);
+        token.setToken(ttoken);
     }
 }

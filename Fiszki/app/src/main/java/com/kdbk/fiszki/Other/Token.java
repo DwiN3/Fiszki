@@ -28,6 +28,4 @@ public class Token {
     public void setToken(String token) {
         Token.token = token;
     }
-
-    
 }
