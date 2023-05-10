@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.kdbk.fiszki.Arrays.FlashcardArray;
+import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Login;
@@ -28,6 +30,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     NextActivity nextActivity = new NextActivity(this);
     private Button login, create, reset;
     private EditText loginText, passwordText;
+    private TextView internetError;
+    InternetConnection con = new InternetConnection(this);
     private Token token  = Token.getInstance();
 
     @Override
@@ -35,6 +39,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
         setID();
+        if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
+        else internetError.setVisibility(View.VISIBLE);
 
         reset.setOnClickListener(this);
         create.setOnClickListener(this);
@@ -42,20 +48,24 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     }
 
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.buttonPasswordReset:
-                nextActivity.openActivity(ActivityPasswordReset.class);
-                break;
-            case R.id.buttonCreate:
-                nextActivity.openActivity(ActivityRegister.class);
-                break;
-            case R.id.buttonLogin:
-                checkAccount();
-                token.setUserName(loginText.getText().toString());
-                token.setToken("123");
-                nextActivity.openActivity(ActivityMainMenu.class);
-                break;
+        if(con.checkInternetConnection()){
+            internetError.setVisibility(View.INVISIBLE);
+            switch (view.getId()) {
+                case R.id.buttonPasswordReset:
+                    nextActivity.openActivity(ActivityPasswordReset.class);
+                    break;
+                case R.id.buttonCreate:
+                    nextActivity.openActivity(ActivityRegister.class);
+                    break;
+                case R.id.buttonLogin:
+                    checkAccount();
+                    token.setUserName(loginText.getText().toString());
+                    token.setToken("123");
+                    nextActivity.openActivity(ActivityMainMenu.class);
+                    break;
+            }
         }
+        else internetError.setVisibility(View.VISIBLE);
     }
 
     private void setID() {
@@ -64,6 +74,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         reset = findViewById(R.id.buttonPasswordReset);
         loginText = findViewById(R.id.textNick);
         passwordText = findViewById(R.id.textPassword);
+        internetError = findViewById(R.id.idTextInternetErrorFirstScreen);
     }
 
     private void checkAccount() {

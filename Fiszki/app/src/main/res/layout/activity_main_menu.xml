@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/flagPL" />
 
     <TextView
-        android:id="@+id/idTextInternetError"
+        android:id="@+id/idTextInternetErrorMenu"
         android:layout_width="419dp"
         android:layout_height="40dp"
         android:background="#FC8224"

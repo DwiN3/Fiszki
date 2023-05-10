@@ -85,6 +85,6 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         yourProfile = findViewById(R.id.buttonYourProfile);
         addFlashcards = findViewById(R.id.buttonAddFlashcard);
         helloNick = findViewById(R.id.textHelloNick);
-        internetError = findViewById(R.id.idTextInternetError);
+        internetError = findViewById(R.id.idTextInternetErrorMenu);
     }
 }

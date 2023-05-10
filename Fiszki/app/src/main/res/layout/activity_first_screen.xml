@@ -142,5 +142,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
+    <TextView
+        android:id="@+id/idTextInternetErrorFirstScreen"
+        android:layout_width="419dp"
+        android:layout_height="40dp"
+        android:background="#FC8224"
+        android:gravity="center"
+        android:text="Internet connection required"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
