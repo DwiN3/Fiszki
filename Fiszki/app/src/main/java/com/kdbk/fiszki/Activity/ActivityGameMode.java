@@ -37,54 +37,39 @@ public class ActivityGameMode extends AppCompatActivity {
     private void setButtonListeners() {
 
             categories.setOnClickListener(v -> {
-                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
-                else{
-                    Intent intent = new Intent();
-                    intent.putExtra("SelectedMode", selectedMode);
-                    intent.putExtra("SelectLanguage", selectedLanguage);
-                    nextActivity.openActivity(ActivityCategories.class, intent);
-                }
+                Intent intent = new Intent();
+                intent.putExtra("SelectedMode", selectedMode);
+                intent.putExtra("SelectLanguage", selectedLanguage);
+                nextActivity.openActivity(ActivityCategories.class, intent);
             });
 
             yoursKits.setOnClickListener(v -> {
-                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
-                else {
-                    Intent intent = new Intent();
-                    intent.putExtra("SelectedMode", selectedMode);
-                    intent.putExtra("SelectLanguage", selectedLanguage);
-                    nextActivity.openActivity(ActivityKits.class, intent);
-                }
+                Intent intent = new Intent();
+                intent.putExtra("SelectedMode", selectedMode);
+                intent.putExtra("SelectLanguage", selectedLanguage);
+                nextActivity.openActivity(ActivityKits.class, intent);
             });
 
             quizMode.setOnClickListener(v -> {
-                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
-                else {
-                    selectedMode = "quiz";
-                    quizMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
-                    learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
-                }
+                selectedMode = "quiz";
+                quizMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
+                learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
             });
 
             learnMode.setOnClickListener(v -> {
-                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
-                else {
-                    selectedMode = "learn";
-                    learnMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
-                    quizMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
-                }
+                selectedMode = "learn";
+                learnMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
+                quizMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
             });
 
             reverse.setOnClickListener(v -> {
-                if(!con.checkInternetConnection()) con.IntentIfNoConnection();
-                else{
-                    if (selectedLanguage.equals("pl")) selectedLanguage = "ang";
-                    else if (selectedLanguage.equals("ang")) selectedLanguage = "pl";
-                    //System.out.println(selectedLanguage);
-                    Drawable firstImage = flagFirstImage.getDrawable();
-                    Drawable secondImage = flagSecendImage.getDrawable();
-                    flagFirstImage.setImageDrawable(secondImage);
-                    flagSecendImage.setImageDrawable(firstImage);
-                }
+                if (selectedLanguage.equals("pl")) selectedLanguage = "ang";
+                else if (selectedLanguage.equals("ang")) selectedLanguage = "pl";
+                //System.out.println(selectedLanguage);
+                Drawable firstImage = flagFirstImage.getDrawable();
+                Drawable secondImage = flagSecendImage.getDrawable();
+                flagFirstImage.setImageDrawable(secondImage);
+                flagSecendImage.setImageDrawable(firstImage);
             });
         }
 
