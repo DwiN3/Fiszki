@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
+import com.kdbk.fiszki.Other.TESTGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
@@ -25,16 +26,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private boolean markTheAnswer = false;
     private String correctAnswer;
     private int nrWords = 3;
+    TESTGameClass t = new TESTGameClass();
 
 
     // TEST QUIZU
     private int points = 0;
-    private String[] NameWord = {"Pies", "Niedzwiedz", "Krowa"};
-    private String[] ans1 = {"dog", "bird", "goat"};
-    private String[] ans2= {"duck", "bee", "cow"};
-    private String[] ans3= {"cat", "bear", "lion"};
-    private String[] ans4= {"worm", "bat", "sheep"};
-    private String[] correctANS = {"dog", "bear", "cow"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +41,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
         Intent intent = getIntent();
         selectedLanguage = intent.getStringExtra("SelectLanguage");
+
+        nrWords = t.getWords();
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -64,14 +63,13 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     void setQuestion(int numberWord){
         markTheAnswer = false;
-        scorePKT.setText(""+points);
         sticksLeftQuizText.setText(""+nrWords);
-        nameWordQuizText.setText(NameWord[numberWord]);
-        answerText1.setText(ans1[numberWord]);
-        answerText2.setText(ans2[numberWord]);
-        answerText3.setText(ans3[numberWord]);
-        answerText4.setText(ans4[numberWord]);
-        correctAnswer = correctANS[numberWord];
+        nameWordQuizText.setText(t.getNameWord(numberWord));
+        answerText1.setText(t.getAns1(numberWord));
+        answerText2.setText(t.getAns2(numberWord));
+        answerText3.setText(t.getAns3(numberWord));
+        answerText4.setText(t.getAns4(numberWord));
+        correctAnswer = t.getCorrectANS(numberWord);
         imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
     }
 
@@ -82,6 +80,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
             case R.id.imageButtonAnswerQuiz1:
                 if(answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
                     points +=10;
+                    scorePKT.setText(""+points);
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
                 } else if (!markTheAnswer) {
@@ -99,6 +98,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
             case R.id.imageButtonAnswerQuiz2:
                 if(answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
                     points +=10;
+                    scorePKT.setText(""+points);
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
                 } else if (!markTheAnswer) {
@@ -116,6 +116,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
             case R.id.imageButtonAnswerQuiz3:
                 if(answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
                     points +=10;
+                    scorePKT.setText(""+points);
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
                 } else if (!markTheAnswer) {
@@ -133,6 +134,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
             case R.id.imageButtonAnswerQuiz4:
                 if(answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
                     points +=10;
+                    scorePKT.setText(""+points);
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
                 } else if (!markTheAnswer) {
