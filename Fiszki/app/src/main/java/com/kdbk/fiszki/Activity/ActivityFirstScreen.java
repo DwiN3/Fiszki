@@ -2,11 +2,14 @@ package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.kdbk.fiszki.Arrays.FlashcardArray;
+import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Login;
 import com.kdbk.fiszki.Other.NextActivity;
@@ -25,6 +28,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     NextActivity nextActivity = new NextActivity(this);
     private Button login, create, reset;
     private EditText loginText, passwordText;
+    private Token token  = Token.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.buttonLogin:
                 checkAccount();
+                token.setUserName(loginText.getText().toString());
+                token.setToken("123");
                 nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
