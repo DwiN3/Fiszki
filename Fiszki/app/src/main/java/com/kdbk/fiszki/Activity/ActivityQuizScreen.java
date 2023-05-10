@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
@@ -16,10 +17,13 @@ import com.kdbk.fiszki.R;
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
-    private TextView answerText1, answerText2, answerText3, answerText4;
+    private ImageView imageWordQuiz;
+    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
     private String selectedLanguage = "";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+    private boolean markTheAnswer = false;
+    private int correctAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerButton2.setOnClickListener(this);
         answerButton3.setOnClickListener(this);
         answerButton4.setOnClickListener(this);
+        setQuestion();
     }
 
     @Override
@@ -46,10 +51,25 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         return super.dispatchKeyEvent(event);
     }
 
+    void setQuestion(){
+        nameWordQuizText.setText("Pies");
+        answerText1.setText("dog");
+        answerText2.setText("duck");
+        answerText3.setText("cat");
+        answerText4.setText("worm");
+        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+    }
+
+    void checkAnswer(){
+        
+
+    }
+
     public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
+
                 answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                 break;
             case R.id.imageButtonAnswerQuiz2:
@@ -81,5 +101,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText2 = findViewById(R.id.textAnswerQuiz2);
         answerText3 = findViewById(R.id.textAnswerQuiz3);
         answerText4 = findViewById(R.id.textAnswerQuiz4);
+        nameWordQuizText = findViewById(R.id.nameWordQuiz);
+        imageWordQuiz = findViewById(R.id.imageWordQuiz);
     }
 }
