@@ -24,7 +24,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private TextView nameWord, sticksLeft, textsampleSentence;
     private Button buttonNext;
     private ImageView imageWord;
-    private int nrWords;
+    private int nrWords, allWords, countWords = 0;
     TESTGameClass t = new TESTGameClass();
 
 
@@ -37,6 +37,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         Intent intent = getIntent();
         selectedLanguage = intent.getStringExtra("SelectLanguage");
 
+        allWords = t.getWords();
         nrWords = t.getWords()-1;
         setNewWord(nrWords);
 
@@ -51,19 +52,18 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                 if(buttonNext.getText().equals("POKAŻ TŁUMACZENIE")){
                     buttonNext.setText("NASTĘPNE SŁOWO");
                     translateWord(nrWords);
+                    if (nrWords == 0) {
+                        buttonNext.setVisibility(View.GONE);
+                        buttonNext.setEnabled(false);
+                    }
                 }
                 else
                 {
                     buttonNext.setText("POKAŻ TŁUMACZENIE");
-                    if(nrWords > 0){
-                        nrWords -=1;
+                    if(nrWords > 0) {
+                        nrWords -= 1;
                         setNewWord(nrWords);
                     }
-                    else{
-                        buttonNext.setVisibility(View.GONE);
-                        buttonNext.setEnabled(false);
-                    }
-
                 }
                 break;
             case R.id.buttonExitLearning:
@@ -76,6 +76,8 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         nameWord.setText(t.getNameWord(numberWord));
         textsampleSentence.setText(t.getSentense(numberWord));
         imageWord.setBackgroundResource(t.getImg(numberWord));
+        countWords +=1;
+        sticksLeft.setText(countWords+"/"+allWords);
     }
 
     private void translateWord(int numberWord){
