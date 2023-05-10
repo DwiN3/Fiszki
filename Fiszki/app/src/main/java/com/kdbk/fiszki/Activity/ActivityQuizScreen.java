@@ -149,7 +149,11 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     clearButtons();
                     setQuestion(nrWords);
                 }
-                else nextActivity.openActivity(ActivityQuizEnd.class);
+                else{
+                    Intent intent = new Intent();
+                    intent.putExtra("Points", String.valueOf(points));
+                    nextActivity.openActivity(ActivityQuizEnd.class, intent);
+                }
                 break;
             case R.id.buttonExitQuiz:
                 nextActivity.openActivity(ActivityMainMenu.class);

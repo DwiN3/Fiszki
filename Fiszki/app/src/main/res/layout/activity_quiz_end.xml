@@ -65,11 +65,25 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:id="@+id/textScorePKTEndQuiz"
+        android:layout_width="46dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="right"
+        android:text="123"
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/textScoreEndQuiz"
+        app:layout_constraintTop_toTopOf="@+id/textScoreEndQuiz" />
+
+    <TextView
         android:id="@+id/textScoreEndQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="12dp"
-        android:text="282/300 pkt"
+        android:gravity="left"
+        android:text="/300 pkt"
         android:textColor="@color/blue"
         android:textSize="27sp"
         app:layout_constraintBottom_toTopOf="@+id/textTextLVLEndQuiz"
