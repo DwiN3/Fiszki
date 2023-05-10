@@ -45,6 +45,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         nrWords = t.getWords()-1;
         allWords = t.getWords();
         userPKTQuiz.setText("/"+allWords+" PKT");
+        sticksLeftQuizText.setText(""+(nrWords+1));
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -65,7 +66,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     void setQuestion(int numberWord){
         markTheAnswer = false;
-        sticksLeftQuizText.setText(""+(nrWords+1));
         nameWordQuizText.setText(t.getNameWord(numberWord));
         answerText1.setText(t.getAns1(numberWord));
         answerText2.setText(t.getAns2(numberWord));
@@ -78,6 +78,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     public void onClick(View view) {
         if(nrWords == 0) next.setText("PODSUMOWANIE");
+        sticksLeftQuizText.setText(""+(nrWords));
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
