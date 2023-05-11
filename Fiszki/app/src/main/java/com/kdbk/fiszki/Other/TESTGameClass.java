@@ -14,8 +14,8 @@ public class TESTGameClass {
     private int[] img;
     private int words;
 
-    public TESTGameClass(String mode){
-        if(mode == "kit"){
+    public TESTGameClass(String data){
+        if(data == "kit"){
 
         }
         else{

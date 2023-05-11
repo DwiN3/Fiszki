@@ -26,7 +26,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private boolean markTheAnswer = false;
     private String correctAnswer;
     private int nrWords, allWords;
-    TESTGameClass t = new TESTGameClass("category");
+    TESTGameClass t;
 
 
     // TEST QUIZU
@@ -43,6 +43,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = intent.getStringExtra("SelectLanguage");
         selectedID = intent.getStringExtra("SelectID");
         selectedData = intent.getStringExtra("SelectData");
+        t =  new TESTGameClass(selectedData);
 
         //System.out.println(selectedID);
         //System.out.println(selectedData);
