@@ -16,6 +16,9 @@ public class CategoriesArray {
         add(new ModelCategories(R.drawable.flagszw,"Szwecja", 3));
         add(new ModelCategories(R.drawable.reverse_button,"Zamiana",4));
         add(new ModelCategories(R.drawable.arrow,"Strzala",5));
+        add(new ModelCategories(R.drawable.arrow,"Strzala",6));
+        add(new ModelCategories(R.drawable.arrow,"Strzala",7));
+        add(new ModelCategories(R.drawable.arrow,"Strzala",8));
     }
 
     public static CategoriesArray getInstance(){
