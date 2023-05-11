@@ -43,7 +43,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         menu.setOnClickListener(this);
 
         if (!list.isEmpty()) {
-            numberKit.setText("Zestaw "+list.get(0).getID());
+            numberKit.setText("Zestaw "+(list.get(0).getID()+1));
             timesPlayed.setText(list.get(0).getGamesPlayed()+" razy");
         } else {
             numberKit.setText("Brak dostępnych zestawów");
@@ -98,7 +98,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
             numberKit.setText("Brak dostępnych zestawów");
             timesPlayed.setText("");
         } else {
-            numberKit.setText("Zestaw " + list.get(0).getID());
+            numberKit.setText("Zestaw " + (list.get(0).getID()+1));
             timesPlayed.setText(list.get(0).getGamesPlayed() + " razy");
             ID = list.get(0).getID();
         }
@@ -109,7 +109,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         ID = modelKits.getID();
         playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
-        numberKit.setText("Zestaw "+ID);
+        numberKit.setText("Zestaw "+(ID+1));
     }
 
     private void setID() {
