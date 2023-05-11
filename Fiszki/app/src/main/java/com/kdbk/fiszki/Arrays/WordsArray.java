@@ -16,7 +16,7 @@ public class WordsArray {
 
     public WordsArray() {
         list = new ArrayList<>();
-        list.add(new Words("pies", "dog", "Mój pies lubi kosci", "My dog likes bones", 0));
+        list.add(new Words("pociąg", "train", "Pociąg to świetny transport", "The train is a great means of transport", 0));
         list.add(new Words("auto", "car", "Lubie latac bokiem", "I like drifting", 1));
         list.add(new Words("mrowka", "ant", "Bardzo pracowite zwierzęta", "Very hardworking animals", 2));
         list.add(new Words("rycerz", "knight", "Walczy ze smokami", "He fights dragons", 3));

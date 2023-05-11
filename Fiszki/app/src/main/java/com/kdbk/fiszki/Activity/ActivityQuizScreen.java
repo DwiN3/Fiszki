@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.TESTGameClass;
+import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
@@ -26,7 +26,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private boolean markTheAnswer = false;
     private String correctAnswer;
     private int nrWords, allWords;
-    TESTGameClass t;
+    SetGameClass t;
 
 
     // TEST QUIZU
@@ -43,7 +43,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = intent.getStringExtra("SelectLanguage");
         selectedID = intent.getStringExtra("SelectID");
         selectedData = intent.getStringExtra("SelectData");
-        t =  new TESTGameClass(selectedData);
+        t =  new SetGameClass(selectedData);
 
         //System.out.println(selectedID);
         //System.out.println(selectedData);

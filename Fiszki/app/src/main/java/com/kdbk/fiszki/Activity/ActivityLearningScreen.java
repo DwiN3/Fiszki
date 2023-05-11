@@ -11,21 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.TESTGameClass;
+import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
-
-import org.w3c.dom.Text;
 
 public class ActivityLearningScreen extends AppCompatActivity implements View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
     private Button next, exit;
-    private String selectedLanguage = "";
+    private String selectedLanguage = "", selectedID="", selectedData="";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private TextView nameWord, sticksLeft, textsampleSentence;
     private Button buttonNext;
     private ImageView imageWord;
     private int nrWords, allWords, countWords = 0;
-    TESTGameClass t = new TESTGameClass("category");
+    SetGameClass t = new SetGameClass("category");
 
 
     @Override
@@ -36,6 +34,9 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
 
         Intent intent = getIntent();
         selectedLanguage = intent.getStringExtra("SelectLanguage");
+        selectedID = intent.getStringExtra("SelectID");
+        selectedData = intent.getStringExtra("SelectData");
+        t =  new SetGameClass(selectedData);
 
         allWords = t.getWords();
         nrWords = t.getWords()-1;
