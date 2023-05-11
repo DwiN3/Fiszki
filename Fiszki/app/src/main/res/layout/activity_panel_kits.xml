@@ -38,7 +38,7 @@
         android:id="@+id/textNumberKitPanel"
         android:layout_width="352dp"
         android:layout_height="53dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="53dp"
         android:gravity="center"
         android:textColor="@color/my_blue"
         android:textSize="26sp"
@@ -76,33 +76,33 @@
         android:id="@+id/buttonEditKitPanel"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:text="EDYTUJ ZESTAW"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDeleteKitPanel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTimesEndQuiz" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonDeleteKitPanel"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:text="USUŃ ZESTAW"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBackToMenuPanel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEditKitPanel" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonBackToMenuPanel"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/rounded_button"
         android:text="WRÓĆ DO MENU"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDeleteKitPanel" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
