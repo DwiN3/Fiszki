@@ -124,7 +124,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:text="RESETUJ HASŁO"
-        android:textColor="@color/blue"
+        android:textColor="@color/my_blue"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
