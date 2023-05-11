@@ -5,16 +5,17 @@ import com.kdbk.fiszki.R;
 public class TESTGameClass {
 
     private String[] NameWord = {"pies", "niedzwiedz", "krowa", "ślimak"};
+    private String[] correctANS = {"dog", "bear", "cow", "snail"};
+    private String[] sentense = {"To najlepszy przyjaciel człowieka", "Są dużymi zwierzętami", "Dają mleko", "On porusza się bardzo wolno"};
+    private String[] sentenseTra = {"It's humans best friend", "They are large animals", "Give milk", "He moves very slowly"};
+    private int[] img = {R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
+    private int words = NameWord.length;
+
+
     private String[] ans1 = {"dog", "bird", "goat", "beaver"};
     private String[] ans2= {"duck", "bee", "cow", "chicken"};
     private String[] ans3= {"cat", "bear", "lion", "pig"};
     private String[] ans4= {"worm", "bat", "sheep", "snail"};
-    private String[] correctANS = {"dog", "bear", "cow", "snail"};
-    private String[] sentense = {"Najlepszy przyjaciel człowieka", "Miś polarny to duże zwierzę", "Krówki to słodycze z mleka", "Ślimak porusza się bardzo wolno"};
-    private String[] sentenseTra = {"Man's best friend", "Polar bear is a large animal", "Toffees are sweets made of milk", "Snail moves very slowly"};
-    private int[] img = {R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
-
-    private int words = NameWord.length;
 
     public String getNameWord(int i) {
         return NameWord[i];
@@ -51,6 +52,4 @@ public class TESTGameClass {
     public int getWords() {
         return words;
     }
-
-
 }
