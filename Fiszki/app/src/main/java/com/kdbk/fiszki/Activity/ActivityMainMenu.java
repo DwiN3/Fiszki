@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
     private TextView helloNick, internetError;
     private boolean kits = false;
     private Token token  = Token.getInstance();
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
     private InternetConnection con = new InternetConnection(this);
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -78,6 +80,14 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         editor.putString(LASTUSERNAME, token.getUserName());
         editor.putString(LASTTOKEN, token.getToken());
         editor.apply();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     private void setID() {

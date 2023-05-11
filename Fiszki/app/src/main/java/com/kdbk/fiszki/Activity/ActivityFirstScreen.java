@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     private TextView internetError;
     InternetConnection con = new InternetConnection(this);
     private Token token  = Token.getInstance();
+
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +71,6 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         else internetError.setVisibility(View.VISIBLE);
     }
 
-    private void setID() {
-        login = findViewById(R.id.buttonLogin);
-        create = findViewById(R.id.buttonCreate);
-        reset = findViewById(R.id.buttonPasswordReset);
-        loginText = findViewById(R.id.textNick);
-        passwordText = findViewById(R.id.textPassword);
-        internetError = findViewById(R.id.idTextInternetErrorFirstScreen);
-    }
-
     private void checkAccount() {
         String loginString = String.valueOf(loginText.getText());
         String passwordString= String.valueOf(passwordText.getText());
@@ -98,5 +92,22 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
             public void onFailure(Call<Login> call, Throwable t) {
             }
         });
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    private void setID() {
+        login = findViewById(R.id.buttonLogin);
+        create = findViewById(R.id.buttonCreate);
+        reset = findViewById(R.id.buttonPasswordReset);
+        loginText = findViewById(R.id.textNick);
+        passwordText = findViewById(R.id.textPassword);
+        internetError = findViewById(R.id.idTextInternetErrorFirstScreen);
     }
 }
