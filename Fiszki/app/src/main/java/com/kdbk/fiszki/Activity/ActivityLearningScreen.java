@@ -25,7 +25,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private Button buttonNext;
     private ImageView imageWord;
     private int nrWords, allWords, countWords = 0;
-    TESTGameClass t = new TESTGameClass();
+    TESTGameClass t = new TESTGameClass("category");
 
 
     @Override

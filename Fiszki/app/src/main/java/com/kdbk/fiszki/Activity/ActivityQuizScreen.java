@@ -21,12 +21,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
-    private String selectedLanguage = "";
+    private String selectedLanguage = "", selectedID="", selectedData="";
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private boolean markTheAnswer = false;
     private String correctAnswer;
     private int nrWords, allWords;
-    TESTGameClass t = new TESTGameClass();
+    TESTGameClass t = new TESTGameClass("category");
 
 
     // TEST QUIZU
@@ -41,6 +41,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
         Intent intent = getIntent();
         selectedLanguage = intent.getStringExtra("SelectLanguage");
+        selectedID = intent.getStringExtra("SelectID");
+        selectedData = intent.getStringExtra("SelectData");
+
+        //System.out.println(selectedID);
+        //System.out.println(selectedData);
+
 
         nrWords = t.getWords()-1;
         allWords = t.getWords();

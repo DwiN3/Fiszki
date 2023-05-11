@@ -56,6 +56,8 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         //Toast.makeText(this, modelKit.getTextNumberKit(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
+        intent.putExtra("SelectID", ""+ modelKits.getID());
+        intent.putExtra("SelectData", "kit");
 
         if(selectedMode.equals("quiz")){
             nextActivity.openActivity(ActivityQuizScreen.class, intent);

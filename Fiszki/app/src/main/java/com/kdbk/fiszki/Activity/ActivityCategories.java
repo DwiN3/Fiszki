@@ -44,9 +44,12 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        //Toast.makeText(this, modelCategories.getNameCategory(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, modelCategories.getID(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
+        intent.putExtra("SelectID", ""+modelCategories.getID());
+        intent.putExtra("SelectData", "category");
+
         if(selectedMode.equals("quiz")){
             nextActivity.openActivity(ActivityQuizScreen.class, intent);
         } else if(selectedMode.equals("learn")){

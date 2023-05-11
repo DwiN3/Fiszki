@@ -1,15 +1,34 @@
 package com.kdbk.fiszki.Other;
 
+import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
 
 public class TESTGameClass {
 
-    private String[] NameWord = {"pies", "niedzwiedz", "krowa", "ślimak"};
-    private String[] correctANS = {"dog", "bear", "cow", "snail"};
-    private String[] sentense = {"To najlepszy przyjaciel człowieka", "Są dużymi zwierzętami", "Dają mleko", "On porusza się bardzo wolno"};
-    private String[] sentenseTra = {"It's humans best friend", "They are large animals", "Give milk", "He moves very slowly"};
-    private int[] img = {R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
-    private int words = NameWord.length;
+    private WordsArray kitsWords  = WordsArray.getInstance();
+
+    private String[] NameWord;
+    private String[] correctANS;
+    private String[] sentense;
+    private String[] sentenseTra;
+    private int[] img;
+    private int words;
+
+    public TESTGameClass(String mode){
+        if(mode == "kit"){
+
+        }
+        else{
+            NameWord = new String[]{"pies", "niedzwiedz", "krowa", "ślimak"};
+            correctANS = new String[]{"dog", "bear", "cow", "snail"};
+            sentense = new String[]{"To najlepszy przyjaciel człowieka", "Są dużymi zwierzętami", "Dają mleko", "On porusza się bardzo wolno"};
+            sentenseTra = new String[]{"It's humans best friend", "They are large animals", "Give milk", "He moves very slowly"};
+            img = new int[]{R.drawable.word_dog, R.drawable.word_bear, R.drawable.word_cow, R.drawable.word_snail};
+        }
+        words = NameWord.length;
+    }
+
+
 
 
     private String[] ans1 = {"dog", "bird", "goat", "beaver"};
