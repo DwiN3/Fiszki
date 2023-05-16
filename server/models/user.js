@@ -17,6 +17,16 @@ const userSchema = new Schema({
     password : {
         type : String,
         required : true
+    },
+
+    level : {
+        type : Number,
+        required : true 
+    },
+
+    nextLevel : {
+        type : Number,
+        required : true,
     }
 
 });

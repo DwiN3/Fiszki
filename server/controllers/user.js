@@ -52,7 +52,9 @@ exports.singUp = async(req, res, next) => {
             const newUser = new User({
             email : email,
             nick : nick,
-            password : hashedPassword
+            password : hashedPassword,
+            level : 1,
+            nextLevel : 500
         });
 
         await newUser.save();
