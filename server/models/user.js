@@ -24,9 +24,14 @@ const userSchema = new Schema({
         required : true 
     },
 
-    nextLevel : {
+    requiredPoints : {
         type : Number,
-        required : true,
+        required : true
+    },
+
+    usersPoints : {
+        type : Number,
+        required : true
     }
 
 });
