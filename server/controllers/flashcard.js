@@ -58,3 +58,56 @@ exports.addFlashCard = async(req, res, next) => {
     res.status(201).json('Flashcard added succesful!')
 }
 
+exports.deleteFlashcard = async(req, res, next) => {
+
+    const flashcardsId = req.params.flashcardsId;
+    try{
+        const flashcard = await Flashcard.findOne({ author : req.user, _id : flashcardsId });
+        if(!flashcard){
+            const error = new Error('Flashcard doesnt exist!');
+            error.statusCode = 400;
+            throw (error);
+        }
+        const collection = await FlashcardsCollection.findOne({ author : req.user, collectionName : flashcard.set })    
+        collection.flashcards = collection.flashcards.filter(flashcard => flashcard.toString() !== flashcardsId);
+        if(collection.flashcards.length > 0) await collection.save()
+        else await FlashcardsCollection.deleteOne({ _id : collection._id });
+        await Flashcard.deleteOne({ _id : flashcardsId })
+    } catch(error){
+        if(!error.statusCode) error.statusCode = 500;
+        return next(error);
+    }
+    return res.status(200).json('Flashcard deleted succesful!');
+
+}
+
+exports.editFlashcard = async(req, res, next) => {
+
+    const errors = validationResult(req);
+
+    if(!errors.isEmpty()){
+        const error = new Error('Wrong data!');
+        error.statusCode = 400;
+        return next(error);
+    }
+
+    const flashcardsId = req.params.flashcardsId;
+    try{
+        const flashcard = await Flashcard.findOne({ author : req.user, _id : flashcardsId});
+        if(!flashcard){
+            const error = new Error('Flashcard doesnt exist!');
+            error.statusCode = 400;
+            throw (error);
+        }
+        flashcard.word = req.body.word;
+        flashcard.translatedWord = req.body.translatedWord;
+        flashcard.example = req.body.example;
+        flashcard.translatedExample = req.body.translatedExample;
+        await flashcard.save();
+    } catch(error){
+        if(!error.statusCode) error.statusCode = 500;
+        return next(error);
+    }
+    return res.status(200).json('Flashcard edited succesful!');
+
+}
