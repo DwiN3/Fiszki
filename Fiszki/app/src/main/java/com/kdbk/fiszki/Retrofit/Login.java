@@ -1,22 +1,20 @@
 package com.kdbk.fiszki.Retrofit;
 
-import android.util.Log;
-
 import com.google.gson.annotations.SerializedName;
 
 public class Login {
-    private String login, password, content;
+    private String nick, password, content;
 
     @SerializedName("body")
     private String text;
 
-    public Login(String login, String password){
-        this.login = login;
+    public Login(String nick, String password){
+        this.nick = nick;
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getNick() {
+        return nick;
     }
 
     public String getPassword() {

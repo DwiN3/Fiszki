@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kdbk.fiszki.Arrays.FlashcardArray;
 import com.kdbk.fiszki.Other.InternetConnection;
@@ -85,11 +86,12 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-
+                Toast.makeText(ActivityFirstScreen.this,"Code: "+response.code(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
+                Toast.makeText(ActivityFirstScreen.this,"Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
