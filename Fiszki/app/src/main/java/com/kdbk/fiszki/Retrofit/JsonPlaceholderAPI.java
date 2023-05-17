@@ -12,4 +12,7 @@ import retrofit2.http.POST;
 public interface JsonPlaceholderAPI {
     @POST("login")
     Call<Login> login(@Body Login login);
+
+    @POST("sing-up")
+    Call<Register> register(@Body Register register);
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.health.SystemHealthManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -86,6 +87,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
+                System.out.println("TUTAJ     "+response);
                 if(response.code() == 200){
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();
