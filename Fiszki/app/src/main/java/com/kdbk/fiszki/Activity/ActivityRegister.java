@@ -64,7 +64,7 @@ public class ActivityRegister extends AppCompatActivity {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
                 if(response.code() == 200) Toast.makeText(ActivityRegister.this,"Udało się zarejstrować", Toast.LENGTH_SHORT).show();
-                
+
                 if(!response.isSuccessful()){
                     Toast.makeText(ActivityRegister.this,"Błąd w rejestracji", Toast.LENGTH_SHORT).show();
                 }
