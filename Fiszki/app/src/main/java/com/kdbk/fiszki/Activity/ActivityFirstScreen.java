@@ -73,8 +73,6 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     }
 
     private void checkAccount() {
-        String loginString = String.valueOf(loginText.getText());
-        String passwordString= String.valueOf(passwordText.getText());
         //String loginString = "kubiczek2";
         //String passwordString= "testowehaslo";
         Retrofit retrofit = new Retrofit.Builder()
@@ -91,7 +89,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 if(!response.isSuccessful()){
                     Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
                 }
-                else if(response.code() == 200){
+                if(response.code() == 200){
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();
                     token.setToken(TokenFromRetrofit);

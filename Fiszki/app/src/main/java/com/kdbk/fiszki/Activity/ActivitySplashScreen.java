@@ -27,9 +27,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         loadData();
 
-        TOKEN = "123";
-
-        if (token.getToken().equals(TOKEN)) {
+        if (!token.getToken().equals(TOKEN)) {
             startScreen = ActivityMainMenu.class;
         } else {
             startScreen = ActivityFirstScreen.class;
