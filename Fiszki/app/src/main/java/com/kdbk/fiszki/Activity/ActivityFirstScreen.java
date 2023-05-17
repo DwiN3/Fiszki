@@ -33,6 +33,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     private Button login, create, reset;
     private EditText loginText, passwordText;
     private TextView internetError;
+    private boolean entryPermissions = false;
     InternetConnection con = new InternetConnection(this);
     private Token token  = Token.getInstance();
 
@@ -64,8 +65,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 case R.id.buttonLogin:
                     checkAccount();
                     token.setUserName(loginText.getText().toString());
-                    token.setToken("123");
-                    nextActivity.openActivity(ActivityMainMenu.class);
+                    if(entryPermissions) nextActivity.openActivity(ActivityMainMenu.class);
                     break;
             }
         }
@@ -75,8 +75,10 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     private void checkAccount() {
         String loginString = String.valueOf(loginText.getText());
         String passwordString= String.valueOf(passwordText.getText());
+        //String loginString = "kubiczek2";
+        //String passwordString= "testowehaslo";
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/api/users/")
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/users/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
@@ -86,12 +88,19 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-                Toast.makeText(ActivityFirstScreen.this,"Code: "+response.code(), Toast.LENGTH_SHORT).show();
+                if(!response.isSuccessful()){
+                    Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
+                }
+                else if(response.code() == 200){
+                    Login post = response.body();
+                    String TokenFromRetrofit = post.getToken();
+                    token.setToken(TokenFromRetrofit);
+                    entryPermissions = true;
+                }
             }
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
-                Toast.makeText(ActivityFirstScreen.this,"Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -3,7 +3,7 @@ package com.kdbk.fiszki.Retrofit;
 import com.google.gson.annotations.SerializedName;
 
 public class Login {
-    private String nick, password, content;
+    private String nick, password, content, token;
 
     @SerializedName("body")
     private String text;
@@ -13,6 +13,7 @@ public class Login {
         this.password = password;
     }
 
+    public String getToken() { return token;}
     public String getNick() {
         return nick;
     }
