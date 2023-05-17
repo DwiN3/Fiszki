@@ -64,8 +64,6 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                     break;
                 case R.id.buttonLogin:
                     checkAccount();
-                    token.setUserName(loginText.getText().toString());
-                    if(entryPermissions) nextActivity.openActivity(ActivityMainMenu.class);
                     break;
             }
         }
@@ -92,7 +90,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();
                     token.setToken(TokenFromRetrofit);
-                    entryPermissions = true;
+                    token.setUserName(loginText.getText().toString());
+                    nextActivity.openActivity(ActivityMainMenu.class);
                 }
                 if(!response.isSuccessful()){
                     Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
