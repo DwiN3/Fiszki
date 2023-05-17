@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterAddFlashcard;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
 import com.kdbk.fiszki.Arrays.FlashcardArray;
@@ -21,11 +22,13 @@ import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerAddFlashcard;
 import com.kdbk.fiszki.Retrofit.AddFlashcard;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-import com.kdbk.fiszki.Retrofit.Login;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,6 +48,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
+    private Token token  = Token.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +107,20 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         String language = "english";
         String category = "inne";
 
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest  = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
