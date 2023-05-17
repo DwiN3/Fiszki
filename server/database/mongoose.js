@@ -10,4 +10,3 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
     console.log(err);
 })
 
-// mongodb+srv://tester:<password>@test.gooxams.mongodb.net/
