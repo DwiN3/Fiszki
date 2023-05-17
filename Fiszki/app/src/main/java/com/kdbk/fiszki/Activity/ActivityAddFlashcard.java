@@ -125,7 +125,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         AddFlashcard post = new AddFlashcard(nrKit,language,category,word,translateWord,sampleSentence, translateSampleSentence);
-        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(collectionName,post);
+        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(nrKit,post);
 
         call.enqueue(new Callback<AddFlashcard>() {
             @Override
