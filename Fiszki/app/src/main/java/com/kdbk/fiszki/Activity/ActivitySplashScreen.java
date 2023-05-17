@@ -17,9 +17,9 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
 
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String TOKEN = "123";
     private Token token  = Token.getInstance();
     private Class<?> startScreen;
+    private String TOKEN = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,9 @@ public class ActivitySplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         loadData();
 
-        if (token.getToken().equals("123")) {
+        TOKEN = "123";
+
+        if (token.getToken().equals(TOKEN)) {
             startScreen = ActivityMainMenu.class;
         } else {
             startScreen = ActivityFirstScreen.class;
