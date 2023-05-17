@@ -77,7 +77,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         //String loginString = "kubiczek2";
         //String passwordString= "testowehaslo";
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/users/")
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/flashcards/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
@@ -87,7 +87,6 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-                System.out.println("TUTAJ     "+response);
                 if(response.code() == 200){
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();

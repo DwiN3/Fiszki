@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterAddFlashcard;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
@@ -18,8 +19,18 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerAddFlashcard;
+import com.kdbk.fiszki.Retrofit.AddFlashcard;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.Login;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityAddFlashcard extends AppCompatActivity implements SelectListenerAddFlashcard, AdapterAddFlashcard.OnEditTextChangeListener {
 
@@ -67,7 +78,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
                 }
-                nextActivity.openActivity(ActivityMainMenu.class);
+                addFlashcardToBase();
             }
         });
     }
@@ -85,6 +96,38 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     @Override
     public void onItemClicked(ModelAddFlashcard modelAddFlashcard) {
 
+    }
+
+    public void addFlashcardToBase(){
+        String collectionName = "1";
+        String language = "english";
+        String category = "inne";
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        AddFlashcard post = new AddFlashcard(nrKit,language,category,word,translateWord,sampleSentence, translateSampleSentence);
+        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(collectionName,post);
+
+        call.enqueue(new Callback<AddFlashcard>() {
+            @Override
+            public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
+                System.out.println("TUTAJ     "+response);
+                if(response.code() == 200){
+                    nextActivity.openActivity(ActivityMainMenu.class);
+                }
+                if(!response.isSuccessful()){
+                    Toast.makeText(ActivityAddFlashcard.this,"Błąd danych", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddFlashcard> call, Throwable t) {
+            }
+        });
     }
 
     private void setID() {

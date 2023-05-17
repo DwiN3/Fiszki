@@ -42,14 +42,10 @@ public class ActivityRegister extends AppCompatActivity {
     }
 
     private void createAccount(){
-        //String loginString = String.valueOf(loginCreateText.getText());
-        //String emailString = String.valueOf(emailCreateText.getText());
-        //String passwordString= String.valueOf(passwordCreateText.getText());
-        //String passwordReString= String.valueOf(passwordCreateReText.getText());
-        String loginString = "dwinicht32";
-        String emailString = "dwinicht32@gmail.com";
-        String passwordString= "tajnehaslo123";
-        String passwordReString= "tajnehaslo123";
+        String loginString = String.valueOf(loginCreateText.getText());
+        String emailString = String.valueOf(emailCreateText.getText());
+        String passwordString= String.valueOf(passwordCreateText.getText());
+        String passwordReString= String.valueOf(passwordCreateReText.getText());
 
 
         Retrofit retrofit = new Retrofit.Builder()
