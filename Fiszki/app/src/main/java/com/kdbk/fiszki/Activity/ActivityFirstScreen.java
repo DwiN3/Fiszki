@@ -88,14 +88,14 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         call.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
-                }
                 if(response.code() == 200){
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();
                     token.setToken(TokenFromRetrofit);
                     entryPermissions = true;
+                }
+                if(!response.isSuccessful()){
+                    Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
                 }
             }
 
