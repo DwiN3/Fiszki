@@ -73,6 +73,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     }
 
     private void checkAccount() {
+        String loginString = String.valueOf(loginText.getText());
+        String passwordString= String.valueOf(passwordText.getText());
         //String loginString = "kubiczek2";
         //String passwordString= "testowehaslo";
         Retrofit retrofit = new Retrofit.Builder()
