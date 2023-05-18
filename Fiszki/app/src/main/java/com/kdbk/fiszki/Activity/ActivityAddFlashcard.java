@@ -128,6 +128,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         editFlashcardArray.getAllList().put(nextIndex, subList);
 
         // Clear the field values
+        nrKit = "";
         word = "";
         translateWord = "";
         sampleSentence = "";
