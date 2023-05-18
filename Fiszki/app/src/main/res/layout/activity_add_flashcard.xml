@@ -31,7 +31,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addFlashcardlRecycleView"
                 android:layout_width="408dp"
-                android:layout_height="480dp"
+                android:layout_height="490dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bar" />
@@ -52,7 +52,7 @@
                 android:id="@+id/buttonAcceptFlashcard"
                 android:layout_width="345dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="55dp"
                 android:background="@drawable/rounded_button"
                 android:text="DODAJ"
                 app:layout_constraintBottom_toBottomOf="parent"
