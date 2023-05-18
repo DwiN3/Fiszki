@@ -52,7 +52,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
     private Token token  = Token.getInstance();
     ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
 
     @Override
@@ -217,14 +216,5 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             default:
                 break;
         }
-    }
-
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
-        }
-        return super.dispatchKeyEvent(event);
     }
 }
