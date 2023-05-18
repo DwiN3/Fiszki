@@ -74,8 +74,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             @Override
             public void onClick(View view) {
                 setFlashcardRecycle();
-                //addFlashcardToBase();
-                resetFlashcardRecycle();
+                addFlashcardToBase();
+                Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
             }
         });
         backToMenu.setOnClickListener(new View.OnClickListener() {
@@ -171,17 +171,16 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         call.enqueue(new Callback<AddFlashcard>() {
             @Override
             public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
-                System.out.println("KODZIK =" + response);
+                //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityAddFlashcard.this, "Błąd danych", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
-                    resetFlashcardRecycle(); // Wywołaj metodę resetFlashcardRecyle() po poprawnym dodaniu fiszki
                 }
             }
 
             @Override
             public void onFailure(Call<AddFlashcard> call, Throwable t) {
+                Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
+                resetFlashcardRecycle();
             }
         });
     }
