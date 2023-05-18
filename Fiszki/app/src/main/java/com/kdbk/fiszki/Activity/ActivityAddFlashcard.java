@@ -173,7 +173,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
                 //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
-                    Toast.makeText(ActivityAddFlashcard.this, "Błąd danych", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityAddFlashcard.this, "Błędne dane", Toast.LENGTH_SHORT).show();
                 }
             }
 
