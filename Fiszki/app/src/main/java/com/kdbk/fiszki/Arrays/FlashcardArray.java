@@ -10,7 +10,7 @@ public class FlashcardArray {
     private ArrayList<ModelAddFlashcard> list = new ArrayList<>();
 
     private FlashcardArray() {
-        list.add(new ModelAddFlashcard(R.drawable.arrow, "NUMER ZESTAWU", "", 1));
+        list.add(new ModelAddFlashcard(R.drawable.kit_icon, "NUMER ZESTAWU", "", 1));
         list.add(new ModelAddFlashcard(R.drawable.category_icon, "KATEGORIA:", "", 6));
         list.add(new ModelAddFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "", 2));
         list.add(new ModelAddFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "", 3));
