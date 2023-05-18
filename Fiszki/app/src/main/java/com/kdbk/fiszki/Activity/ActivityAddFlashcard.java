@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
-    private Button add;
+    private Button add, backToMenu;
     private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence;
@@ -49,6 +50,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
     private Token token  = Token.getInstance();
+    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +80,18 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
                 editFlashcardArray.getAllList().put(nextIndex, subList);
                 newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
-                WordsArray wordsArray = new WordsArray();
-                wordsArray.addWord(newFlashcard);
+
+
                 for (int i = 0; i < newFlashcard.length; i++) {
                     Log.d("AddFlashcard", newFlashcard[i]);
                 }
                 addFlashcardToBase();
+            }
+        });
+        backToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(ActivityMainMenu.class);
             }
         });
     }
@@ -132,7 +141,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
                 System.out.println("TUTAJ     "+response);
                 if(response.code() == 200){
-                    nextActivity.openActivity(ActivityMainMenu.class);
+                    Toast.makeText(ActivityAddFlashcard.this,"Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
+
                 }
                 if(!response.isSuccessful()){
                     Toast.makeText(ActivityAddFlashcard.this,"Błąd danych", Toast.LENGTH_SHORT).show();
@@ -147,6 +157,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private void setID() {
         add = findViewById(R.id.buttonAcceptFlashcard);
+        backToMenu = findViewById(R.id.buttonBackToMenuFlashcard);
     }
 
     @Override
@@ -170,5 +181,14 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             default:
                 break;
         }
+    }
+
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
     }
 }
