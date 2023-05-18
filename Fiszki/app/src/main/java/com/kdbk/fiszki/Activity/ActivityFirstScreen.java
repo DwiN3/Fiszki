@@ -95,7 +95,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                     nextActivity.openActivity(ActivityMainMenu.class);
                 }
                 if(!response.isSuccessful()){
-                    Toast.makeText(ActivityFirstScreen.this,"Błąd danych", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityFirstScreen.this,"Błędne dane", Toast.LENGTH_SHORT).show();
                 }
             }
 
