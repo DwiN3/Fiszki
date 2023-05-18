@@ -13,7 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="98dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp">
 
@@ -32,7 +32,7 @@
                 android:id="@+id/textAddFlashcard"
                 android:layout_width="222dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="36dp"
                 android:gravity="center"
                 android:textSize="18sp"
@@ -43,7 +43,7 @@
                 android:id="@+id/editTextAddFlashcard"
                 android:layout_width="262dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/rounded_text"
                 android:gravity="center"

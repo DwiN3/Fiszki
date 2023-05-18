@@ -42,7 +42,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
-    private Button add, backToMenu;
+    private Button add;
     private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
@@ -77,12 +77,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
             }
         });
-        backToMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextActivity.openActivity(ActivityMainMenu.class);
-            }
-        });
     }
 
     void takeWords() {
@@ -106,10 +100,14 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         editFlashcardArray.getAllList().put(nextIndex, subList);
         newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence, category};
 
-
+        // Lokalne fiszki
+        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
+        WordsArray wordsArray = new WordsArray();
+        wordsArray.addWord(newFlashcard);
         for (int i = 0; i < newFlashcard.length; i++) {
             Log.d("AddFlashcard", newFlashcard[i]);
         }
+
     }
 
     private void resetFlashcardRecycle() {
@@ -189,7 +187,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
         private void setID() {
         add = findViewById(R.id.buttonAcceptFlashcard);
-        backToMenu = findViewById(R.id.buttonBackToMenuFlashcard);
     }
 
     @Override

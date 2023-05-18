@@ -31,7 +31,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addFlashcardlRecycleView"
                 android:layout_width="408dp"
-                android:layout_height="490dp"
+                android:layout_height="544dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bar" />
@@ -52,24 +52,12 @@
                 android:id="@+id/buttonAcceptFlashcard"
                 android:layout_width="345dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="55dp"
                 android:background="@drawable/rounded_button"
-                android:text="DODAJ"
+                android:text="DODAJ FISZKE"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addFlashcardlRecycleView" />
-
-            <Button
-                android:id="@+id/buttonBackToMenuFlashcard"
-                android:layout_width="345dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded_button"
-                android:text="WRÓĆ DO MENU"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonAcceptFlashcard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
