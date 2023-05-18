@@ -11,6 +11,7 @@ public class FlashcardArray {
 
     private FlashcardArray() {
         list.add(new ModelAddFlashcard(R.drawable.arrow, "NUMER ZESTAWU", "", 1));
+        list.add(new ModelAddFlashcard(R.drawable.circle, "KATEGORIA:", "", 6));
         list.add(new ModelAddFlashcard(R.drawable.flagpl, "WPROWADŹ SŁOWO:", "", 2));
         list.add(new ModelAddFlashcard(R.drawable.flagang, "DODAJ TŁUMACZENIE:", "", 3));
         list.add(new ModelAddFlashcard(R.drawable.flagpl, "PRZYKŁADOWE ZDANIE", "", 4));

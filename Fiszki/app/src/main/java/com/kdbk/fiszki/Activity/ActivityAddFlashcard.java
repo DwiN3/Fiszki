@@ -45,7 +45,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private Button add, backToMenu;
     private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
-    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence;
+    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
@@ -93,6 +93,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             translateWord = list.get(2).getEditFlashcard();
             sampleSentence = list.get(3).getEditFlashcard();
             translateSampleSentence = list.get(4).getEditFlashcard();
+            category = list.get(5).getEditFlashcard();
         }
     }
 
@@ -104,7 +105,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         subList.add(new ModelEditFlashcard(R.drawable.flagpl, sampleSentence, 3, nextIndex));
         subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
         editFlashcardArray.getAllList().put(nextIndex, subList);
-        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
+        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence, category};
 
 
         for (int i = 0; i < newFlashcard.length; i++) {
@@ -129,6 +130,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
         // Clear the field values
         nrKit = "";
+        category="";
         word = "";
         translateWord = "";
         sampleSentence = "";
@@ -147,7 +149,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     public void addFlashcardToBase() {
         String collectionName = "1";
         String language = "english";
-        String category = "inne";
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -209,6 +210,9 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 break;
             case 5:
                 translateSampleSentence = newText;
+                break;
+            case 6:
+                category = newText;
                 break;
             default:
                 break;
