@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.health.SystemHealthManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -50,6 +51,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
     private Token token  = Token.getInstance();
+    ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
 
@@ -71,21 +73,9 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
-                int nextIndex = editFlashcardArray.getWords() + 1;
-                ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
-                subList.add(new ModelEditFlashcard(R.drawable.flagpl, word,1, nextIndex));
-                subList.add(new ModelEditFlashcard(R.drawable.flagang, translateWord, 2, nextIndex));
-                subList.add(new ModelEditFlashcard(R.drawable.flagpl, sampleSentence, 3, nextIndex));
-                subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
-                editFlashcardArray.getAllList().put(nextIndex, subList);
-                newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
-
-
-                for (int i = 0; i < newFlashcard.length; i++) {
-                    Log.d("AddFlashcard", newFlashcard[i]);
-                }
-                addFlashcardToBase();
+                setFlashcardRecycle();
+                //addFlashcardToBase();
+                resetFlashcardRecycle();
             }
         });
         backToMenu.setOnClickListener(new View.OnClickListener() {
@@ -106,12 +96,54 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         }
     }
 
+    private void setFlashcardRecycle(){
+        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
+        int nextIndex = editFlashcardArray.getWords() + 1;
+        subList.add(new ModelEditFlashcard(R.drawable.flagpl, word,1, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagang, translateWord, 2, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagpl, sampleSentence, 3, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
+        editFlashcardArray.getAllList().put(nextIndex, subList);
+        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
+
+
+        for (int i = 0; i < newFlashcard.length; i++) {
+            Log.d("AddFlashcard", newFlashcard[i]);
+        }
+    }
+
+    private void resetFlashcardRecycle() {
+        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
+        int nextIndex = editFlashcardArray.getWords() + 1;
+
+        // Clear the previous subList and create a new one
+        subList = new ArrayList<>();
+
+        subList.add(new ModelEditFlashcard(R.drawable.flagpl, "", 1, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagang, "", 2, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagpl, "", 3, nextIndex));
+        subList.add(new ModelEditFlashcard(R.drawable.flagang, "", 4, nextIndex));
+
+        // Update the EditFlashcardArray with the new subList
+        editFlashcardArray.getAllList().put(nextIndex, subList);
+
+        // Clear the field values
+        word = "";
+        translateWord = "";
+        sampleSentence = "";
+        translateSampleSentence = "";
+
+        // Notify the adapter that the data set has changed
+        mAdapter.notifyDataSetChanged();
+    }
+
+
     @Override
     public void onItemClicked(ModelAddFlashcard modelAddFlashcard) {
 
     }
 
-    public void addFlashcardToBase(){
+    public void addFlashcardToBase() {
         String collectionName = "1";
         String language = "english";
         String category = "inne";
@@ -119,7 +151,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
-                Request newRequest  = chain.request().newBuilder()
+                Request newRequest = chain.request().newBuilder()
                         .addHeader("Authorization", "Bearer " + token.getToken())
                         .build();
                 return chain.proceed(newRequest);
@@ -133,19 +165,18 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        AddFlashcard post = new AddFlashcard(nrKit,language,category,word,translateWord,sampleSentence, translateSampleSentence);
-        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(nrKit,post);
+        AddFlashcard post = new AddFlashcard(nrKit, language, category, word, translateWord, sampleSentence, translateSampleSentence);
+        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(nrKit, post);
 
         call.enqueue(new Callback<AddFlashcard>() {
             @Override
             public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
-                System.out.println("TUTAJ     "+response);
-                if(response.code() == 200){
-                    Toast.makeText(ActivityAddFlashcard.this,"Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
-
-                }
-                if(!response.isSuccessful()){
-                    Toast.makeText(ActivityAddFlashcard.this,"Błąd danych", Toast.LENGTH_SHORT).show();
+                System.out.println("KODZIK =" + response);
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ActivityAddFlashcard.this, "Błąd danych", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
+                    resetFlashcardRecycle(); // Wywołaj metodę resetFlashcardRecyle() po poprawnym dodaniu fiszki
                 }
             }
 
@@ -155,7 +186,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         });
     }
 
-    private void setID() {
+
+        private void setID() {
         add = findViewById(R.id.buttonAcceptFlashcard);
         backToMenu = findViewById(R.id.buttonBackToMenuFlashcard);
     }
