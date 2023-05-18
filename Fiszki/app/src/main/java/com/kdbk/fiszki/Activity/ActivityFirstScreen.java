@@ -83,6 +83,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         Login post = new Login(loginString, passwordString);
         Call<Login> call = jsonPlaceholderAPI.login(post);
+        Toast.makeText(ActivityFirstScreen.this,"Trwa logowanie", Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<Login>() {
             @Override
