@@ -31,10 +31,10 @@ public interface JsonPlaceholderAPI {
     Call<AddFlashcard> addFlashcard(@Path("collectionName") String collectionName, @Body AddFlashcard addFlashcard);
 
     @DELETE("flashcards/{flashcardsId}")
-    Call<FlashCardsID> flashcardsDELETE(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
+    Call<FlashCardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
 
     @PUT("flashcards/{flashcardsId}")
-    Call<FlashCardsID> flashcardsPUT(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
+    Call<FlashCardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
 
 
     // FLASHCARDS-COLLECTION
