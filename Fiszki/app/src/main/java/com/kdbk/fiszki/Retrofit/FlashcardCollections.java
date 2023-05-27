@@ -1,4 +1,4 @@
 package com.kdbk.fiszki.Retrofit;
 
-public class FlashCardCollections {
+public class FlashcardCollections {
 }

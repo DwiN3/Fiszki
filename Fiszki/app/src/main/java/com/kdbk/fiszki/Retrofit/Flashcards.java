@@ -2,7 +2,7 @@ package com.kdbk.fiszki.Retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AddFlashcard {
+public class Flashcards {
 
     private String collectionName, language, category, word, translatedWord, example, translatedExample, content;
 
@@ -10,7 +10,7 @@ public class AddFlashcard {
     private String text;
 
 
-    public AddFlashcard(String collectionName, String language, String category, String word, String translatedWord, String example, String translatedExample) {
+    public Flashcards(String collectionName, String language, String category, String word, String translatedWord, String example, String translatedExample) {
         this.collectionName = collectionName;
         this.language = language;
         this.category = category;

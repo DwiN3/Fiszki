@@ -1,16 +1,10 @@
 package com.kdbk.fiszki.Retrofit;
 
 
-import com.kdbk.fiszki.Retrofit.Login;
-
-import java.util.List;
-
-import kotlinx.coroutines.DelicateCoroutinesApi;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -28,22 +22,22 @@ public interface JsonPlaceholderAPI {
 
     // FLASHCARDS
     @POST("flashcards/{collectionName}")
-    Call<AddFlashcard> addFlashcard(@Path("collectionName") String collectionName, @Body AddFlashcard addFlashcard);
+    Call<Flashcards> addFlashcard(@Path("collectionName") String collectionName, @Body Flashcards flashcards);
 
     @DELETE("flashcards/{flashcardsId}")
-    Call<FlashCardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
+    Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
 
     @PUT("flashcards/{flashcardsId}")
-    Call<FlashCardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashCardsID flashCardsID);
+    Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
 
 
     // FLASHCARDS-COLLECTION
     @GET("flashcards-collections")
-    Call<FlashCardCollections> flashcardsCollectionsGET(@Body FlashCardCollections flashCardCollections);
+    Call<FlashcardCollections> flashcardsCollectionsGET(@Body FlashcardCollections flashCardCollections);
 
     @GET("flashcards-collections/{collectionName}")
-    Call<FlashCardCollections> flashcardsCollectionsGETID(@Path("collectionName") String collectionName, @Body FlashCardCollections flashCardCollections);
+    Call<FlashcardCollections> flashcardsCollectionsGETID(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
 
     @DELETE("flashcards-collections/{collectionName}")
-    Call<FlashCardCollections> flashcardsCollectionsDELETE(@Path("collectionName") String collectionName, @Body FlashCardCollections flashCardCollections);
+    Call<FlashcardCollections> flashcardsCollectionsDELETE(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
 }

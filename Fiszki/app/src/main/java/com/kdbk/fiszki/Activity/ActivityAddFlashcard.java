@@ -5,9 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,7 +20,7 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerAddFlashcard;
-import com.kdbk.fiszki.Retrofit.AddFlashcard;
+import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
 import java.io.IOException;
@@ -164,12 +162,12 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        AddFlashcard post = new AddFlashcard(nrKit, language, category, word, translateWord, sampleSentence, translateSampleSentence);
-        Call<AddFlashcard> call = jsonPlaceholderAPI.addFlashcard(nrKit, post);
+        Flashcards post = new Flashcards(nrKit, language, category, word, translateWord, sampleSentence, translateSampleSentence);
+        Call<Flashcards> call = jsonPlaceholderAPI.addFlashcard(nrKit, post);
 
-        call.enqueue(new Callback<AddFlashcard>() {
+        call.enqueue(new Callback<Flashcards>() {
             @Override
-            public void onResponse(Call<AddFlashcard> call, Response<AddFlashcard> response) {
+            public void onResponse(Call<Flashcards> call, Response<Flashcards> response) {
                 //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityAddFlashcard.this, "Błędne dane", Toast.LENGTH_SHORT).show();
@@ -177,7 +175,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             }
 
             @Override
-            public void onFailure(Call<AddFlashcard> call, Throwable t) {
+            public void onFailure(Call<Flashcards> call, Throwable t) {
                 Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
                 resetFlashcardRecycle();
             }

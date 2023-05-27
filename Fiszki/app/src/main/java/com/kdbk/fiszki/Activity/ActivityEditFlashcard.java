@@ -18,8 +18,7 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerEditFlashcard;
-import com.kdbk.fiszki.Retrofit.AddFlashcard;
-import com.kdbk.fiszki.Retrofit.FlashCardsID;
+import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
 import java.io.IOException;
@@ -171,12 +170,12 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        FlashCardsID post = new FlashCardsID();
-        Call<FlashCardsID> call = jsonPlaceholderAPI.deleteFlashcards(flashcardsID, post);
+        FlashcardsID post = new FlashcardsID();
+        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(flashcardsID, post);
 
-        call.enqueue(new Callback<FlashCardsID>() {
+        call.enqueue(new Callback<FlashcardsID>() {
             @Override
-            public void onResponse(Call<FlashCardsID> call, Response<FlashCardsID> response) {
+            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
                 //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
@@ -184,7 +183,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             }
 
             @Override
-            public void onFailure(Call<FlashCardsID> call, Throwable t) {
+            public void onFailure(Call<FlashcardsID> call, Throwable t) {
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
@@ -209,12 +208,12 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        FlashCardsID post = new FlashCardsID(word,translateWord, sentens, sentensTranslate);
-        Call<FlashCardsID> call = jsonPlaceholderAPI.editFlashcards(flashcardsID, post);
+        FlashcardsID post = new FlashcardsID(word,translateWord, sentens, sentensTranslate);
+        Call<FlashcardsID> call = jsonPlaceholderAPI.editFlashcards(flashcardsID, post);
 
-        call.enqueue(new Callback<FlashCardsID>() {
+        call.enqueue(new Callback<FlashcardsID>() {
             @Override
-            public void onResponse(Call<FlashCardsID> call, Response<FlashCardsID> response) {
+            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
                 //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
@@ -222,7 +221,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             }
 
             @Override
-            public void onFailure(Call<FlashCardsID> call, Throwable t) {
+            public void onFailure(Call<FlashcardsID> call, Throwable t) {
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
             }
         });

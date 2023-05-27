@@ -2,17 +2,17 @@ package com.kdbk.fiszki.Retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-public class FlashCardsID {
+public class FlashcardsID {
     private String word, translatedWord, example, translatedExample, content;
 
     @SerializedName("body")
     private String text;
 
-    public FlashCardsID() {
+    public FlashcardsID() {
 
     }
 
-    public FlashCardsID(String word, String translatedWord, String example, String translatedExample) {
+    public FlashcardsID(String word, String translatedWord, String example, String translatedExample) {
         this.word = word;
         this.translatedWord = translatedWord;
         this.example = example;
