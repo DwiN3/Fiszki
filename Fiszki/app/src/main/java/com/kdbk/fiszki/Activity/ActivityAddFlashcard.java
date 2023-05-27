@@ -43,7 +43,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private Button add;
     private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
-    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
+    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category="inne";
     private RecyclerView.LayoutManager mLayoutManager;
 
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
@@ -84,7 +84,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             translateWord = list.get(2).getEditFlashcard();
             sampleSentence = list.get(3).getEditFlashcard();
             translateSampleSentence = list.get(4).getEditFlashcard();
-            category = list.get(5).getEditFlashcard();
+            //category = list.get(5).getEditFlashcard();
         }
     }
 
@@ -125,7 +125,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
         // Clear the field values
         nrKit = "";
-        category="";
+        //category="";
         word = "";
         translateWord = "";
         sampleSentence = "";
@@ -204,9 +204,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
                 break;
             case 5:
                 translateSampleSentence = newText;
-                break;
-            case 6:
-                category = newText;
                 break;
             default:
                 break;
