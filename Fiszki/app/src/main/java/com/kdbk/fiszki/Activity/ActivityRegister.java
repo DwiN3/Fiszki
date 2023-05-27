@@ -49,7 +49,7 @@ public class ActivityRegister extends AppCompatActivity {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/users/")
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);

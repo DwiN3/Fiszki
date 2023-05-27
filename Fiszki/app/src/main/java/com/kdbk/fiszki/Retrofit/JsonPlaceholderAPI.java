@@ -13,10 +13,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface JsonPlaceholderAPI {
-    @POST("login")
+    @POST("users/login")
     Call<Login> login(@Body Login login);
 
-    @POST("sing-up")
+    @POST("users/sing-up")
     Call<Register> register(@Body Register register);
 
     @POST("flashcards/{collectionName}")
