@@ -190,6 +190,44 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         });
     }
 
+    public void editFlashcard() {
+
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        FlashCardsID post = new FlashCardsID(word,translateWord, sentens, sentensTranslate);
+        Call<FlashCardsID> call = jsonPlaceholderAPI.editFlashcards(flashcardsID, post);
+
+        call.enqueue(new Callback<FlashCardsID>() {
+            @Override
+            public void onResponse(Call<FlashCardsID> call, Response<FlashCardsID> response) {
+                //System.out.println("KODZIK =" + response);
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlashCardsID> call, Throwable t) {
+                Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void setID() {
         accept = findViewById(R.id.buttonEditFlashCardAccept);
         back = findViewById(R.id.buttonEditFlashCardBack);
