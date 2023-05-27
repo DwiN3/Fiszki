@@ -8,6 +8,10 @@ public class FlashCardsID {
     @SerializedName("body")
     private String text;
 
+    public FlashCardsID() {
+
+    }
+
     public FlashCardsID(String word, String translatedWord, String example, String translatedExample) {
         this.word = word;
         this.translatedWord = translatedWord;
