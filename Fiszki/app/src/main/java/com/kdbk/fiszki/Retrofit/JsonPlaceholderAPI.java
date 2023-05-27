@@ -13,7 +13,6 @@ public interface JsonPlaceholderAPI {
     // USER
     @POST("users/login")
     Call<Login> login(@Body Login login);
-
     @POST("users/sing-up")
     Call<Register> register(@Body Register register);
     @PUT("users/users-level")
@@ -23,21 +22,17 @@ public interface JsonPlaceholderAPI {
     // FLASHCARDS
     @POST("flashcards/{collectionName}")
     Call<Flashcards> addFlashcard(@Path("collectionName") String collectionName, @Body Flashcards flashcards);
-
     @DELETE("flashcards/{flashcardsId}")
     Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
-
     @PUT("flashcards/{flashcardsId}")
     Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
 
 
     // FLASHCARDS-COLLECTION
     @GET("flashcards-collections")
-    Call<FlashcardCollections> flashcardsCollectionsGET(@Body FlashcardCollections flashCardCollections);
-
+    Call<FlashcardCollections> getAllFlashcardsCollections(@Body FlashcardCollections flashCardCollections);
     @GET("flashcards-collections/{collectionName}")
-    Call<FlashcardCollections> flashcardsCollectionsGETID(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
-
+    Call<FlashcardCollections> getByIDflashcardsCollections(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
     @DELETE("flashcards-collections/{collectionName}")
-    Call<FlashcardCollections> flashcardsCollectionsDELETE(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
+    Call<FlashcardCollections> deleteFlashcardsCollections(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
 }
