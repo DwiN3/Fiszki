@@ -41,7 +41,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private Token token  = Token.getInstance();
 
     private Button edit, del, menu;
-    private TextView numberKit, timesPlayed;
+    private TextView numberKit, timesPlayed, nextLvl;
     private int ID = 1, playedGames;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -61,7 +61,6 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         edit.setOnClickListener(this);
         del.setOnClickListener(this);
         menu.setOnClickListener(this);
-
     }
 
     @Override
@@ -72,7 +71,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         return super.dispatchKeyEvent(event);
     }
 
-    private void RefreshRecycleView(){
+    private void RefreshRecycleView() {
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -109,6 +108,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         if (list.isEmpty()) {
             numberKit.setText("Brak dostępnych zestawów");
             timesPlayed.setText("");
+            ID = 0;
         } else {
             numberKit.setText("Zestaw " + (list.get(0).getID()+1));
             timesPlayed.setText(list.get(0).getGamesPlayed() + " razy");
@@ -121,6 +121,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         ID = modelKits.getID();
         playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
+
         numberKit.setText(collectionList.get(ID).getTextNumberKit());
     }
 
@@ -129,6 +130,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         del = findViewById(R.id.buttonDeleteKitPanel);
         menu = findViewById(R.id.buttonBackToMenuPanel);
         numberKit = findViewById(R.id.textNumberKitPanel);
+        nextLvl = findViewById(R.id.textNextLVLEndQuiz);
         timesPlayed = findViewById(R.id.textTimesEndQuiz);
     }
 
@@ -153,17 +155,28 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         Call<List<FlashcardCollections>> call = jsonPlaceholderAPI.getAllFlashcardsCollections();
 
-        call.enqueue(new Callback <List<FlashcardCollections>>() {
+        call.enqueue(new Callback<List<FlashcardCollections>>() {
             @Override
-            public void onResponse(Call <List<FlashcardCollections>> call, Response <List<FlashcardCollections>> response) {
+            public void onResponse(Call<List<FlashcardCollections>> call, Response<List<FlashcardCollections>> response) {
                 collectionList.clear();
                 List<FlashcardCollections> list = response.body();
+                if (list == null || list.isEmpty()) {
+                    showInfoZeroCollection();
+                    return;
+                }
+                else{
+                    edit.setVisibility(View.VISIBLE);
+                    del.setVisibility(View.VISIBLE);
+                }
                 int id = 0;
-                for(FlashcardCollections collection : list){
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30,collection.getId()));
+                for (FlashcardCollections collection : list) {
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30, collection.getId()));
                     id++;
                 }
                 RefreshRecycleView();
+                numberKit.setText((list.get(0).getCollectionName()));
+                timesPlayed.setText("30 razy");
+                nextLvl.setText("230/500 pkt");
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
                 }
@@ -171,9 +184,15 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
-
             }
         });
-        RefreshRecycleView();
+    }
+
+    private void showInfoZeroCollection() {
+        numberKit.setText("Brak dostępnych zestawów");
+        timesPlayed.setText("");
+        ID = 0;
+        edit.setVisibility(View.INVISIBLE);
+        del.setVisibility(View.INVISIBLE);
     }
 }

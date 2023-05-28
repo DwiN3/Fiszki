@@ -57,11 +57,6 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         Intent intent = getIntent();
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
-
-
-
-        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
-        else noKitsInfo.setVisibility(View.GONE);
     }
 
     @Override
@@ -120,7 +115,6 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
             }
         });
-        RefreshRecycleView();
     }
     private void RefreshRecycleView(){
         mRecyclerView = findViewById(R.id.kitsRecycleView);
@@ -129,6 +123,8 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
+        else noKitsInfo.setVisibility(View.GONE);
     }
 
     private void setID() {
