@@ -160,9 +160,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 List<FlashcardCollections> list = response.body();
                 int id = 0;
                 for(FlashcardCollections collection : list){
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30));
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30,collection.getId()));
                     id++;
-                    System.out.println(collection.getId());
                 }
                 RefreshRecycleView();
                 if (!response.isSuccessful()) {

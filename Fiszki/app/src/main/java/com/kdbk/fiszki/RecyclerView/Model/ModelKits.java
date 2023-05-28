@@ -9,12 +9,13 @@ public class ModelKits {
     private int gamesPlayed;
     private String _id;
 
-    public ModelKits(String textNumberKit, String TextTEXTflashcards, String textNumberOfCards, int ID, int gamesPlayed){
+    public ModelKits(String textNumberKit, String TextTEXTflashcards, String textNumberOfCards, int ID, int gamesPlayed, String _id){
         this.textNumberOfCards = textNumberOfCards;
         this.textNumberKit = textNumberKit;
         this.textTEXTflashcards = TextTEXTflashcards;
         this.ID = ID;
         this.gamesPlayed = gamesPlayed;
+        this._id = _id;
     }
 
     public String getTextNumberOfCards() {
@@ -34,9 +35,5 @@ public class ModelKits {
     }
     public int getGamesPlayed() {
         return gamesPlayed;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
     }
 }
