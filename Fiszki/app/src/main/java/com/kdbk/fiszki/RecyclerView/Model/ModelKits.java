@@ -36,4 +36,8 @@ public class ModelKits {
     public int getGamesPlayed() {
         return gamesPlayed;
     }
+
+    public String get_id() {
+        return _id;
+    }
 }

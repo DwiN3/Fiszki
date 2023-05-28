@@ -176,5 +176,4 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         });
         RefreshRecycleView();
     }
-
 }

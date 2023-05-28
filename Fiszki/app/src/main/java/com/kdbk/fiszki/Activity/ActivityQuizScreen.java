@@ -46,6 +46,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         t =  new SetGameClass(selectedData);
 
         //System.out.println(selectedID);
+
+        //System.out.println(selectedID);
         //System.out.println(selectedData);
 
 
