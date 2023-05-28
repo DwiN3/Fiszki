@@ -72,10 +72,10 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     }
 
     private void checkAccount() {
-        String loginString = String.valueOf(loginText.getText());
-        String passwordString= String.valueOf(passwordText.getText());
-        //String loginString = "kubiczek";
-        //String passwordString= "testowehaslo";
+//        String loginString = String.valueOf(loginText.getText());
+//        String passwordString= String.valueOf(passwordText.getText());
+        String loginString = "dwin333";
+        String passwordString= "qwerty123";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())

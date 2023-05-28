@@ -9,18 +9,36 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.Arrays.KitsArray;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
+import com.kdbk.fiszki.Retrofit.FlashcardCollections;
+import com.kdbk.fiszki.Retrofit.Flashcards;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityPanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
     NextActivity nextActivity = new NextActivity(this);
+    private Token token  = Token.getInstance();
 
     private Button edit, del, menu;
     private TextView numberKit, timesPlayed;
@@ -31,6 +49,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private KitsArray kitsArray = KitsArray.getInstance();
     private ArrayList<ModelKits> list = kitsArray.getList();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+    private ArrayList<ModelKits> collectionList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +57,11 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         setContentView(R.layout.activity_panel_kits);
         setID();
 
+        fetchFlashcardsCollections();
         edit.setOnClickListener(this);
         del.setOnClickListener(this);
         menu.setOnClickListener(this);
 
-        if (!list.isEmpty()) {
-            numberKit.setText("Zestaw "+(list.get(0).getID()+1));
-            timesPlayed.setText(list.get(0).getGamesPlayed()+" razy");
-        } else {
-            numberKit.setText("Brak dostępnych zestawów");
-        }
-
-        RefreshRecycleView();
     }
 
     @Override
@@ -64,7 +76,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mAdapter = new AdapterKits(list, this, R.layout.recycler_view_kits_small);
+        mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits_small);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -109,7 +121,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         ID = modelKits.getID();
         playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
-        numberKit.setText("Zestaw "+(ID+1));
+        numberKit.setText(collectionList.get(ID).getTextNumberKit());
     }
 
     private void setID() {
@@ -119,4 +131,51 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         numberKit = findViewById(R.id.textNumberKitPanel);
         timesPlayed = findViewById(R.id.textTimesEndQuiz);
     }
+
+    public void fetchFlashcardsCollections() {
+
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        Call<List<FlashcardCollections>> call = jsonPlaceholderAPI.getAllFlashcardsCollections();
+
+        call.enqueue(new Callback <List<FlashcardCollections>>() {
+            @Override
+            public void onResponse(Call <List<FlashcardCollections>> call, Response <List<FlashcardCollections>> response) {
+                collectionList.clear();
+                List<FlashcardCollections> list = response.body();
+                int id = 0;
+                for(FlashcardCollections collection : list){
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30));
+                    id++;
+                    System.out.println(collection.getId());
+                }
+                RefreshRecycleView();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
+
+            }
+        });
+        RefreshRecycleView();
+    }
+
 }

@@ -7,6 +7,7 @@ public class ModelKits {
     private String textTEXTflashcards;
     private int ID;
     private int gamesPlayed;
+    private String _id;
 
     public ModelKits(String textNumberKit, String TextTEXTflashcards, String textNumberOfCards, int ID, int gamesPlayed){
         this.textNumberOfCards = textNumberOfCards;
@@ -33,5 +34,9 @@ public class ModelKits {
     }
     public int getGamesPlayed() {
         return gamesPlayed;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

@@ -1,6 +1,8 @@
 package com.kdbk.fiszki.Retrofit;
 
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -30,9 +32,9 @@ public interface JsonPlaceholderAPI {
 
     // FLASHCARDS-COLLECTION
     @GET("flashcards-collections")
-    Call<FlashcardCollections> getAllFlashcardsCollections(@Body FlashcardCollections flashCardCollections);
+    Call <List<FlashcardCollections>> getAllFlashcardsCollections();
     @GET("flashcards-collections/{collectionName}")
-    Call<FlashcardCollections> getByIDflashcardsCollections(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
+    Call<FlashcardCollections> getByIDflashcardsCollections(@Path("collectionName") String collectionName);
     @DELETE("flashcards-collections/{collectionName}")
     Call<FlashcardCollections> deleteFlashcardsCollections(@Path("collectionName") String collectionName, @Body FlashcardCollections flashCardCollections);
 }
