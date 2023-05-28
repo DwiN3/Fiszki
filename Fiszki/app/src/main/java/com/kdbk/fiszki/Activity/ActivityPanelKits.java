@@ -132,7 +132,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         timesPlayed = findViewById(R.id.textTimesEndQuiz);
     }
 
-    public void fetchFlashcardsCollections() {
+    private void fetchFlashcardsCollections() {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override

@@ -2,8 +2,8 @@ package com.kdbk.fiszki.Retrofit;
 
 public class FlashcardCollections {
 
-    String collectionName;
-    String _id;
+    private String collectionName;
+    private String _id;
     public FlashcardCollections(){};
     public FlashcardCollections(String collectionName, String _id){
         this.collectionName = collectionName;
