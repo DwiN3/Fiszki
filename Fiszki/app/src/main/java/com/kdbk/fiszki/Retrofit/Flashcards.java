@@ -2,6 +2,8 @@ package com.kdbk.fiszki.Retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class Flashcards {
 
     private String collectionName, language, category, word, translatedWord, example, translatedExample, content;
@@ -9,6 +11,9 @@ public class Flashcards {
     @SerializedName("body")
     private String text;
 
+
+    public Flashcards() {
+    }
 
     public Flashcards(String collectionName, String language, String category, String word, String translatedWord, String example, String translatedExample) {
         this.collectionName = collectionName;
@@ -56,4 +61,5 @@ public class Flashcards {
     public String getText() {
         return text;
     }
+
 }

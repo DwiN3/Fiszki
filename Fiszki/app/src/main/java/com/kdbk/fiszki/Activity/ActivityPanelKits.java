@@ -50,6 +50,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private RecyclerView.LayoutManager mLayoutManager;
     private boolean isBackPressedBlocked = true;
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
+    private String collectionName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         setID();
 
         fetchFlashcardsCollections();
+        resetAfterDelate();
         edit.setOnClickListener(this);
         del.setOnClickListener(this);
         menu.setOnClickListener(this);
@@ -85,7 +87,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
                 Intent intent = new Intent();
-                intent.putExtra("id_flashcard", _id);
+                System.out.println("Do wysłania nazwa"+collectionName);
+                intent.putExtra("name_kit", collectionName);
                 nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
                 break;
             case R.id.buttonDeleteKitPanel:
@@ -111,8 +114,10 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
             numberKit.setText("Brak dostępnych zestawów");
             timesPlayed.setText("");
             ID = 0;
+            collectionName ="";
         } else {
             numberKit.setText(collectionList.get(0).getTextNumberKit());
+            collectionName = collectionList.get(0).getTextNumberKit();
             timesPlayed.setText(collectionList.get(0).getGamesPlayed() + " razy");
             ID = collectionList.get(0).getID();
             _id = collectionList.get(0).get_id();
@@ -125,7 +130,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
         _id = modelKits.get_id();
-
+        collectionName = modelKits.getTextNumberKit();
         numberKit.setText(modelKits.getTextNumberKit());
     }
 
@@ -234,6 +239,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         numberKit.setText("Brak dostępnych zestawów");
         timesPlayed.setText("");
         ID = 0;
+        collectionName = "";
         _id = "";
         edit.setVisibility(View.INVISIBLE);
         del.setVisibility(View.INVISIBLE);

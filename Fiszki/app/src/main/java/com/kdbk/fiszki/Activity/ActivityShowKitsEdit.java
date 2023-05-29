@@ -9,17 +9,37 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.kdbk.fiszki.Other.FlashcardsCollectionsList;
+import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
 import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
+import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
+import com.kdbk.fiszki.Retrofit.FlashcardCollections;
+import com.kdbk.fiszki.Retrofit.Flashcards;
+import com.kdbk.fiszki.Retrofit.FlashcardsID;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityShowKitsEdit extends AppCompatActivity implements SelectListenerShowKitsEdit {
 
@@ -29,8 +49,10 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
-    private String flashcardID="";
+    private String nameKit="";
+    private Token token  = Token.getInstance();
     private ArrayList<ModelShowKitsEdit> list = new ArrayList<>();
+    private ArrayList<ModelShowKitsEdit> wordsList = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
 
@@ -41,8 +63,9 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setID();
 
         Intent intent = getIntent();
-        flashcardID = intent.getStringExtra("id_flashcard");
-        System.out.println(flashcardID);
+        nameKit = intent.getStringExtra("name_kit");
+        //System.out.println("Nazwa   "+nameKit);
+        showWords();
 
         EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
         Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
@@ -77,12 +100,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         }
 
 
-        mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterShowKitsEdit(list, this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +124,73 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         //intent.putExtra("LastWords", lastWords);
         intent.putExtra("NrWordID", modelShowKitsEdit.getID());
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
+    }
+
+    public void showWords() {
+
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        Call<FlashcardCollections> call = jsonPlaceholderAPI.getKit(nameKit);
+
+        call.enqueue(new Callback<FlashcardCollections>() {
+            @Override
+            public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
+                System.out.println("TUTAJ                    "+response.body());
+                FlashcardCollections flashcardCollection = new FlashcardCollections();
+                flashcardCollection = response.body();
+
+                ArrayList<FlashcardsID> Testowalista = flashcardCollection.getList();
+                System.out.println("TUTAJ                    "+flashcardCollection.getCollectionName());
+
+                int id = 0;
+                for (FlashcardsID collection : Testowalista ) {
+                    System.out.println(collection.getWord()+"    "+collection.getTranslatedWord());
+                    //wordsList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30, collection.getId()));
+
+                    id++;
+                }
+
+                if (list == null || list.isEmpty()) {
+                    //showInfoZeroCollection();
+                    return;
+                }
+
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ActivityShowKitsEdit.this, "Błędne dane", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlashcardCollections> call, Throwable t) {
+                System.out.println(t.getMessage());
+                System.out.println("DZIAALA");
+                RefreshRecycleView();
+            }
+        });
+    }
+
+    private void RefreshRecycleView() {
+        mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new AdapterShowKitsEdit(wordsList, this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void setID() {
