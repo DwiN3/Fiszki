@@ -21,6 +21,7 @@ import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.FlashcardCollections;
 import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private Button edit, del, menu;
     private TextView numberKit, timesPlayed, nextLvl;
     private int ID = 1, playedGames;
+    private String _id="";
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -88,12 +90,12 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
 
                 break;
             case R.id.buttonDeleteKitPanel:
-                ModelKits modelKits = list.stream()
+                ModelKits modelKits = collectionList.stream()
                         .filter(m -> m.getID() == ID)
                         .findFirst()
                         .orElse(null);
                 if (modelKits != null) {
-                    list.remove(modelKits);
+                    collectionList.remove(modelKits);
                 }
                 RefreshRecycleView();
                 resetAfterDelate();
@@ -105,14 +107,15 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     }
 
     public void resetAfterDelate(){
-        if (list.isEmpty()) {
+        if (collectionList.isEmpty()) {
             numberKit.setText("Brak dostępnych zestawów");
             timesPlayed.setText("");
             ID = 0;
         } else {
-            numberKit.setText("Zestaw " + (list.get(0).getID()+1));
-            timesPlayed.setText(list.get(0).getGamesPlayed() + " razy");
-            ID = list.get(0).getID();
+            numberKit.setText(collectionList.get(0).getTextNumberKit());
+            timesPlayed.setText(collectionList.get(0).getGamesPlayed() + " razy");
+            ID = collectionList.get(0).getID();
+            _id = collectionList.get(0).get_id();
         }
     }
 
@@ -121,6 +124,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         ID = modelKits.getID();
         playedGames = modelKits.getGamesPlayed();
         timesPlayed.setText(playedGames+" razy");
+        _id = modelKits.get_id();
 
         numberKit.setText(collectionList.get(ID).getTextNumberKit());
     }
@@ -174,6 +178,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                     id++;
                 }
                 RefreshRecycleView();
+                ID = collectionList.get(0).getID();
                 numberKit.setText((list.get(0).getCollectionName()));
                 timesPlayed.setText("30 razy");
                 nextLvl.setText("230/500 pkt");
@@ -188,10 +193,48 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         });
     }
 
+    private void deleteFlashcardsCollections() {
+
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        FlashcardCollections post = new FlashcardCollections();
+        Call<FlashcardCollections> call = jsonPlaceholderAPI.deleteFlashcardsCollections(_id, post);
+
+
+        call.enqueue(new Callback<FlashcardCollections>() {
+            @Override
+            public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
+                System.out.println("TUTAJ                                  "+response.code());
+
+
+            }
+
+            @Override
+            public void onFailure(Call<FlashcardCollections> call, Throwable t) {
+            }
+        });
+    }
+
     private void showInfoZeroCollection() {
         numberKit.setText("Brak dostępnych zestawów");
         timesPlayed.setText("");
         ID = 0;
+        _id = "";
         edit.setVisibility(View.INVISIBLE);
         del.setVisibility(View.INVISIBLE);
     }
