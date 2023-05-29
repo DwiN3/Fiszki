@@ -19,10 +19,10 @@ public class FlashcardCollections {
     public String getId(){return _id;}
 
     public ArrayList<FlashcardsID> getList() {
-        return list;
+        return flashcards;
     }
 
     public void setList(ArrayList<FlashcardsID> list) {
-        this.list = list;
+        this.flashcards = list;
     }
 }
