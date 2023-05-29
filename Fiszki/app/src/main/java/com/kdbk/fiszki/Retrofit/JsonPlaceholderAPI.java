@@ -28,6 +28,8 @@ public interface JsonPlaceholderAPI {
     Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
     @PUT("flashcards/{flashcardsId}")
     Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
+    @GET("flashcards/{flashcardsId}")
+    Call<FlashcardsID> getFlashcard(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
 
 
     // FLASHCARDS-COLLECTION

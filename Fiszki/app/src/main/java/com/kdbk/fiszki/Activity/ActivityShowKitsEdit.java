@@ -29,6 +29,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private RecyclerView.LayoutManager mLayoutManager;
     private String selectedMode = "";
     private String selectedLanguage = "";
+    private String flashcardID="";
     private ArrayList<ModelShowKitsEdit> list = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
@@ -38,6 +39,10 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_kits_edit);
         setID();
+
+        Intent intent = getIntent();
+        flashcardID = intent.getStringExtra("id_flashcard");
+        System.out.println(flashcardID);
 
         EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
         Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
