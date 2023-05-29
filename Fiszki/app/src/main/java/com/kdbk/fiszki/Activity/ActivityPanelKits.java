@@ -93,8 +93,10 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                         .orElse(null);
                 if (modelKits != null) {
                     collectionList.remove(modelKits);
-                    deleteFlashcardsCollections(modelKits.get_id());
+                    deleteFlashcardsCollections(modelKits.getTextNumberKit());
                 }
+                RefreshRecycleView();
+                resetAfterDelate();
                 break;
             case R.id.buttonBackToMenuPanel:
                 nextActivity.openActivity(ActivityMainMenu.class);
@@ -189,7 +191,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         });
     }
 
-    private void deleteFlashcardsCollections(String collectionId) {
+    private void deleteFlashcardsCollections(String collectionName) {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -208,20 +210,20 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardCollections> call = jsonPlaceholderAPI.deleteFlashcardsCollections(collectionId);
+        Call<FlashcardCollections> call = jsonPlaceholderAPI.deleteFlashcardsCollections(collectionName);
 
 
         call.enqueue(new Callback<FlashcardCollections>() {
             @Override
             public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
                 System.out.println("TUTAJ                                  "+response.code());
-                System.out.println(collectionId);
-                RefreshRecycleView();
-                resetAfterDelate();
+                System.out.println(collectionName);
             }
 
             @Override
             public void onFailure(Call<FlashcardCollections> call, Throwable t) {
+                RefreshRecycleView();
+                resetAfterDelate();
             }
         });
     }
