@@ -1,8 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +27,7 @@ import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.Spinner;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -47,7 +45,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category="inne";
     private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
-    private Spinner categorySpiner;
+    private Spinner categorySpinner;
 
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
@@ -69,8 +67,8 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpiner.setAdapter(adapter);
-        categorySpiner.setSelection(adapter.getPosition("inne"));
+        categorySpinner.setAdapter(adapter);
+        categorySpinner.setSelection(adapter.getPosition("inne"));
 
         add.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -182,7 +180,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         private void setID() {
         add = findViewById(R.id.buttonAcceptFlashcard);
         kitText = findViewById(R.id.kit_text_add);
-        categorySpiner = findViewById(R.id.category_spinner_add);
+        categorySpinner = findViewById(R.id.category_spinner_add);
         wordText = findViewById(R.id.word_text_add);
         translateWordText = findViewById(R.id.translate_text_add);
         exampleText = findViewById(R.id.example_text_add);
