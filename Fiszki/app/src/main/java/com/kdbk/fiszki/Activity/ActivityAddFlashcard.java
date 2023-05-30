@@ -157,7 +157,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private void setSpinner(){
         List<String> categories = new ArrayList<>();
-        String[] categoriesList = {"zwierzęta", "przedmioty", "miejsca", "inne"};
+        String[] categoriesList = {"dom", "zakupy", "praca", "zdrowie", "czlowiek", "turystyka", "jedzenie","edukacja", "inne"};
         for(int n=0;n<categoriesList.length;n++){
             categories.add(categoriesList[n]);
         }
