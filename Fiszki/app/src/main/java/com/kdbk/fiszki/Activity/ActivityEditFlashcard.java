@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kdbk.fiszki.Other.FlashcardInfo;
@@ -48,6 +49,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     Button accept, back, delete;
     private String[] words;
     String word, translateWord,sentens,sentensTranslate;
+    private EditText wordText, translateWordText,exampleText, translateExampleText;
     private ArrayList<ModelEditFlashcard> wordList = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
     private int  lastWords, nrWord=0; // do wyrąbania
@@ -64,7 +66,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         System.out.println("ID=              "+_id_word);
 
 
-
+        setFlashcard();
         RefreshRecycleView();
         takeWords();
 
@@ -257,6 +259,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             @Override
             public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
                 //System.out.println("KODZIK =" + response);
+                wordText.setText(response.body().getWord());
+                translateWordText.setText(response.body().getTranslatedWord());
+                exampleText.setText(response.body().getExample());
+                translateExampleText.setText(response.body().getTranslatedExample());
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
@@ -272,6 +278,10 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
 
     private void setID() {
+        wordText = findViewById(R.id.word_text_edit);
+        translateWordText = findViewById(R.id.translate_text_edit);
+        exampleText = findViewById(R.id.example_text_edit);
+        translateExampleText = findViewById(R.id.translate_example_text_edit);
         accept = findViewById(R.id.buttonEditFlashCardAccept);
         back = findViewById(R.id.buttonEditFlashCardBack);
         delete = findViewById(R.id.buttonEditFlashCardDelate);

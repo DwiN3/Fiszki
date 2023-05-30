@@ -17,13 +17,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textFiszki" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView3"
         android:layout_width="410dp"
         android:layout_height="402dp"
         android:overScrollMode="never"
         android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@+id/bar"
-        tools:layout_editor_absoluteX="1dp">
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="MissingConstraints">
 
 
         <LinearLayout
@@ -41,7 +42,7 @@
                     android:layout_height="100dp">
 
                     <EditText
-                        android:id="@+id/word_text_add"
+                        android:id="@+id/word_text_edit"
                         android:layout_width="262dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="50dp"
@@ -72,9 +73,9 @@
                         android:text="Słowo"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@+id/word_text_add"
-                        app:layout_constraintEnd_toEndOf="@+id/word_text_add"
-                        app:layout_constraintStart_toStartOf="@+id/word_text_add" />
+                        app:layout_constraintBottom_toTopOf="@+id/word_text_edit"
+                        app:layout_constraintEnd_toEndOf="@+id/word_text_edit"
+                        app:layout_constraintStart_toStartOf="@+id/word_text_edit" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -95,12 +96,12 @@
                         android:text="Tłumacznie słowa"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@+id/translate_text_add"
-                        app:layout_constraintEnd_toEndOf="@+id/translate_text_add"
-                        app:layout_constraintStart_toStartOf="@+id/translate_text_add" />
+                        app:layout_constraintBottom_toTopOf="@+id/translate_text_edit"
+                        app:layout_constraintEnd_toEndOf="@+id/translate_text_edit"
+                        app:layout_constraintStart_toStartOf="@+id/translate_text_edit" />
 
                     <EditText
-                        android:id="@+id/translate_text_add"
+                        android:id="@+id/translate_text_edit"
                         android:layout_width="262dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="50dp"
@@ -136,7 +137,7 @@
                     android:layout_height="100dp">
 
                     <EditText
-                        android:id="@+id/example_text_add"
+                        android:id="@+id/example_text_edit"
                         android:layout_width="262dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="50dp"
@@ -166,9 +167,9 @@
                         android:text="Zdanie"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@+id/example_text_add"
-                        app:layout_constraintEnd_toEndOf="@+id/example_text_add"
-                        app:layout_constraintStart_toStartOf="@+id/example_text_add" />
+                        app:layout_constraintBottom_toTopOf="@+id/example_text_edit"
+                        app:layout_constraintEnd_toEndOf="@+id/example_text_edit"
+                        app:layout_constraintStart_toStartOf="@+id/example_text_edit" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -189,12 +190,12 @@
                         android:text="Tłumaczenie zdania"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@+id/translate_example_text_add"
-                        app:layout_constraintEnd_toEndOf="@+id/translate_example_text_add"
-                        app:layout_constraintStart_toStartOf="@+id/translate_example_text_add" />
+                        app:layout_constraintBottom_toTopOf="@+id/translate_example_text_edit"
+                        app:layout_constraintEnd_toEndOf="@+id/translate_example_text_edit"
+                        app:layout_constraintStart_toStartOf="@+id/translate_example_text_edit" />
 
                     <EditText
-                        android:id="@+id/translate_example_text_add"
+                        android:id="@+id/translate_example_text_edit"
                         android:layout_width="262dp"
                         android:layout_height="43dp"
                         android:layout_marginStart="50dp"
@@ -261,12 +262,12 @@
         android:id="@+id/buttonEditFlashCardAccept"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_button"
         android:text="ZATWIERDŹ ZMIANY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <Button
         android:id="@+id/buttonEditFlashCardDelate"
