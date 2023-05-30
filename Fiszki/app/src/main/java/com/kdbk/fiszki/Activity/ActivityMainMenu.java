@@ -35,6 +35,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         setID();
 
         helloNick.setText("Witaj "+token.getUserName());
+        System.out.println(token.getToken());
         saveData();
         if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
         else internetError.setVisibility(View.VISIBLE);
