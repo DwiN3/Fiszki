@@ -57,24 +57,24 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flashcard);
         setID();
-
-        mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterAddFlashcard(list, this, this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-        takeWords();
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setFlashcardRecycle();
-                addFlashcardToBase();
-                Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//        mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
+//        mRecyclerView.setHasFixedSize(true);
+//        mLayoutManager = new LinearLayoutManager(this);
+//        mAdapter = new AdapterAddFlashcard(list, this, this);
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mRecyclerView.setAdapter(mAdapter);
+//
+//        takeWords();
+//
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setFlashcardRecycle();
+//                addFlashcardToBase();
+//                Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     void takeWords() {

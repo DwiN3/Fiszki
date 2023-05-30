@@ -27,37 +27,253 @@
                 app:srcCompat="@drawable/bar"
                 tools:ignore="MissingConstraints" />
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/addFlashcardlRecycleView"
-                android:layout_width="408dp"
-                android:layout_height="544dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bar" />
-
             <TextView
                 android:id="@+id/textFiszki"
                 android:layout_width="245dp"
                 android:layout_height="53dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="DODAJ FISZKĘ"
                 android:textSize="34sp"
+                app:layout_constraintBottom_toBottomOf="@+id/bar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.29" />
 
             <Button
                 android:id="@+id/buttonAcceptFlashcard"
                 android:layout_width="345dp"
                 android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button"
                 android:text="DODAJ FISZKE"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addFlashcardlRecycleView" />
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="540dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonAcceptFlashcard"
+                app:layout_constraintTop_toBottomOf="@+id/bar"
+                tools:layout_editor_absoluteX="1dp"
+                android:overScrollMode="never"
+                android:scrollbars="vertical"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:id="@+id/editTextAddFlashcard3"
+                                android:layout_width="262dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/rounded_text"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.744"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.428" />
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/flagpl" />
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="Słowo"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:id="@+id/editTextAddFlashcard3"
+                                android:layout_width="262dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/rounded_text"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.744"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.428" />
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/flagang" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:id="@+id/editTextAddFlashcard3"
+                                android:layout_width="262dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/rounded_text"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.744"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.428" />
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/flagpl" />
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="Zdanie"
+                                android:textColor="#000000"
+                                android:textSize="20sp"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:id="@+id/editTextAddFlashcard3"
+                                android:layout_width="262dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/rounded_text"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.744"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.428" />
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/editTextAddFlashcard3"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/flagang" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:id="@+id/constraintLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                tools:layout_editor_absoluteY="116dp">-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextAddFlashcard"-->
+<!--                    android:layout_width="262dp"-->
+<!--                    android:layout_height="43dp"-->
+<!--                    android:layout_marginStart="12dp"-->
+<!--                    android:background="@drawable/rounded_text"-->
+<!--                    android:gravity="center"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageView3"-->
+<!--                    tools:layout_editor_absoluteY="61dp" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView3"-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    app:srcCompat="@drawable/flagpl"-->
+<!--                    tools:layout_editor_absoluteX="16dp"-->
+<!--                    tools:layout_editor_absoluteY="50dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:text="Słowo"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:textSize="24sp"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/editTextAddFlashcard"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
