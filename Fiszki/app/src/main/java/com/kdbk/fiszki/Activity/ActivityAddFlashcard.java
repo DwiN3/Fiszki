@@ -59,70 +59,39 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_add_flashcard);
         setID();
 
-        List<String> categories = new ArrayList<>();
-        categories.add("zwierzęta");
-        categories.add("przedmioty");
-        categories.add("miejsca");
-        categories.add("inne");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(adapter);
-        categorySpinner.setSelection(adapter.getPosition("inne"));
+        setSpinner();
 
         add.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
-              //setFlashcardRecycle();
-              //addFlashcardToBase();
+                getWord();
+                addFlashcardToBase();
                 Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void getWord(){
-
+        nrKit = String.valueOf(kitText.getText());
+        category = String.valueOf(categorySpinner.getSelectedItem());
+        word = String.valueOf(wordText.getText());
+        translateWord = String.valueOf(translateWordText.getText());
+        sampleSentence = String.valueOf(exampleText.getText());
+        translateSampleSentence = String.valueOf(translateExampleText.getText());
+        // TESTY
+//        newFlashcard = new String[]{nrKit,category, word, translateWord, sampleSentence, translateSampleSentence};
+//        WordsArray wordsArray = new WordsArray();
+//        wordsArray.addWord(newFlashcard);
+//        for (int i = 0; i < newFlashcard.length; i++) {
+//            Log.d("AddFlashcard", newFlashcard[i]);
+//        }
     }
 
-
-    private void setFlashcardRecycle(){
-        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
-        int nextIndex = editFlashcardArray.getWords() + 1;
-        subList.add(new ModelEditFlashcard(R.drawable.flagpl, word,1, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagang, translateWord, 2, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagpl, sampleSentence, 3, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagang, translateSampleSentence, 4, nextIndex));
-        editFlashcardArray.getAllList().put(nextIndex, subList);
-        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence, category};
-
-        // Lokalne fiszki
-        newFlashcard = new String[]{nrKit, word, translateWord, sampleSentence, translateSampleSentence};
-        WordsArray wordsArray = new WordsArray();
-        wordsArray.addWord(newFlashcard);
-        for (int i = 0; i < newFlashcard.length; i++) {
-            Log.d("AddFlashcard", newFlashcard[i]);
-        }
-
-    }
-
-    private void resetFlashcardRecycle() {
-        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
-        int nextIndex = editFlashcardArray.getWords() + 1;
-
-        // Clear the previous subList and create a new one
-        subList = new ArrayList<>();
-
-        subList.add(new ModelEditFlashcard(R.drawable.flagpl, "", 1, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagang, "", 2, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagpl, "", 3, nextIndex));
-        subList.add(new ModelEditFlashcard(R.drawable.flagang, "", 4, nextIndex));
-
-        // Update the EditFlashcardArray with the new subList
-        editFlashcardArray.getAllList().put(nextIndex, subList);
-
-        // Clear the field values
-        nrKit = "";
-        //category="";
+    private void clearWord(){
+        wordText.setText("");
+        translateWordText.setText("");
+        exampleText.setText("");
+        translateExampleText.setText("");
         word = "";
         translateWord = "";
         sampleSentence = "";
@@ -136,7 +105,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
     }
 
     public void addFlashcardToBase() {
-        String collectionName = "1";
         String language = "english";
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -171,7 +139,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
             @Override
             public void onFailure(Call<Flashcards> call, Throwable t) {
                 Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
-                resetFlashcardRecycle();
+                clearWord();
             }
         });
     }
@@ -187,6 +155,20 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         translateExampleText = findViewById(R.id.translate_example_text_add);
     }
 
+    private void setSpinner(){
+        List<String> categories = new ArrayList<>();
+        categories.add("zwierzęta");
+        categories.add("przedmioty");
+        categories.add("miejsca");
+        categories.add("inne");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+        categorySpinner.setSelection(adapter.getPosition("inne"));
+    }
+
+
+    // PÓŹNIEJ SIĘ WYWALI
     @Override
     public void onEditTextChanged(int cardId, String newText) {
 
