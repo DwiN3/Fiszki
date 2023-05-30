@@ -1,19 +1,10 @@
 package com.kdbk.fiszki.RecyclerView.Model;
-
-import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ModelKits {
-
-    private int textNumberOfCards;
-    private String textNumberKit;
-    private String textTEXTflashcards;
-    private int ID;
-    private int gamesPlayed;
-    private String _id;
+    private int textNumberOfCards, ID, gamesPlayed;
+    private String textNumberKit, textTEXTflashcards, _id;
     private ArrayList<FlashcardsID> list = new ArrayList<FlashcardsID>();
 
     public ModelKits(String textNumberKit, String TextTEXTflashcards, int textNumberOfCards, int ID, int gamesPlayed, String _id){

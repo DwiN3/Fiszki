@@ -1,8 +1,9 @@
 package com.kdbk.fiszki.Other;
 
 public class FlashcardInfo {
-    private static String nameCollection ="", id_word="";
     private static FlashcardInfo instance = null;
+    private static String nameCollection ="", id_word="";
+
 
     public static FlashcardInfo getInstance() {
         if (instance == null) {
@@ -15,15 +16,11 @@ public class FlashcardInfo {
         return nameCollection;
     }
 
-    public void setNameCollection(String nameCollection) {
-        FlashcardInfo.nameCollection = nameCollection;
-    }
+    public void setNameCollection(String nameCollection) { FlashcardInfo.nameCollection = nameCollection; }
 
     public void setId_word(String id_word) {
         FlashcardInfo.id_word = id_word;
     }
 
-    public String getId_word() {return id_word;
-
-    }
+    public String getId_word() {return id_word;}
 }

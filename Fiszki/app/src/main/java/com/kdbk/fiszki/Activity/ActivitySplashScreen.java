@@ -2,22 +2,17 @@ package com.kdbk.fiszki.Activity;
 
 import static com.kdbk.fiszki.Activity.ActivityMainMenu.LASTTOKEN;
 import static com.kdbk.fiszki.Activity.ActivityMainMenu.LASTUSERNAME;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.R;
 
 public class ActivitySplashScreen extends AppCompatActivity {
-
-
-    public static final String SHARED_PREFS = "sharedPrefs";
     private Token token  = Token.getInstance();
+    public static final String SHARED_PREFS = "sharedPrefs";
     private Class<?> startScreen;
     private String TOKEN = "";
 

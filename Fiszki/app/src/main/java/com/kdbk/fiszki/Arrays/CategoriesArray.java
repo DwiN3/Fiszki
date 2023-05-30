@@ -2,11 +2,9 @@ package com.kdbk.fiszki.Arrays;
 
 import com.kdbk.fiszki.RecyclerView.Model.ModelCategories;
 import com.kdbk.fiszki.R;
-
 import java.util.ArrayList;
 
 public class CategoriesArray {
-
     private static CategoriesArray instance = null;
     private ArrayList<ModelCategories> list = new ArrayList<>();
 

@@ -4,15 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
-
 import java.util.ArrayList;
 
 public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdit.MyViewHolder> {

@@ -1,32 +1,26 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityGameMode extends AppCompatActivity {
-
-    NextActivity nextActivity = new NextActivity(this);
+    private NextActivity nextActivity = new NextActivity(this);
+    private InternetConnection con = new InternetConnection(this);
     private Button quizMode, learnMode, reverse, yoursKits, categories;
     private ImageView  flagFirstImage,flagSecendImage;
-    private String selectedMode = "quiz";
-    private String selectedLanguage = "pl";
-    private InternetConnection con = new InternetConnection(this);
-
+    private String selectedMode = "quiz", selectedLanguage = "pl";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_mode);
-
         setID();
         setButtonListeners();
 
@@ -35,37 +29,31 @@ public class ActivityGameMode extends AppCompatActivity {
     }
 
     private void setButtonListeners() {
-
             categories.setOnClickListener(v -> {
                 Intent intent = new Intent();
                 intent.putExtra("SelectedMode", selectedMode);
                 intent.putExtra("SelectLanguage", selectedLanguage);
                 nextActivity.openActivity(ActivityCategories.class, intent);
             });
-
             yoursKits.setOnClickListener(v -> {
                 Intent intent = new Intent();
                 intent.putExtra("SelectedMode", selectedMode);
                 intent.putExtra("SelectLanguage", selectedLanguage);
                 nextActivity.openActivity(ActivityKits.class, intent);
             });
-
             quizMode.setOnClickListener(v -> {
                 selectedMode = "quiz";
                 quizMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
                 learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
             });
-
             learnMode.setOnClickListener(v -> {
                 selectedMode = "learn";
                 learnMode.setBackgroundResource(R.drawable.rounded_button_mode_pressed);
                 quizMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
             });
-
             reverse.setOnClickListener(v -> {
                 if (selectedLanguage.equals("pl")) selectedLanguage = "ang";
                 else if (selectedLanguage.equals("ang")) selectedLanguage = "pl";
-                //System.out.println(selectedLanguage);
                 Drawable firstImage = flagFirstImage.getDrawable();
                 Drawable secondImage = flagSecendImage.getDrawable();
                 flagFirstImage.setImageDrawable(secondImage);

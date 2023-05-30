@@ -2,15 +2,11 @@ package com.kdbk.fiszki.Retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 public class Flashcards {
-
     private String collectionName, language, category, word, translatedWord, example, translatedExample, content;
 
     @SerializedName("body")
     private String text;
-
 
     public Flashcards() {
     }

@@ -3,8 +3,7 @@ package com.kdbk.fiszki.Retrofit;
 import java.util.ArrayList;
 
 public class FlashcardCollectionsWords {
-    private String collectionName;
-    private String _id;
+    private String collectionName, _id;
     private ArrayList<FlashcardsID> flashcards;
 
     public FlashcardCollectionsWords() {

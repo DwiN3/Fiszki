@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import java.io.IOException;
-import java.util.ArrayList;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,19 +24,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityEditFlashcard extends AppCompatActivity  {
-
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
-    private NextActivity nextActivity = new NextActivity(this);
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
     private Token token  = Token.getInstance();
     private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
-    private String _id_word="";
-    Button accept, back, delete;
-    private String[] words;
-    String word, translateWord,sentens,sentensTranslate;
+    private boolean isBackPressedBlocked = true;
+    private NextActivity nextActivity = new NextActivity(this);
+    private Button accept, back, delete;
     private EditText wordText, translateWordText,exampleText, translateExampleText;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private String _id_word="",word, translateWord,sentens,sentensTranslate;
 
 
     @Override
@@ -48,10 +40,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         setID();
 
         _id_word = flashcardInfo.getId_word();
-        System.out.println("ID=              "+_id_word);
-
-
-        setFlashcard();
+        setFlashcardRetrofit();
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +49,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 translateWord = String.valueOf(translateWordText.getText());
                 sentens = String.valueOf(exampleText.getText());
                 sentensTranslate = String.valueOf(translateExampleText.getText());
-                String tabwords[] = {word,translateWord, sentens,sentensTranslate};
-                editFlashcard();
+                editFlashcardRetrofit();
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -75,22 +63,13 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteFlashcard();
+                deleteFlashcardRetrofit();
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
     }
 
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstęcz
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
-    public void deleteFlashcard() {
+    public void deleteFlashcardRetrofit() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -113,7 +92,6 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
             public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
-                //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
@@ -126,7 +104,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         });
     }
 
-    public void editFlashcard() {
+    public void editFlashcardRetrofit() {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -151,8 +129,6 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
             public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
-                //System.out.println("KODZIK =" + response);
-
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
@@ -165,7 +141,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         });
     }
 
-    public void setFlashcard() {
+    public void setFlashcardRetrofit() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -188,7 +164,6 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
             public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
-                //System.out.println("KODZIK =" + response);
                 wordText.setText(response.body().getWord());
                 translateWordText.setText(response.body().getTranslatedWord());
                 exampleText.setText(response.body().getExample());
@@ -205,7 +180,13 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         });
     }
 
-
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
 
     private void setID() {
         wordText = findViewById(R.id.word_text_edit);

@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
 import com.kdbk.fiszki.Activity.ActivityMainMenu;
 
 public class InternetConnection {
-
     private Context context;
 
     public InternetConnection(Context context) {

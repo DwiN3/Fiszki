@@ -1,15 +1,13 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityPasswordReset extends AppCompatActivity {
 
-    NextActivity nextActivity = new NextActivity(this);
+    private NextActivity nextActivity = new NextActivity(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,24 +1,21 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizEnd extends AppCompatActivity {
-    NextActivity nextActivity = new NextActivity(this);
+    private NextActivity nextActivity = new NextActivity(this);
     private Button exit;
-    private String points ="", allWords="";
     private TextView pointsText, ScoreEndQuiz;
-
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+    private String points ="", allWords="";
+    private boolean isBackPressedBlocked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,6 @@ public class ActivityQuizEnd extends AppCompatActivity {
         pointsText.setText(points);
         ScoreEndQuiz.setText("/"+allWords+" PKT");
 
-
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +40,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }

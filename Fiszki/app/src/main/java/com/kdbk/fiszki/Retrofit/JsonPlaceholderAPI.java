@@ -1,8 +1,6 @@
 package com.kdbk.fiszki.Retrofit;
 
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -3,14 +3,12 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
@@ -20,11 +18,9 @@ import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.FlashcardCollections;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,19 +31,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityPanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
-    NextActivity nextActivity = new NextActivity(this);
     private Token token  = Token.getInstance();
-    private Button edit, del, menu;
-    private TextView numberKit, timesPlayed, nextLvl;
-    private int ID = 1, playedGames;
-    private String _id="";
+    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
+    private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private boolean isBackPressedBlocked = true;
+    private Button edit, del, menu;
+    private TextView numberKit, timesPlayed, nextLvl;
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
-    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
-    private String collectionName="";
+    private boolean isBackPressedBlocked = true;
+    private String collectionName="", _id="";
+    private int ID = 1, playedGames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,35 +50,17 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         setContentView(R.layout.activity_panel_kits);
         setID();
 
-        fetchFlashcardsCollections();
+        fetchFlashcardsCollectionsRetrofit();
         resetAfterDelate();
+
         edit.setOnClickListener(this);
         del.setOnClickListener(this);
         menu.setOnClickListener(this);
     }
 
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
-    private void RefreshRecycleView() {
-        mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits_small);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
-                //System.out.println("Do wysłania nazwa"+collectionName);
                 flashcardInfo.setNameCollection(collectionName);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
                 break;
@@ -94,7 +71,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                         .orElse(null);
                 if (modelKits != null) {
                     collectionList.remove(modelKits);
-                    deleteFlashcardsCollections(modelKits.getTextNumberKit());
+                    deleteFlashcardsCollectionsRetrofit(modelKits.getTextNumberKit());
                 }
                 RefreshRecycleView();
                 resetAfterDelate();
@@ -104,23 +81,6 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 flashcardInfo.setNameCollection("");
                 flashcardInfo.setId_word("");
                 break;
-        }
-    }
-
-    public void resetAfterDelate(){
-        if (collectionList.isEmpty()) {
-            numberKit.setText("Brak dostępnych zestawów");
-            nextLvl.setText("");
-            timesPlayed.setText("");
-            ID = 0;
-            collectionName ="";
-        } else {
-            nextLvl.setText(String.valueOf(collectionList.get(0).getTextNumberOfCards()*10+"/500 pkt"));
-            numberKit.setText(collectionList.get(0).getTextNumberKit());
-            collectionName = collectionList.get(0).getTextNumberKit();
-            timesPlayed.setText(collectionList.get(0).getGamesPlayed() + " razy");
-            ID = collectionList.get(0).getID();
-            _id = collectionList.get(0).get_id();
         }
     }
 
@@ -135,16 +95,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         nextLvl.setText(String.valueOf(modelKits.getTextNumberOfCards()*10+"/500 pkt"));
     }
 
-    private void setID() {
-        edit = findViewById(R.id.buttonEditKitPanel);
-        del = findViewById(R.id.buttonDeleteKitPanel);
-        menu = findViewById(R.id.buttonBackToMenuPanel);
-        numberKit = findViewById(R.id.textNumberKitPanel);
-        nextLvl = findViewById(R.id.textNextLVLEndQuiz);
-        timesPlayed = findViewById(R.id.textTimesEndQuiz);
-    }
-
-    private void fetchFlashcardsCollections() {
+    private void fetchFlashcardsCollectionsRetrofit() {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -198,13 +149,11 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
             }
 
             @Override
-            public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
-
-            }
+            public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {}
         });
     }
 
-    private void deleteFlashcardsCollections(String collectionName) {
+    private void deleteFlashcardsCollectionsRetrofit(String collectionName) {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -241,14 +190,53 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         });
     }
 
+    public void resetAfterDelate(){
+        if (collectionList.isEmpty()) {
+            showInfoZeroCollection();
+        } else {
+            nextLvl.setText(String.valueOf(collectionList.get(0).getTextNumberOfCards()*10+"/500 pkt"));
+            numberKit.setText(collectionList.get(0).getTextNumberKit());
+            collectionName = collectionList.get(0).getTextNumberKit();
+            timesPlayed.setText(collectionList.get(0).getGamesPlayed() + " razy");
+            ID = collectionList.get(0).getID();
+            _id = collectionList.get(0).get_id();
+        }
+    }
+
     private void showInfoZeroCollection() {
         numberKit.setText("Brak dostępnych zestawów");
         timesPlayed.setText("");
         nextLvl.setText("");
         ID = 0;
-        collectionName = "";
         _id = "";
+        collectionName = "";
         edit.setVisibility(View.INVISIBLE);
         del.setVisibility(View.INVISIBLE);
+    }
+
+    private void RefreshRecycleView() {
+        mRecyclerView = findViewById(R.id.kitsPanelRecycleView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits_small);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true; // blokuj przycisk wstecz
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    private void setID() {
+        edit = findViewById(R.id.buttonEditKitPanel);
+        del = findViewById(R.id.buttonDeleteKitPanel);
+        menu = findViewById(R.id.buttonBackToMenuPanel);
+        numberKit = findViewById(R.id.textNumberKitPanel);
+        nextLvl = findViewById(R.id.textNextLVLEndQuiz);
+        timesPlayed = findViewById(R.id.textTimesEndQuiz);
     }
 }

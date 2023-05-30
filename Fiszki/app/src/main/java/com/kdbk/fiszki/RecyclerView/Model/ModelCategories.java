@@ -1,10 +1,8 @@
 package com.kdbk.fiszki.RecyclerView.Model;
 
 public class ModelCategories {
-
-    private int ImageResource;
+    private int ImageResource, ID;
     private String nameCategory;
-    private int ID;
 
     public ModelCategories(int ImageResource, String nameCategory, int ID){
         this.ImageResource = ImageResource;

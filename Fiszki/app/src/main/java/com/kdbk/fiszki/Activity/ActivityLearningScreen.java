@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,21 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Arrays.SetGameClass;
+import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityLearningScreen extends AppCompatActivity implements View.OnClickListener {
-    NextActivity nextActivity = new NextActivity(this);
-    private Button next, exit;
-    private String selectedLanguage = "", selectedID="", selectedData="";
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
+    private NextActivity nextActivity = new NextActivity(this);
+    private SetGameClass t = new SetGameClass("category");
+    private boolean isBackPressedBlocked = true;
+    private Button buttonNext, next, exit;
     private TextView nameWord, sticksLeft, textsampleSentence;
-    private Button buttonNext;
     private ImageView imageWord;
     private int nrWords, allWords, countWords = 0;
-    SetGameClass t = new SetGameClass("category");
+    private String selectedLanguage = "", selectedID="", selectedData="";
 
 
     @Override
@@ -47,7 +44,6 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     }
 
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.buttonNextLearning:
                 if(buttonNext.getText().equals("POKAŻ TŁUMACZENIE")){
@@ -73,17 +69,25 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         }
     }
 
+    private void translateWord(int numberWord){
+        nameWord.setText(t.getCorrectANS(numberWord));
+        textsampleSentence.setText(t.getSentenseTra(numberWord));
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
     private void setNewWord(int numberWord){
         nameWord.setText(t.getNameWord(numberWord));
         textsampleSentence.setText(t.getSentense(numberWord));
         imageWord.setBackgroundResource(t.getImg(numberWord));
         countWords +=1;
         sticksLeft.setText(countWords+"/"+allWords);
-    }
-
-    private void translateWord(int numberWord){
-        nameWord.setText(t.getCorrectANS(numberWord));
-        textsampleSentence.setText(t.getSentenseTra(numberWord));
     }
 
     private void setID() {
@@ -94,13 +98,5 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         textsampleSentence = findViewById(R.id.textsampleSentenceLearning);
         imageWord = findViewById(R.id.imageWordLearning);
         buttonNext = findViewById(R.id.buttonNextLearning);
-    }
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
-        }
-        return super.dispatchKeyEvent(event);
     }
 }

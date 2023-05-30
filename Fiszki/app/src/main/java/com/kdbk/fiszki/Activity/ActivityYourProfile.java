@@ -1,17 +1,14 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityYourProfile extends AppCompatActivity {
-
-    NextActivity nextActivity = new NextActivity(this);
+    private NextActivity nextActivity = new NextActivity(this);
     private Button yoursKitsPanel;
 
 

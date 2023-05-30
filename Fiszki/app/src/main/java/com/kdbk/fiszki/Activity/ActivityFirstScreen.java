@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,14 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Login;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,22 +21,21 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityFirstScreen extends AppCompatActivity implements View.OnClickListener {
-
-    NextActivity nextActivity = new NextActivity(this);
-    private Button login, create, reset;
-    private EditText loginText, passwordText;
-    private TextView internetError;
-    private boolean entryPermissions = false;
-    InternetConnection con = new InternetConnection(this);
     private Token token  = Token.getInstance();
+    private boolean isBackPressedBlocked = true;
+    private InternetConnection con = new InternetConnection(this);
+    private NextActivity nextActivity = new NextActivity(this);
+    private Button login, create, reset;
+    private TextView internetError;
+    private EditText loginText, passwordText;
 
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
         setID();
+
         if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
         else internetError.setVisibility(View.VISIBLE);
 
@@ -70,7 +66,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
         String loginString = String.valueOf(loginText.getText());
         String passwordString= String.valueOf(passwordText.getText());
         //String loginString = "dwin333";
-      // String passwordString= "qwerty123";
+        // String passwordString= "qwerty123";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -104,7 +100,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }

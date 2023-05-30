@@ -3,14 +3,11 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
@@ -21,10 +18,8 @@ import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,19 +30,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityShowKitsEdit extends AppCompatActivity implements SelectListenerShowKitsEdit {
-
-    NextActivity nextActivity = new NextActivity(this);
+    private Token token  = Token.getInstance();
+    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
+    private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private String selectedMode = "";
-    private String selectedLanguage = "";
-    private String nameKit="";
-    private Token token  = Token.getInstance();
-    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
-    private ArrayList<ModelShowKitsEdit> wordsList = new ArrayList<>();
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
+    private ArrayList<ModelShowKitsEdit> wordsList = new ArrayList<>();
+    private String selectedMode = "", selectedLanguage = "", nameKit="";
+    private boolean isBackPressedBlocked = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +48,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setID();
 
         nameKit = flashcardInfo.getNameCollection();
-        //System.out.println("Nazwa   "+nameKit);
         showKits();
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +58,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             }
         });
     }
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
@@ -120,23 +102,16 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                                 id_count++;
                             }
                             RefreshRecycleView();
-                        } else {
-                            // Pusta lista fiszek
-                            // showInfoZeroCollection();
                         }
-                    } else {
-                        // Odpowiedź z serwera jest pusta
                     }
                 } else {
-                    // Niepowodzenie żądania
-                    Toast.makeText(ActivityShowKitsEdit.this, "Błędne dane", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityShowKitsEdit.this, "Błąd danych", Toast.LENGTH_SHORT).show();
                 }
                 RefreshRecycleView();
             }
 
             @Override
             public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
-                System.out.println(t.getMessage());
             }
         });
     }
@@ -149,6 +124,14 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         mAdapter = new AdapterShowKitsEdit(wordsList, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
     }
 
     private void setID() {

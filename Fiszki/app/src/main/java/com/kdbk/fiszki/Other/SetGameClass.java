@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Arrays;
+package com.kdbk.fiszki.Other;
 
 import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
@@ -6,7 +6,7 @@ import com.kdbk.fiszki.R;
 public class SetGameClass {
 
     private WordsArray kitsWords  = WordsArray.getInstance();
-    WordsArray wordsArray = new WordsArray();
+    private WordsArray wordsArray = new WordsArray();
 
     private String[] NameWord;
     private String[] correctANS;

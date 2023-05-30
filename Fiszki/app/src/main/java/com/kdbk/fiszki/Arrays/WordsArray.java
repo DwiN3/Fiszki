@@ -29,14 +29,4 @@ public class WordsArray {
     public int getLenOfArray(){
         return list.size();
     }
-
-    public void removeWord(int index){
-        list.remove(index);
-    }
-
-    public void addWord(String[] listWord){ // NIE DZIAŁA POPRAWNIE
-        //int size = list.size();
-        //list.add(new ModelWord(listWord[1], listWord[2], listWord[3], listWord[4], size));
-    }
-
 }

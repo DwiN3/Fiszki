@@ -1,8 +1,8 @@
 package com.kdbk.fiszki.Other;
 
 public class Token {
-    private static String userName ="", token="";
     private static Token instance = null;
+    private static String userName ="", token="";
 
     public static Token getInstance() {
         if (instance == null) {

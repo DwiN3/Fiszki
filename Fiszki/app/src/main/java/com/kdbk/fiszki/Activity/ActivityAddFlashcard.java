@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,17 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,16 +26,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityAddFlashcard extends AppCompatActivity  {
     private Token token  = Token.getInstance();
-    private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
     private Button add;
-    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
     private Spinner categorySpinner;
+    private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
+    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flashcard);
-
         setID();
         setSpinner();
 

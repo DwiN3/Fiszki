@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -10,26 +9,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Arrays.SetGameClass;
+import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
-    NextActivity nextActivity = new NextActivity(this);
+    private NextActivity nextActivity = new NextActivity(this);
+    private SetGameClass t;
     private Button next, exit;
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
-    private String selectedLanguage = "", selectedID="", selectedData="";
-    private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
-    private boolean markTheAnswer = false;
-    private String correctAnswer;
+    private String selectedLanguage = "", selectedID="", selectedData="", correctAnswer;
+    private boolean isBackPressedBlocked = true, markTheAnswer = false;
     private int nrWords, allWords;
-    SetGameClass t;
 
 
-    // TEST QUIZU
     private int points = 0;
 
 
@@ -45,12 +40,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedData = intent.getStringExtra("SelectData");
         t =  new SetGameClass(selectedData);
 
-        //System.out.println(selectedID);
-
-        //System.out.println(selectedID);
-        //System.out.println(selectedData);
-
-
         nrWords = t.getWords()-1;
         allWords = t.getWords();
         userPKTQuiz.setText("/"+allWords+" PKT");
@@ -65,12 +54,11 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         setQuestion(nrWords);
     }
 
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
-        }
-        return super.dispatchKeyEvent(event);
+    public void clearButtons(){
+        answerButton1.setBackgroundResource(R.drawable.rounded_button);
+        answerButton2.setBackgroundResource(R.drawable.rounded_button);
+        answerButton3.setBackgroundResource(R.drawable.rounded_button);
+        answerButton4.setBackgroundResource(R.drawable.rounded_button);
     }
 
     void setQuestion(int numberWord){
@@ -83,7 +71,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         correctAnswer = t.getCorrectANS(numberWord);
         imageWordQuiz.setBackgroundResource(t.getImg(numberWord));
     }
-
 
     public void onClick(View view) {
         if(nrWords == 0) next.setText("PODSUMOWANIE");
@@ -181,13 +168,13 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void clearButtons(){
-        answerButton1.setBackgroundResource(R.drawable.rounded_button);
-        answerButton2.setBackgroundResource(R.drawable.rounded_button);
-        answerButton3.setBackgroundResource(R.drawable.rounded_button);
-        answerButton4.setBackgroundResource(R.drawable.rounded_button);
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
     }
-
 
     private void setID() {
         next = findViewById(R.id.buttonNextQuiz);

@@ -3,13 +3,11 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
@@ -18,11 +16,9 @@ import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.FlashcardCollections;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -33,33 +29,31 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityKits extends AppCompatActivity implements SelectListenerKits {
-
-    NextActivity nextActivity = new NextActivity(this);
+    private Token token  = Token.getInstance();
+    private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView noKitsInfo;
-    private String selectedMode = "";
-    private String selectedLanguage = "";
-
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
-    private Token token  = Token.getInstance();
+    private String selectedMode = "", selectedLanguage = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_kits);
         setID();
-        fetchFlashcardsCollections();
 
         Intent intent = getIntent();
         selectedMode = intent.getStringExtra("SelectedMode");
         selectedLanguage = intent.getStringExtra("SelectLanguage");
+
+        fetchFlashcardsCollectionsRetrofit();
     }
 
     @Override
     public void onItemClicked(ModelKits modelKits) {
-        //Toast.makeText(this, modelKit.getTextNumberKit(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
         intent.putExtra("SelectID", ""+ modelKits.get_id());
@@ -72,7 +66,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         }
     }
 
-    private void fetchFlashcardsCollections() {
+    private void fetchFlashcardsCollectionsRetrofit() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
