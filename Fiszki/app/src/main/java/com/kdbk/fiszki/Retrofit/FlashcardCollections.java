@@ -3,7 +3,7 @@ package com.kdbk.fiszki.Retrofit;
 import java.util.ArrayList;
 
 public class FlashcardCollections {
-    private ArrayList<FlashcardsID> flashcards = new ArrayList<FlashcardsID>();
+    //private ArrayList<FlashcardsID> flashcards = new ArrayList<FlashcardsID>();
 
     private String collectionName;
     private String _id;
@@ -18,11 +18,11 @@ public class FlashcardCollections {
     }
     public String getId(){return _id;}
 
-    public ArrayList<FlashcardsID> getList() {
+   /* public ArrayList<FlashcardsID> getList() {
         return flashcards;
     }
 
     public void setList(ArrayList<FlashcardsID> list) {
         this.flashcards = list;
-    }
+    }*/
 }

@@ -154,7 +154,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                 FlashcardCollections flashcardCollection = new FlashcardCollections();
                 flashcardCollection = response.body();
 
-                ArrayList<FlashcardsID> Testowalista = flashcardCollection.getList();
+                ArrayList<FlashcardsID> Testowalista = new ArrayList<>();
+                        //flashcardCollection.getList();
                 System.out.println("TUTAJ                    "+flashcardCollection.getCollectionName());
 
                 int id = 0;
