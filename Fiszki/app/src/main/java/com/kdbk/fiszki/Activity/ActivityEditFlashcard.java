@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterEditFlashcard;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
@@ -40,7 +41,9 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private Token token  = Token.getInstance();
-    private int nrWord, lastWords;
+    private int  lastWords, nrWord; // do wyrąbania
+    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
+    private String _id_word;
     private  String flashcardsID = "";
     Button accept, back, delete;
     private String[] words;
@@ -53,7 +56,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         setID();
 
         Intent intent = getIntent();
-        nrWord = intent.getIntExtra("NrWordID", 1);
+        _id_word = intent.getStringExtra("id_word_show");
+        System.out.println("ID=              "+_id_word);
         EditFlashcardArray instance = EditFlashcardArray.getInstance();
         ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
 
@@ -226,6 +230,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
             }
         });
     }
+
+
 
     private void setID() {
         accept = findViewById(R.id.buttonEditFlashCardAccept);

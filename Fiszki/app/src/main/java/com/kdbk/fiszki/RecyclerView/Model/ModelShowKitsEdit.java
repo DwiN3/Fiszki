@@ -1,17 +1,15 @@
 package com.kdbk.fiszki.RecyclerView.Model;
 
 public class ModelShowKitsEdit {
+    int ID;
+    private String word, translateWord,sentens,sentensTranslate, _id;
 
-    private int ID;
-
-    private String word, translateWord,sentens,sentensTranslate;
-
-    public ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int ID){
+    public ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int ID, String _id){
         this.word = word;
         this.translateWord = translateWord;
         this.sentens = sentens;
         this.sentensTranslate = sentensTranslate;
-        this.ID = ID;
+        this._id = _id;
     }
 
 
@@ -32,5 +30,9 @@ public class ModelShowKitsEdit {
 
     public String getSentensTranslate() {
         return sentensTranslate;
+    }
+
+    public String get_id() {
+        return _id;
     }
 }

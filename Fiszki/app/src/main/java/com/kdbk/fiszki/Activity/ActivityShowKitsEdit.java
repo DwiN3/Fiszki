@@ -11,27 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.kdbk.fiszki.Other.FlashcardsCollectionsList;
+import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
-import com.kdbk.fiszki.Arrays.EditFlashcardArray;
-import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
-import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
-import com.kdbk.fiszki.Retrofit.FlashcardCollections;
 import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
-import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -52,6 +44,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private String selectedLanguage = "";
     private String nameKit="";
     private Token token  = Token.getInstance();
+    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
     private ArrayList<ModelShowKitsEdit> wordsList = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
@@ -63,9 +56,9 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setID();
 
         Intent intent = getIntent();
-        nameKit = intent.getStringExtra("name_kit");
+        nameKit = flashcardInfo.getNameCollection();
         System.out.println("Nazwa   "+nameKit);
-        showWords();
+        showKits();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,12 +80,12 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
         Intent intent = getIntent();
-        //intent.putExtra("LastWords", lastWords);
-        intent.putExtra("NrWordID", modelShowKitsEdit.getID());
+        intent.putExtra("id_word_show", modelShowKitsEdit.get_id());
+        System.out.println(modelShowKitsEdit.get_id());
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
 
-   public void showWords() {
+   public void showKits() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -123,8 +116,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                         if (testowalista != null && !testowalista.isEmpty()) {
                             int id_count=0;
                             for (FlashcardsID collection : testowalista) {
-                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count);
-                                wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count));
+                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
+                                wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count, collection.get_id()));
                                 id_count++;
                             }
                             RefreshRecycleView();

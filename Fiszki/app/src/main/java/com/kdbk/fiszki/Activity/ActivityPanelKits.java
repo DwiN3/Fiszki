@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.Arrays.KitsArray;
@@ -50,6 +51,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private RecyclerView.LayoutManager mLayoutManager;
     private boolean isBackPressedBlocked = true;
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
+    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
     private String collectionName="";
 
     @Override
@@ -87,8 +89,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
                 Intent intent = new Intent();
-                System.out.println("Do wysłania nazwa"+collectionName);
-                intent.putExtra("name_kit", collectionName);
+                //System.out.println("Do wysłania nazwa"+collectionName);
+                flashcardInfo.setNameCollection(collectionName);
                 nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
                 break;
             case R.id.buttonDeleteKitPanel:
@@ -105,6 +107,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 break;
             case R.id.buttonBackToMenuPanel:
                 nextActivity.openActivity(ActivityMainMenu.class);
+                flashcardInfo.setNameCollection("");
+                flashcardInfo.setId_word("");
                 break;
         }
     }

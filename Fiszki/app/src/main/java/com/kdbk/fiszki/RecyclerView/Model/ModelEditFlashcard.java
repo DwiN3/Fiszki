@@ -6,6 +6,7 @@ public class ModelEditFlashcard {
     private int imageResource;
     private int cardId;
     private int nrWord;
+    private String _id;
 
     public ModelEditFlashcard(int imageResource, String editWord, int cardId, int nrWord) {
         this.editWord = editWord;
@@ -31,4 +32,5 @@ public class ModelEditFlashcard {
     public int getNrWord() {
         return nrWord;
     }
+    public String get_id(){ return _id;}
 }

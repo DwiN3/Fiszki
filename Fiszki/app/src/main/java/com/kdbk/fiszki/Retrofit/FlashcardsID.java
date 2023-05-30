@@ -3,7 +3,7 @@ package com.kdbk.fiszki.Retrofit;
 import com.google.gson.annotations.SerializedName;
 
 public class FlashcardsID {
-    private String word, translatedWord, example, translatedExample, content;
+    private String word, translatedWord, example, translatedExample, content, _id;
 
     @SerializedName("body")
     private String text;
@@ -41,5 +41,8 @@ public class FlashcardsID {
 
     public String getText() {
         return text;
+    }
+    public String get_id() {
+        return _id;
     }
 }
