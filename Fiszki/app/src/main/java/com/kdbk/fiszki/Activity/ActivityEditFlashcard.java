@@ -1,33 +1,21 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.RecyclerView.Adaper.AdapterEditFlashcard;
-import com.kdbk.fiszki.Arrays.EditFlashcardArray;
-import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
-import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
-import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerEditFlashcard;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -50,10 +38,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
     private String[] words;
     String word, translateWord,sentens,sentensTranslate;
     private EditText wordText, translateWordText,exampleText, translateExampleText;
-    private ArrayList<ModelEditFlashcard> wordList = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
-    private int  lastWords, nrWord=0; // do wyrąbania
-    EditFlashcardArray instance = EditFlashcardArray.getInstance();
 
 
     @Override

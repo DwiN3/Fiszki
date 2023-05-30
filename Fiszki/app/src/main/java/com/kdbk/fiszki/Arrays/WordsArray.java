@@ -1,6 +1,4 @@
 package com.kdbk.fiszki.Arrays;
-import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.Other.Words;
 import java.util.ArrayList;
 
 public class WordsArray {

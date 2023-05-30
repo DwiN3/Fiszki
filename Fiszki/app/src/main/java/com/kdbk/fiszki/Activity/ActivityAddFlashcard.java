@@ -3,7 +3,6 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,15 +11,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.RecyclerView.Adaper.AdapterAddFlashcard;
-import com.kdbk.fiszki.Arrays.EditFlashcardArray;
-import com.kdbk.fiszki.Arrays.FlashcardArray;
-import com.kdbk.fiszki.RecyclerView.Model.ModelAddFlashcard;
-import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Arrays.WordsArray;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerAddFlashcard;
 import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
@@ -37,35 +29,26 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ActivityAddFlashcard extends AppCompatActivity implements SelectListenerAddFlashcard, AdapterAddFlashcard.OnEditTextChangeListener {
-
-
-    private NextActivity nextActivity = new NextActivity(this);
-    private Button add;
-    private String[] newFlashcard;
-    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category="inne";
-    private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
-    private Spinner categorySpinner;
-
-    private FlashcardArray flashcardArray = FlashcardArray.getInstance();
-    private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
+public class ActivityAddFlashcard extends AppCompatActivity  {
     private Token token  = Token.getInstance();
-    ArrayList<ModelEditFlashcard> subList = new ArrayList<>();
-
+    private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
+    private Button add;
+    private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category;
+    private Spinner categorySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flashcard);
-        setID();
 
+        setID();
         setSpinner();
 
         add.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
                 getWord();
-                addFlashcardToBase();
+                addFlashcardRetrofit();
                 Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
             }
         });
@@ -78,13 +61,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         translateWord = String.valueOf(translateWordText.getText());
         sampleSentence = String.valueOf(exampleText.getText());
         translateSampleSentence = String.valueOf(translateExampleText.getText());
-        // TESTY
-//        newFlashcard = new String[]{nrKit,category, word, translateWord, sampleSentence, translateSampleSentence};
-//        WordsArray wordsArray = new WordsArray();
-//        wordsArray.addWord(newFlashcard);
-//        for (int i = 0; i < newFlashcard.length; i++) {
-//            Log.d("AddFlashcard", newFlashcard[i]);
-//        }
     }
 
     private void clearWord(){
@@ -98,13 +74,7 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         translateSampleSentence = "";
     }
 
-
-    @Override
-    public void onItemClicked(ModelAddFlashcard modelAddFlashcard) {
-
-    }
-
-    public void addFlashcardToBase() {
+    public void addFlashcardRetrofit() {
         String language = "english";
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -144,17 +114,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         });
     }
 
-
-        private void setID() {
-        add = findViewById(R.id.buttonAcceptFlashcard);
-        kitText = findViewById(R.id.kit_text_add);
-        categorySpinner = findViewById(R.id.category_spinner_add);
-        wordText = findViewById(R.id.word_text_add);
-        translateWordText = findViewById(R.id.translate_text_add);
-        exampleText = findViewById(R.id.example_text_add);
-        translateExampleText = findViewById(R.id.translate_example_text_add);
-    }
-
     private void setSpinner(){
         List<String> categories = new ArrayList<>();
         String[] categoriesList = {"dom", "zakupy", "praca", "zdrowie", "czlowiek", "turystyka", "jedzenie","edukacja", "inne"};
@@ -167,10 +126,13 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         categorySpinner.setSelection(adapter.getPosition("inne"));
     }
 
-
-    // PÓŹNIEJ SIĘ WYWALI
-    @Override
-    public void onEditTextChanged(int cardId, String newText) {
-
+    private void setID() {
+        add = findViewById(R.id.buttonAcceptFlashcard);
+        kitText = findViewById(R.id.kit_text_add);
+        categorySpinner = findViewById(R.id.category_spinner_add);
+        wordText = findViewById(R.id.word_text_add);
+        translateWordText = findViewById(R.id.translate_text_add);
+        exampleText = findViewById(R.id.example_text_add);
+        translateExampleText = findViewById(R.id.translate_example_text_add);
     }
 }

@@ -2,9 +2,7 @@ package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -12,15 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kdbk.fiszki.Arrays.FlashcardArray;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Login;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

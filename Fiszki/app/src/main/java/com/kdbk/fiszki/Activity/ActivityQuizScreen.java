@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.SetGameClass;
+import com.kdbk.fiszki.Arrays.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {

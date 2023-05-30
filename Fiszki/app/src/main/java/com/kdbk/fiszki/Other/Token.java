@@ -1,7 +1,5 @@
 package com.kdbk.fiszki.Other;
 
-import com.kdbk.fiszki.Arrays.EditFlashcardArray;
-
 public class Token {
     private static String userName ="", token="";
     private static Token instance = null;
