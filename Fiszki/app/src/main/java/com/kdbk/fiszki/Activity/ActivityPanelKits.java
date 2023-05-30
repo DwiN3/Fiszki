@@ -185,15 +185,16 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                     collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "11", id, 23, collection.getId()));
                     id++;
                 }
-                RefreshRecycleView();
+                collectionName = collectionList.get(0).getTextNumberKit();
                 ID = collectionList.get(0).getID();
-                numberKit.setText((list.get(0).getCollectionName()));
-                timesPlayed.setText("30 razy");
+                timesPlayed.setText(String.valueOf(collectionList.get(0).getGamesPlayed()+" razy"));
+                numberKit.setText(String.valueOf(list.get(0).getCollectionName()));
                 nextLvl.setText("230/500 pkt");
+                RefreshRecycleView();
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
-                    edit.setVisibility(View.VISIBLE);
-                    del.setVisibility(View.VISIBLE);
+                    edit.setVisibility(View.INVISIBLE);
+                    del.setVisibility(View.INVISIBLE);
                 }
             }
 

@@ -19,6 +19,8 @@ public interface JsonPlaceholderAPI {
     Call<Register> register(@Body Register register);
     @PUT("users/users-level")
     Call<UserLVL> userLVL(@Body UserLVL userLVL);
+    @GET("users/users-level")
+    Call<UserLVL> getUserLVL();
 
 
     // FLASHCARDS
