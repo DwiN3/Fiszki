@@ -121,13 +121,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-                            <EditText
-                                android:id="@+id/cateogry_text_add"
+                            <Spinner
+                                android:id="@+id/category_spinner_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
+                                android:textAlignment="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.744"
@@ -135,11 +136,12 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintVertical_bias="0.428" />
 
+
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/cateogry_text_add"
+                                app:layout_constraintEnd_toStartOf="@+id/category_spinner_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/category_icon" />
@@ -151,11 +153,12 @@
                                 android:text="Kategoria"
                                 android:textColor="#000000"
                                 android:textSize="20sp"
-                                app:layout_constraintBottom_toTopOf="@+id/cateogry_text_add"
-                                app:layout_constraintEnd_toEndOf="@+id/cateogry_text_add"
-                                app:layout_constraintStart_toStartOf="@+id/cateogry_text_add" />
+                                app:layout_constraintBottom_toTopOf="@+id/category_spinner_add"
+                                app:layout_constraintEnd_toEndOf="@+id/category_spinner_add"
+                                app:layout_constraintStart_toStartOf="@+id/category_spinner_add" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
+
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"

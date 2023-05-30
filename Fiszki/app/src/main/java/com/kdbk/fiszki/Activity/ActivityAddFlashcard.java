@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.kdbk.fiszki.Other.Token;
@@ -25,7 +28,8 @@ import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.List;
+import android.widget.Spinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -39,12 +43,11 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
 
     private NextActivity nextActivity = new NextActivity(this);
-    private RecyclerView mRecyclerView;
     private Button add;
-    private RecyclerView.Adapter mAdapter;
     private String[] newFlashcard;
     private String nrKit, word, translateWord, sampleSentence, translateSampleSentence, category="inne";
-    private RecyclerView.LayoutManager mLayoutManager;
+    private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
+    private Spinner categorySpiner;
 
     private FlashcardArray flashcardArray = FlashcardArray.getInstance();
     private ArrayList<ModelAddFlashcard> list = flashcardArray.getList();
@@ -57,36 +60,32 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_flashcard);
         setID();
-//
-//        mRecyclerView = findViewById(R.id.addFlashcardlRecycleView);
-//        mRecyclerView.setHasFixedSize(true);
-//        mLayoutManager = new LinearLayoutManager(this);
-//        mAdapter = new AdapterAddFlashcard(list, this, this);
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//        mRecyclerView.setAdapter(mAdapter);
-//
-//        takeWords();
-//
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                setFlashcardRecycle();
-//                addFlashcardToBase();
-//                Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+        List<String> categories = new ArrayList<>();
+        categories.add("zwierzęta");
+        categories.add("przedmioty");
+        categories.add("miejsca");
+        categories.add("inne");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpiner.setAdapter(adapter);
+        categorySpiner.setSelection(adapter.getPosition("inne"));
+
+        add.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View view) {
+              //setFlashcardRecycle();
+              //addFlashcardToBase();
+                Toast.makeText(ActivityAddFlashcard.this, "Trwa dodawanie fiszki", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    void takeWords() {
-        if (!list.isEmpty()) {
-            nrKit = String.valueOf(list.get(0).getcardId());
-            word = list.get(1).getEditFlashcard();
-            translateWord = list.get(2).getEditFlashcard();
-            sampleSentence = list.get(3).getEditFlashcard();
-            translateSampleSentence = list.get(4).getEditFlashcard();
-            //category = list.get(5).getEditFlashcard();
-        }
+    private void getWord(){
+
     }
+
 
     private void setFlashcardRecycle(){
         EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
@@ -130,9 +129,6 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
         translateWord = "";
         sampleSentence = "";
         translateSampleSentence = "";
-
-        // Notify the adapter that the data set has changed
-        mAdapter.notifyDataSetChanged();
     }
 
 
@@ -185,28 +181,16 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
         private void setID() {
         add = findViewById(R.id.buttonAcceptFlashcard);
+        kitText = findViewById(R.id.kit_text_add);
+        categorySpiner = findViewById(R.id.category_spinner_add);
+        wordText = findViewById(R.id.word_text_add);
+        translateWordText = findViewById(R.id.translate_text_add);
+        exampleText = findViewById(R.id.example_text_add);
+        translateExampleText = findViewById(R.id.translate_example_text_add);
     }
 
     @Override
     public void onEditTextChanged(int cardId, String newText) {
-        switch (cardId) {
-            case 1:
-                nrKit = newText;
-                break;
-            case 2:
-                word = newText;
-                break;
-            case 3:
-                translateWord = newText;
-                break;
-            case 4:
-                sampleSentence = newText;
-                break;
-            case 5:
-                translateSampleSentence = newText;
-                break;
-            default:
-                break;
-        }
+
     }
 }
