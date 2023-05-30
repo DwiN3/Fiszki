@@ -52,7 +52,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     private String selectedLanguage = "";
     private String nameKit="";
     private Token token  = Token.getInstance();
-    private ArrayList<ModelShowKitsEdit> list = new ArrayList<>();
     private ArrayList<ModelShowKitsEdit> wordsList = new ArrayList<>();
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private Button back;
@@ -67,40 +66,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         nameKit = intent.getStringExtra("name_kit");
         System.out.println("Nazwa   "+nameKit);
         showWords();
-
-        EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
-        Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
-
-        Integer[] Ids = new Integer[allList.size()];
-        String[] words = new String[allList.size()];
-        String[] translateWord = new String[allList.size()];
-        String[] sentens = new String[allList.size()];
-        String[] translateSentens = new String[allList.size()];
-
-
-        Integer i = 0;
-
-        for (Integer index : allList.keySet()) {
-            ArrayList<ModelEditFlashcard> list = allList.get(index);
-            if (!list.isEmpty()) {
-                ModelEditFlashcard wordElement = list.get(0);
-                words[i] = wordElement.getEditWord();
-                ModelEditFlashcard translateWordElement = list.get(1);
-                translateWord[i] = translateWordElement.getEditWord();
-                ModelEditFlashcard sentensElement = list.get(2);
-                sentens[i] = sentensElement.getEditWord();
-                ModelEditFlashcard translateSentensElement = list.get(3);
-                translateSentens[i] = translateSentensElement.getEditWord();
-                Ids[i] = index;
-                i++;
-            }
-        }
-
-        for(int n=0 ; n < Ids.length ; n++){
-            list.add(new ModelShowKitsEdit(words[n], translateWord[n], sentens[n], translateSentens[n],Ids[n]));
-        }
-
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,9 +121,13 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                     if (flashcardCollection != null) {
                         ArrayList<FlashcardsID> testowalista = flashcardCollection.getFlashcards();
                         if (testowalista != null && !testowalista.isEmpty()) {
+                            int id_count=0;
                             for (FlashcardsID collection : testowalista) {
-                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord());
+                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count);
+                                wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count));
+                                id_count++;
                             }
+                            RefreshRecycleView();
                         } else {
                             // Pusta lista fiszek
                             // showInfoZeroCollection();
@@ -175,7 +144,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             @Override
             public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
                 System.out.println(t.getMessage());
-                RefreshRecycleView();
             }
         });
     }
