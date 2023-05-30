@@ -64,8 +64,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
         Intent intent = getIntent();
         nameKit = intent.getStringExtra("name_kit");
-        //System.out.println("Nazwa   "+nameKit);
-        showWords();
+        System.out.println("Nazwa   "+nameKit);
+        //showWords();
 
         EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
         Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
@@ -126,8 +126,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
 
-    public void showWords() {
-
+/*    public void showWords() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -138,40 +137,36 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             }
         }).build();
 
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         Call<FlashcardCollections> call = jsonPlaceholderAPI.getKit(nameKit);
 
         call.enqueue(new Callback<FlashcardCollections>() {
             @Override
             public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
-                System.out.println("TUTAJ                    "+response.body());
-                FlashcardCollections flashcardCollection = new FlashcardCollections();
-                flashcardCollection = response.body();
+                if (response.isSuccessful()) {
+                    FlashcardCollections flashcardCollection = response.body();
 
-                ArrayList<FlashcardsID> Testowalista = new ArrayList<>();
-                        //flashcardCollection.getList();
-                System.out.println("TUTAJ                    "+flashcardCollection.getCollectionName());
-
-                int id = 0;
-                for (FlashcardsID collection : Testowalista ) {
-                    System.out.println(collection.getWord()+"    "+collection.getTranslatedWord());
-                    //wordsList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30, collection.getId()));
-
-                    id++;
-                }
-
-                if (list == null || list.isEmpty()) {
-                    //showInfoZeroCollection();
-                    return;
-                }
-
-                if (!response.isSuccessful()) {
+                    if (flashcardCollection != null) {
+                        ArrayList<FlashcardsID> testowalista = flashcardCollection.getFlashcards();
+                        if (testowalista != null && !testowalista.isEmpty()) {
+                            for (FlashcardsID collection : testowalista) {
+                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord());
+                            }
+                        } else {
+                            // Pusta lista fiszek
+                            // showInfoZeroCollection();
+                        }
+                    } else {
+                        // Odpowiedź z serwera jest pusta
+                    }
+                } else {
+                    // Niepowodzenie żądania
                     Toast.makeText(ActivityShowKitsEdit.this, "Błędne dane", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -179,11 +174,11 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             @Override
             public void onFailure(Call<FlashcardCollections> call, Throwable t) {
                 System.out.println(t.getMessage());
-                System.out.println("DZIAALA");
                 RefreshRecycleView();
             }
         });
-    }
+    }*/
+
 
     private void RefreshRecycleView() {
         mRecyclerView = findViewById(R.id.showWordKitsRecycleView);
