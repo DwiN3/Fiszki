@@ -41,21 +41,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.29" />
 
-            <Button
-                android:id="@+id/buttonAcceptFlashcard"
-                android:layout_width="345dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rounded_button"
-                android:text="DODAJ FISZKE"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
 
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
-                android:layout_height="560dp"
+                android:layout_height="540dp"
                 android:overScrollMode="never"
                 android:scrollbars="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/bar"
@@ -69,7 +60,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,7 +72,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +106,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,7 +118,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 android:textAlignment="center"
@@ -164,7 +155,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -176,7 +167,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -211,7 +202,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -234,7 +225,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -258,7 +249,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -270,7 +261,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -304,7 +295,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="90dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -327,7 +318,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -352,6 +343,18 @@
 
                 </LinearLayout>
             </ScrollView>
+
+            <Button
+                android:id="@+id/buttonAcceptFlashcard"
+                android:layout_width="345dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="DODAJ FISZKE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
