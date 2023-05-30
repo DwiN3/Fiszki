@@ -12,7 +12,6 @@ import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
 import com.kdbk.fiszki.Retrofit.Models.Flashcards;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,6 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

@@ -16,7 +16,6 @@ import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardCollections;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
