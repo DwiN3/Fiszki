@@ -56,7 +56,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setID();
 
         nameKit = flashcardInfo.getNameCollection();
-        System.out.println("Nazwa   "+nameKit);
+        //System.out.println("Nazwa   "+nameKit);
         showKits();
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +131,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                     // Niepowodzenie żądania
                     Toast.makeText(ActivityShowKitsEdit.this, "Błędne dane", Toast.LENGTH_SHORT).show();
                 }
+                RefreshRecycleView();
             }
 
             @Override
