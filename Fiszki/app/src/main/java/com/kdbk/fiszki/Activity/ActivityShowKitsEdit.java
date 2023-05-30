@@ -55,7 +55,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        Intent intent = getIntent();
         nameKit = flashcardInfo.getNameCollection();
         System.out.println("Nazwa   "+nameKit);
         showKits();
@@ -63,6 +62,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                flashcardInfo.setId_word("");
                 nextActivity.openActivity(ActivityPanelKits.class);
             }
         });
@@ -79,10 +79,9 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
-        Intent intent = getIntent();
-        intent.putExtra("id_word_show", modelShowKitsEdit.get_id());
+        flashcardInfo.setId_word(modelShowKitsEdit.get_id());
         System.out.println(modelShowKitsEdit.get_id());
-        nextActivity.openActivity(ActivityEditFlashcard.class, intent);
+        nextActivity.openActivity(ActivityEditFlashcard.class);
     }
 
    public void showKits() {
