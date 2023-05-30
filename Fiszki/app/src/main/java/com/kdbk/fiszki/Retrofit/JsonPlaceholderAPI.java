@@ -25,7 +25,7 @@ public interface JsonPlaceholderAPI {
     @POST("flashcards/{collectionName}")
     Call<Flashcards> addFlashcard(@Path("collectionName") String collectionName, @Body Flashcards flashcards);
     @DELETE("flashcards/{flashcardsId}")
-    Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
+    Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId);
     @PUT("flashcards/{flashcardsId}")
     Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
     @GET("flashcards/{collectionName}")

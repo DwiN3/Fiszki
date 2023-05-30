@@ -37,7 +37,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ActivityEditFlashcard extends AppCompatActivity implements SelectListenerEditFlashcard, AdapterEditFlashcard.OnEditTextChangeListener {
+public class ActivityEditFlashcard extends AppCompatActivity  {
 
     private boolean isBackPressedBlocked = true; // zabezpieczenie na cofania poprzez klawisz wstecz
     private NextActivity nextActivity = new NextActivity(this);
@@ -67,14 +67,16 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
 
         setFlashcard();
-        RefreshRecycleView();
-        takeWords();
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                word = String.valueOf(wordText.getText());
+                translateWord = String.valueOf(translateWordText.getText());
+                sentens = String.valueOf(exampleText.getText());
+                sentensTranslate = String.valueOf(translateExampleText.getText());
                 String tabwords[] = {word,translateWord, sentens,sentensTranslate};
-                for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
+                editFlashcard();
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
@@ -88,46 +90,12 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditFlashcardArray instance = EditFlashcardArray.getInstance();
-                instance.remove(nrWord);
-                instance.getWords();
-                mAdapter.notifyDataSetChanged();
-
-                //System.out.println(instance.getWords());
+                deleteFlashcard();
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
             }
         });
     }
 
-    void takeWords() {
-        //words = new String[]{"word", "translateWord", "sampleSentence", "translateSampleSentence"};
-
-    }
-
-    @Override
-    public void onItemClicked(ModelEditFlashcard modelEditFlashcard) {
-
-    }
-
-    @Override
-    public void onEditTextChanged(int cardId, String newText) {
-        switch (cardId) {
-            case 1:
-                word = newText;
-                break;
-            case 2:
-                translateWord = newText;
-                break;
-            case 3:
-                sentens = newText;
-                break;
-            case 4:
-                sentensTranslate = newText;
-                break;
-            default:
-                break;
-        }
-    }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
@@ -155,8 +123,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        FlashcardsID post = new FlashcardsID();
-        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word, post);
+        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word);
 
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
@@ -172,15 +139,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void RefreshRecycleView() {
-        mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AdapterEditFlashcard(wordList, this, this);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void editFlashcard() {
@@ -208,20 +166,8 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
             public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
-                wordList.clear();
                 //System.out.println("KODZIK =" + response);
-                ArrayList<ModelEditFlashcard> list = new ArrayList<>();
-                for(int n=0 ; n<4;n++){
 
-                }
-                ModelEditFlashcard wordElement = list.get(0);
-                word = wordElement.getEditWord();
-                ModelEditFlashcard editTranslateWordElement = list.get(1);
-                translateWord = editTranslateWordElement.getEditWord();
-                ModelEditFlashcard sentensElement = list.get(2);
-                sentens = sentensElement.getEditWord();
-                ModelEditFlashcard sentensTranslateElement = list.get(3);
-                sentensTranslate = sentensTranslateElement.getEditWord();
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
@@ -235,7 +181,6 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     }
 
     public void setFlashcard() {
-
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {

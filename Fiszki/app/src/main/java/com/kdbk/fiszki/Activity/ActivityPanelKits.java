@@ -192,11 +192,14 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 nextLvl.setText("230/500 pkt");
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
+                    edit.setVisibility(View.VISIBLE);
+                    del.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
+
             }
         });
     }
