@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelKits {
 
-    private String textNumberOfCards;
+    private int textNumberOfCards;
     private String textNumberKit;
     private String textTEXTflashcards;
     private int ID;
@@ -16,7 +16,7 @@ public class ModelKits {
     private String _id;
     private ArrayList<FlashcardsID> list = new ArrayList<FlashcardsID>();
 
-    public ModelKits(String textNumberKit, String TextTEXTflashcards, String textNumberOfCards, int ID, int gamesPlayed, String _id){
+    public ModelKits(String textNumberKit, String TextTEXTflashcards, int textNumberOfCards, int ID, int gamesPlayed, String _id){
         this.textNumberOfCards = textNumberOfCards;
         this.textNumberKit = textNumberKit;
         this.textTEXTflashcards = TextTEXTflashcards;
@@ -25,7 +25,7 @@ public class ModelKits {
         this._id = _id;
     }
 
-    public String getTextNumberOfCards() {
+    public int getTextNumberOfCards() {
         return textNumberOfCards;
     }
 

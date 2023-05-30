@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
-import com.kdbk.fiszki.Arrays.KitsArray;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
@@ -42,8 +41,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
     private TextView noKitsInfo;
     private String selectedMode = "";
     private String selectedLanguage = "";
-    private KitsArray kitsArray = KitsArray.getInstance();
-    private ArrayList<ModelKits> list = kitsArray.getList();
+
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
     private Token token  = Token.getInstance();
 
@@ -101,7 +99,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
                 List<FlashcardCollections> list = response.body();
                 int id = 0;
                 for(FlashcardCollections collection : list){
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "30", id, 30,collection.getId()));
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", 30, id, 30,collection.getId()));
                     id++;
                 }
                 RefreshRecycleView();

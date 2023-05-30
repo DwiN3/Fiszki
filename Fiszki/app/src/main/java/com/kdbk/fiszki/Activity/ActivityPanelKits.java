@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,19 +14,15 @@ import android.widget.Toast;
 import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
-import com.kdbk.fiszki.Arrays.KitsArray;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.FlashcardCollections;
-import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
-import com.kdbk.fiszki.Retrofit.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -115,10 +110,12 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     public void resetAfterDelate(){
         if (collectionList.isEmpty()) {
             numberKit.setText("Brak dostępnych zestawów");
+            nextLvl.setText("");
             timesPlayed.setText("");
             ID = 0;
             collectionName ="";
         } else {
+            nextLvl.setText(String.valueOf(collectionList.get(0).getTextNumberOfCards()*10+"/500 pkt"));
             numberKit.setText(collectionList.get(0).getTextNumberKit());
             collectionName = collectionList.get(0).getTextNumberKit();
             timesPlayed.setText(collectionList.get(0).getGamesPlayed() + " razy");
@@ -135,6 +132,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         _id = modelKits.get_id();
         collectionName = modelKits.getTextNumberKit();
         numberKit.setText(modelKits.getTextNumberKit());
+        nextLvl.setText(String.valueOf(modelKits.getTextNumberOfCards()*10+"/500 pkt"));
     }
 
     private void setID() {
@@ -190,7 +188,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 ID = collectionList.get(0).getID();
                 timesPlayed.setText(String.valueOf(collectionList.get(0).getGamesPlayed()+" razy"));
                 numberKit.setText(String.valueOf(list.get(0).getCollectionName()));
-                nextLvl.setText("230/500 pkt");
+                nextLvl.setText(String.valueOf(collectionList.get(0).getTextNumberOfCards()*10+"/500 pkt"));
                 RefreshRecycleView();
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
@@ -246,6 +244,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private void showInfoZeroCollection() {
         numberKit.setText("Brak dostępnych zestawów");
         timesPlayed.setText("");
+        nextLvl.setText("");
         ID = 0;
         collectionName = "";
         _id = "";

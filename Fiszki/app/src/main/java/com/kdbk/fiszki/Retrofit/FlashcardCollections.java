@@ -24,8 +24,8 @@ public class FlashcardCollections {
             return _id;
         }
 
-        public String getFlashcardsSize() {
-            return String.valueOf(flashcards.length);
+        public int getFlashcardsSize() {
+            return flashcards.length;
         }
         public String getPointsAvaible() {
         return String.valueOf(flashcards.length * 10);
