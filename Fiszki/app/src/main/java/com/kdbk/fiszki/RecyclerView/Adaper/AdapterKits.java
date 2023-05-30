@@ -34,9 +34,9 @@ public class AdapterKits extends RecyclerView.Adapter<AdapterKits.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ModelKits currentItem = listKits.get(position);
-        holder.numberKit.setText(currentItem.getTextNumberKit());
-        holder.textTEXTflashcards.setText(currentItem.getTextTEXTflashcards());
-        holder.numberOfCards.setText(String.valueOf(currentItem.getTextNumberOfCards()));
+        holder.numberKit.setText(currentItem.getNameKit());
+        holder.textTEXTflashcards.setText(currentItem.getTEXT());
+        holder.numberOfCards.setText(String.valueOf(currentItem.getNumberOfCards()));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

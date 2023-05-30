@@ -4,40 +4,40 @@ import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 import java.util.ArrayList;
 
 public class ModelKits {
-    private int textNumberOfCards, ID, gamesPlayed;
-    private String textNumberKit, textTEXTflashcards, _id;
+    private int numberOfCards, gamesPlayed,countID;
+    private String nameKit, TEXT, wordID;
     private ArrayList<FlashcardID> list = new ArrayList<FlashcardID>();
 
-    public ModelKits(String textNumberKit, String TextTEXTflashcards, int textNumberOfCards, int ID, int gamesPlayed, String _id){
-        this.textNumberOfCards = textNumberOfCards;
-        this.textNumberKit = textNumberKit;
-        this.textTEXTflashcards = TextTEXTflashcards;
-        this.ID = ID;
+    public ModelKits(String nameKit, String TEXT, int numberOfCards, int countID, int gamesPlayed, String wordID){
+        this.numberOfCards = numberOfCards;
+        this.nameKit = nameKit;
+        this.TEXT = TEXT;
+        this.countID = countID;
         this.gamesPlayed = gamesPlayed;
-        this._id = _id;
+        this.wordID = wordID;
     }
 
-    public int getTextNumberOfCards() {
-        return textNumberOfCards;
+    public int getNumberOfCards() {
+        return numberOfCards;
     }
 
-    public String getTextNumberKit() {
-        return textNumberKit;
+    public String getNameKit() {
+        return nameKit;
     }
 
-    public String getTextTEXTflashcards() {
-        return textTEXTflashcards;
+    public String getTEXT() {
+        return TEXT;
     }
 
-    public int getID() {
-        return ID;
+    public int getCountID() {
+        return countID;
     }
     public int getGamesPlayed() {
         return gamesPlayed;
     }
 
-    public String get_id() {
-        return _id;
+    public String getWordID() {
+        return wordID;
     }
 
     public ArrayList<FlashcardID> getList() {

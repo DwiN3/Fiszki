@@ -1,19 +1,19 @@
 package com.kdbk.fiszki.RecyclerView.Model;
 
 public class ModelShowKitsEdit {
-    private String word, translateWord,sentens,sentensTranslate, _id;
-    int ID;
+    private String word, translateWord,sentens,sentensTranslate, wordID;
+    private int countID;
 
-    public ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int ID, String _id){
+    public ModelShowKitsEdit(String word, String translateWord, String sentens, String sentensTranslate, int countID, String wordID){
         this.word = word;
         this.translateWord = translateWord;
         this.sentens = sentens;
         this.sentensTranslate = sentensTranslate;
-        this._id = _id;
+        this.wordID = wordID;
     }
 
-    public int getID() {
-        return ID;
+    public int getCountID() {
+        return countID;
     }
     public String getWord() {
         return word;
@@ -31,7 +31,7 @@ public class ModelShowKitsEdit {
         return sentensTranslate;
     }
 
-    public String get_id() {
-        return _id;
+    public String getWordID() {
+        return wordID;
     }
 }

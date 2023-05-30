@@ -56,7 +56,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
     public void onItemClicked(ModelKits modelKits) {
         Intent intent = new Intent();
         intent.putExtra("SelectLanguage", selectedLanguage);
-        intent.putExtra("SelectID", ""+ modelKits.get_id());
+        intent.putExtra("SelectID", ""+ modelKits.getWordID());
         intent.putExtra("SelectData", "kit");
 
         if(selectedMode.equals("quiz")){

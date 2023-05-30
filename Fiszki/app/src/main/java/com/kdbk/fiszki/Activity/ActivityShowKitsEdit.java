@@ -61,8 +61,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
-        flashcardInfoInstance.setId_word(modelShowKitsEdit.get_id());
-        System.out.println(modelShowKitsEdit.get_id());
+        flashcardInfoInstance.setId_word(modelShowKitsEdit.getWordID());
+        System.out.println(modelShowKitsEdit.getWordID());
         nextActivity.openActivity(ActivityEditFlashcard.class);
     }
 
