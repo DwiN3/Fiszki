@@ -182,7 +182,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 }
                 int id = 0;
                 for (FlashcardCollections collection : list) {
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", "11", id, 23, collection.getId()));
+
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", collection.getFlashcardsSize(), id, 30, collection.getId()));
                     id++;
                 }
                 collectionName = collectionList.get(0).getTextNumberKit();

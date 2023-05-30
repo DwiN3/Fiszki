@@ -5,14 +5,15 @@ import java.util.ArrayList;
 public class FlashcardCollections {
         private String collectionName;
         private String _id;
-        //private ArrayList<FlashcardsID> flashcards;
+        private String [] flashcards;
 
         public FlashcardCollections() {
         }
 
-        public FlashcardCollections(String collectionName, String _id) {
+        public FlashcardCollections(String collectionName, String _id, String [] flashcards) {
             this.collectionName = collectionName;
             this._id = _id;
+            this.flashcards = flashcards;
         }
 
         public String getCollectionName() {
@@ -23,11 +24,10 @@ public class FlashcardCollections {
             return _id;
         }
 
-        /*public ArrayList<FlashcardsID> getFlashcards() {
-            return flashcards;
+        public String getFlashcardsSize() {
+            return String.valueOf(flashcards.length);
         }
-
-        public void setFlashcards(ArrayList<FlashcardsID> flashcards) {
-            this.flashcards = flashcards;
-        }*/
+        public String getPointsAvaible() {
+        return String.valueOf(flashcards.length * 10);
+    }
 }
