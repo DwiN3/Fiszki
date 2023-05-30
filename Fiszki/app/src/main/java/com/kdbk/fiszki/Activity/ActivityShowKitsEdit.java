@@ -15,9 +15,11 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
-import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
-import com.kdbk.fiszki.Retrofit.FlashcardID;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardCollectionsWords;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import java.util.ArrayList;
 import okhttp3.Interceptor;
@@ -83,8 +85,8 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardCollectionsWords> call = jsonPlaceholderAPI.getKit(nameKit);
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<FlashcardCollectionsWords> call = jsonFlashcardsCollections.getKit(nameKit);
 
         call.enqueue(new Callback<FlashcardCollectionsWords>() {
             @Override

@@ -10,8 +10,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.Flashcards;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
+import com.kdbk.fiszki.Retrofit.Models.Flashcards;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,9 +89,9 @@ public class ActivityAddFlashcard extends AppCompatActivity  {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        JsonFlashcards jsonFlashcards = retrofit.create(JsonFlashcards.class);
         Flashcards post = new Flashcards(nrKit, language, category, word, translateWord, sampleSentence, translateSampleSentence);
-        Call<Flashcards> call = jsonPlaceholderAPI.addFlashcard(nrKit, post);
+        Call<Flashcards> call = jsonFlashcards.addFlashcard(nrKit, post);
 
         call.enqueue(new Callback<Flashcards>() {
             @Override

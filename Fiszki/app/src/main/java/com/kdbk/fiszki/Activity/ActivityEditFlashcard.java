@@ -11,8 +11,9 @@ import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.FlashcardID;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -86,8 +87,8 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word);
+        JsonFlashcards jsonFlashcards = retrofit.create(JsonFlashcards.class);
+        Call<FlashcardID> call = jsonFlashcards.deleteFlashcards(_id_word);
 
         call.enqueue(new Callback<FlashcardID>() {
             @Override
@@ -122,9 +123,9 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        JsonFlashcards jsonFlashcards = retrofit.create(JsonFlashcards.class);
         FlashcardID post = new FlashcardID(word,translateWord, sentens, sentensTranslate);
-        Call<FlashcardID> call = jsonPlaceholderAPI.editFlashcards(_id_word, post);
+        Call<FlashcardID> call = jsonFlashcards.editFlashcards(_id_word, post);
 
         call.enqueue(new Callback<FlashcardID>() {
             @Override
@@ -158,8 +159,8 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardID> call = jsonPlaceholderAPI.getFlashcard(_id_word);
+        JsonFlashcards jsonFlashcards = retrofit.create(JsonFlashcards.class);
+        Call<FlashcardID> call = jsonFlashcards.getFlashcard(_id_word);
 
         call.enqueue(new Callback<FlashcardID>() {
             @Override

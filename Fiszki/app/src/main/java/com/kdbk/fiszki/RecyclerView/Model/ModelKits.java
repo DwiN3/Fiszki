@@ -1,5 +1,5 @@
 package com.kdbk.fiszki.RecyclerView.Model;
-import com.kdbk.fiszki.Retrofit.FlashcardID;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 import java.util.ArrayList;
 
 public class ModelKits {

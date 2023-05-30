@@ -1,37 +1,22 @@
-package com.kdbk.fiszki.Retrofit;
+package com.kdbk.fiszki.Retrofit.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Flashcards {
-    private String collectionName, language, category, word, translatedWord, example, translatedExample, content;
+public class FlashcardID {
+    private String word, translatedWord, example, translatedExample, content, _id;
 
     @SerializedName("body")
     private String text;
 
-    public Flashcards() {
+    public FlashcardID() {
+
     }
 
-    public Flashcards(String collectionName, String language, String category, String word, String translatedWord, String example, String translatedExample) {
-        this.collectionName = collectionName;
-        this.language = language;
-        this.category = category;
+    public FlashcardID(String word, String translatedWord, String example, String translatedExample) {
         this.word = word;
         this.translatedWord = translatedWord;
         this.example = example;
         this.translatedExample = translatedExample;
-    }
-
-
-    public String getCollectionName() {
-        return collectionName;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public String getWord() {
@@ -57,5 +42,7 @@ public class Flashcards {
     public String getText() {
         return text;
     }
-
+    public String get_id() {
+        return _id;
+    }
 }

@@ -16,8 +16,9 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
-import com.kdbk.fiszki.Retrofit.FlashcardCollections;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardCollections;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,8 +114,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<List<FlashcardCollections>> call = jsonPlaceholderAPI.getAllFlashcardsCollections();
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<List<FlashcardCollections>> call = jsonFlashcardsCollections.getAllFlashcardsCollections();
 
         call.enqueue(new Callback<List<FlashcardCollections>>() {
             @Override
@@ -171,8 +172,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardCollections> call = jsonPlaceholderAPI.deleteFlashcardsCollections(collectionName);
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<FlashcardCollections> call = jsonFlashcardsCollections.deleteFlashcardsCollections(collectionName);
 
 
         call.enqueue(new Callback<FlashcardCollections>() {

@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Instance.TokenInstance;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
-import com.kdbk.fiszki.Retrofit.Login;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
+import com.kdbk.fiszki.Retrofit.Models.Login;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import retrofit2.Call;
@@ -71,9 +71,9 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        JsonUser jsonUser = retrofit.create(JsonUser.class);
         Login post = new Login(loginString, passwordString);
-        Call<Login> call = jsonPlaceholderAPI.login(post);
+        Call<Login> call = jsonUser.login(post);
         Toast.makeText(ActivityFirstScreen.this,"Trwa logowanie", Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<Login>() {

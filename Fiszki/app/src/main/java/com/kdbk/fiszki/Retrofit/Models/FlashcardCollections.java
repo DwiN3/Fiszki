@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Retrofit;
+package com.kdbk.fiszki.Retrofit.Models;
 
 public class FlashcardCollections {
         private String collectionName, _id;

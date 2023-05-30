@@ -8,8 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
-import com.kdbk.fiszki.Retrofit.Register;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
+import com.kdbk.fiszki.Retrofit.Models.Register;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,9 +46,9 @@ public class ActivityRegister extends AppCompatActivity {
                 .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        JsonUser jsonUser = retrofit.create(JsonUser.class);
         Register post = new Register(emailString, passwordString, passwordReString, loginString);
-        Call<Register> call = jsonPlaceholderAPI.register(post);
+        Call<Register> call = jsonUser.register(post);
 
         call.enqueue(new Callback<Register>() {
             @Override
