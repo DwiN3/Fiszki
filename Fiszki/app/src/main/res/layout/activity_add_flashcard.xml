@@ -80,6 +80,7 @@
                                 android:id="@+id/kit_text_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -93,8 +94,8 @@
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/kit_text_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/kit_icon" />
@@ -125,6 +126,7 @@
                                 android:id="@+id/category_spinner_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -140,8 +142,8 @@
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/category_spinner_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/category_icon" />
@@ -173,6 +175,7 @@
                                 android:id="@+id/word_text_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -187,8 +190,8 @@
                                 android:id="@+id/imageView3"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/word_text_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/flagpl" />
@@ -230,6 +233,7 @@
                                 android:id="@+id/translate_text_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -244,8 +248,8 @@
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/translate_text_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/flagang" />
@@ -265,6 +269,7 @@
                                 android:id="@+id/example_text_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -278,8 +283,8 @@
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/example_text_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/flagpl" />
@@ -321,6 +326,7 @@
                                 android:id="@+id/translate_example_text_add"
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
+                                android:layout_marginStart="50dp"
                                 android:layout_marginTop="8dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
@@ -335,8 +341,8 @@
                             <ImageView
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
+                                android:layout_marginStart="25dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/translate_example_text_add"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/flagang" />
