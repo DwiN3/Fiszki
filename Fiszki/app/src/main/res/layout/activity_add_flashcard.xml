@@ -45,7 +45,7 @@
                 android:id="@+id/buttonAcceptFlashcard"
                 android:layout_width="345dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/rounded_button"
                 android:text="DODAJ FISZKE"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
             <ScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
-                android:layout_height="540dp"
+                android:layout_height="560dp"
                 android:overScrollMode="never"
                 android:scrollbars="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/bar"
@@ -69,7 +69,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,7 +81,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +115,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,7 +127,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 android:textAlignment="center"
@@ -164,7 +164,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -176,7 +176,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -211,7 +211,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -234,7 +234,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -258,7 +258,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -270,7 +270,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -304,7 +304,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="@color/white">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -327,7 +327,7 @@
                                 android:layout_width="262dp"
                                 android:layout_height="43dp"
                                 android:layout_marginStart="50dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rounded_text"
                                 android:gravity="center"
                                 app:layout_constraintBottom_toBottomOf="parent"
