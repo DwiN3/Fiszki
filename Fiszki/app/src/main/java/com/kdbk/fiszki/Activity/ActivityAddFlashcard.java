@@ -157,10 +157,10 @@ public class ActivityAddFlashcard extends AppCompatActivity implements SelectLis
 
     private void setSpinner(){
         List<String> categories = new ArrayList<>();
-        categories.add("zwierzęta");
-        categories.add("przedmioty");
-        categories.add("miejsca");
-        categories.add("inne");
+        String[] categoriesList = {"zwierzęta", "przedmioty", "miejsca", "inne"};
+        for(int n=0;n<categoriesList.length;n++){
+            categories.add(categoriesList[n]);
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
