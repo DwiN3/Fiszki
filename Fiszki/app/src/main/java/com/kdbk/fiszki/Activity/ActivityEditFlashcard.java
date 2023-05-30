@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.kdbk.fiszki.Other.FlashcardInfo;
-import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.FlashcardsID;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.FlashcardID;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -24,8 +24,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityEditFlashcard extends AppCompatActivity  {
-    private Token token  = Token.getInstance();
-    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private FlashcardInfoInstance flashcardInfoInstance = FlashcardInfoInstance.getInstance();
     private boolean isBackPressedBlocked = true;
     private NextActivity nextActivity = new NextActivity(this);
     private Button accept, back, delete;
@@ -39,7 +39,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
         setContentView(R.layout.activity_edit_flashcard);
         setID();
 
-        _id_word = flashcardInfo.getId_word();
+        _id_word = flashcardInfoInstance.getId_word();
         setFlashcardRetrofit();
 
         accept.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
                         .build();
                 return chain.proceed(newRequest);
             }
@@ -87,18 +87,18 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word);
+        Call<FlashcardID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word);
 
-        call.enqueue(new Callback<FlashcardsID>() {
+        call.enqueue(new Callback<FlashcardID>() {
             @Override
-            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
+            public void onResponse(Call<FlashcardID> call, Response<FlashcardID> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<FlashcardsID> call, Throwable t) {
+            public void onFailure(Call<FlashcardID> call, Throwable t) {
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
@@ -110,7 +110,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
                         .build();
                 return chain.proceed(newRequest);
             }
@@ -123,19 +123,19 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        FlashcardsID post = new FlashcardsID(word,translateWord, sentens, sentensTranslate);
-        Call<FlashcardsID> call = jsonPlaceholderAPI.editFlashcards(_id_word, post);
+        FlashcardID post = new FlashcardID(word,translateWord, sentens, sentensTranslate);
+        Call<FlashcardID> call = jsonPlaceholderAPI.editFlashcards(_id_word, post);
 
-        call.enqueue(new Callback<FlashcardsID>() {
+        call.enqueue(new Callback<FlashcardID>() {
             @Override
-            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
+            public void onResponse(Call<FlashcardID> call, Response<FlashcardID> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<FlashcardsID> call, Throwable t) {
+            public void onFailure(Call<FlashcardID> call, Throwable t) {
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
@@ -146,7 +146,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
                         .build();
                 return chain.proceed(newRequest);
             }
@@ -159,11 +159,11 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardsID> call = jsonPlaceholderAPI.getFlashcard(_id_word);
+        Call<FlashcardID> call = jsonPlaceholderAPI.getFlashcard(_id_word);
 
-        call.enqueue(new Callback<FlashcardsID>() {
+        call.enqueue(new Callback<FlashcardID>() {
             @Override
-            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
+            public void onResponse(Call<FlashcardID> call, Response<FlashcardID> response) {
                 wordText.setText(response.body().getWord());
                 translateWordText.setText(response.body().getTranslatedWord());
                 exampleText.setText(response.body().getExample());
@@ -174,7 +174,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
             }
 
             @Override
-            public void onFailure(Call<FlashcardsID> call, Throwable t) {
+            public void onFailure(Call<FlashcardID> call, Throwable t) {
 
             }
         });

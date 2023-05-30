@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
 
 public class ActivitySplashScreen extends AppCompatActivity {
-    private Token token  = Token.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
     public static final String SHARED_PREFS = "sharedPrefs";
     private Class<?> startScreen;
     private String TOKEN = "";
@@ -22,7 +22,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         loadData();
 
-        if (!token.getToken().equals(TOKEN)) {
+        if (!tokenInstance.getToken().equals(TOKEN)) {
             startScreen = ActivityMainMenu.class;
         } else {
             startScreen = ActivityFirstScreen.class;
@@ -46,7 +46,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String username = sharedPreferences.getString(LASTUSERNAME, "");
         String ttoken = sharedPreferences.getString(LASTTOKEN, "");
-        token.setUserName(username);
-        token.setToken(ttoken);
+        tokenInstance.setUserName(username);
+        tokenInstance.setToken(ttoken);
     }
 }

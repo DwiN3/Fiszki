@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.Flashcards;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityAddFlashcard extends AppCompatActivity  {
-    private Token token  = Token.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
     private Button add;
     private Spinner categorySpinner;
     private EditText  kitText, wordText, translateWordText,exampleText, translateExampleText;
@@ -76,7 +76,7 @@ public class ActivityAddFlashcard extends AppCompatActivity  {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
                         .build();
                 return chain.proceed(newRequest);
             }

@@ -1,12 +1,12 @@
-package com.kdbk.fiszki.Other;
+package com.kdbk.fiszki.Instance;
 
-public class Token {
-    private static Token instance = null;
+public class TokenInstance {
+    private static TokenInstance instance = null;
     private static String userName ="", token="";
 
-    public static Token getInstance() {
+    public static TokenInstance getInstance() {
         if (instance == null) {
-            instance = new Token();
+            instance = new TokenInstance();
         }
         return instance;
     }
@@ -20,10 +20,10 @@ public class Token {
     }
 
     public void setUserName(String userName) {
-        Token.userName = userName;
+        TokenInstance.userName = userName;
     }
 
     public void setToken(String token) {
-        Token.token = token;
+        TokenInstance.token = token;
     }
 }

@@ -1,6 +1,6 @@
 package com.kdbk.fiszki.Other;
 
-import com.kdbk.fiszki.Arrays.WordsArray;
+import com.kdbk.fiszki.LocalDate.WordsArray;
 import com.kdbk.fiszki.R;
 
 public class SetGameClass {

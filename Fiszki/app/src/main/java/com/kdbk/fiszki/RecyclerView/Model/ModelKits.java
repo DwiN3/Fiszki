@@ -1,11 +1,11 @@
 package com.kdbk.fiszki.RecyclerView.Model;
-import com.kdbk.fiszki.Retrofit.FlashcardsID;
+import com.kdbk.fiszki.Retrofit.FlashcardID;
 import java.util.ArrayList;
 
 public class ModelKits {
     private int textNumberOfCards, ID, gamesPlayed;
     private String textNumberKit, textTEXTflashcards, _id;
-    private ArrayList<FlashcardsID> list = new ArrayList<FlashcardsID>();
+    private ArrayList<FlashcardID> list = new ArrayList<FlashcardID>();
 
     public ModelKits(String textNumberKit, String TextTEXTflashcards, int textNumberOfCards, int ID, int gamesPlayed, String _id){
         this.textNumberOfCards = textNumberOfCards;
@@ -39,11 +39,11 @@ public class ModelKits {
         return _id;
     }
 
-    public ArrayList<FlashcardsID> getList() {
+    public ArrayList<FlashcardID> getList() {
         return list;
     }
 
-    public void setList(ArrayList<FlashcardsID> list) {
+    public void setList(ArrayList<FlashcardID> list) {
         this.list = list;
     }
 

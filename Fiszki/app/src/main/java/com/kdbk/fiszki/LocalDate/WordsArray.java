@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Arrays;
+package com.kdbk.fiszki.LocalDate;
 import java.util.ArrayList;
 
 public class WordsArray {

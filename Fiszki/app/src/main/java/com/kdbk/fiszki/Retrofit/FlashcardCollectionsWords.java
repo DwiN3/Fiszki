@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FlashcardCollectionsWords {
     private String collectionName, _id;
-    private ArrayList<FlashcardsID> flashcards;
+    private ArrayList<FlashcardID> flashcards;
 
     public FlashcardCollectionsWords() {
     }
@@ -22,11 +22,11 @@ public class FlashcardCollectionsWords {
         return _id;
     }
 
-        public ArrayList<FlashcardsID> getFlashcards() {
+        public ArrayList<FlashcardID> getFlashcards() {
             return flashcards;
         }
 
-        public void setFlashcards(ArrayList<FlashcardsID> flashcards) {
+        public void setFlashcards(ArrayList<FlashcardID> flashcards) {
             this.flashcards = flashcards;
         }
 }

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Register;
 import retrofit2.Call;
 import retrofit2.Callback;

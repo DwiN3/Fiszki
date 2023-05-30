@@ -8,16 +8,16 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import com.kdbk.fiszki.Other.FlashcardInfo;
-import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
-import com.kdbk.fiszki.Retrofit.FlashcardsID;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Retrofit.FlashcardID;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
 import java.io.IOException;
 import java.util.ArrayList;
 import okhttp3.Interceptor;
@@ -30,8 +30,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityShowKitsEdit extends AppCompatActivity implements SelectListenerShowKitsEdit {
-    private Token token  = Token.getInstance();
-    private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private FlashcardInfoInstance flashcardInfoInstance = FlashcardInfoInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -47,13 +47,13 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         setContentView(R.layout.activity_show_kits_edit);
         setID();
 
-        nameKit = flashcardInfo.getNameCollection();
+        nameKit = flashcardInfoInstance.getNameCollection();
         showKits();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flashcardInfo.setId_word("");
+                flashcardInfoInstance.setId_word("");
                 nextActivity.openActivity(ActivityPanelKits.class);
             }
         });
@@ -61,7 +61,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
-        flashcardInfo.setId_word(modelShowKitsEdit.get_id());
+        flashcardInfoInstance.setId_word(modelShowKitsEdit.get_id());
         System.out.println(modelShowKitsEdit.get_id());
         nextActivity.openActivity(ActivityEditFlashcard.class);
     }
@@ -71,7 +71,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
                         .build();
                 return chain.proceed(newRequest);
             }
@@ -93,10 +93,10 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                     FlashcardCollectionsWords flashcardCollection = response.body();
 
                     if (flashcardCollection != null) {
-                        ArrayList<FlashcardsID> testowalista = flashcardCollection.getFlashcards();
+                        ArrayList<FlashcardID> testowalista = flashcardCollection.getFlashcards();
                         if (testowalista != null && !testowalista.isEmpty()) {
                             int id_count=0;
-                            for (FlashcardsID collection : testowalista) {
+                            for (FlashcardID collection : testowalista) {
                                 System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
                                 wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count, collection.get_id()));
                                 id_count++;

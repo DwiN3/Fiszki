@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Arrays;
+package com.kdbk.fiszki.LocalDate;
 
 import com.kdbk.fiszki.RecyclerView.Model.ModelCategories;
 import com.kdbk.fiszki.R;

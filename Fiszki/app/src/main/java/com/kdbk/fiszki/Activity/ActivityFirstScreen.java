@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.kdbk.fiszki.Other.InternetConnection;
-import com.kdbk.fiszki.Other.Token;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
+import com.kdbk.fiszki.Instance.TokenInstance;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonPlaceholderAPI;
 import com.kdbk.fiszki.Retrofit.Login;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
@@ -21,7 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityFirstScreen extends AppCompatActivity implements View.OnClickListener {
-    private Token token  = Token.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
     private boolean isBackPressedBlocked = true;
     private InternetConnection con = new InternetConnection(this);
     private NextActivity nextActivity = new NextActivity(this);
@@ -82,8 +82,8 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
                 if(response.code() == 200){
                     Login post = response.body();
                     String TokenFromRetrofit = post.getToken();
-                    token.setToken(TokenFromRetrofit);
-                    token.setUserName(loginText.getText().toString());
+                    tokenInstance.setToken(TokenFromRetrofit);
+                    tokenInstance.setUserName(loginText.getText().toString());
                     nextActivity.openActivity(ActivityMainMenu.class);
                 }
                 if(!response.isSuccessful()){

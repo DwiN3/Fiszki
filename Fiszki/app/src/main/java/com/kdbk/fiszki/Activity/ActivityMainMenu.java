@@ -10,11 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.Token;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
 
 public class ActivityMainMenu extends AppCompatActivity implements View.OnClickListener {
-    private Token token  = Token.getInstance();
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private InternetConnection con = new InternetConnection(this);
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -31,8 +31,8 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_menu);
         setID();
 
-        helloNick.setText("Witaj "+token.getUserName());
-        System.out.println(token.getToken());
+        helloNick.setText("Witaj "+ tokenInstance.getUserName());
+        System.out.println(tokenInstance.getToken());
         saveData();
         if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
         else internetError.setVisibility(View.VISIBLE);
@@ -43,8 +43,8 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                token.setUserName("");
-                token.setToken("");
+                tokenInstance.setUserName("");
+                tokenInstance.setToken("");
                 saveData();
                 nextActivity.openActivity(ActivityFirstScreen.class);
             }
@@ -75,8 +75,8 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(LASTUSERNAME, token.getUserName());
-        editor.putString(LASTTOKEN, token.getToken());
+        editor.putString(LASTUSERNAME, tokenInstance.getUserName());
+        editor.putString(LASTTOKEN, tokenInstance.getToken());
         editor.apply();
     }
 

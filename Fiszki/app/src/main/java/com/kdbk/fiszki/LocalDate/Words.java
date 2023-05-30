@@ -1,4 +1,4 @@
-package com.kdbk.fiszki.Arrays;
+package com.kdbk.fiszki.LocalDate;
 
 public class Words {
     private String word, translateWord, sampleSentence, translateSampleSentence;

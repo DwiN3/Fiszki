@@ -1,5 +1,12 @@
-package com.kdbk.fiszki.Retrofit;
+package com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
 
+import com.kdbk.fiszki.Retrofit.FlashcardCollections;
+import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
+import com.kdbk.fiszki.Retrofit.FlashcardID;
+import com.kdbk.fiszki.Retrofit.Flashcards;
+import com.kdbk.fiszki.Retrofit.Login;
+import com.kdbk.fiszki.Retrofit.Register;
+import com.kdbk.fiszki.Retrofit.UserLVL;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,11 +32,11 @@ public interface JsonPlaceholderAPI {
     @POST("flashcards/{collectionName}")
     Call<Flashcards> addFlashcard(@Path("collectionName") String collectionName, @Body Flashcards flashcards);
     @DELETE("flashcards/{flashcardsId}")
-    Call<FlashcardsID> deleteFlashcards(@Path("flashcardsId") String flashcardsId);
+    Call<FlashcardID> deleteFlashcards(@Path("flashcardsId") String flashcardsId);
     @PUT("flashcards/{flashcardsId}")
-    Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
+    Call<FlashcardID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardID flashCardsID);
     @GET("flashcards/{collectionName}")
-    Call<FlashcardsID> getFlashcard(@Path("collectionName") String flashcardsId);
+    Call<FlashcardID> getFlashcard(@Path("collectionName") String flashcardsId);
 
 
     // FLASHCARDS-COLLECTION

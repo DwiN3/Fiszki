@@ -20,7 +20,7 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
     private String selectedMode = "", selectedLanguage = "";
 
     // Do wywalnienia
-    private com.kdbk.fiszki.Arrays.CategoriesArray CategoriesArray = com.kdbk.fiszki.Arrays.CategoriesArray.getInstance();
+    private com.kdbk.fiszki.LocalDate.CategoriesArray CategoriesArray = com.kdbk.fiszki.LocalDate.CategoriesArray.getInstance();
     private ArrayList<ModelCategories> list = CategoriesArray.getList();
 
     @Override
