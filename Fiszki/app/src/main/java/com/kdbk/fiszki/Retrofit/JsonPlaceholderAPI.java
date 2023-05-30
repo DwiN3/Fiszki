@@ -36,7 +36,7 @@ public interface JsonPlaceholderAPI {
     @GET("flashcards-collections")
     Call <List<FlashcardCollections>> getAllFlashcardsCollections();
     @GET("flashcards-collections/{collectionName}")
-    Call<FlashcardCollections> getKit(@Path("collectionName") String collectionName);
+    Call<FlashcardCollectionsWords> getKit(@Path("collectionName") String collectionName);
     @DELETE("flashcards-collections/{collectionName}")
     Call<FlashcardCollections> deleteFlashcardsCollections(@Path("collectionName") String collectionName);
 }

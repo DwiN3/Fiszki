@@ -23,6 +23,7 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.FlashcardCollections;
+import com.kdbk.fiszki.Retrofit.FlashcardCollectionsWords;
 import com.kdbk.fiszki.Retrofit.Flashcards;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
@@ -65,7 +66,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         Intent intent = getIntent();
         nameKit = intent.getStringExtra("name_kit");
         System.out.println("Nazwa   "+nameKit);
-        //showWords();
+        showWords();
 
         EditFlashcardArray editFlashcardArray = EditFlashcardArray.getInstance();
         Map<Integer, ArrayList<ModelEditFlashcard>> allList = editFlashcardArray.getAllList();
@@ -126,7 +127,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
         nextActivity.openActivity(ActivityEditFlashcard.class, intent);
     }
 
-/*    public void showWords() {
+   public void showWords() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -144,13 +145,13 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                 .build();
 
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
-        Call<FlashcardCollections> call = jsonPlaceholderAPI.getKit(nameKit);
+        Call<FlashcardCollectionsWords> call = jsonPlaceholderAPI.getKit(nameKit);
 
-        call.enqueue(new Callback<FlashcardCollections>() {
+        call.enqueue(new Callback<FlashcardCollectionsWords>() {
             @Override
-            public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
+            public void onResponse(Call<FlashcardCollectionsWords> call, Response<FlashcardCollectionsWords> response) {
                 if (response.isSuccessful()) {
-                    FlashcardCollections flashcardCollection = response.body();
+                    FlashcardCollectionsWords flashcardCollection = response.body();
 
                     if (flashcardCollection != null) {
                         ArrayList<FlashcardsID> testowalista = flashcardCollection.getFlashcards();
@@ -172,12 +173,12 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
             }
 
             @Override
-            public void onFailure(Call<FlashcardCollections> call, Throwable t) {
+            public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
                 System.out.println(t.getMessage());
                 RefreshRecycleView();
             }
         });
-    }*/
+    }
 
 
     private void RefreshRecycleView() {
