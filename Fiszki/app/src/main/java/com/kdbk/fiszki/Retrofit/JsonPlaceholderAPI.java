@@ -29,7 +29,7 @@ public interface JsonPlaceholderAPI {
     @PUT("flashcards/{flashcardsId}")
     Call<FlashcardsID> editFlashcards(@Path("flashcardsId") String flashcardsId, @Body FlashcardsID flashCardsID);
     @GET("flashcards/{collectionName}")
-    Call<List<FlashcardsID>> getFlashcard(@Path("collectionName") String flashcardsId);
+    Call<FlashcardsID> getFlashcard(@Path("collectionName") String flashcardsId);
 
 
     // FLASHCARDS-COLLECTION

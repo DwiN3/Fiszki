@@ -88,10 +88,9 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
 
         switch (view.getId()) {
             case R.id.buttonEditKitPanel:
-                Intent intent = new Intent();
                 //System.out.println("Do wysłania nazwa"+collectionName);
                 flashcardInfo.setNameCollection(collectionName);
-                nextActivity.openActivity(ActivityShowKitsEdit.class, intent);
+                nextActivity.openActivity(ActivityShowKitsEdit.class);
                 break;
             case R.id.buttonDeleteKitPanel:
                 ModelKits modelKits = collectionList.stream()

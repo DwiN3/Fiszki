@@ -15,9 +15,11 @@ import com.kdbk.fiszki.Other.FlashcardInfo;
 import com.kdbk.fiszki.Other.Token;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterEditFlashcard;
 import com.kdbk.fiszki.Arrays.EditFlashcardArray;
+import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelEditFlashcard;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
+import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerEditFlashcard;
 import com.kdbk.fiszki.Retrofit.FlashcardsID;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI;
@@ -41,57 +43,34 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private Token token  = Token.getInstance();
-    private int  lastWords, nrWord; // do wyrąbania
     private FlashcardInfo flashcardInfo  = FlashcardInfo.getInstance();
-    private String _id_word;
-    private  String flashcardsID = "";
+    private String _id_word="";
     Button accept, back, delete;
     private String[] words;
     String word, translateWord,sentens,sentensTranslate;
+    private ArrayList<ModelEditFlashcard> wordList = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
+    private int  lastWords, nrWord=0; // do wyrąbania
+    EditFlashcardArray instance = EditFlashcardArray.getInstance();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_flashcard);
         setID();
 
-        Intent intent = getIntent();
-        _id_word = intent.getStringExtra("id_word_show");
+        _id_word = flashcardInfo.getId_word();
         System.out.println("ID=              "+_id_word);
-        EditFlashcardArray instance = EditFlashcardArray.getInstance();
-        ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
 
-        ModelEditFlashcard wordElement = list.get(0);
-        word = wordElement.getEditWord();
-        ModelEditFlashcard editTranslateWordElement = list.get(1);
-        translateWord = editTranslateWordElement.getEditWord();
-        ModelEditFlashcard sentensElement = list.get(2);
-        sentens = sentensElement.getEditWord();
-        ModelEditFlashcard sentensTranslateElement = list.get(3);
-        sentensTranslate = sentensTranslateElement.getEditWord();
 
-        mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AdapterEditFlashcard(list, this, this);
-        mRecyclerView.setAdapter(mAdapter);
 
+        RefreshRecycleView();
         takeWords();
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<ModelEditFlashcard> list = instance.getList(nrWord);
-                ModelEditFlashcard wordElement = list.get(0);
-                wordElement.setEditWord(word);
-                ModelEditFlashcard editTranslateWordElement = list.get(1);
-                editTranslateWordElement.setEditWord(translateWord);
-                ModelEditFlashcard sentensElement = list.get(2);
-                sentensElement.setEditWord(sentens);
-                ModelEditFlashcard sentensTranslateElement = list.get(3);
-                sentensTranslateElement.setEditWord(sentensTranslate);
-
                 String tabwords[] = {word,translateWord, sentens,sentensTranslate};
                 for(int n=0;n<tabwords.length;n++) System.out.println(tabwords[n]);
                 nextActivity.openActivity(ActivityShowKitsEdit.class);
@@ -175,7 +154,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         FlashcardsID post = new FlashcardsID();
-        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(flashcardsID, post);
+        Call<FlashcardsID> call = jsonPlaceholderAPI.deleteFlashcards(_id_word, post);
 
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
@@ -191,6 +170,15 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void RefreshRecycleView() {
+        mRecyclerView = findViewById(R.id.editFlashcardlRecycleView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new AdapterEditFlashcard(wordList, this, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void editFlashcard() {
@@ -213,7 +201,57 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
         FlashcardsID post = new FlashcardsID(word,translateWord, sentens, sentensTranslate);
-        Call<FlashcardsID> call = jsonPlaceholderAPI.editFlashcards(flashcardsID, post);
+        Call<FlashcardsID> call = jsonPlaceholderAPI.editFlashcards(_id_word, post);
+
+        call.enqueue(new Callback<FlashcardsID>() {
+            @Override
+            public void onResponse(Call<FlashcardsID> call, Response<FlashcardsID> response) {
+                wordList.clear();
+                //System.out.println("KODZIK =" + response);
+                ArrayList<ModelEditFlashcard> list = new ArrayList<>();
+                for(int n=0 ; n<4;n++){
+
+                }
+                ModelEditFlashcard wordElement = list.get(0);
+                word = wordElement.getEditWord();
+                ModelEditFlashcard editTranslateWordElement = list.get(1);
+                translateWord = editTranslateWordElement.getEditWord();
+                ModelEditFlashcard sentensElement = list.get(2);
+                sentens = sentensElement.getEditWord();
+                ModelEditFlashcard sentensTranslateElement = list.get(3);
+                sentensTranslate = sentensTranslateElement.getEditWord();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ActivityEditFlashcard.this, "Błąd operacji", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlashcardsID> call, Throwable t) {
+                Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setFlashcard() {
+
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + token.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+        Call<FlashcardsID> call = jsonPlaceholderAPI.getFlashcard(_id_word);
 
         call.enqueue(new Callback<FlashcardsID>() {
             @Override
@@ -226,7 +264,7 @@ public class ActivityEditFlashcard extends AppCompatActivity implements SelectLi
 
             @Override
             public void onFailure(Call<FlashcardsID> call, Throwable t) {
-                Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
