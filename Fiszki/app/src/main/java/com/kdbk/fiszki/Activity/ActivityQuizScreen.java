@@ -76,6 +76,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     }
 
     void setQuestion(int numberWord){
+        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
         markTheAnswer = false;
         nameWordQuizText.setText(game.getNameWord(numberWord));
         answerText1.setText(game.getAns1(numberWord));
@@ -83,7 +84,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText3.setText(game.getAns3(numberWord));
         answerText4.setText(game.getAns4(numberWord));
         correctAnswer = game.getCorrectANS(numberWord);
-        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
         userPKTQuiz.setText("/"+allWords+" PKT");
         sticksLeftQuizText.setText(""+(wordsListKit.size()-nrWords));
 
@@ -100,7 +100,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     scorePKT.setText(""+points);
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
+                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
+                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_red);
                     if(answerText2.getText().equals(correctAnswer)) {
                         answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
@@ -118,7 +120,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     scorePKT.setText(""+points);
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
+                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
+                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
                     if(answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
@@ -136,7 +140,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     scorePKT.setText(""+points);
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
+                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
+                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
                     if(answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
@@ -154,7 +160,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     scorePKT.setText(""+points);
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
+                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
+                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
                     if(answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
