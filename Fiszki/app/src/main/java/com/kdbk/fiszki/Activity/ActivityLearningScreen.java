@@ -149,8 +149,8 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                         if (flashcardsList != null && !flashcardsList.isEmpty()) {
                             int id_count=0;
                             for (FlashcardID collection : flashcardsList) {
-                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count, collection.get_id()));
-                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie"+collection.getTranslatedWord());
+                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
+                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
                             game =  new SetGameClass(selectedData, wordsListKit);

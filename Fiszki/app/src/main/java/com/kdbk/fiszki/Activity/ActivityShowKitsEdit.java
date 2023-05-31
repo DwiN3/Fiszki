@@ -98,7 +98,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                             int id_count=0;
                             for (FlashcardID collection : testowalista) {
                                 System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
-                                wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getExample(),id_count, collection.get_id()));
+                                wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
                                 id_count++;
                             }
                             RefreshRecycleView();

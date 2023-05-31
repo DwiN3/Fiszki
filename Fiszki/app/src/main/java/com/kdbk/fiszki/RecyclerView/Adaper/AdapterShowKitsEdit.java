@@ -14,11 +14,11 @@ import java.util.ArrayList;
 
 public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdit.MyViewHolder> {
 
-    private ArrayList<ModelShowKitsEdit> listCategories;
+    private ArrayList<ModelShowKitsEdit> listKits;
     private SelectListenerShowKitsEdit listener;
 
-    public AdapterShowKitsEdit(ArrayList<ModelShowKitsEdit> listCategories, SelectListenerShowKitsEdit listener){
-        this.listCategories = listCategories;
+    public AdapterShowKitsEdit(ArrayList<ModelShowKitsEdit> listKits, SelectListenerShowKitsEdit listener){
+        this.listKits = listKits;
         this.listener = listener;
     }
 
@@ -32,13 +32,13 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
 
     @Override
     public void onBindViewHolder(@NonNull AdapterShowKitsEdit.MyViewHolder holder, int position) {
-        ModelShowKitsEdit currentItem = listCategories.get(position);
+        ModelShowKitsEdit currentItem = listKits.get(position);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int clickedPosition = holder.getAdapterPosition();
-                listener.onItemClicked(AdapterShowKitsEdit.this.listCategories.get(clickedPosition));
+                listener.onItemClicked(AdapterShowKitsEdit.this.listKits.get(clickedPosition));
             }
         });
         holder.textWord.setText(currentItem.getWord());
@@ -49,7 +49,7 @@ public class AdapterShowKitsEdit extends RecyclerView.Adapter<AdapterShowKitsEdi
 
     @Override
     public int getItemCount() {
-        return listCategories.size();
+        return listKits.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
