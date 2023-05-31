@@ -97,13 +97,13 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText4.setText(game.getAns4(numberWord));
         correctAnswer = game.getCorrectANS(numberWord);
         userPKTQuiz.setText("/" + allWords + " PKT");
-        sticksLeftQuizText.setText("" + (wordsListKit.size() - nrWords));
+        sticksLeftQuizText.setText("" + (game.getBorrder() - nrWords));
 
     }
 
     public void onClick(View view) {
-        if (nrWords == wordsListKit.size() - 1) next.setText("PODSUMOWANIE");
-        sticksLeftQuizText.setText(String.valueOf(wordsListKit.size() - nrWords - 1));
+        if (nrWords == game.getBorrder() - 1) next.setText("PODSUMOWANIE");
+        sticksLeftQuizText.setText(String.valueOf(game.getBorrder() - nrWords - 1));
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
@@ -204,7 +204,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.buttonNextQuiz:
                 imageWordQuiz.setBackgroundResource(R.drawable.flashcard_icon);
-                if (nrWords != wordsListKit.size() - 1) {
+                if (nrWords != game.getBorrder() - 1) {
                     nrWords += 1;
                     clearButtons();
                     setQuestion(nrWords);

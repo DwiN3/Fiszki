@@ -6,6 +6,7 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -20,12 +21,29 @@ public class SetGameClass {
     private String[] ans4;
 
     private int words;
+    private ArrayList<ModelShowKitsEdit> wordsList;
 
     private int img_One = R.drawable.flagpl;
     private int imgPL = R.drawable.flagpl;
     private int imgENG = R.drawable.flagang;
+    private int borrder=30;
 
-    public SetGameClass(String data, ArrayList<ModelShowKitsEdit> wordsList) {
+    public SetGameClass(String data, ArrayList<ModelShowKitsEdit> wordsListAll) {
+        Random randomWords = new Random();
+        Set<Integer> selectedIndices = new HashSet<>();
+        ArrayList<ModelShowKitsEdit> selectedWords = new ArrayList<>();
+        if(wordsListAll.size() <= borrder) borrder = wordsListAll.size();
+
+        while (selectedIndices.size() < borrder) {
+            int randomIndex = randomWords.nextInt(wordsListAll.size());
+
+            if (!selectedIndices.contains(randomIndex)) {
+                selectedIndices.add(randomIndex);
+                selectedWords.add(wordsListAll.get(randomIndex));
+            }
+        }
+
+        wordsList = selectedWords;
         this.NameWord = new String[wordsList.size()];
         this.correctANS = new String[wordsList.size()];
         this.sentense = new String[wordsList.size()];
@@ -60,7 +78,6 @@ public class SetGameClass {
                 ans4[i] = uniqueWordsArray[3];
             }
         }
-
         words = wordsList.size();
     }
 
@@ -113,5 +130,8 @@ public class SetGameClass {
 
     public int getImgENG() {
         return imgENG;
+    }
+    public int getBorrder() {
+        return borrder;
     }
 }
