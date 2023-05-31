@@ -12,7 +12,7 @@ public class SetGameClass {
     private String[] NameWord, correctANS, sentense, sentenseTra;
     private String[] ans1, ans2, ans3, ans4;
     private int imgPL = R.drawable.flagpl, imgENG = R.drawable.flagang;
-    private int listSize =0, borrder=5;
+    private int listSize =0, borrder=10;
     private ArrayList<ModelShowKitsEdit> wordsList;
 
     public SetGameClass(String data,String mode, ArrayList<ModelShowKitsEdit> wordsListAll) {
@@ -71,7 +71,7 @@ public class SetGameClass {
         }
         listSize = wordsList.size();
     }
-    
+
     public String getNameWord(int i) {
         return NameWord[i];
     }
