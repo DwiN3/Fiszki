@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
@@ -15,14 +16,27 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
+import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardCollectionsWords;
+import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
     private TokenInstance tokenInstance = TokenInstance.getInstance();
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
-    private SetGameClass t;
+    private SetGameClass game;
     private Button next, exit;
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
@@ -40,17 +54,11 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_screen);
         setID();
-
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
 
-        t =  new SetGameClass(selectedData, wordsListKit);
-
-        nrWords = t.getWords()-1;
-        allWords = t.getWords();
-        userPKTQuiz.setText("/"+allWords+" PKT");
-        sticksLeftQuizText.setText(""+(nrWords+1));
+        getWordFromKitRetrofit();
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -58,7 +66,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerButton2.setOnClickListener(this);
         answerButton3.setOnClickListener(this);
         answerButton4.setOnClickListener(this);
-        setQuestion(nrWords);
     }
 
     public void clearButtons(){
@@ -70,13 +77,13 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
     void setQuestion(int numberWord){
         markTheAnswer = false;
-        nameWordQuizText.setText(t.getNameWord(numberWord));
-        answerText1.setText(t.getAns1(numberWord));
-        answerText2.setText(t.getAns2(numberWord));
-        answerText3.setText(t.getAns3(numberWord));
-        answerText4.setText(t.getAns4(numberWord));
-        correctAnswer = t.getCorrectANS(numberWord);
-        imageWordQuiz.setBackgroundResource(t.getImg(numberWord));
+        nameWordQuizText.setText(game.getNameWord(numberWord));
+        answerText1.setText(game.getAns1(numberWord));
+        answerText2.setText(game.getAns2(numberWord));
+        answerText3.setText(game.getAns3(numberWord));
+        answerText4.setText(game.getAns4(numberWord));
+        correctAnswer = game.getCorrectANS(numberWord);
+        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
     }
 
     public void onClick(View view) {
@@ -172,6 +179,61 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 nextActivity.openActivity(ActivityMainMenu.class);
                 break;
         }
+    }
+
+    public void getWordFromKitRetrofit() {
+        wordsListKit.clear();
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<FlashcardCollectionsWords> call = jsonFlashcardsCollections.getKit(selectedName);
+
+        call.enqueue(new Callback<FlashcardCollectionsWords>() {
+            @Override
+            public void onResponse(Call<FlashcardCollectionsWords> call, Response<FlashcardCollectionsWords> response) {
+                if (response.isSuccessful()) {
+                    FlashcardCollectionsWords flashcardCollection = response.body();
+
+                    if (flashcardCollection != null) {
+                        ArrayList<FlashcardID> flashcardsList = flashcardCollection.getFlashcards();
+                        if (flashcardsList != null && !flashcardsList.isEmpty()) {
+                            int id_count = 0;
+                            for (FlashcardID collection : flashcardsList) {
+                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(), id_count, collection.get_id()));
+                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
+                                id_count++;
+                            }
+                            game =  new SetGameClass(selectedData, wordsListKit);
+                            setQuestion(nrWords);
+                            nrWords = game.getWords()-1;
+                            allWords = game.getWords();
+                            userPKTQuiz.setText("/"+allWords+" PKT");
+                            sticksLeftQuizText.setText(""+(nrWords+1));
+                        }
+                    }
+                } else {
+                    Toast.makeText(ActivityQuizScreen.this, "Błąd danych", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
+            }
+        });
     }
 
     @Override

@@ -40,8 +40,8 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private int nrWords, allWords, countWords = 0;
     private String selectedLanguage = "", selectedName = "", selectedData = "";
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
-
     //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
