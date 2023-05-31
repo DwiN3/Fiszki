@@ -84,11 +84,14 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText4.setText(game.getAns4(numberWord));
         correctAnswer = game.getCorrectANS(numberWord);
         imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+        userPKTQuiz.setText("/"+allWords+" PKT");
+        sticksLeftQuizText.setText(""+(wordsListKit.size()-nrWords));
+
     }
 
     public void onClick(View view) {
-        if(nrWords == 0) next.setText("PODSUMOWANIE");
-        sticksLeftQuizText.setText(""+(nrWords));
+        if(nrWords == wordsListKit.size()-1) next.setText("PODSUMOWANIE");
+        sticksLeftQuizText.setText(String.valueOf(wordsListKit.size()-nrWords-1));
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
@@ -164,8 +167,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.buttonNextQuiz:
-                if(nrWords > 0){
-                    nrWords -=1;
+                if(nrWords != wordsListKit.size()-1){
+                    nrWords +=1;
                     clearButtons();
                     setQuestion(nrWords);
                 }
@@ -218,11 +221,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                                 id_count++;
                             }
                             game =  new SetGameClass(selectedData, wordsListKit);
-                            setQuestion(nrWords);
-                            nrWords = game.getWords()-1;
+                            nrWords = 0;
                             allWords = game.getWords();
-                            userPKTQuiz.setText("/"+allWords+" PKT");
-                            sticksLeftQuizText.setText(""+(nrWords+1));
+                            setQuestion(nrWords);
                         }
                     }
                 } else {
