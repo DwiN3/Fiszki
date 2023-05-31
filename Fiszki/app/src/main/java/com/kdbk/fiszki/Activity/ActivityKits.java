@@ -91,7 +91,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
                 List<FlashcardCollections> list = response.body();
                 int id = 0;
                 for(FlashcardCollections collection : list){
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", 30, id, 30,collection.getId()));
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", collection.getFlashcardsSize(), id, 30,collection.getId()));
                     id++;
                 }
                 RefreshRecycleView();
