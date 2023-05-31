@@ -3,7 +3,11 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +39,11 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         setID();
         clearGameSettings();
 
-        helloNick.setText("Witaj "+ tokenInstance.getUserName());
+        String text = "Witaj " + tokenInstance.getUserName();
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(new StyleSpan(Typeface.BOLD), 6, 6 + tokenInstance.getUserName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        helloNick.setText(spannableString);
         System.out.println(tokenInstance.getToken());
         saveData();
         if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
