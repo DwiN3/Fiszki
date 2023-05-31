@@ -1,31 +1,19 @@
 package com.kdbk.fiszki.Other;
 
-import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 public class SetGameClass {
-    private String[] NameWord;
-    private String[] correctANS;
-    private String[] sentense;
-    private String[] sentenseTra;
-    private String[] ans1;
-    private String[] ans2;
-    private String[] ans3;
-    private String[] ans4;
-    private int words;
+    private String[] NameWord, correctANS, sentense, sentenseTra;
+    private String[] ans1, ans2, ans3, ans4;
+    private int imgPL = R.drawable.flagpl, imgENG = R.drawable.flagang;
+    private int listSize =0, borrder=5;
     private ArrayList<ModelShowKitsEdit> wordsList;
-    private int img_One = R.drawable.flagpl;
-    private int imgPL = R.drawable.flagpl;
-    private int imgENG = R.drawable.flagang;
-    private int borrder=5;
 
     public SetGameClass(String data,String mode, ArrayList<ModelShowKitsEdit> wordsListAll) {
         if(mode.equals("quiz")){
@@ -81,60 +69,43 @@ public class SetGameClass {
                 ans4[i] = uniqueWordsArray[3];
             }
         }
-        words = wordsList.size();
+        listSize = wordsList.size();
     }
-
-
-
-
+    
     public String getNameWord(int i) {
         return NameWord[i];
     }
-
     public String getAns1(int i) {
         return ans1[i];
     }
-
     public String getAns2(int i) {
         return ans2[i];
     }
-
     public String getAns3(int i) {
         return ans3[i];
     }
-
     public String getAns4(int i) {
         return ans4[i];
     }
-
     public String getCorrectANS(int i) {
         return correctANS[i];
     }
-
     public String getSentense(int i) {
         return sentense[i];
     }
-
     public String getSentenseTra(int i) {
         return sentenseTra[i];
     }
-
-    public int getWords() {
-        return words;
-    }
-
-    public int getImgPL() {
-        return imgPL;
-    }
-
-    public int getImg_One() {
-        return img_One;
-    }
-
-    public int getImgENG() {
-        return imgENG;
+    public int getListSize() {
+        return listSize;
     }
     public int getBorrder() {
         return borrder;
+    }
+    public int getImgPL() {
+        return imgPL;
+    }
+    public int getImgENG() {
+        return imgENG;
     }
 }

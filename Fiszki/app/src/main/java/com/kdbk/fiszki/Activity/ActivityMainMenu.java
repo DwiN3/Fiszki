@@ -97,6 +97,10 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         gameSettingsInstance.setGameMode("");
         gameSettingsInstance.setName("");
         gameSettingsInstance.setSelectData("");
+        gameSettingsInstance.setName("");
+        gameSettingsInstance.setBestTrain(0);
+        gameSettingsInstance.setPoints(0);
+        gameSettingsInstance.setAllWords(0);
     }
 
     private void setID() {

@@ -16,8 +16,9 @@ public class ActivityQuizEnd extends AppCompatActivity {
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private Button exit;
-    private TextView ScoreEndQuiz,userBestTrainQuiz;
+    private TextView ScoreEndQuiz,userBestTrainQuiz, LVLEndQuiz, NextLVLEndQuiz;
     private int bestTrain=0, points =0, allWords=0;
+    private int lvl=3, yourPoints=234, yourBorderPoints=500;
     private boolean isBackPressedBlocked = true;
 
     @Override
@@ -29,8 +30,10 @@ public class ActivityQuizEnd extends AppCompatActivity {
         points = gameSettingsInstance.getPoints();
         allWords = gameSettingsInstance.getAllWords();
         bestTrain = gameSettingsInstance.getBestTrain();
+        LVLEndQuiz.setText(String.valueOf(lvl));
+        NextLVLEndQuiz.setText(" "+yourPoints+"/"+yourBorderPoints+" PKT");
         ScoreEndQuiz.setText(points*10+"/"+String.valueOf(allWords*10)+" PKT");
-        userBestTrainQuiz.setText(""+String.valueOf(bestTrain));
+        userBestTrainQuiz.setText(String.valueOf(bestTrain));
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +55,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
         exit = findViewById(R.id.buttonBackToMenuEndQuiz);
         ScoreEndQuiz = findViewById(R.id.textScoreEndQuiz);
         userBestTrainQuiz = findViewById(R.id.userBestTrainQuizEndText);
+        LVLEndQuiz = findViewById(R.id.textLVLEndQuiz);
+        NextLVLEndQuiz = findViewById(R.id.textNextLVLEndQuiz);
     }
 }

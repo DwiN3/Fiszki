@@ -2,13 +2,8 @@ package com.kdbk.fiszki.Instance;
 
 public class GameSettingsInstance {
     private static GameSettingsInstance instance = null;
-    private static String gameMode = "";
-    private static String name = "";
-    private static String language ="";
-    private static String  selectData ="";
-    private static int bestTrain = 0;
-
-    private static int points=0, allWords=0;
+    private static String gameMode = "", name = "", language ="", selectData ="";
+    private static int bestTrain = 0, points=0, allWords=0;
 
 
     public static GameSettingsInstance getInstance() {

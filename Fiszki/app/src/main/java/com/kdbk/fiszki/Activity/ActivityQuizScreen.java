@@ -227,7 +227,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                             game = new SetGameClass(selectedData,"quiz", wordsListKit);
                             scoreTrain = 0;
                             nrWords = 0;
-                            allWords = game.getWords();
+                            allWords = game.getListSize();
                             userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
                             setEmoji();
                             setQuestion(nrWords);

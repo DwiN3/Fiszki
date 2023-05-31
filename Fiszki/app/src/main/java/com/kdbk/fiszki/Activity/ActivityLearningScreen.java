@@ -151,7 +151,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                                 id_count++;
                             }
                             game = new SetGameClass(selectedData,"learn", wordsListKit);
-                            allWords = game.getWords();
+                            allWords = game.getListSize();
                             nrWords = 0;
                             setNewWord(nrWords);
                         }
