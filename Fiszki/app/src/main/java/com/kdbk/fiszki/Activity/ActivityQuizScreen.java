@@ -73,7 +73,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         if (scoreTrain == -3) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m3);
         if (scoreTrain == -2) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m2);
         if (scoreTrain == -1) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m1);
-        if (scoreTrain == 0) imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+        if (scoreTrain == 0) imageWordQuiz.setBackgroundResource(R.drawable.flashcard_icon);
         if (scoreTrain == 1) imageWordQuiz.setBackgroundResource(R.drawable.emoji_1);
         if (scoreTrain == 2) imageWordQuiz.setBackgroundResource(R.drawable.emoji_2);
         if (scoreTrain == 3) imageWordQuiz.setBackgroundResource(R.drawable.emoji_3);
@@ -203,6 +203,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.buttonNextQuiz:
+                imageWordQuiz.setBackgroundResource(R.drawable.flashcard_icon);
                 if (nrWords != wordsListKit.size() - 1) {
                     nrWords += 1;
                     clearButtons();
