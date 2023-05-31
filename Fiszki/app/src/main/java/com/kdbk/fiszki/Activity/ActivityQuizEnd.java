@@ -1,16 +1,19 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizEnd extends AppCompatActivity {
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private Button exit;
     private TextView pointsText, ScoreEndQuiz;
@@ -23,9 +26,8 @@ public class ActivityQuizEnd extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_end);
         setID();
 
-        Intent intent = getIntent();
-        points = intent.getStringExtra("Points");
-        allWords = intent.getStringExtra("Words");
+        points = String.valueOf(gameSettingsInstance.getPoints());
+        allWords = String.valueOf(gameSettingsInstance.getAllWords());
         pointsText.setText(points);
         ScoreEndQuiz.setText("/"+allWords+" PKT");
 

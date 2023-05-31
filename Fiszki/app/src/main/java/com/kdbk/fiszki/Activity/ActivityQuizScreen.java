@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,22 +8,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private SetGameClass t;
     private Button next, exit;
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
-    private String selectedLanguage = "", selectedID="", selectedData="", correctAnswer;
+    private String selectedLanguage = "", selectedName ="", selectedData="", correctAnswer;
     private boolean isBackPressedBlocked = true, markTheAnswer = false;
     private int nrWords, allWords;
-
-
     private int points = 0;
 
 
@@ -34,10 +36,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_quiz_screen);
         setID();
 
-        Intent intent = getIntent();
-        selectedLanguage = intent.getStringExtra("SelectLanguage");
-        selectedID = intent.getStringExtra("SelectID");
-        selectedData = intent.getStringExtra("SelectData");
+        selectedLanguage = gameSettingsInstance.getLanguage();
+        selectedName = gameSettingsInstance.getName();
+        selectedData = gameSettingsInstance.getSelectData();
         t =  new SetGameClass(selectedData);
 
         nrWords = t.getWords()-1;
@@ -156,10 +157,9 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     setQuestion(nrWords);
                 }
                 else{
-                    Intent intent = new Intent();
-                    intent.putExtra("Points", String.valueOf(points));
-                    intent.putExtra("Words", String.valueOf(allWords));
-                    nextActivity.openActivity(ActivityQuizEnd.class, intent);
+                    gameSettingsInstance.setPoints(points);
+                    gameSettingsInstance.setAllWords(allWords);
+                    nextActivity.openActivity(ActivityQuizEnd.class);
                 }
                 break;
             case R.id.buttonExitQuiz:

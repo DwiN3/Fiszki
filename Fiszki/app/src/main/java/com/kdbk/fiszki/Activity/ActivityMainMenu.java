@@ -8,12 +8,15 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.R;
 
 public class ActivityMainMenu extends AppCompatActivity implements View.OnClickListener {
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private TokenInstance tokenInstance = TokenInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private InternetConnection con = new InternetConnection(this);
@@ -30,6 +33,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setID();
+        clearGameSettings();
 
         helloNick.setText("Witaj "+ tokenInstance.getUserName());
         System.out.println(tokenInstance.getToken());
@@ -83,9 +87,16 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true;
         }
         return super.dispatchKeyEvent(event);
+    }
+
+    private void clearGameSettings(){
+        gameSettingsInstance.setLanguage("");
+        gameSettingsInstance.setGameMode("");
+        gameSettingsInstance.setName("");
+        gameSettingsInstance.setSelectData("");
     }
 
     private void setID() {

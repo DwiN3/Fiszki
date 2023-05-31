@@ -1,18 +1,22 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
+import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
 
 public class ActivityLearningScreen extends AppCompatActivity implements View.OnClickListener {
+    private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private SetGameClass t = new SetGameClass("category");
     private boolean isBackPressedBlocked = true;
@@ -20,7 +24,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private TextView nameWord, sticksLeft, textsampleSentence;
     private ImageView imageWord;
     private int nrWords, allWords, countWords = 0;
-    private String selectedLanguage = "", selectedID="", selectedData="";
+    private String selectedLanguage = "", selectedName="", selectedData="";
 
 
     @Override
@@ -29,11 +33,13 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_learning_screen);
         setID();
 
-        Intent intent = getIntent();
-        selectedLanguage = intent.getStringExtra("SelectLanguage");
-        selectedID = intent.getStringExtra("SelectID");
-        selectedData = intent.getStringExtra("SelectData");
+        selectedLanguage = gameSettingsInstance.getLanguage();
+        selectedName = gameSettingsInstance.getName();
+        System.out.println("ID              "+selectedName);
+        System.out.println("Co to "+selectedData);
+        selectedData = gameSettingsInstance.getSelectData();
         t =  new SetGameClass(selectedData);
+
 
         allWords = t.getWords();
         nrWords = t.getWords()-1;
@@ -89,6 +95,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         countWords +=1;
         sticksLeft.setText(countWords+"/"+allWords);
     }
+
 
     private void setID() {
         next = findViewById(R.id.buttonNextLearning);

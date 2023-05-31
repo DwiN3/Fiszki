@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
@@ -30,13 +31,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityKits extends AppCompatActivity implements SelectListenerKits {
     private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView noKitsInfo;
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
-    private String selectedMode = "", selectedLanguage = "";
+    private String selectedMode = "";
 
 
     @Override
@@ -45,24 +47,20 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         setContentView(R.layout.activity_your_kits);
         setID();
 
-        Intent intent = getIntent();
-        selectedMode = intent.getStringExtra("SelectedMode");
-        selectedLanguage = intent.getStringExtra("SelectLanguage");
+        selectedMode = gameSettingsInstance.getGameMode();
 
         fetchFlashcardsCollectionsRetrofit();
     }
 
     @Override
     public void onItemClicked(ModelKits modelKits) {
-        Intent intent = new Intent();
-        intent.putExtra("SelectLanguage", selectedLanguage);
-        intent.putExtra("SelectID", ""+ modelKits.getWordID());
-        intent.putExtra("SelectData", "kit");
+        gameSettingsInstance.setName(modelKits.getNameKit());
+        gameSettingsInstance.setSelectData("kit");
 
         if(selectedMode.equals("quiz")){
-            nextActivity.openActivity(ActivityQuizScreen.class, intent);
+            nextActivity.openActivity(ActivityQuizScreen.class);
         } else if(selectedMode.equals("learn")){
-            nextActivity.openActivity(ActivityLearningScreen.class, intent);
+            nextActivity.openActivity(ActivityLearningScreen.class);
         }
     }
 
