@@ -14,6 +14,9 @@ import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.Other.SetGameClass;
 import com.kdbk.fiszki.R;
+import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
+
+import java.util.ArrayList;
 
 public class ActivityQuizScreen extends AppCompatActivity implements View.OnClickListener {
     private TokenInstance tokenInstance = TokenInstance.getInstance();
@@ -28,6 +31,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private boolean isBackPressedBlocked = true, markTheAnswer = false;
     private int nrWords, allWords;
     private int points = 0;
+    private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
+    //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
 
 
     @Override
@@ -39,7 +44,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
-        t =  new SetGameClass(selectedData);
+
+        t =  new SetGameClass(selectedData, wordsListKit);
 
         nrWords = t.getWords()-1;
         allWords = t.getWords();

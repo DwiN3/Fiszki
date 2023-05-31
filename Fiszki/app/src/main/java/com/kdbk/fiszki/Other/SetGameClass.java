@@ -2,6 +2,9 @@ package com.kdbk.fiszki.Other;
 
 import com.kdbk.fiszki.LocalDate.WordsArray;
 import com.kdbk.fiszki.R;
+import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
+
+import java.util.ArrayList;
 
 public class SetGameClass {
 
@@ -13,32 +16,30 @@ public class SetGameClass {
     private String[] sentense;
     private String[] sentenseTra;
     private int[] img;
+    private int img_One = R.drawable.flagpl;
+    private int imgPL = R.drawable.flagpl;
+    private int imgENG = R.drawable.flagang;
     private int words;
 
-    public SetGameClass(String data) {
-        this.ans1 = new String[0];
-        this.ans2 = new String[0];
-        this.ans3 = new String[0];
-        this.ans4 = new String[0];
+    public SetGameClass(String data, ArrayList<ModelShowKitsEdit> wordsList) {
+        this.NameWord = new String[wordsList.size()];
+        this.correctANS = new String[wordsList.size()];
+        this.sentense = new String[wordsList.size()];
+        this.sentenseTra = new String[wordsList.size()];
 
         if (data.equals("kit")) {
-            this.NameWord = new String[wordsArray.getLenOfArray()];
-            this.correctANS = new String[wordsArray.getLenOfArray()];
-            this.sentense = new String[wordsArray.getLenOfArray()];
-            this.sentenseTra = new String[wordsArray.getLenOfArray()];
-
-            for (int i = 0; i < wordsArray.getLenOfArray(); i++) {
-                String[] minilist = wordsArray.getWordsString(i);
-                NameWord[i] = minilist[0];
-                correctANS[i] = minilist[1];
-                sentense[i] = minilist[2];
-                sentenseTra[i] = minilist[3];
+            for (int i = 0; i < wordsList.size(); i++) {
+                NameWord[i] = wordsList.get(i).getWord();
+                correctANS[i] = wordsList.get(i).getTranslateWord();
+                sentense[i] = wordsList.get(i).getSentens();
+                sentenseTra[i] = wordsList.get(i).getSentensTranslate();
             }
-            ans1 = new String[]{"tram", "motor", "bat", "shild"};
+            imgPL =  R.drawable.flagpl;
+            /*ans1 = new String[]{"tram", "motor", "bat", "shild"};
             ans2 = new String[]{"train", "car", "ant", "sword"};
             ans3 = new String[]{"rolls", "bike", "seal", "dragon"};
             ans4 = new String[]{"bus", "plane", "chair", "knight"};
-            img = new int[]{R.drawable.word_train, R.drawable.word_car, R.drawable.word_ant, R.drawable.word_knight};
+            img = new int[]{R.drawable.word_train, R.drawable.word_car, R.drawable.word_ant, R.drawable.word_knight};*/
         } else {
             NameWord = new String[]{"pies", "niedzwiedz", "krowa", "ślimak"};
             correctANS = new String[]{"dog", "bear", "cow", "snail"};
@@ -93,5 +94,17 @@ public class SetGameClass {
     }
     public int getWords() {
         return words;
+    }
+
+    public int getImgPL() {
+        return imgPL;
+    }
+
+    public int getImg_One() {
+        return img_One;
+    }
+
+    public int getImgENG() {
+        return imgENG;
     }
 }
