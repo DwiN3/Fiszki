@@ -1,5 +1,6 @@
 package com.kdbk.fiszki.Other;
 
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 
@@ -24,7 +25,7 @@ public class SetGameClass {
     private int img_One = R.drawable.flagpl;
     private int imgPL = R.drawable.flagpl;
     private int imgENG = R.drawable.flagang;
-    private int borrder=30;
+    private int borrder=5;
 
     public SetGameClass(String data,String mode, ArrayList<ModelShowKitsEdit> wordsListAll) {
         if(mode.equals("quiz")){

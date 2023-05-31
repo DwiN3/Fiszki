@@ -2,11 +2,11 @@ package com.kdbk.fiszki.Instance;
 
 public class GameSettingsInstance {
     private static GameSettingsInstance instance = null;
-
     private static String gameMode = "";
     private static String name = "";
     private static String language ="";
     private static String  selectData ="";
+    private static int bestTrain = 0;
 
     private static int points=0, allWords=0;
 
@@ -65,5 +65,13 @@ public class GameSettingsInstance {
 
     public void setAllWords(int allWords) {
         GameSettingsInstance.allWords = allWords;
+    }
+
+    public int getBestTrain() {
+        return bestTrain;
+    }
+
+    public void setBestTrain(int bestTrain) {
+        GameSettingsInstance.bestTrain = bestTrain;
     }
 }

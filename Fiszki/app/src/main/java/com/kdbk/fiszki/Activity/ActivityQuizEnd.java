@@ -16,8 +16,8 @@ public class ActivityQuizEnd extends AppCompatActivity {
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private Button exit;
-    private TextView pointsText, ScoreEndQuiz;
-    private String points ="", allWords="";
+    private TextView ScoreEndQuiz,userBestTrainQuiz;
+    private int bestTrain=0, points =0, allWords=0;
     private boolean isBackPressedBlocked = true;
 
     @Override
@@ -26,10 +26,11 @@ public class ActivityQuizEnd extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_end);
         setID();
 
-        points = String.valueOf(gameSettingsInstance.getPoints());
-        allWords = String.valueOf(gameSettingsInstance.getAllWords());
-        pointsText.setText(points);
-        ScoreEndQuiz.setText("/"+allWords+" PKT");
+        points = gameSettingsInstance.getPoints();
+        allWords = gameSettingsInstance.getAllWords();
+        bestTrain = gameSettingsInstance.getBestTrain();
+        ScoreEndQuiz.setText(points*10+"/"+String.valueOf(allWords*10)+" PKT");
+        userBestTrainQuiz.setText(""+String.valueOf(bestTrain));
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +50,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
 
     private void setID() {
         exit = findViewById(R.id.buttonBackToMenuEndQuiz);
-        pointsText = findViewById(R.id.textScorePKTEndQuiz);
         ScoreEndQuiz = findViewById(R.id.textScoreEndQuiz);
+        userBestTrainQuiz = findViewById(R.id.userBestTrainQuizEndText);
     }
 }

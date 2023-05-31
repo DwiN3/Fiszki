@@ -39,12 +39,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private SetGameClass game;
     private Button next, exit;
     private ImageView imageWordQuiz;
-    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
+    private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText,userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
     private String selectedLanguage = "", selectedName = "", selectedData = "", correctAnswer;
     private boolean isBackPressedBlocked = true, markTheAnswer = false;
     private int nrWords, allWords;
-    private int points = 0, scoreTrain = 0;
+    private int points = 0, scoreTrain = 0, bestTrain=0;
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
 //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
 
@@ -96,7 +96,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText3.setText(game.getAns3(numberWord));
         answerText4.setText(game.getAns4(numberWord));
         correctAnswer = game.getCorrectANS(numberWord);
-        userPKTQuiz.setText("/" + allWords + " PKT");
         sticksLeftQuizText.setText("" + (game.getBorrder() - nrWords));
 
     }
@@ -108,17 +107,10 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
                 if (answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
-                    if(scoreTrain < 0) scoreTrain = 1;
-                    else scoreTrain += 1;
-                    setEmoji();
-                    points += 1;
-                    scorePKT.setText("" + points);
+                    correctChoice();
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
-                    markTheAnswer = true;
                 } else if (!markTheAnswer) {
-                    if (scoreTrain > 0) scoreTrain = -1;
-                    else scoreTrain--;
-                    setEmoji();
+                    inCorrectChoice();
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_red);
                     if (answerText2.getText().equals(correctAnswer)) {
                         answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
@@ -127,22 +119,14 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
-                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz2:
                 if (answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
-                    if(scoreTrain < 0) scoreTrain = 1;
-                    else scoreTrain += 1;
-                    setEmoji();
-                    points += 1;
-                    scorePKT.setText("" + points);
+                    correctChoice();
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
-                    markTheAnswer = true;
                 } else if (!markTheAnswer) {
-                    if (scoreTrain > 0) scoreTrain = -1;
-                    else scoreTrain--;
-                    setEmoji();
+                    inCorrectChoice();
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
                     if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
@@ -151,22 +135,14 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
-                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz3:
                 if (answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
-                    if(scoreTrain < 0) scoreTrain = 1;
-                    else scoreTrain += 1;
-                    setEmoji();
-                    points += 1;
-                    scorePKT.setText("" + points);
+                    correctChoice();
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
-                    markTheAnswer = true;
                 } else if (!markTheAnswer) {
-                    if (scoreTrain > 0) scoreTrain = -1;
-                    else scoreTrain--;
-                    setEmoji();
+                    inCorrectChoice();
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
                     if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
@@ -175,22 +151,14 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
-                    markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz4:
                 if (answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
-                    if(scoreTrain < 0) scoreTrain = 1;
-                    else scoreTrain += 1;
-                    setEmoji();
-                    points += 1;
-                    scorePKT.setText("" + points);
+                    correctChoice();
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
-                    markTheAnswer = true;
                 } else if (!markTheAnswer) {
-                    if (scoreTrain > 0) scoreTrain = -1;
-                    else scoreTrain--;
-                    setEmoji();
+                    inCorrectChoice();
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
                     if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
@@ -199,7 +167,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     } else if (answerText3.getText().equals(correctAnswer)) {
                         answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     }
-                    markTheAnswer = true;
                 }
                 break;
             case R.id.buttonNextQuiz:
@@ -209,6 +176,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                     clearButtons();
                     setQuestion(nrWords);
                 } else {
+                    gameSettingsInstance.setBestTrain(bestTrain);
                     gameSettingsInstance.setPoints(points);
                     gameSettingsInstance.setAllWords(allWords);
                     nextActivity.openActivity(ActivityQuizEnd.class);
@@ -260,6 +228,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                             scoreTrain = 0;
                             nrWords = 0;
                             allWords = game.getWords();
+                            userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
                             setEmoji();
                             setQuestion(nrWords);
                         }
@@ -283,6 +252,26 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         return super.dispatchKeyEvent(event);
     }
 
+    private void correctChoice(){
+        points += 1;
+        if(scoreTrain < 0) scoreTrain = 1;
+        else scoreTrain += 1;
+        if(scoreTrain > bestTrain) bestTrain = scoreTrain;
+        setEmoji();
+        markTheAnswer = true;
+        userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
+    }
+
+    private void inCorrectChoice(){
+        if (scoreTrain > 0) scoreTrain = -1;
+        else scoreTrain--;
+        setEmoji();
+        markTheAnswer = true;
+        userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
+    }
+
+
+
     private void setID() {
         next = findViewById(R.id.buttonNextQuiz);
         exit = findViewById(R.id.buttonExitQuiz);
@@ -297,7 +286,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         nameWordQuizText = findViewById(R.id.nameWordQuiz);
         imageWordQuiz = findViewById(R.id.imageWordQuiz);
         sticksLeftQuizText = findViewById(R.id.sticksLeftQuiz);
-        scorePKT = findViewById(R.id.userPKTScoreQuiz);
         userPKTQuiz = findViewById(R.id.userPKTQuizText);
     }
 }

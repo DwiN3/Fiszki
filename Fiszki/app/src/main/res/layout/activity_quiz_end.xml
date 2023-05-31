@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ActivityQuizEnd">
 
+    <TextView
+        android:id="@+id/textTextLVLEndQuiz2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:text="Najlepsza passa:"
+        android:textColor="@color/my_blue"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/userBestTrainQuizEndText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/circleEndQuiz"
         android:layout_width="905dp"
@@ -21,12 +34,10 @@
         android:id="@+id/textFiszkiEndQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="80dp"
         android:text="Gratulacje "
         android:textSize="33sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +56,7 @@
         android:id="@+id/buttonBackToMenuEndQuiz"
         android:layout_width="345dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/rounded_button"
         android:text="WRÓĆ DO MENU"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,29 +77,33 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textScorePKTEndQuiz"
-        android:layout_width="46dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="4dp"
-        android:gravity="right"
-        android:textColor="@color/my_blue"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/textScoreEndQuiz"
-        app:layout_constraintTop_toTopOf="@+id/textScoreEndQuiz" />
-
-    <TextView
         android:id="@+id/textScoreEndQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="12dp"
-        android:gravity="left"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:text="/30 PKT"
+        android:textAlignment="center"
         android:textColor="@color/my_blue"
         android:textSize="27sp"
-        app:layout_constraintBottom_toTopOf="@+id/textTextLVLEndQuiz"
+        app:layout_constraintBottom_toTopOf="@+id/textTextLVLEndQuiz2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/userBestTrainQuizEndText"
+        android:layout_width="194dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="6"
+        android:textAlignment="center"
+        android:textColor="@color/my_blue"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textTextLVLEndQuiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textTextLVLEndQuiz"
@@ -133,7 +148,7 @@
         android:id="@+id/textNextLVLEndQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:text="282/1000 pkt"
         android:textColor="@color/my_blue"
         android:textSize="27sp"
