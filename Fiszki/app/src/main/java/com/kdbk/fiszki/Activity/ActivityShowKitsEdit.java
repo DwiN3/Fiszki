@@ -67,6 +67,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     }
 
    public void showKits() {
+       wordsList.clear();
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -93,10 +94,10 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                     FlashcardCollectionsWords flashcardCollection = response.body();
 
                     if (flashcardCollection != null) {
-                        ArrayList<FlashcardID> testowalista = flashcardCollection.getFlashcards();
-                        if (testowalista != null && !testowalista.isEmpty()) {
+                        ArrayList<FlashcardID> kitWordsList = flashcardCollection.getFlashcards();
+                        if (kitWordsList != null && !kitWordsList.isEmpty()) {
                             int id_count=0;
-                            for (FlashcardID collection : testowalista) {
+                            for (FlashcardID collection : kitWordsList) {
                                 System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
                                 wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
                                 id_count++;

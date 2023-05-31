@@ -5,7 +5,9 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class SetGameClass {
     private String[] NameWord;
@@ -34,44 +36,36 @@ public class SetGameClass {
         this.ans4 = new String[wordsList.size()];
 
         if (data.equals("kit")) {
+            Random random = new Random();
+            int wordsListSize = wordsList.size();
             for (int i = 0; i < wordsList.size(); i++) {
                 NameWord[i] = wordsList.get(i).getWord();
                 correctANS[i] = wordsList.get(i).getTranslateWord();
                 sentense[i] = wordsList.get(i).getSentens();
                 sentenseTra[i] = wordsList.get(i).getSentensTranslate();
-                setRandomAnswers(wordsList, i);
-            }
-        }
 
-        else {
-            NameWord = new String[]{"pies", "niedzwiedz", "krowa", "ślimak"};
-            correctANS = new String[]{"dog", "bear", "cow", "snail"};
-            sentense = new String[]{"To najlepszy przyjaciel człowieka", "Są dużymi zwierzętami", "Dają mleko", "On porusza się bardzo wolno"};
-            sentenseTra = new String[]{"It's humans best friend", "They are large animals", "Give milk", "He moves very slowly"};
-            ans1 = new String[]{"dog", "bird", "goat", "beaver"};
-            ans2 = new String[]{"duck", "bee", "cow", "chicken"};
-            ans3 = new String[]{"cat", "bear", "lion", "pig"};
-            ans4 = new String[]{"worm", "bat", "sheep", "snail"};
+                Set<String> uniqueWords = new HashSet<>();
+                uniqueWords.add(correctANS[i]);
+
+                while (uniqueWords.size() < 4) {
+                    int randomIndex = random.nextInt(wordsList.size());
+                    String randomWord = wordsList.get(randomIndex).getTranslateWord();
+                    uniqueWords.add(randomWord);
+                }
+
+                String[] uniqueWordsArray = uniqueWords.toArray(new String[0]);
+                ans1[i] = uniqueWordsArray[0];
+                ans2[i] = uniqueWordsArray[1];
+                ans3[i] = uniqueWordsArray[2];
+                ans4[i] = uniqueWordsArray[3];
+            }
         }
 
         words = wordsList.size();
     }
 
-    private void setRandomAnswers(ArrayList<ModelShowKitsEdit> wordsList, int currentIndex) {
-        ArrayList<String> wordList = new ArrayList<>();
-        for (ModelShowKitsEdit word : wordsList) {
-            wordList.add(word.getTranslateWord());
-        }
 
-        int correctAnswerIndex = wordList.indexOf(correctANS[currentIndex]);
-        wordList.remove(correctAnswerIndex);
-        Collections.shuffle(wordList);
 
-        ans1[currentIndex] = wordList.get(0);
-        ans2[currentIndex] = wordList.get(1);
-        ans3[currentIndex] = wordList.get(2);
-        ans4[currentIndex] = correctANS[currentIndex];
-    }
 
     public String getNameWord(int i) {
         return NameWord[i];

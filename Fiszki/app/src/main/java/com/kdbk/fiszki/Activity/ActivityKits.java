@@ -102,7 +102,8 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
-
+                if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
+                else noKitsInfo.setVisibility(View.GONE);
             }
         });
     }
