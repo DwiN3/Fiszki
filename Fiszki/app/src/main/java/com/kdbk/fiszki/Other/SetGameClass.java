@@ -34,7 +34,6 @@ public class SetGameClass {
                 sentense[i] = wordsList.get(i).getSentens();
                 sentenseTra[i] = wordsList.get(i).getSentensTranslate();
             }
-            imgPL =  R.drawable.flagpl;
             /*ans1 = new String[]{"tram", "motor", "bat", "shild"};
             ans2 = new String[]{"train", "car", "ant", "sword"};
             ans3 = new String[]{"rolls", "bike", "seal", "dragon"};

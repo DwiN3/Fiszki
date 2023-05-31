@@ -38,11 +38,10 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private TextView nameWord, sticksLeft, textsampleSentence;
     private ImageView imageWord;
     private int nrWords, allWords, countWords = 0;
-    private String selectedLanguage = "", selectedName="", selectedData="";
+    private String selectedLanguage = "", selectedName = "", selectedData = "";
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
+
     //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,19 +60,17 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonNextLearning:
-                if(buttonNext.getText().equals("POKAŻ TŁUMACZENIE")){
+                if (buttonNext.getText().equals("POKAŻ TŁUMACZENIE")) {
                     buttonNext.setText("NASTĘPNE SŁOWO");
                     translateWord(nrWords);
-                    if (nrWords == 0) {
+                    if (nrWords == allWords - 1) {
                         buttonNext.setVisibility(View.GONE);
                         buttonNext.setEnabled(false);
                     }
-                }
-                else
-                {
+                } else {
                     buttonNext.setText("POKAŻ TŁUMACZENIE");
-                    if(nrWords > 0) {
-                        nrWords -= 1;
+                    if (nrWords < allWords - 1) {
+                        nrWords += 1;
                         setNewWord(nrWords);
                     }
                 }
@@ -84,7 +81,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         }
     }
 
-    private void translateWord(int numberWord){
+    private void translateWord(int numberWord) {
         imageWord.setBackgroundResource(game.getImgENG());
         nameWord.setText(game.getCorrectANS(numberWord));
         textsampleSentence.setText(game.getSentenseTra(numberWord));
@@ -98,12 +95,12 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         return super.dispatchKeyEvent(event);
     }
 
-    private void setNewWord(int numberWord){
+    private void setNewWord(int numberWord) {
         nameWord.setText(game.getNameWord(numberWord));
         textsampleSentence.setText(game.getSentense(numberWord));
         imageWord.setBackgroundResource(game.getImgPL());
-        countWords +=1;
-        sticksLeft.setText(countWords+"/"+allWords);
+        countWords += 1;
+        sticksLeft.setText(countWords + "/" + allWords);
     }
 
 
@@ -147,15 +144,15 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                     if (flashcardCollection != null) {
                         ArrayList<FlashcardID> flashcardsList = flashcardCollection.getFlashcards();
                         if (flashcardsList != null && !flashcardsList.isEmpty()) {
-                            int id_count=0;
+                            int id_count = 0;
                             for (FlashcardID collection : flashcardsList) {
-                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
+                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(), id_count, collection.get_id()));
                                 //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game =  new SetGameClass(selectedData, wordsListKit);
+                            game = new SetGameClass(selectedData, wordsListKit);
                             allWords = game.getWords();
-                            nrWords = game.getWords()-1;
+                            nrWords = 0;
                             setNewWord(nrWords);
                         }
                     }
@@ -170,3 +167,4 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         });
     }
 }
+
