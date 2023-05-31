@@ -19,31 +19,33 @@ public class SetGameClass {
     private String[] ans2;
     private String[] ans3;
     private String[] ans4;
-
     private int words;
     private ArrayList<ModelShowKitsEdit> wordsList;
-
     private int img_One = R.drawable.flagpl;
     private int imgPL = R.drawable.flagpl;
     private int imgENG = R.drawable.flagang;
     private int borrder=30;
 
-    public SetGameClass(String data, ArrayList<ModelShowKitsEdit> wordsListAll) {
-        Random randomWords = new Random();
-        Set<Integer> selectedIndices = new HashSet<>();
-        ArrayList<ModelShowKitsEdit> selectedWords = new ArrayList<>();
-        if(wordsListAll.size() <= borrder) borrder = wordsListAll.size();
+    public SetGameClass(String data,String mode, ArrayList<ModelShowKitsEdit> wordsListAll) {
+        if(mode.equals("quiz")){
+            Random randomWords = new Random();
+            Set<Integer> selectedIndices = new HashSet<>();
+            ArrayList<ModelShowKitsEdit> selectedWords = new ArrayList<>();
+            if(wordsListAll.size() <= borrder) borrder = wordsListAll.size();
 
-        while (selectedIndices.size() < borrder) {
-            int randomIndex = randomWords.nextInt(wordsListAll.size());
+            while (selectedIndices.size() < borrder) {
+                int randomIndex = randomWords.nextInt(wordsListAll.size());
 
-            if (!selectedIndices.contains(randomIndex)) {
-                selectedIndices.add(randomIndex);
-                selectedWords.add(wordsListAll.get(randomIndex));
+                if (!selectedIndices.contains(randomIndex)) {
+                    selectedIndices.add(randomIndex);
+                    selectedWords.add(wordsListAll.get(randomIndex));
+                }
             }
+            wordsList = selectedWords;
         }
+        else wordsList = wordsListAll;
 
-        wordsList = selectedWords;
+
         this.NameWord = new String[wordsList.size()];
         this.correctANS = new String[wordsList.size()];
         this.sentense = new String[wordsList.size()];

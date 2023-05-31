@@ -150,7 +150,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                                 //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game = new SetGameClass(selectedData, wordsListKit);
+                            game = new SetGameClass(selectedData,"learn", wordsListKit);
                             allWords = game.getWords();
                             nrWords = 0;
                             setNewWord(nrWords);

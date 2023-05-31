@@ -3,7 +3,7 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -49,7 +49,9 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
         selectedMode = gameSettingsInstance.getGameMode();
 
-        fetchFlashcardsCollectionsRetrofit();
+        fetchFlashcardsCategoriesRetrofit();
+        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
+        else noKitsInfo.setVisibility(View.GONE);
     }
 
     @Override
@@ -64,7 +66,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         }
     }
 
-    private void fetchFlashcardsCollectionsRetrofit() {
+    private void fetchFlashcardsCategoriesRetrofit() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -89,10 +91,10 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
             public void onResponse(Call <List<FlashcardCollections>> call, Response<List<FlashcardCollections>> response) {
                 collectionList.clear();
                 List<FlashcardCollections> list = response.body();
-                int id = 0;
+                int countID = 0;
                 for(FlashcardCollections collection : list){
-                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", collection.getFlashcardsSize(), id, 30,collection.getId()));
-                    id++;
+                    collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", collection.getFlashcardsSize(), countID, 30,collection.getId()));
+                    countID++;
                 }
                 RefreshRecycleView();
                 if (!response.isSuccessful()) {
@@ -102,8 +104,6 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
-                if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
-                else noKitsInfo.setVisibility(View.GONE);
             }
         });
     }
@@ -114,9 +114,9 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
-        else noKitsInfo.setVisibility(View.GONE);
     }
+
+
 
     private void setID() {
         noKitsInfo = findViewById(R.id.textNoKits);

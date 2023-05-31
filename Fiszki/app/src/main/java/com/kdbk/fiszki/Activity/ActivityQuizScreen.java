@@ -256,7 +256,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                                 //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game = new SetGameClass(selectedData, wordsListKit);
+                            game = new SetGameClass(selectedData,"quiz", wordsListKit);
                             scoreTrain = 0;
                             nrWords = 0;
                             allWords = game.getWords();
