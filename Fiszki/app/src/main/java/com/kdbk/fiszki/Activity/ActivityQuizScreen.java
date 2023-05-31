@@ -41,13 +41,12 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText, scorePKT, userPKTQuiz;
     private ImageButton answerButton1, answerButton2, answerButton3, answerButton4;
-    private String selectedLanguage = "", selectedName ="", selectedData="", correctAnswer;
+    private String selectedLanguage = "", selectedName = "", selectedData = "", correctAnswer;
     private boolean isBackPressedBlocked = true, markTheAnswer = false;
     private int nrWords, allWords;
-    private int points = 0;
+    private int points = 0, scoreTrain = 0;
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
-    //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
-
+//private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +67,28 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerButton4.setOnClickListener(this);
     }
 
-    public void clearButtons(){
+    private void setEmoji() {
+        if (scoreTrain <= -5) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m5);
+        if (scoreTrain == -4) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m4);
+        if (scoreTrain == -3) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m3);
+        if (scoreTrain == -2) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m2);
+        if (scoreTrain == -1) imageWordQuiz.setBackgroundResource(R.drawable.emoji_m1);
+        if (scoreTrain == 0) imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+        if (scoreTrain == 1) imageWordQuiz.setBackgroundResource(R.drawable.emoji_1);
+        if (scoreTrain == 2) imageWordQuiz.setBackgroundResource(R.drawable.emoji_2);
+        if (scoreTrain == 3) imageWordQuiz.setBackgroundResource(R.drawable.emoji_3);
+        if (scoreTrain == 4) imageWordQuiz.setBackgroundResource(R.drawable.emoji_4);
+        if (scoreTrain >= 5) imageWordQuiz.setBackgroundResource(R.drawable.emoji_5);
+    }
+
+    public void clearButtons() {
         answerButton1.setBackgroundResource(R.drawable.rounded_button);
         answerButton2.setBackgroundResource(R.drawable.rounded_button);
         answerButton3.setBackgroundResource(R.drawable.rounded_button);
         answerButton4.setBackgroundResource(R.drawable.rounded_button);
     }
 
-    void setQuestion(int numberWord){
-        imageWordQuiz.setBackgroundResource(R.drawable.flagpl);
+    void setQuestion(int numberWord) {
         markTheAnswer = false;
         nameWordQuizText.setText(game.getNameWord(numberWord));
         answerText1.setText(game.getAns1(numberWord));
@@ -84,103 +96,118 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         answerText3.setText(game.getAns3(numberWord));
         answerText4.setText(game.getAns4(numberWord));
         correctAnswer = game.getCorrectANS(numberWord);
-        userPKTQuiz.setText("/"+allWords+" PKT");
-        sticksLeftQuizText.setText(""+(wordsListKit.size()-nrWords));
+        userPKTQuiz.setText("/" + allWords + " PKT");
+        sticksLeftQuizText.setText("" + (wordsListKit.size() - nrWords));
 
     }
 
     public void onClick(View view) {
-        if(nrWords == wordsListKit.size()-1) next.setText("PODSUMOWANIE");
-        sticksLeftQuizText.setText(String.valueOf(wordsListKit.size()-nrWords-1));
+        if (nrWords == wordsListKit.size() - 1) next.setText("PODSUMOWANIE");
+        sticksLeftQuizText.setText(String.valueOf(wordsListKit.size() - nrWords - 1));
 
         switch (view.getId()) {
             case R.id.imageButtonAnswerQuiz1:
-                if(answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=1;
-                    scorePKT.setText(""+points);
+                if (answerText1.getText().equals(correctAnswer) && !markTheAnswer) {
+                    if(scoreTrain < 0) scoreTrain = 1;
+                    else scoreTrain += 1;
+                    setEmoji();
+                    points += 1;
+                    scorePKT.setText("" + points);
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
-                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
-                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
+                    if (scoreTrain > 0) scoreTrain = -1;
+                    else scoreTrain--;
+                    setEmoji();
                     answerButton1.setBackgroundResource(R.drawable.rounded_button_red);
-                    if(answerText2.getText().equals(correctAnswer)) {
+                    if (answerText2.getText().equals(correctAnswer)) {
                         answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText3.getText().equals(correctAnswer)) {
+                    } else if (answerText3.getText().equals(correctAnswer)) {
                         answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText4.getText().equals(correctAnswer)) {
+                    } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
                     markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz2:
-                if(answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=1;
-                    scorePKT.setText(""+points);
+                if (answerText2.getText().equals(correctAnswer) && !markTheAnswer) {
+                    if(scoreTrain < 0) scoreTrain = 1;
+                    else scoreTrain += 1;
+                    setEmoji();
+                    points += 1;
+                    scorePKT.setText("" + points);
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
-                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
-                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
+                    if (scoreTrain > 0) scoreTrain = -1;
+                    else scoreTrain--;
+                    setEmoji();
                     answerButton2.setBackgroundResource(R.drawable.rounded_button_red);
-                    if(answerText1.getText().equals(correctAnswer)) {
+                    if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText3.getText().equals(correctAnswer)) {
+                    } else if (answerText3.getText().equals(correctAnswer)) {
                         answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText4.getText().equals(correctAnswer)) {
+                    } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
                     markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz3:
-                if(answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=1;
-                    scorePKT.setText(""+points);
+                if (answerText3.getText().equals(correctAnswer) && !markTheAnswer) {
+                    if(scoreTrain < 0) scoreTrain = 1;
+                    else scoreTrain += 1;
+                    setEmoji();
+                    points += 1;
+                    scorePKT.setText("" + points);
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
-                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
-                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
+                    if (scoreTrain > 0) scoreTrain = -1;
+                    else scoreTrain--;
+                    setEmoji();
                     answerButton3.setBackgroundResource(R.drawable.rounded_button_red);
-                    if(answerText1.getText().equals(correctAnswer)) {
+                    if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText2.getText().equals(correctAnswer)) {
+                    } else if (answerText2.getText().equals(correctAnswer)) {
                         answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText4.getText().equals(correctAnswer)) {
+                    } else if (answerText4.getText().equals(correctAnswer)) {
                         answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     }
                     markTheAnswer = true;
                 }
                 break;
             case R.id.imageButtonAnswerQuiz4:
-                if(answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
-                    points +=1;
-                    scorePKT.setText(""+points);
+                if (answerText4.getText().equals(correctAnswer) && !markTheAnswer) {
+                    if(scoreTrain < 0) scoreTrain = 1;
+                    else scoreTrain += 1;
+                    setEmoji();
+                    points += 1;
+                    scorePKT.setText("" + points);
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_green);
                     markTheAnswer = true;
-                    imageWordQuiz.setBackgroundResource(R.drawable.good_icon);
                 } else if (!markTheAnswer) {
-                    imageWordQuiz.setBackgroundResource(R.drawable.shock_icon);
+                    if (scoreTrain > 0) scoreTrain = -1;
+                    else scoreTrain--;
+                    setEmoji();
                     answerButton4.setBackgroundResource(R.drawable.rounded_button_red);
-                    if(answerText1.getText().equals(correctAnswer)) {
+                    if (answerText1.getText().equals(correctAnswer)) {
                         answerButton1.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText2.getText().equals(correctAnswer)) {
+                    } else if (answerText2.getText().equals(correctAnswer)) {
                         answerButton2.setBackgroundResource(R.drawable.rounded_button_green);
-                    } else if(answerText3.getText().equals(correctAnswer)) {
+                    } else if (answerText3.getText().equals(correctAnswer)) {
                         answerButton3.setBackgroundResource(R.drawable.rounded_button_green);
                     }
                     markTheAnswer = true;
                 }
                 break;
             case R.id.buttonNextQuiz:
-                if(nrWords != wordsListKit.size()-1){
-                    nrWords +=1;
+                if (nrWords != wordsListKit.size() - 1) {
+                    nrWords += 1;
                     clearButtons();
                     setQuestion(nrWords);
-                }
-                else{
+                } else {
                     gameSettingsInstance.setPoints(points);
                     gameSettingsInstance.setAllWords(allWords);
                     nextActivity.openActivity(ActivityQuizEnd.class);
@@ -228,9 +255,11 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                                 //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game =  new SetGameClass(selectedData, wordsListKit);
+                            game = new SetGameClass(selectedData, wordsListKit);
+                            scoreTrain = 0;
                             nrWords = 0;
                             allWords = game.getWords();
+                            setEmoji();
                             setQuestion(nrWords);
                         }
                     }
