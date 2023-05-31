@@ -59,13 +59,13 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         gameSettingsInstance.setName(modelKits.getNameKit());
         gameSettingsInstance.setSelectData("kit");
 
-        if(modelKits.getNumberOfCards()>= 8){
-            if(selectedMode.equals("quiz")){
-                nextActivity.openActivity(ActivityQuizScreen.class);
-            } else if(selectedMode.equals("learn")){
-                nextActivity.openActivity(ActivityLearningScreen.class);
-            }
+
+        if(selectedMode.equals("quiz") && modelKits.getNumberOfCards()>= 10){
+            nextActivity.openActivity(ActivityQuizScreen.class);
+        } else if(selectedMode.equals("learn")){
+            nextActivity.openActivity(ActivityLearningScreen.class);
         }
+
         else Toast.makeText(ActivityKits.this, "Zestaw zawiera za mało fiszek", Toast.LENGTH_SHORT).show();
     }
 

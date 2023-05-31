@@ -53,20 +53,22 @@ public class SetGameClass {
                 sentense[i] = wordsList.get(i).getSentens();
                 sentenseTra[i] = wordsList.get(i).getSentensTranslate();
 
-                Set<String> uniqueWords = new HashSet<>();
-                uniqueWords.add(correctANS[i]);
+                if(mode.equals("quiz")){
+                    Set<String> uniqueWords = new HashSet<>();
+                    uniqueWords.add(correctANS[i]);
 
-                while (uniqueWords.size() < 4) {
-                    int randomIndex = random.nextInt(wordsList.size());
-                    String randomWord = wordsList.get(randomIndex).getTranslateWord();
-                    uniqueWords.add(randomWord);
+                    while (uniqueWords.size() < 4) {
+                        int randomIndex = random.nextInt(wordsList.size());
+                        String randomWord = wordsList.get(randomIndex).getTranslateWord();
+                        uniqueWords.add(randomWord);
+                    }
+
+                    String[] uniqueWordsArray = uniqueWords.toArray(new String[0]);
+                    ans1[i] = uniqueWordsArray[0];
+                    ans2[i] = uniqueWordsArray[1];
+                    ans3[i] = uniqueWordsArray[2];
+                    ans4[i] = uniqueWordsArray[3];
                 }
-
-                String[] uniqueWordsArray = uniqueWords.toArray(new String[0]);
-                ans1[i] = uniqueWordsArray[0];
-                ans2[i] = uniqueWordsArray[1];
-                ans3[i] = uniqueWordsArray[2];
-                ans4[i] = uniqueWordsArray[3];
             }
         }
         listSize = wordsList.size();
