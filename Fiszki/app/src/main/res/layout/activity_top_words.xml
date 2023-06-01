@@ -22,7 +22,7 @@
         android:layout_height="86dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="RANDOMOWY ZESTAW"
+        android:text="LOSOWY ZESTAW"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
