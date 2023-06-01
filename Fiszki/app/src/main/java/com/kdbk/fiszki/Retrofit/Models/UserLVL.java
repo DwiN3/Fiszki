@@ -3,7 +3,8 @@ package com.kdbk.fiszki.Retrofit.Models;
 import com.google.gson.annotations.SerializedName;
 
 public class UserLVL {
-    private int result;
+
+    private int result, lvl,points, borderPoints;
     private String content;
 
     @SerializedName("body")

@@ -3,6 +3,7 @@ package com.kdbk.fiszki.Instance;
 public class TokenInstance {
     private static TokenInstance instance = null;
     private static String userName ="", token="";
+    private static boolean serverStatus= false;
 
     public static TokenInstance getInstance() {
         if (instance == null) {
@@ -25,5 +26,13 @@ public class TokenInstance {
 
     public void setToken(String token) {
         TokenInstance.token = token;
+    }
+
+    public boolean isServerStatus() {
+        return serverStatus;
+    }
+
+    public void setServerStatus(boolean serverStatus) {
+        TokenInstance.serverStatus = serverStatus;
     }
 }
