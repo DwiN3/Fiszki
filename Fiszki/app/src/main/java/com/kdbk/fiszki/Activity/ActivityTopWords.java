@@ -106,8 +106,8 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
                     Random random = new Random();
                     int randomNumber = random.nextInt(list.size());
                     listToShow = collectionList.get(randomNumber).getNameKit();
-                    System.out.println("Nazwa:      "+listToShow+"              Numer"+randomNumber);
                     showWords();
+                    //System.out.println("Nazwa:      "+listToShow+"              Numer   "+randomNumber);
                 }
             }
 
