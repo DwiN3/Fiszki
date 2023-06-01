@@ -15,7 +15,7 @@ public class SetGameClass {
     private int listSize =0, borrder=10;
     private ArrayList<ModelShowKitsEdit> wordsList;
 
-    public SetGameClass(String data,String mode, ArrayList<ModelShowKitsEdit> wordsListAll) {
+    public SetGameClass(String data,String mode, String language, ArrayList<ModelShowKitsEdit> wordsListAll) {
         if(mode.equals("quiz")){
             Random randomWords = new Random();
             Set<Integer> selectedIndices = new HashSet<>();
@@ -46,10 +46,15 @@ public class SetGameClass {
 
         if (data.equals("kit")) {
             Random random = new Random();
-            int wordsListSize = wordsList.size();
             for (int i = 0; i < wordsList.size(); i++) {
-                NameWord[i] = wordsList.get(i).getWord();
-                correctANS[i] = wordsList.get(i).getTranslateWord();
+                if(language.equals("pl")){
+                    NameWord[i] = wordsList.get(i).getWord();
+                    correctANS[i] = wordsList.get(i).getTranslateWord();
+                }
+                else{
+                    NameWord[i] = wordsList.get(i).getTranslateWord();
+                    correctANS[i] = wordsList.get(i).getWord();
+                }
                 sentense[i] = wordsList.get(i).getSentens();
                 sentenseTra[i] = wordsList.get(i).getSentensTranslate();
 
@@ -59,7 +64,9 @@ public class SetGameClass {
 
                     while (uniqueWords.size() < 4) {
                         int randomIndex = random.nextInt(wordsList.size());
-                        String randomWord = wordsList.get(randomIndex).getTranslateWord();
+                        String randomWord;
+                        if(language.equals("pl")) randomWord = wordsList.get(randomIndex).getTranslateWord();
+                        else randomWord = wordsList.get(randomIndex).getWord();
                         uniqueWords.add(randomWord);
                     }
 

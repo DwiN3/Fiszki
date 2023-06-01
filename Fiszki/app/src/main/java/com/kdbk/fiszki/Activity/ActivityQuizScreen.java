@@ -56,6 +56,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
+        System.out.println(selectedLanguage);
 
         getWordFromKitRetrofit();
 
@@ -224,7 +225,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                                 System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game = new SetGameClass(selectedData,"quiz", wordsListKit);
+                            game = new SetGameClass(selectedData,"quiz", selectedLanguage, wordsListKit);
                             scoreTrain = 0;
                             nrWords = 0;
                             allWords = game.getListSize();

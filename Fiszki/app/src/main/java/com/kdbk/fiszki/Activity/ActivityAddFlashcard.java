@@ -114,7 +114,7 @@ public class ActivityAddFlashcard extends AppCompatActivity  {
 
     private void setSpinner(){
         List<String> categories = new ArrayList<>();
-        String[] categoriesList = {"dom", "zakupy", "praca", "zdrowie", "czlowiek", "turystyka", "jedzenie","edukacja", "inne"};
+        String[] categoriesList = {"zwierzeta","dom", "zakupy", "praca", "zdrowie", "czlowiek", "turystyka", "jedzenie","edukacja", "inne"};
         for(int n=0;n<categoriesList.length;n++){
             categories.add(categoriesList[n]);
         }
