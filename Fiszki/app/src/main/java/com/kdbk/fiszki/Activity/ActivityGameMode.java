@@ -33,6 +33,13 @@ public class ActivityGameMode extends AppCompatActivity {
         learnMode.setBackgroundResource(R.drawable.rounded_button_mode_normal);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, ActivityMainMenu.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void setButtonListeners() {
             categories.setOnClickListener(v -> {
                 gameSettingsInstance.setGameMode(selectedMode);
