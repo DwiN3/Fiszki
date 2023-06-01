@@ -50,8 +50,6 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         selectedMode = gameSettingsInstance.getGameMode();
 
         fetchFlashcardsCategoriesRetrofit();
-        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
-        else noKitsInfo.setVisibility(View.GONE);
     }
 
     @Override
@@ -107,7 +105,11 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
-                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityKits.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                if(t.getMessage().equals("timeout")){
+                    noKitsInfo.setText("BRAK DANYCH");
+                    noKitsInfo.setVisibility(View.VISIBLE);
+                    Toast.makeText(ActivityKits.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -118,6 +120,8 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         mAdapter = new AdapterKits(collectionList, this, R.layout.recycler_view_kits);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        if(collectionList.isEmpty()) noKitsInfo.setVisibility(View.VISIBLE);
+        else noKitsInfo.setVisibility(View.GONE);
     }
 
 

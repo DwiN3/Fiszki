@@ -29,6 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textNoCategories"
+        android:visibility="invisible"
+        android:layout_width="194dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="324dp"
+        android:gravity="center"
+        android:text="BRAK DANYCH"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriesRecycleView"
         android:layout_width="405dp"

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterCategories;
@@ -20,6 +21,7 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView noCategoriesInfo;
     private String selectedMode = "";
 
     // Do wywalnienia
@@ -30,7 +32,7 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
-
+        setID();
         selectedMode = gameSettingsInstance.getGameMode();
 
         mRecyclerView = findViewById(R.id.categoriesRecycleView);
@@ -52,5 +54,8 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
         } else if(selectedMode.equals("learn")){
             nextActivity.openActivity(ActivityLearningScreen.class, intent);
         }
+    }
+    private void setID() {
+        noCategoriesInfo = findViewById(R.id.textNoCategories);
     }
 }
