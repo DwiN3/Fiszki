@@ -75,9 +75,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonAddFlashcard:
                     kits = true;
-                    Intent intent = getIntent();
-                    intent.putExtra("KitsToShow", kits);
-                    nextActivity.openActivity(ActivityAddFlashcard.class, intent);
+                    nextActivity.openActivity(ActivityAddFlashcard.class);
                     break;
             }
         }

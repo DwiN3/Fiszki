@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterCategories;
@@ -54,7 +55,7 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        gameSettingsInstance.getName();
+        gameSettingsInstance.setName(modelCategories.getNameCategory());
         gameSettingsInstance.setSelectData("category");
 
         if(selectedMode.equals("quiz")){

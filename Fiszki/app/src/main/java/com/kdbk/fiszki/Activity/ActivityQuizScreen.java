@@ -58,7 +58,8 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedData = gameSettingsInstance.getSelectData();
         System.out.println(selectedLanguage);
 
-        getWordFromKitRetrofit();
+        if(gameSettingsInstance.getSelectData().equals("kit")) getWordFromKitRetrofit();
+        else getWordFromCateogryRetrofit();
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -189,7 +190,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void getWordFromKitRetrofit() {
+    private void getWordFromKitRetrofit() {
         wordsListKit.clear();
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -222,7 +223,64 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                             int id_count = 0;
                             for (FlashcardID collection : flashcardsList) {
                                 wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(), id_count, collection.get_id()));
-                                System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
+                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
+                                id_count++;
+                            }
+                            game = new SetGame(selectedData,"quiz", selectedLanguage, wordsListKit);
+                            scoreTrain = 0;
+                            nrWords = 0;
+                            allWords = game.getListSize();
+                            userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
+                            setEmoji();
+                            setQuestion(nrWords);
+                        }
+                    }
+                } else {
+                    Toast.makeText(ActivityQuizScreen.this, "Błąd danych", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getWordFromCateogryRetrofit() {
+        wordsListKit.clear();
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<FlashcardCollectionsWords> call = jsonFlashcardsCollections.getKit(selectedName);
+
+        call.enqueue(new Callback<FlashcardCollectionsWords>() {
+            @Override
+            public void onResponse(Call<FlashcardCollectionsWords> call, Response<FlashcardCollectionsWords> response) {
+                if (response.isSuccessful()) {
+                    FlashcardCollectionsWords flashcardCollection = response.body();
+
+                    if (flashcardCollection != null) {
+                        ArrayList<FlashcardID> flashcardsList = flashcardCollection.getFlashcards();
+                        if (flashcardsList != null && !flashcardsList.isEmpty()) {
+                            int id_count = 0;
+                            for (FlashcardID collection : flashcardsList) {
+                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(), id_count, collection.get_id()));
+                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
                             game = new SetGame(selectedData,"quiz", selectedLanguage, wordsListKit);
@@ -271,7 +329,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         markTheAnswer = true;
         userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
     }
-
 
 
     private void setID() {
