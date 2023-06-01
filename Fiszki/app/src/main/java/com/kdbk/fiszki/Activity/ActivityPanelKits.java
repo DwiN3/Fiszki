@@ -96,6 +96,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     }
 
     private void fetchFlashcardsCollectionsRetrofit() {
+        collectionList.clear();
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
@@ -119,7 +120,6 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         call.enqueue(new Callback<List<FlashcardCollections>>() {
             @Override
             public void onResponse(Call<List<FlashcardCollections>> call, Response<List<FlashcardCollections>> response) {
-                collectionList.clear();
                 List<FlashcardCollections> list = response.body();
                 if (list == null || list.isEmpty()) {
                     showInfoZeroCollection();
@@ -156,7 +156,6 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     }
 
     private void deleteFlashcardsCollectionsRetrofit(String collectionName) {
-
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {

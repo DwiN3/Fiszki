@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
@@ -41,6 +42,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityTopWords extends AppCompatActivity implements SelectListenerTopWords {
     private TokenInstance tokenInstance = TokenInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -57,6 +59,7 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
         setContentView(R.layout.activity_top_words);
         setID();
         getKitName();
+        clearGameSettings();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +70,7 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
     }
 
     private void getKitName() {
-
+        collectionList.clear();
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
@@ -90,7 +93,6 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
         call.enqueue(new Callback<List<FlashcardCollections>>() {
             @Override
             public void onResponse(Call<List<FlashcardCollections>> call, Response<List<FlashcardCollections>> response) {
-                collectionList.clear();
                 List<FlashcardCollections> list = response.body();
                 if (list == null || list.isEmpty()) {
                     return;
@@ -98,13 +100,13 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
                 else{
                     int id = 0;
                     for (FlashcardCollections collection : list) {
-
                         collectionList.add(new ModelKits(collection.getCollectionName(), "ILOSC FISZEK", collection.getFlashcardsSize(), id, 30, collection.getId()));
                         id++;
                     }
                     Random random = new Random();
-                    int randomNumber = random.nextInt(list.size()) + 1;
+                    int randomNumber = random.nextInt(list.size());
                     listToShow = collectionList.get(randomNumber).getNameKit();
+                    System.out.println("Nazwa:      "+listToShow+"              Numer"+randomNumber);
                     showWords();
                 }
             }
@@ -149,7 +151,7 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
                         if (kitWordsList != null && !kitWordsList.isEmpty()) {
                             int id_count=0;
                             for (FlashcardID collection : kitWordsList) {
-                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
+                                //System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
                                 wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
                                 id_count++;
                             }
@@ -170,8 +172,6 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
     }
 
 
-
-
     private void RefreshRecycleView() {
         mRecyclerView = findViewById(R.id.showTopWordRecycleView);
         mRecyclerView.setHasFixedSize(true);
@@ -180,6 +180,18 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
+
+    private void clearGameSettings(){
+        gameSettingsInstance.setLanguage("");
+        gameSettingsInstance.setGameMode("");
+        gameSettingsInstance.setName("");
+        gameSettingsInstance.setSelectData("");
+        gameSettingsInstance.setName("");
+        gameSettingsInstance.setBestTrain(0);
+        gameSettingsInstance.setPoints(0);
+        gameSettingsInstance.setAllWords(0);
+    }
+
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
