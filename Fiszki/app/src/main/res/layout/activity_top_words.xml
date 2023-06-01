@@ -7,7 +7,7 @@
     tools:context=".Activity.ActivityTopWords">
 
     <ImageView
-        android:id="@+id/bar"
+        android:id="@+id/barTop"
         android:layout_width="500dp"
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textFiszki"
+        android:id="@+id/textFiszkiTop"
         android:layout_width="149dp"
         android:layout_height="86dp"
         android:layout_marginTop="8dp"
@@ -30,14 +30,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/showTopWordRecycleView"
-        android:layout_width="396dp"
-        android:layout_height="507dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="397dp"
+        android:layout_height="556dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonTopWordBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFiszki" />
+        app:layout_constraintTop_toBottomOf="@+id/textFiszkiTop" />
 
     <Button
         android:id="@+id/buttonTopWordBack"

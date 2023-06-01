@@ -1,10 +1,13 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
@@ -15,7 +18,7 @@ public class ActivityGameMode extends AppCompatActivity {
     private NextActivity nextActivity = new NextActivity(this);
     private InternetConnection con = new InternetConnection(this);
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
-    private Button quizMode, learnMode, reverse, yoursKits, categories;
+    private Button quizMode, learnMode, reverse, yoursKits, categories, topWords;
     private ImageView  flagFirstImage,flagSecendImage;
     private String selectedMode = "quiz", selectedLanguage = "pl";
 
@@ -59,6 +62,10 @@ public class ActivityGameMode extends AppCompatActivity {
                 flagFirstImage.setImageDrawable(secondImage);
                 flagSecendImage.setImageDrawable(firstImage);
             });
+            topWords.setOnClickListener(v -> {
+                Intent intent = new Intent(this, ActivityTopWords.class);
+                startActivity(intent);
+            });
         }
 
     private void setID() {
@@ -69,5 +76,6 @@ public class ActivityGameMode extends AppCompatActivity {
         flagSecendImage = findViewById(R.id.flagSecend);
         yoursKits = findViewById(R.id.buttonYourFlashcardsMode);
         categories = findViewById(R.id.buttonCategoriesMode);
+        topWords = findViewById(R.id.buttonTopWordsMode);
     }
 }

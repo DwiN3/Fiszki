@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Fiszki"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityTopWords"
+            android:name=".Activity.ActivityTopWords"
             android:exported="false" />
         <activity
             android:name=".Activity.ActivityShowKitsEdit"
