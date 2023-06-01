@@ -18,11 +18,11 @@
 
     <TextView
         android:id="@+id/textFiszkiTop"
-        android:layout_width="149dp"
+        android:layout_width="300dp"
         android:layout_height="86dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="TOP SŁÓWKA"
+        android:text="LOSOWY ZESTAW"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
