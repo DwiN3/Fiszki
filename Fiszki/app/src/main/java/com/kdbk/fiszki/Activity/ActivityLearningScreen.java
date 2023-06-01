@@ -82,7 +82,8 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     }
 
     private void translateWord(int numberWord) {
-        imageWord.setBackgroundResource(game.getImgENG());
+        if(selectedLanguage.equals("pl")) imageWord.setBackgroundResource(game.getImgENG());
+        else imageWord.setBackgroundResource(game.getImgPL());
         nameWord.setText(game.getCorrectANS(numberWord));
         textsampleSentence.setText(game.getSentenseTra(numberWord));
     }
@@ -98,7 +99,8 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private void setNewWord(int numberWord) {
         nameWord.setText(game.getNameWord(numberWord));
         textsampleSentence.setText(game.getSentense(numberWord));
-        imageWord.setBackgroundResource(game.getImgPL());
+        if(selectedLanguage.equals("pl")) imageWord.setBackgroundResource(game.getImgPL());
+        else imageWord.setBackgroundResource(game.getImgENG());
         countWords += 1;
         sticksLeft.setText(countWords + "/" + allWords);
     }

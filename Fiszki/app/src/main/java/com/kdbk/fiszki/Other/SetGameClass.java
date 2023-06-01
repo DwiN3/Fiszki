@@ -34,7 +34,6 @@ public class SetGameClass {
         }
         else wordsList = wordsListAll;
 
-
         this.NameWord = new String[wordsList.size()];
         this.correctANS = new String[wordsList.size()];
         this.sentense = new String[wordsList.size()];
