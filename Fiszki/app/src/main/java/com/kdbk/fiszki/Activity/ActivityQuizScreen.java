@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.SetGameClass;
+import com.kdbk.fiszki.Other.SetGame;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
@@ -36,7 +36,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private TokenInstance tokenInstance = TokenInstance.getInstance();
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
-    private SetGameClass game;
+    private SetGame game;
     private Button next, exit;
     private ImageView imageWordQuiz;
     private TextView answerText1, answerText2, answerText3, answerText4, nameWordQuizText, sticksLeftQuizText,userPKTQuiz;
@@ -225,7 +225,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                                 System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game = new SetGameClass(selectedData,"quiz", selectedLanguage, wordsListKit);
+                            game = new SetGame(selectedData,"quiz", selectedLanguage, wordsListKit);
                             scoreTrain = 0;
                             nrWords = 0;
                             allWords = game.getListSize();

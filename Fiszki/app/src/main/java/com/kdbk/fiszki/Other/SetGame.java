@@ -8,14 +8,14 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class SetGameClass {
+public class SetGame {
     private String[] NameWord, correctANS, sentense, sentenseTra;
     private String[] ans1, ans2, ans3, ans4;
     private int imgPL = R.drawable.flagpl, imgENG = R.drawable.flagang;
     private int listSize =0, borrder=10;
     private ArrayList<ModelShowKitsEdit> wordsList;
 
-    public SetGameClass(String data,String mode, String language, ArrayList<ModelShowKitsEdit> wordsListAll) {
+    public SetGame(String data, String mode, String language, ArrayList<ModelShowKitsEdit> wordsListAll) {
         if(mode.equals("quiz")){
             Random randomWords = new Random();
             Set<Integer> selectedIndices = new HashSet<>();

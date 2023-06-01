@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
-import com.kdbk.fiszki.Other.SetGameClass;
+import com.kdbk.fiszki.Other.SetGame;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
@@ -32,7 +32,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private TokenInstance tokenInstance = TokenInstance.getInstance();
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
-    private SetGameClass game;
+    private SetGame game;
     private boolean isBackPressedBlocked = true;
     private Button buttonNext, next, exit;
     private TextView nameWord, sticksLeft, textsampleSentence;
@@ -152,7 +152,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                                 //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
                                 id_count++;
                             }
-                            game = new SetGameClass(selectedData,"learn",selectedLanguage, wordsListKit);
+                            game = new SetGame(selectedData,"learn",selectedLanguage, wordsListKit);
                             allWords = game.getListSize();
                             nrWords = 0;
                             setNewWord(nrWords);
