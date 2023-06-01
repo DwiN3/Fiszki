@@ -54,14 +54,13 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
 
     @Override
     public void onItemClicked(ModelCategories modelCategories) {
-        Intent intent = new Intent();
         gameSettingsInstance.getName();
         gameSettingsInstance.setSelectData("category");
 
         if(selectedMode.equals("quiz")){
-            nextActivity.openActivity(ActivityQuizScreen.class, intent);
+            nextActivity.openActivity(ActivityQuizScreen.class);
         } else if(selectedMode.equals("learn")){
-            nextActivity.openActivity(ActivityLearningScreen.class, intent);
+            nextActivity.openActivity(ActivityLearningScreen.class);
         }
     }
     private void setID() {
