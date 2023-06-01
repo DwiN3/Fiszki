@@ -23,22 +23,31 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView noCategoriesInfo;
     private String selectedMode = "";
-
-    // Do wywalnienia
-    private com.kdbk.fiszki.LocalDate.CategoriesArray CategoriesArray = com.kdbk.fiszki.LocalDate.CategoriesArray.getInstance();
-    private ArrayList<ModelCategories> list = CategoriesArray.getList();
+    private ArrayList<ModelCategories> listCategories = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         setID();
+
+        listCategories.add(new ModelCategories(R.drawable.category_animal,"zwierzeta", 1));
+        listCategories.add(new ModelCategories(R.drawable.category_apple,"dom", 2));
+        listCategories.add(new ModelCategories(R.drawable.category_health,"zakupy", 3));
+        listCategories.add(new ModelCategories(R.drawable.category_work,"praca",4));
+        listCategories.add(new ModelCategories(R.drawable.category_health,"zdrowie",5));
+        listCategories.add(new ModelCategories(R.drawable.category_human,"czlowiek",6));
+        listCategories.add(new ModelCategories(R.drawable.category_trip,"turystyka",7));
+        listCategories.add(new ModelCategories(R.drawable.category_apple,"jedzenie",8));
+        listCategories.add(new ModelCategories(R.drawable.category_study,"edukacja",9));
+        listCategories.add(new ModelCategories(R.drawable.category_others,"inne",10));
+
         selectedMode = gameSettingsInstance.getGameMode();
 
         mRecyclerView = findViewById(R.id.categoriesRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new AdapterCategories(list, this);
+        mAdapter = new AdapterCategories(listCategories, this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
