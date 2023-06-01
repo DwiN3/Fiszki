@@ -62,7 +62,8 @@ public class ActivityRegister extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Register> call, Throwable t) {
-                Toast.makeText(ActivityRegister.this,"Utworzono konto pomyślnie", Toast.LENGTH_SHORT).show();
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityRegister.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(ActivityRegister.this,"Utworzono konto pomyślnie", Toast.LENGTH_SHORT).show();
             }
         });
     }

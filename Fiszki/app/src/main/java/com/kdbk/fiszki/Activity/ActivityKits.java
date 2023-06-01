@@ -107,6 +107,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
 
             @Override
             public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityKits.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -149,7 +149,9 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
             }
 
             @Override
-            public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {}
+            public void onFailure(Call<List<FlashcardCollections>> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityPanelKits.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -184,8 +186,11 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
 
             @Override
             public void onFailure(Call<FlashcardCollections> call, Throwable t) {
-                RefreshRecycleView();
-                resetAfterDelate();
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityPanelKits.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                else{
+                    RefreshRecycleView();
+                    resetAfterDelate();
+                }
             }
         });
     }
@@ -226,7 +231,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && isBackPressedBlocked) {
-            return true; // blokuj przycisk wstecz
+            return true;
         }
         return super.dispatchKeyEvent(event);
     }

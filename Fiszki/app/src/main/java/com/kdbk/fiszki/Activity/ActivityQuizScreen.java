@@ -240,6 +240,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

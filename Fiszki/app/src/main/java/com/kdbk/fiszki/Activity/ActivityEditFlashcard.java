@@ -99,7 +99,8 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<FlashcardID> call, Throwable t) {
-                Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityEditFlashcard.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(ActivityEditFlashcard.this, "Poprawnie usunięto fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -136,7 +137,8 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<FlashcardID> call, Throwable t) {
-                Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityEditFlashcard.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(ActivityEditFlashcard.this, "Poprawnie zmodyfikowano fiszkę", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -175,7 +177,7 @@ public class ActivityEditFlashcard extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<FlashcardID> call, Throwable t) {
-
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityEditFlashcard.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

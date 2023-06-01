@@ -163,6 +163,7 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
 
             @Override
             public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityLearningScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

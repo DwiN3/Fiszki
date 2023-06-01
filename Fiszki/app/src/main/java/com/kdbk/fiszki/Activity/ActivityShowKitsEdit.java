@@ -113,6 +113,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
 
             @Override
             public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityShowKitsEdit.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

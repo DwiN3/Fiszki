@@ -93,7 +93,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
-                //System.out.println("INFO:    "+t.getMessage());
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityFirstScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -103,8 +103,11 @@ public class ActivityAddFlashcard extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<Flashcards> call, Throwable t) {
-                Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
-                clearWord();
+                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityAddFlashcard.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+                else{
+                    Toast.makeText(ActivityAddFlashcard.this, "Poprawnie dodano fiszkę", Toast.LENGTH_SHORT).show();
+                    clearWord();
+                }
             }
         });
     }
