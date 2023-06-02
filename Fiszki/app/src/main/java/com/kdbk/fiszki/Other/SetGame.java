@@ -1,5 +1,6 @@
 package com.kdbk.fiszki.Other;
 
+
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 
@@ -9,6 +10,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class SetGame {
+    
     private String[] NameWord, correctANS, sentense, sentenseTra;
     private String[] ans1, ans2, ans3, ans4;
     private int imgPL = R.drawable.flagpl, imgENG = R.drawable.flagang;

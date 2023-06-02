@@ -173,7 +173,7 @@
         android:layout_width="58dp"
         android:layout_height="58dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/reverse_button"
+        android:background="@drawable/reverse_button_new"
         app:layout_constraintBottom_toTopOf="@+id/arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

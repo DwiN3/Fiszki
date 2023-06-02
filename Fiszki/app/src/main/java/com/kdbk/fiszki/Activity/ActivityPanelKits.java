@@ -42,7 +42,7 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
     private boolean isBackPressedBlocked = true;
     private String collectionName="", _id="";
-    private int ID = 1, playedGames;
+    private int ID = 1, playedGames,border=20, maxPoints=border*10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         collectionName = modelKits.getNameKit();
         nameKitText.setText(modelKits.getNameKit());
         timesPlayedText.setText(playedGames+" razy");
-        nextLvlText.setText(String.valueOf("Punkty: "+modelKits.getNumberOfCards()*10+" pkt"));
+        if(modelKits.getNumberOfCards() <= border) nextLvlText.setText(String.valueOf("Punkty: "+modelKits.getNumberOfCards()*10+"/"+""+maxPoints)+" pkt");
+        else nextLvlText.setText(String.valueOf("Punkty: "+maxPoints+"/"+""+maxPoints)+" pkt");
     }
 
     private void fetchFlashcardsCollectionsRetrofit() {
@@ -139,7 +140,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
                 ID = collectionList.get(0).getCountID();
                 timesPlayedText.setText(String.valueOf(collectionList.get(0).getGamesPlayed()+" razy"));
                 nameKitText.setText(String.valueOf(list.get(0).getCollectionName()));
-                nextLvlText.setText(String.valueOf("Punkty: "+collectionList.get(0).getNumberOfCards()*10+" pkt"));
+                if(collectionList.get(0).getNumberOfCards() <= border) nextLvlText.setText(String.valueOf("Punkty: "+collectionList.get(0).getNumberOfCards()*10+"/"+""+maxPoints)+" pkt");
+                else nextLvlText.setText(String.valueOf("Punkty: "+maxPoints+"/"+""+maxPoints)+" pkt");
                 RefreshRecycleView();
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityPanelKits.this, "Błędne dane", Toast.LENGTH_SHORT).show();
@@ -202,7 +204,8 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
             ID = collectionList.get(0).getCountID();
             _id = collectionList.get(0).getWordID();
             timesPlayedText.setText(collectionList.get(0).getGamesPlayed() + " razy");
-            nextLvlText.setText(String.valueOf("Punkty: "+collectionList.get(0).getNumberOfCards()*10+" pkt"));
+            if(collectionList.get(0).getNumberOfCards() <= border) nextLvlText.setText(String.valueOf("Punkty: "+collectionList.get(0).getNumberOfCards()*10+"/"+""+maxPoints)+" pkt");
+            else nextLvlText.setText(String.valueOf("Punkty: "+maxPoints+"/"+""+maxPoints)+" pkt");
             nameKitText.setText(collectionList.get(0).getNameKit());
         }
     }
