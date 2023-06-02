@@ -33,8 +33,8 @@ public class ActivityCategories extends AppCompatActivity implements SelectListe
         setID();
 
         listCategories.add(new ModelCategories(R.drawable.category_animal,"zwierzeta", 1));
-        listCategories.add(new ModelCategories(R.drawable.category_apple,"dom", 2));
-        listCategories.add(new ModelCategories(R.drawable.category_health,"zakupy", 3));
+        listCategories.add(new ModelCategories(R.drawable.category_house,"dom", 2));
+        listCategories.add(new ModelCategories(R.drawable.category_shop,"zakupy", 3));
         listCategories.add(new ModelCategories(R.drawable.category_work,"praca",4));
         listCategories.add(new ModelCategories(R.drawable.category_health,"zdrowie",5));
         listCategories.add(new ModelCategories(R.drawable.category_human,"czlowiek",6));
