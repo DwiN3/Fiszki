@@ -11,6 +11,7 @@ Użytkownik w aplikacji "Fiszki" może wybrać tematykę słówek, z których ch
 Aplikacja "Fiszki" jest odpowiednia dla osób w każdym wieku i o różnym poziomie zaawansowania. To narzędzie, które pozwala na skuteczną naukę języków obcych w sposób przyjemny i interaktywny.
 
 
+
 ## Opis stanu aplikacji:
 
 Aplikacja działa na samodzielnie wykonanym api które wykorzystuje serwer: https://render.com/ a łączy się z nim poprzez rozszerzenie Retrofit.
@@ -27,6 +28,7 @@ Użytkownik ma możliwość zobaczenie swoich postępów, lvl
 
 Aby zobaczyć informacje o swoim profilu należy wcisnąć “Twój profil”, znajdują się tam informacje o lvl użytkownika oraz ilość punktów do następnego poziomu. Następnie można przejść do panelu zestawów gdzie wyświetlają się wszystkie zestawy użytkownika, można je modyfikować lub usunąć.
 Po wybraniu zestawu można przeglądać słowa które się w nich znajdują, a po wyborze słowa dowolnie je modyfikować.
+
 
 
 ## Autorzy:
