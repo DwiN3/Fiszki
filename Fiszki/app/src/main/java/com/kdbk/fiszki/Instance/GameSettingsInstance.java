@@ -3,7 +3,7 @@ package com.kdbk.fiszki.Instance;
 public class GameSettingsInstance {
     private static GameSettingsInstance instance = null;
     private static String gameMode = "", name = "", language ="", selectData ="";
-    private static int bestTrain = 0, points=0, allWords=0, border=0;
+    private static int bestTrain = 0, points=0, allWords=0, borderMaxFlashcards =20, borderMinFlashcardQuiz=10;
 
 
     public static GameSettingsInstance getInstance() {
@@ -68,5 +68,21 @@ public class GameSettingsInstance {
 
     public void setBestTrain(int bestTrain) {
         GameSettingsInstance.bestTrain = bestTrain;
+    }
+
+    public int getBorderMaxFlashcards() {
+        return borderMaxFlashcards;
+    }
+
+    public void setBorderMaxFlashcards(int borderMaxFlashcards) {
+        GameSettingsInstance.borderMaxFlashcards = borderMaxFlashcards;
+    }
+
+    public int getBorderMinFlashcardQuiz() {
+        return borderMinFlashcardQuiz;
+    }
+
+    public void setBorderMinFlashcardQuiz(int borderMinFlashcardQuiz) {
+        GameSettingsInstance.borderMinFlashcardQuiz = borderMinFlashcardQuiz;
     }
 }

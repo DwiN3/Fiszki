@@ -1,6 +1,7 @@
 package com.kdbk.fiszki.Other;
 
 
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 
@@ -10,14 +11,15 @@ import java.util.Random;
 import java.util.Set;
 
 public class SetGame {
-    
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private String[] NameWord, correctANS, sentense, sentenseTra;
     private String[] ans1, ans2, ans3, ans4;
     private int imgPL = R.drawable.flagpl, imgENG = R.drawable.flagang;
-    private int listSize =0, borrder=10;
+    private int listSize =0, borrder=0;
     private ArrayList<ModelShowKitsEdit> wordsList;
 
     public SetGame(String data, String mode, String language, ArrayList<ModelShowKitsEdit> wordsListAll) {
+        borrder = gameSettingsInstance.getBorderMaxFlashcards();
         if(mode.equals("quiz")){
             Random randomWords = new Random();
             Set<Integer> selectedIndices = new HashSet<>();

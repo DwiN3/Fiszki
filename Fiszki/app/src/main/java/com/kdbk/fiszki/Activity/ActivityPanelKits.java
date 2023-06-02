@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
+import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
@@ -33,6 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ActivityPanelKits extends AppCompatActivity implements SelectListenerKits, View.OnClickListener {
     private TokenInstance tokenInstance = TokenInstance.getInstance();
     private FlashcardInfoInstance flashcardInfoInstance = FlashcardInfoInstance.getInstance();
+    private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
     private NextActivity nextActivity = new NextActivity(this);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -42,13 +44,16 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
     private ArrayList<ModelKits> collectionList = new ArrayList<>();
     private boolean isBackPressedBlocked = true;
     private String collectionName="", _id="";
-    private int ID = 1, playedGames,border=20, maxPoints=border*10;
+    private int ID = 1, playedGames=0,border=0, maxPoints=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panel_kits);
         setID();
+
+        border = gameSettingsInstance.getBorderMaxFlashcards();
+        maxPoints = border*10;
 
         fetchFlashcardsCollectionsRetrofit();
         resetAfterDelate();

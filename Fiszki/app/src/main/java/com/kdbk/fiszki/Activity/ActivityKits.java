@@ -58,7 +58,7 @@ public class ActivityKits extends AppCompatActivity implements SelectListenerKit
         gameSettingsInstance.setSelectData("kit");
 
 
-        if(selectedMode.equals("quiz") && modelKits.getNumberOfCards()>= 10){
+        if(selectedMode.equals("quiz") && modelKits.getNumberOfCards()>= gameSettingsInstance.getBorderMinFlashcardQuiz()){
             nextActivity.openActivity(ActivityQuizScreen.class);
         } else if(selectedMode.equals("learn")){
             nextActivity.openActivity(ActivityLearningScreen.class);

@@ -31,8 +31,8 @@ public class ActivityQuizEnd extends AppCompatActivity {
         allWords = gameSettingsInstance.getAllWords();
         bestTrain = gameSettingsInstance.getBestTrain();
         LVLEndQuiz.setText(String.valueOf(lvl));
-        NextLVLEndQuiz.setText(" "+yourPoints+"/"+yourBorderPoints+" PKT");
-        ScoreEndQuiz.setText(points*10+"/"+String.valueOf(allWords*10)+" PKT");
+        NextLVLEndQuiz.setText(" "+yourPoints+"/"+yourBorderPoints+" pkt");
+        ScoreEndQuiz.setText(points*10+"/"+String.valueOf(allWords*10)+" pkt");
         userBestTrainQuiz.setText(String.valueOf(bestTrain));
 
         exit.setOnClickListener(new View.OnClickListener() {
