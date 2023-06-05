@@ -20,7 +20,7 @@ public class SetGame {
 
     public SetGame(String data, String mode, String language, ArrayList<ModelShowKitsEdit> wordsListAll) {
         borrder = gameSettingsInstance.getBorderMaxFlashcards();
-
+        if(mode.equals("quiz")){
             Random randomWords = new Random();
             Set<Integer> selectedIndices = new HashSet<>();
             ArrayList<ModelShowKitsEdit> selectedWords = new ArrayList<>();
@@ -35,7 +35,8 @@ public class SetGame {
                 }
             }
             wordsList = selectedWords;
-
+        }
+        else wordsList = wordsListAll;
 
         this.NameWord = new String[wordsList.size()];
         this.correctANS = new String[wordsList.size()];
