@@ -2,6 +2,7 @@ package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.kdbk.fiszki.Retrofit.Models.FlashcardCollectionsWords;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -51,7 +54,9 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
-        getWordFromKitRetrofit();
+
+        if(gameSettingsInstance.getSelectData().equals("kit")) getWordFromKitRetrofit();
+        else getWordFromCateogryRetrofit();
 
         next.setOnClickListener(this);
         exit.setOnClickListener(this);
@@ -168,6 +173,68 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityLearningScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void getWordFromCateogryRetrofit() {
+        wordsListKit.clear();
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer " + tokenInstance.getToken())
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://flashcard-app-api-bkrv.onrender.com/api/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
+        Call<List<List<FlashcardID>>> call = jsonFlashcardsCollections.getCategory(selectedName);
+
+        call.enqueue(new Callback<List<List<FlashcardID>>>() {
+            @Override
+            public void onResponse(Call<List<List<FlashcardID>>> call, Response<List<List<FlashcardID>>> response) {
+                if (response.isSuccessful()) {
+                    List<List<FlashcardID>> elementLists = response.body();
+                    if (elementLists != null) {
+                        // Przekazanie elementów do innej metody lub klasy
+                        processElements(elementLists);
+                        game = new SetGame(selectedData,"learn",selectedLanguage, wordsListKit);
+                        allWords = game.getListSize();
+                        nrWords = 0;
+                        setNewWord(nrWords);
+                    }
+                } else {
+                    //Log.e("API Error", "Response code: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<List<FlashcardID>>> call, Throwable t) {
+                Log.e("API Error", "Request failed: " + t.getMessage());
+            }
+        });
+    }
+
+    // Metoda do przetwarzania lub wyświetlania elementów
+    private void processElements(List<List<FlashcardID>> elementLists) {
+        for (List<FlashcardID> elementList : elementLists) {
+            int id_count=0;
+            for (FlashcardID element : elementList) {
+                System.out.println("\n"+element.get_id());
+                System.out.println(element.getWord());
+                System.out.println(element.getTranslatedWord());
+                System.out.println(element.getExample());
+                System.out.println(element.getTranslatedExample());
+                wordsListKit.add(new ModelShowKitsEdit(element.getWord(), element.getTranslatedWord(), element.getExample(), element.getTranslatedExample(), id_count, element.get_id()));
+                id_count++;
+            }
+        }
     }
 }
 
