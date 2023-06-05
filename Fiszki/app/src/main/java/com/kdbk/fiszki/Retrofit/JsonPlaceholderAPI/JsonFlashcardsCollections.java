@@ -13,6 +13,8 @@ public interface JsonFlashcardsCollections {
     Call <List<FlashcardCollections>> getAllFlashcardsCollections();
     @GET("flashcards-collections/{collectionName}")
     Call<FlashcardCollectionsWords> getKit(@Path("collectionName") String collectionName);
+    @GET("flashcards-collections/category/{categoryName}")
+    Call<FlashcardCollectionsWords> getCategory(@Path("category") String categoryName);
     @DELETE("flashcards-collections/{collectionName}")
     Call<FlashcardCollections> deleteFlashcardsCollections(@Path("collectionName") String collectionName);
 }
