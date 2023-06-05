@@ -19,6 +19,14 @@ public class FlashcardID {
         this.translatedExample = translatedExample;
     }
 
+    public FlashcardID(String _id, String word, String translatedWord, String example, String translatedExample) {
+        this.word = word;
+        this.translatedWord = translatedWord;
+        this.example = example;
+        this.translatedExample = translatedExample;
+        this._id = _id;
+    }
+
     public String getWord() {
         return word;
     }

@@ -2,6 +2,7 @@ package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -46,7 +48,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
     private int nrWords, allWords;
     private int points = 0, scoreTrain = 0, bestTrain=0;
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
-//private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
-        System.out.println(selectedLanguage);
+        System.out.println(selectedLanguage +"     "+selectedName+"     "+selectedData);
 
         if(gameSettingsInstance.getSelectData().equals("kit")) getWordFromKitRetrofit();
         else getWordFromCateogryRetrofit();
@@ -266,43 +267,43 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
                 .build();
 
         JsonFlashcardsCollections jsonFlashcardsCollections = retrofit.create(JsonFlashcardsCollections.class);
-        Call<FlashcardCollectionsWords> call = jsonFlashcardsCollections.getKit(selectedName);
+        Call<List<List<FlashcardID>>> call = jsonFlashcardsCollections.getCategory(selectedName);
 
-        call.enqueue(new Callback<FlashcardCollectionsWords>() {
+        call.enqueue(new Callback<List<List<FlashcardID>>>() {
             @Override
-            public void onResponse(Call<FlashcardCollectionsWords> call, Response<FlashcardCollectionsWords> response) {
+            public void onResponse(Call<List<List<FlashcardID>>> call, Response<List<List<FlashcardID>>> response) {
                 if (response.isSuccessful()) {
-                    FlashcardCollectionsWords flashcardCollection = response.body();
-
-                    if (flashcardCollection != null) {
-                        ArrayList<FlashcardID> flashcardsList = flashcardCollection.getFlashcards();
-                        if (flashcardsList != null && !flashcardsList.isEmpty()) {
-                            int id_count = 0;
-                            for (FlashcardID collection : flashcardsList) {
-                                wordsListKit.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(), id_count, collection.get_id()));
-                                //System.out.println("Słowo:      "+collection.getWord()+"Tłumaczenie "+collection.getTranslatedWord()+"Zadanie "+collection.getExample()+"Przet   "+collection.getTranslatedExample());
-                                id_count++;
-                            }
-                            game = new SetGame(selectedData,"quiz", selectedLanguage, wordsListKit);
-                            scoreTrain = 0;
-                            nrWords = 0;
-                            allWords = game.getListSize();
-                            userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
-                            setEmoji();
-                            setQuestion(nrWords);
-                        }
+                    List<List<FlashcardID>> elementLists = response.body();
+                    if (elementLists != null) {
+                        // Przekazanie elementów do innej metody lub klasy
+                        processElements(elementLists);
                     }
                 } else {
-                    Toast.makeText(ActivityQuizScreen.this, "Błąd danych", Toast.LENGTH_SHORT).show();
+                    //Log.e("API Error", "Response code: " + response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<FlashcardCollectionsWords> call, Throwable t) {
-                if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizScreen.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<List<FlashcardID>>> call, Throwable t) {
+                Log.e("API Error", "Request failed: " + t.getMessage());
             }
         });
     }
+
+// Metoda do przetwarzania lub wyświetlania elementów
+        private void processElements(List<List<FlashcardID>> elementLists) {
+            for (List<FlashcardID> elementList : elementLists) {
+                for (FlashcardID element : elementList) {
+                    // Przetwarzanie lub wyświetlanie poszczególnych elementów
+                    Log.d("Element", "ID: " + element.get_id());
+                    Log.d("Element", "Word: " + element.getWord());
+                    Log.d("Element", "Translated Word: " + element.getTranslatedWord());
+                    Log.d("Element", "Example: " + element.getExample());
+                    Log.d("Element", "Translated Example: " + element.getTranslatedExample());
+                    Log.d("Element", "---------------------");
+                }
+            }
+        }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
