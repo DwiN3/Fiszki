@@ -47,40 +47,39 @@ public class SetGame {
         this.ans3 = new String[wordsList.size()];
         this.ans4 = new String[wordsList.size()];
 
-        if (data.equals("kit")) {
-            Random random = new Random();
-            for (int i = 0; i < wordsList.size(); i++) {
-                if(language.equals("pl")){
-                    NameWord[i] = wordsList.get(i).getWord();
-                    correctANS[i] = wordsList.get(i).getTranslateWord();
-                }
-                else{
-                    NameWord[i] = wordsList.get(i).getTranslateWord();
-                    correctANS[i] = wordsList.get(i).getWord();
-                }
-                sentense[i] = wordsList.get(i).getSentens();
-                sentenseTra[i] = wordsList.get(i).getSentensTranslate();
+        Random random = new Random();
+        for (int i = 0; i < wordsList.size(); i++) {
+            if(language.equals("pl")){
+                NameWord[i] = wordsList.get(i).getWord();
+                correctANS[i] = wordsList.get(i).getTranslateWord();
+            }
+            else{
+                NameWord[i] = wordsList.get(i).getTranslateWord();
+                correctANS[i] = wordsList.get(i).getWord();
+            }
+            sentense[i] = wordsList.get(i).getSentens();
+            sentenseTra[i] = wordsList.get(i).getSentensTranslate();
 
-                if(mode.equals("quiz")){
-                    Set<String> uniqueWords = new HashSet<>();
-                    uniqueWords.add(correctANS[i]);
+            if(mode.equals("quiz")){
+                Set<String> uniqueWords = new HashSet<>();
+                uniqueWords.add(correctANS[i]);
 
-                    while (uniqueWords.size() < 4) {
-                        int randomIndex = random.nextInt(wordsList.size());
-                        String randomWord;
-                        if(language.equals("pl")) randomWord = wordsList.get(randomIndex).getTranslateWord();
-                        else randomWord = wordsList.get(randomIndex).getWord();
-                        uniqueWords.add(randomWord);
-                    }
-
-                    String[] uniqueWordsArray = uniqueWords.toArray(new String[0]);
-                    ans1[i] = uniqueWordsArray[0];
-                    ans2[i] = uniqueWordsArray[1];
-                    ans3[i] = uniqueWordsArray[2];
-                    ans4[i] = uniqueWordsArray[3];
+                while (uniqueWords.size() < 4) {
+                    int randomIndex = random.nextInt(wordsList.size());
+                    String randomWord;
+                    if(language.equals("pl")) randomWord = wordsList.get(randomIndex).getTranslateWord();
+                    else randomWord = wordsList.get(randomIndex).getWord();
+                    uniqueWords.add(randomWord);
                 }
+
+                String[] uniqueWordsArray = uniqueWords.toArray(new String[0]);
+                ans1[i] = uniqueWordsArray[0];
+                ans2[i] = uniqueWordsArray[1];
+                ans3[i] = uniqueWordsArray[2];
+                ans4[i] = uniqueWordsArray[3];
             }
         }
+
         listSize = wordsList.size();
     }
 

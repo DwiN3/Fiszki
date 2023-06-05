@@ -290,19 +290,30 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         });
     }
 
-// Metoda do przetwarzania lub wyświetlania elementów
+        // Metoda do przetwarzania lub wyświetlania elementów
         private void processElements(List<List<FlashcardID>> elementLists) {
             for (List<FlashcardID> elementList : elementLists) {
+                int id_count=0;
                 for (FlashcardID element : elementList) {
+
                     // Przetwarzanie lub wyświetlanie poszczególnych elementów
                     Log.d("Element", "ID: " + element.get_id());
                     Log.d("Element", "Word: " + element.getWord());
                     Log.d("Element", "Translated Word: " + element.getTranslatedWord());
-                    Log.d("Element", "Example: " + element.getExample());
-                    Log.d("Element", "Translated Example: " + element.getTranslatedExample());
+                   Log.d("Element", "Example: " + element.getExample());
+                   Log.d("Element", "Translated Example: " + element.getTranslatedExample());
                     Log.d("Element", "---------------------");
+                    wordsListKit.add(new ModelShowKitsEdit(element.getWord(), element.getTranslatedWord(), element.getExample(), element.getTranslatedExample(), id_count, element.get_id()));
+                    id_count++;
                 }
             }
+            game = new SetGame(selectedData,"quiz", selectedLanguage, wordsListKit);
+            scoreTrain = 0;
+            nrWords = 0;
+            allWords = game.getListSize();
+            userPKTQuiz.setText("Punkty:    "+points+"/"+allWords);
+            setEmoji();
+            setQuestion(nrWords);
         }
 
     @Override
