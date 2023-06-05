@@ -36,7 +36,6 @@ public class ActivityQuizEnd extends AppCompatActivity {
     private Button exit;
     private TextView ScoreEndQuiz,userBestTrainQuiz, LVLEndQuiz, NextLVLEndQuiz;
     private int bestTrain=0, points =0, allWords=0;
-    private int lvl=3, yourPoints=234, yourBorderPoints=500;
     private boolean isBackPressedBlocked = true;
 
     @Override
@@ -44,8 +43,11 @@ public class ActivityQuizEnd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_end);
         setID();
+        if(gameSettingsInstance.getSelectData().equals("category")){
+            gameSettingsInstance.setName("inne");
+        }
 
-        points = gameSettingsInstance.getPoints()*10;
+        points = (gameSettingsInstance.getPoints()*10);
         sendPoints();
 
         allWords = gameSettingsInstance.getAllWords();
@@ -88,14 +90,13 @@ public class ActivityQuizEnd extends AppCompatActivity {
                 .build();
         JsonUser jsonUser = retrofit.create(JsonUser.class);
         UserLVL pkt = new UserLVL(points);
-        Call<UserLVL> call = jsonUser.points(gameSettingsInstance.getName(), pkt);
+        Call<UserLVL> call = jsonUser.points("test", pkt);
 
         call.enqueue(new Callback<UserLVL>() {
             @Override
             public void onResponse(Call<UserLVL> call, Response<UserLVL> response) {
                 if(response.isSuccessful()){
                     System.out.println("Wysłano "+points);
-                    getUserLVL();
                 }
             }
 
@@ -104,6 +105,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizEnd.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
                 else{
                     getUserLVL();
+                    System.out.println("MESAGE 1        "+t.getMessage());
                 }
             }
         });
@@ -141,6 +143,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
             public void onFailure(Call<UserLVL> call, Throwable t) {
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizEnd.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
                 else{
+                    System.out.println("MESAGE 1        "+t.getMessage());
                 }
             }
         });
