@@ -21,7 +21,6 @@ import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -43,7 +42,6 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
     private int nrWords, allWords, countWords = 0;
     private String selectedLanguage = "", selectedName = "", selectedData = "";
     private ArrayList<ModelShowKitsEdit> wordsListKit = new ArrayList<>();
-    //private ArrayList<ModelShowKitsEdit> wordsListCategory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,11 +224,6 @@ public class ActivityLearningScreen extends AppCompatActivity implements View.On
         for (List<FlashcardID> elementList : elementLists) {
             int id_count=0;
             for (FlashcardID element : elementList) {
-                System.out.println("\n"+element.get_id());
-                System.out.println(element.getWord());
-                System.out.println(element.getTranslatedWord());
-                System.out.println(element.getExample());
-                System.out.println(element.getTranslatedExample());
                 wordsListKit.add(new ModelShowKitsEdit(element.getWord(), element.getTranslatedWord(), element.getExample(), element.getTranslatedExample(), id_count, element.get_id()));
                 id_count++;
             }

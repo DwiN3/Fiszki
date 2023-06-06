@@ -95,7 +95,6 @@ public class ActivityAddFlashcard extends AppCompatActivity  {
         call.enqueue(new Callback<Flashcards>() {
             @Override
             public void onResponse(Call<Flashcards> call, Response<Flashcards> response) {
-                //System.out.println("KODZIK =" + response);
                 if (!response.isSuccessful()) {
                     Toast.makeText(ActivityAddFlashcard.this, "Błędne dane", Toast.LENGTH_SHORT).show();
                 }

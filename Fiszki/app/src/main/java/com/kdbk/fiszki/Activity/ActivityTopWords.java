@@ -3,34 +3,27 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.kdbk.fiszki.Instance.FlashcardInfoInstance;
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.RecyclerView.Adaper.AdapterShowKitsEdit;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterTopWords;
 import com.kdbk.fiszki.RecyclerView.Model.ModelKits;
 import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
-import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerShowKitsEdit;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerTopWords;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardCollections;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardCollectionsWords;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -107,7 +100,6 @@ public class ActivityTopWords extends AppCompatActivity implements SelectListene
                     int randomNumber = random.nextInt(list.size());
                     listToShow = collectionList.get(randomNumber).getNameKit();
                     showWords();
-                    //System.out.println("Nazwa:      "+listToShow+"              Numer   "+randomNumber);
                 }
             }
 

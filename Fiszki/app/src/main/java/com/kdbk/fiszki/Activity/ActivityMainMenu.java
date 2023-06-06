@@ -1,7 +1,6 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
@@ -44,7 +42,7 @@ public class ActivityMainMenu extends AppCompatActivity implements View.OnClickL
         spannableString.setSpan(new StyleSpan(Typeface.BOLD), 6, 6 + tokenInstance.getUserName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         helloNick.setText(spannableString);
-        System.out.println(tokenInstance.getToken());
+        //System.out.println(tokenInstance.getToken());
         saveData();
         if(con.checkInternetConnection()) internetError.setVisibility(View.INVISIBLE);
         else internetError.setVisibility(View.VISIBLE);

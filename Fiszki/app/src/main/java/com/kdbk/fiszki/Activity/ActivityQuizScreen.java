@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
@@ -20,11 +19,9 @@ import com.kdbk.fiszki.RecyclerView.Model.ModelShowKitsEdit;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardCollectionsWords;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardID;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -57,7 +54,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
         selectedLanguage = gameSettingsInstance.getLanguage();
         selectedName = gameSettingsInstance.getName();
         selectedData = gameSettingsInstance.getSelectData();
-        System.out.println(selectedLanguage +"     "+selectedName+"     "+selectedData);
 
         if(gameSettingsInstance.getSelectData().equals("kit")) getWordFromKitRetrofit();
         else getWordFromCateogryRetrofit();
@@ -302,11 +298,6 @@ public class ActivityQuizScreen extends AppCompatActivity implements View.OnClic
             for (List<FlashcardID> elementList : elementLists) {
                 int id_count=0;
                 for (FlashcardID element : elementList) {
-                     System.out.println("\n"+element.get_id());
-                     System.out.println(element.getWord());
-                     System.out.println(element.getTranslatedWord());
-                     System.out.println(element.getExample());
-                     System.out.println(element.getTranslatedExample());
                      wordsListKit.add(new ModelShowKitsEdit(element.getWord(), element.getTranslatedWord(), element.getExample(), element.getTranslatedExample(), id_count, element.get_id()));
                      id_count++;
                 }

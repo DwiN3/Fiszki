@@ -18,10 +18,7 @@ import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.RecyclerView.SelectListener.SelectListenerKits;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcardsCollections;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import com.kdbk.fiszki.Retrofit.Models.FlashcardCollections;
-import com.kdbk.fiszki.Retrofit.Models.UserLVL;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -189,8 +186,6 @@ public class ActivityPanelKits extends AppCompatActivity implements SelectListen
         call.enqueue(new Callback<FlashcardCollections>() {
             @Override
             public void onResponse(Call<FlashcardCollections> call, Response<FlashcardCollections> response) {
-                System.out.println("TUTAJ                                  "+response.code());
-                System.out.println(collectionName);
             }
 
             @Override

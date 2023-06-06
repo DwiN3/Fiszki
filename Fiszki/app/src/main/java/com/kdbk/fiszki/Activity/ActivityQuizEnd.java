@@ -7,19 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
-import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonFlashcards;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
-import com.kdbk.fiszki.Retrofit.Models.Flashcards;
-import com.kdbk.fiszki.Retrofit.Models.Login;
 import com.kdbk.fiszki.Retrofit.Models.UserLVL;
-
 import java.io.IOException;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -90,13 +84,13 @@ public class ActivityQuizEnd extends AppCompatActivity {
                 .build();
         JsonUser jsonUser = retrofit.create(JsonUser.class);
         UserLVL pkt = new UserLVL(points);
-        Call<UserLVL> call = jsonUser.points("Cyfry", pkt);
+        Call<UserLVL> call = jsonUser.points("1", pkt);
 
         call.enqueue(new Callback<UserLVL>() {
             @Override
             public void onResponse(Call<UserLVL> call, Response<UserLVL> response) {
                 if(response.isSuccessful()){
-                    System.out.println("Wysłano "+points);
+                    //System.out.println("Wysłano "+points);
                 }
             }
 
@@ -105,7 +99,6 @@ public class ActivityQuizEnd extends AppCompatActivity {
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizEnd.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
                 else{
                     getUserLVL();
-                    System.out.println("MESAGE 1        "+t.getMessage());
                 }
             }
         });
@@ -143,7 +136,6 @@ public class ActivityQuizEnd extends AppCompatActivity {
             public void onFailure(Call<UserLVL> call, Throwable t) {
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityQuizEnd.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
                 else{
-                    System.out.println("MESAGE 1        "+t.getMessage());
                 }
             }
         });

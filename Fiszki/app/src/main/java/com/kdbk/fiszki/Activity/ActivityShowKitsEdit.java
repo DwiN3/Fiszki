@@ -62,7 +62,6 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
     @Override
     public void onItemClicked(ModelShowKitsEdit modelShowKitsEdit) {
         flashcardInfoInstance.setId_word(modelShowKitsEdit.getWordID());
-        System.out.println(modelShowKitsEdit.getWordID());
         nextActivity.openActivity(ActivityEditFlashcard.class);
     }
 
@@ -98,7 +97,7 @@ public class ActivityShowKitsEdit extends AppCompatActivity implements SelectLis
                         if (kitWordsList != null && !kitWordsList.isEmpty()) {
                             int id_count=0;
                             for (FlashcardID collection : kitWordsList) {
-                                System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
+                                //System.out.println(collection.getWord() + "    " + collection.getTranslatedWord()+ "    " + collection.getExample() + "    " +collection.getTranslatedExample() + "    " +id_count+ "   "+ collection.get_id());
                                 wordsList.add(new ModelShowKitsEdit(collection.getWord(), collection.getTranslatedWord(), collection.getExample(), collection.getTranslatedExample(),id_count, collection.get_id()));
                                 id_count++;
                             }

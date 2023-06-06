@@ -3,11 +3,8 @@ package com.kdbk.fiszki.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.RecyclerView.Adaper.AdapterCategories;
 import com.kdbk.fiszki.RecyclerView.Model.ModelCategories;

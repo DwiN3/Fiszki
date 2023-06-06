@@ -6,16 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.kdbk.fiszki.Activity.ActivityPanelKits;
 import com.kdbk.fiszki.Instance.TokenInstance;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 import com.kdbk.fiszki.Retrofit.JsonPlaceholderAPI.JsonUser;
 import com.kdbk.fiszki.Retrofit.Models.UserLVL;
-
 import java.io.IOException;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

@@ -1,20 +1,17 @@
 package com.kdbk.fiszki.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.kdbk.fiszki.Instance.GameSettingsInstance;
 import com.kdbk.fiszki.Other.InternetConnection;
 import com.kdbk.fiszki.Other.NextActivity;
 import com.kdbk.fiszki.R;
 
 public class ActivityGameMode extends AppCompatActivity {
-
     private NextActivity nextActivity = new NextActivity(this);
     private InternetConnection con = new InternetConnection(this);
     private GameSettingsInstance gameSettingsInstance = GameSettingsInstance.getInstance();
