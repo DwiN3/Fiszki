@@ -90,7 +90,7 @@ public class ActivityQuizEnd extends AppCompatActivity {
                 .build();
         JsonUser jsonUser = retrofit.create(JsonUser.class);
         UserLVL pkt = new UserLVL(points);
-        Call<UserLVL> call = jsonUser.points("test", pkt);
+        Call<UserLVL> call = jsonUser.points("Cyfry", pkt);
 
         call.enqueue(new Callback<UserLVL>() {
             @Override
