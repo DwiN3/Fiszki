@@ -1,0 +1,398 @@
+[
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_button_green.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_button_green.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_kits.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_kits.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_human.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_human.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_learning_screen.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_learning_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_edit_flashcard.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_edit_flashcard.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_study.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_study.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_edit_flashcard.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_edit_flashcard.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_4.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_4.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_m5.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_m5.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_snail.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_snail.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_health.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_health.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_car.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_car.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_house.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_house.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_your_kits.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_your_kits.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_icon.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_knight.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_knight.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_3.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_3.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_m4.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_m4.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_train.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_train.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_m3.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_m3.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flashcard_icon_sv_1.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flashcard_icon_sv_1.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_kits_small.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_kits_small.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_button_mode_normal.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_button_mode_normal.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_reverse_button_new.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\reverse_button_new.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_splash_screen.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_splash_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_apple.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_apple.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_add_flashcard.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_add_flashcard.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_cow.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_cow.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_bar.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\bar.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_work.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_work.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_first_screen.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_first_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_panel_kits.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_panel_kits.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_button.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flagang.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flagang.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_button_mode_pressed.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_button_mode_pressed.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_categories.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_categories.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_top_words.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_top_words.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_shop.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_shop.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_recycler_view_show_kits.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\recycler_view_show_kits.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_reverse_button.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\reverse_button.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_kit_icon.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\kit_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_blue_circle.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\blue_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_quiz_end.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_quiz_end.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_game_mode.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_game_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_circle.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\circle.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_1.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_1.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_m1.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_m1.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flagpl.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flagpl.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flashcard_icon.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flashcard_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_show_kits_edit.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_show_kits_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_quiz_screen.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_quiz_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_button_red.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_button_red.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_ant.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_ant.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_spash_screen_2.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\spash_screen_2.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_text.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_categories.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_categories.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\xml_styles.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\xml\\styles.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_add_flashcard.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_add_flashcard.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_arrow.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\arrow.png"
+    },
+    {
+        "merged": "com.kdbk.fiszki.app-merged_res-29:/layout_activity_your_profile.xml.flat",
+        "source": "com.kdbk.fiszki.app-main-31:/layout/activity_your_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_trip.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_trip.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_2.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_2.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_your_profile.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_your_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flag_border.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flag_border.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_m2.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_m2.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_dog.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_dog.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flagszw.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flagszw.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_password_reset.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_password_reset.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_word_bear.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\word_bear.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_spash_screen.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\spash_screen.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_others.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_others.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_emoji_5.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\emoji_5.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_category_animal.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\category_animal.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_spash_screen_1.png.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\spash_screen_1.png"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_flashcard_icon_sv_2.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\flashcard_icon_sv_2.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\drawable_rounded_text_show_kits.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\drawable\\rounded_text_show_kits.xml"
+    },
+    {
+        "merged": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-merged_res-29:\\layout_activity_main_menu.xml.flat",
+        "source": "C:\\Users\\dwini\\.gradle\\daemon\\7.5\\com.kdbk.fiszki.app-main-31:\\layout\\activity_main_menu.xml"
+    }
+]
