@@ -1,6 +1,4 @@
 # Fiszki
- 
-## Prezentacja aplikacji:
 
 "Fiszki" to aplikacja która umożliwia skuteczną naukę języków obcych w sposób interaktywny i przyjemny. Aplikacja polega na wyświetlaniu słów w wybranym języku, a zadaniem użytkownika jest wpisanie ich tłumaczenia lub naciśnięcie w skazane miejsce w zależności od wybranego trybu. 
 
@@ -18,11 +16,11 @@ Aplikacja działa na samodzielnie wykonanym api które wykorzystuje serwer: http
 
 W aplikacji można utworzyć konto, zalogować się i zresetować hasło istniejącego konta. 
 
-Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliwość wybrać jedną z pośród wielu kategorii która zawiera słowa o poszczególnej tematyce,  możliwe zagranie w tryb “quiz” lub “wpis”.
+Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliwość wybrać jedną z pośród wielu kategorii która zawiera słowa o poszczególnej tematyce,  możliwe zagranie w tryb “quiz” lub “nauka”.
 
 Aplikacja posiada dwa tryby gry:
- Tryb “QUIZ” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 20 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
-Tryb “Wpis” polega na wyświetlanie poszczególnych słów a celem użytkownika jest wpisanie w pole tekstowe tłumaczenie tego słowa.
+* Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 15 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
+* Tryb “nauka” polega na wyświetlanie poszczególnych słów a celem użytkownika jest przejście przez wszystkie słowa starając się zapamiętaj jak największą ich ilość.
 
 Użytkownik ma możliwość zobaczenie swoich postępów, lvl
 
