@@ -1,6 +1,4 @@
 # Fiszki
- 
-## Prezentacja aplikacji:
 
 "Fiszki" to aplikacja która umożliwia skuteczną naukę języków obcych w sposób interaktywny i przyjemny. Aplikacja polega na wyświetlaniu słów w wybranym języku, a zadaniem użytkownika jest wpisanie ich tłumaczenia lub naciśnięcie w skazane miejsce w zależności od wybranego trybu. 
 
@@ -26,6 +24,10 @@ Aplikacja posiada dwa tryby gry:
 Aby zobaczyć informacje o swoim profilu należy wcisnąć “Twój profil”, znajdują się tam informacje o lvl użytkownika oraz ilość punktów do następnego poziomu. 
 
 Użytkownik ma również możliwość przeglądać swoje zestawy w zakładce “Twoje Fiszki”. Wyświetlają się tam wszystkie zestawy użytkownika, można je modyfikować lub usunąć. Po wybraniu zestawu można przeglądać słowa które się w nich znajdują, a po wyborze konkretnego słowa dowolnie je modyfikować.
+
+
+## Prezentacja aplikacji:
+https://www.youtube.com/watch?v=Jg4s9pfKYkw
 
 ## Autorzy:
 Kamil Dereń oraz Bartek Kubik
