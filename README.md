@@ -1,4 +1,6 @@
 # Fiszki
+ 
+## Prezentacja aplikacji:
 
 "Fiszki" to aplikacja która umożliwia skuteczną naukę języków obcych w sposób interaktywny i przyjemny. Aplikacja polega na wyświetlaniu słów w wybranym języku, a zadaniem użytkownika jest wpisanie ich tłumaczenia lub naciśnięcie w skazane miejsce w zależności od wybranego trybu. 
 
@@ -9,25 +11,21 @@ Użytkownik w aplikacji "Fiszki" może wybrać tematykę słówek, z których ch
 Aplikacja "Fiszki" jest odpowiednia dla osób w każdym wieku i o różnym poziomie zaawansowania. To narzędzie, które pozwala na skuteczną naukę języków obcych w sposób przyjemny i interaktywny.
 
 
-
 ## Opis stanu aplikacji:
 
 Aplikacja działa na samodzielnie wykonanym api które wykorzystuje serwer: https://render.com/ a łączy się z nim poprzez rozszerzenie Retrofit.
 
 W aplikacji można utworzyć konto, zalogować się i zresetować hasło istniejącego konta. 
 
-Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliwość wybrać jedną z pośród wielu kategorii która zawiera słowa o poszczególnej tematyce,  możliwe zagranie w tryb “quiz” lub “nauka”.
+Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliwość wybrać jedną z pośród wielu kategorii która zawiera słowa o poszczególnej tematyce,  możliwe zagranie w tryby “quiz” lub “nauka”.
 
 Aplikacja posiada dwa tryby gry:
-* Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 15 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
-* Tryb “nauka” polega na wyświetlanie poszczególnych słów a celem użytkownika jest przejście przez wszystkie słowa starając się zapamiętać jak największą ilość.
+* Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 20 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
+* Tryb “nauka” polega na wyświetlanie poszczególnych słów a celem użytkownika jest przejście przez wszystkie słowa starając się zapamiętać jak największą ich ilość.
 
-Użytkownik ma możliwość zobaczenie swoich postępów, lvl
+Aby zobaczyć informacje o swoim profilu należy wcisnąć “Twój profil”, znajdują się tam informacje o lvl użytkownika oraz ilość punktów do następnego poziomu. 
 
-Aby zobaczyć informacje o swoim profilu należy wcisnąć “Twój profil”, znajdują się tam informacje o lvl użytkownika oraz ilość punktów do następnego poziomu. Następnie można przejść do panelu zestawów gdzie wyświetlają się wszystkie zestawy użytkownika, można je modyfikować lub usunąć.
-Po wybraniu zestawu można przeglądać słowa które się w nich znajdują, a po wyborze słowa dowolnie je modyfikować.
-
-
+Użytkownik ma również możliwość przeglądać swoje zestawy w zakładce “Twoje Fiszki”. Wyświetlają się tam wszystkie zestawy użytkownika, można je modyfikować lub usunąć. Po wybraniu zestawu można przeglądać słowa które się w nich znajdują, a po wyborze konkretnego słowa dowolnie je modyfikować.
 
 ## Autorzy:
 Kamil Dereń oraz Bartek Kubik
