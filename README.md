@@ -20,7 +20,7 @@ Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliw
 
 Aplikacja posiada dwa tryby gry:
 * Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 15 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
-* Tryb “nauka” polega na wyświetlanie poszczególnych słów a celem użytkownika jest przejście przez wszystkie słowa starając się zapamiętaj jak największą ich ilość.
+* Tryb “nauka” polega na wyświetlanie poszczególnych słów a celem użytkownika jest przejście przez wszystkie słowa starając się zapamiętać jak największą ilość.
 
 Użytkownik ma możliwość zobaczenie swoich postępów, lvl
 
