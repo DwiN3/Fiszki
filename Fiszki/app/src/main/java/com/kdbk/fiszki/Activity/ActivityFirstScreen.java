@@ -49,7 +49,7 @@ public class ActivityFirstScreen extends AppCompatActivity implements View.OnCli
             internetError.setVisibility(View.INVISIBLE);
             switch (view.getId()) {
                 case R.id.buttonPasswordReset:
-                    nextActivity.openActivity(ActivityPasswordReset.class);
+                    nextActivity.openActivity(ActivityPasswordReminder.class);
                     break;
                 case R.id.buttonCreate:
                     nextActivity.openActivity(ActivityRegister.class);

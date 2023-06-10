@@ -9,7 +9,6 @@ public class UserLVL {
     private String content;
 
 
-
     @SerializedName("body")
     private String text;
 

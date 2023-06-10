@@ -20,7 +20,7 @@ public class ActivityPasswordReset extends AppCompatActivity {
 
     private NextActivity nextActivity = new NextActivity(this);
     private EditText email, passwordConfirm, passwordConfirmRe;
-    private Button resetPassword;
+    private Button resetPassword, backToMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,12 @@ public class ActivityPasswordReset extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 resetPasswordRetrofit();
+            }
+        });
+        backToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity.openActivity(ActivityFirstScreen.class);
             }
         });
     }
@@ -72,5 +78,6 @@ public class ActivityPasswordReset extends AppCompatActivity {
         passwordConfirm = findViewById(R.id.textPasswordConfirm);
         passwordConfirmRe = findViewById(R.id.textPasswordConfirmRe);
         resetPassword = findViewById(R.id.buttonPasswordResetConfirm);
+        backToMenu = findViewById(R.id.buttonPasswordBackToMenuReset);
     }
 }
