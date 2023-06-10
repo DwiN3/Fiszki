@@ -15,7 +15,8 @@ public class Register {
         this.nick = nick;
     }
 
-    public Register(String password, String repeatedPassword) {
+    public Register(String email, String password, String repeatedPassword) {
+        this.email = email;
         this.password = password;
         this.repeatedPassword = repeatedPassword;
     }
