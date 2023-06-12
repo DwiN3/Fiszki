@@ -50,8 +50,8 @@ W aplikacji można utworzyć konto, zalogować się i zresetować hasło istniej
 Po zalogowaniu można korzystać z zawartości aplikacji. Użytkownik ma możliwość wybrać jedną z pośród wielu kategorii która zawiera słowa o poszczególnej tematyce,  możliwe zagranie w tryb “quiz” lub “nauka”.
 
 Aplikacja posiada dwa tryby gry:
- Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 15 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
-Tryb “nauka” służy do powtarzaniu słówek z całego zestawu, użytkownik przechodzi przez wszystkie słówka zestawu lub kategorii, pozwala to na szybkie utrwalanie słownictwa.
+* Tryb “quiz” pozwala użytkownikowi na zyskiwanie punktów aby zwiększać poziom użytkownika. Gracz wybiera jedną spośród czterech odpowiedzi, gra się kończy po 15 fiszkach i zostajemy przeniesieni do ekranu który zliczy nasze postępy gry, obecny lvl oraz wynik najlepszej poprawnej passy.
+* Tryb “nauka” służy do powtarzaniu słówek z całego zestawu, użytkownik przechodzi przez wszystkie słówka zestawu lub kategorii, pozwala to na szybkie utrwalanie słownictwa.
 
 Użytkownik ma również możliwość przeglądać swoje zestawy w zakładce “Twoje Fiszki”. 
 Wyświetlają się tam wszystkie zestawy użytkownika, można je modyfikować lub usunąć. Po wybraniu zestawu można przeglądać słowa które się w nich znajdują, a po wyborze konkretnego słowa dowolnie je modyfikować.
