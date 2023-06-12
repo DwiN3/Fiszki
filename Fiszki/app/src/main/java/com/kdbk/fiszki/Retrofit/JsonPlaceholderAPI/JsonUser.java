@@ -17,11 +17,9 @@ public interface JsonUser {
     @POST("users/sing-up")
     Call<Register> register(@Body Register register);
     @PUT("users/password-reset")
-    Call<Register> resetPassword(@Body Register register);
+    Call<String> resetPassword(@Body Register register);
     @PUT("users/users-level")
     Call<UserLVL> points(@Body UserLVL userLVL);
-    @PUT("users/users-level/{collectionName}")
-    Call<UserLVL> points(@Path("collectionName") String collectionName, @Body UserLVL userLVL);
     @GET("users/users-level")
     Call<UserLVL> getUserLVL();
 }

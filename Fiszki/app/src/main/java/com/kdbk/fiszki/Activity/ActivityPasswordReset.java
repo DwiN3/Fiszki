@@ -46,13 +46,13 @@ public class ActivityPasswordReset extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonUser jsonUser = retrofit.create(JsonUser.class);
-        Register post = new Register(emailString, passwordString, passwordReString);
-        Call<Register> call = jsonUser.resetPassword(post);
+        Register post = new Register(emailString,passwordString, passwordReString);
+        Call<String> call = jsonUser.resetPassword(post);
 
-        call.enqueue(new Callback<Register>() {
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Register> call, Response<Register> response) {
-                if(response.code() == 200) Toast.makeText(ActivityPasswordReset.this,"Udało się zmienić hasło1", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.code() == 200) Toast.makeText(ActivityPasswordReset.this,"Udało się zmienić hasło", Toast.LENGTH_SHORT).show();
 
                 if(!response.isSuccessful()){
                     Toast.makeText(ActivityPasswordReset.this,"Błąd w resecie hasła", Toast.LENGTH_SHORT).show();
@@ -60,9 +60,8 @@ public class ActivityPasswordReset extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Register> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 if(t.getMessage().equals("timeout"))  Toast.makeText(ActivityPasswordReset.this,"Uruchamianie serwera", Toast.LENGTH_SHORT).show();
-                else Toast.makeText(ActivityPasswordReset.this,"Udało się zmienić hasło", Toast.LENGTH_SHORT).show();
             }
         });
     }
