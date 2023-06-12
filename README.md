@@ -9,6 +9,38 @@ Użytkownik w aplikacji "Fiszki" może wybrać tematykę słówek, z których ch
 Aplikacja "Fiszki" jest odpowiednia dla osób w każdym wieku i o różnym poziomie zaawansowania. To narzędzie, które pozwala na skuteczną naukę języków obcych w sposób przyjemny i interaktywny.
 
 
+## Ekrany aplikacji:
+<div align="center">
+  <table>
+    <tr>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/a29624e0-4618-4b11-ba79-9d660e2c5544" alt="Menu główne" width="270" height="585"/>
+      </td>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/0edf25f0-6671-47d0-8bdc-bf014fcdfa76" alt="Dodawanie fiszek" width="270" height="585"/>
+      </td>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/3dfb5e55-9933-4f31-bf1d-81bbe244ca50" alt="Panel zestawów" width="270" height="585"/>
+    </tr>
+  </table>
+</div>
+<br>
+<div align="center">
+  <table>
+    <tr>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/8fdac8f8-2e1b-4342-ace7-6d8756978847" alt="Wybór trybu gry" width="270" height="585"/>
+      </td>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/8d8e9931-d088-4a12-bcb2-b9b5d2f6c986" alt="Tryb Gry Quiz" width="270" height="585"/>
+      </td>
+      <td style="text-align: center;">
+        <img src="https://github.com/DwiN3/Fiszki/assets/104890694/da7e1030-4ed1-475d-8cf9-b41481de8a90" alt="Tryb Gry Nauka" width="270" height="585"/>
+    </tr>
+  </table>
+</div>
+<br>
+
 ## Opis stanu aplikacji:
 
 Aplikacja działa na samodzielnie wykonanym api które wykorzystuje serwer: https://render.com/ a łączy się z nim poprzez rozszerzenie Retrofit.
