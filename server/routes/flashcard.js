@@ -5,12 +5,13 @@ const isAuth = require('../middleware/auth');
 
 const router = express.Router();
 
+router.get('/:flashcardsId', isAuth, flashcardController.getFlashcard);
 router.post('/:collectionName', isAuth,  
     [
         body('language')
             .isIn('english'),
         body('category')
-            .isIn(['inne', 'dom', 'sklep']),
+            .isIn(['inne', 'dom', 'zakupy', 'praca', 'zdrowie', 'czlowiek', 'turystyka', 'jedzenie', 'edukacja', 'zwierzeta' ]),
         body('word')
             .isLength({ min : 2 }),
         body('translatedWord')
@@ -35,3 +36,5 @@ router.put('/:flashcardsId', isAuth,
     ],
     flashcardController.editFlashcard);
 module.exports = router;
+
+

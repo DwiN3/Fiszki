@@ -33,12 +33,36 @@ router.post('/login',
     ],
     userController.login);
 
+router.get('/users-level', isAuth, userController.getUsersLevel);
+
 router.put('/users-level', isAuth, 
     [
         body('result')
             .isInt({min : 0})
     ],
     userController.levelUp);
+
+router.put('/password-reset', 
+    [
+        body('email')
+            .isEmail()
+            .isLength({min : 10}),
+        body('password')
+            .isAlphanumeric()
+            .isLength({ min : 8 }),
+        body('repeatedPassword')
+            .isAlphanumeric()
+            .isLength({ min : 8 }),
+    ],
+    userController.changePassword);
+
+    router.post('/nick-remind', 
+    [
+        body('email')
+            .isEmail()
+            .isLength({min : 10}),
+    ],
+    userController.remindNick);
 
 module.exports = router;
 
